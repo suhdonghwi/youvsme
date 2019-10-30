@@ -4,12 +4,46 @@
 
 #define NUMPTS 810
 
+double current_volume(int numPts, int sampleRate, HWAVEIN hWaveIn,
+                      short int* waveIn, WAVEHDR waveInHdr) {
+  sizeof(WAVEHDR);
+  waveInPrepareHeader(hWaveIn, &waveInHdr, sizeof(WAVEHDR));
+
+  // Insert a wave input buffer
+  if (waveInAddBuffer(hWaveIn, &waveInHdr, sizeof(WAVEHDR))) {
+    printf("Failed to read block from device\n");
+    return 0;
+  }
+
+  printf("Recording...");
+
+  // Commence sampling input
+  if (waveInStart(hWaveIn)) {
+    printf("Failed to start recording\n");
+    return 0;
+  }
+
+  Sleep(
+      (DWORD)((numPts / (double)sampleRate) * 1000));  // Sleep while recording
+
+  waveInUnprepareHeader(hWaveIn, &waveInHdr, sizeof(WAVEHDR));
+
+  short int max = 0;
+  for (int i = 0; i < numPts; i++) {
+    short int data = waveIn[i];
+    if (data > max) {
+      max = data;
+    }
+  }
+
+  return max / 32767.0;
+}
+
 int main() {
   int sampleRate = 8100;
   short int waveIn[NUMPTS];
   HWAVEIN hWaveIn;
   WAVEHDR WaveInHdr;
-  MMRESULT result;
 
   // Specify recording parameters
   WAVEFORMATEX pFormat;
@@ -22,7 +56,7 @@ int main() {
   pFormat.wBitsPerSample = 16;  //  16 for high quality, 8 for telephone-grade
   pFormat.cbSize = 0;
 
-  result =
+  MMRESULT result =
       waveInOpen(&hWaveIn, WAVE_MAPPER, &pFormat, 0L, 0L, WAVE_FORMAT_DIRECT);
   if (result) {
     char fault[256];
@@ -39,37 +73,9 @@ int main() {
   WaveInHdr.dwFlags = 0L;
   WaveInHdr.dwLoops = 0L;
 
-  for (int i = 0; i < 1000; i++) {
-    waveInPrepareHeader(hWaveIn, &WaveInHdr, sizeof(WAVEHDR));
-
-    // Insert a wave input buffer
-    result = waveInAddBuffer(hWaveIn, &WaveInHdr, sizeof(WAVEHDR));
-    if (result) {
-      printf("Failed to read blcok from device\n");
-      return 1;
-    }
-
-    printf("Recording...");
-
-    // Commence sampling input
-    result = waveInStart(hWaveIn);
-    if (result) {
-      printf("Failed to start recording\n");
-      return;
-    }
-
-    Sleep((NUMPTS / (double)sampleRate) * 1000);  // Sleep while recording
-
-    short int max = 0;
-    for (int j = 0; j < NUMPTS; j++) {
-      if (waveIn[j] > max) {
-        max = waveIn[j];
-      }
-    }
-
-    printf("%lf\n", max / 32767.0);
-
-    waveInUnprepareHeader(hWaveIn, &WaveInHdr, sizeof(WAVEHDR));
+  for (int i = 0; i < 100; i++) {
+    printf("%lf\n",
+           current_volume(NUMPTS, sampleRate, hWaveIn, waveIn, WaveInHdr));
   }
 
   waveInClose(hWaveIn);
