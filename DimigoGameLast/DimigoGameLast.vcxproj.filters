@@ -39,6 +39,9 @@
     <ClCompile Include="Bird.c">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="SpriteResources.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">
@@ -55,6 +58,9 @@
     </ClInclude>
     <ClInclude Include="Bird.h">
       <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteResources.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

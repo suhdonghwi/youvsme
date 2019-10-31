@@ -1,3 +1,9 @@
 #include "Bird.h"
 
-Bird make_bird() {}
+#include "SpriteResources.h"
+
+Bird make_bird() {
+  Bird result;
+  result.base.sprites = bird_sprites;
+  return result;
+}
