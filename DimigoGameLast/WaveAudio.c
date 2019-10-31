@@ -30,7 +30,7 @@ int init_wave_data(WaveData* result) {
   if (open_result) {
     char fault[256];
     waveInGetErrorText(result, fault, 256);
-    printf("Failed to open waveform input device : %s\n", fault);
+    printf("오디오 입력 장치를 열 수 없습니다 : %s\n", fault);
     return 1;
   }
 
@@ -47,12 +47,12 @@ int get_current_volume(WaveData wave_data, double* result) {
 
   if (waveInAddBuffer(wave_data.wave_in, &wave_data.wave_hdr,
                       sizeof(WAVEHDR))) {
-    printf("Failed to read block from device\n");
+    printf("장치로부터 오디오 버퍼 데이터를 읽을 수 없습니다.\n");
     return 1;
   }
 
   if (waveInStart(wave_data.wave_in)) {
-    printf("Failed to start recording\n");
+    printf("오디오 녹음을 시작할 수 없습니다.\n");
     return 1;
   }
 

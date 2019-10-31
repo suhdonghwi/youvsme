@@ -4,21 +4,24 @@
 #define GetGValue(rgb) ((BYTE)(((WORD)(rgb)) >> 8))
 #define GetBValue(rgb) ((BYTE)((rgb) >> 16))
 
-CameraData init_camera_data() {
-  CameraData result;
-  result.camera_window = FindWindow(NULL, TEXT("카메라"));
-  result.monitor_dc = GetDC(NULL);
+int init_camera_data(CameraData* result) {
+  result->camera_window = FindWindow(NULL, TEXT("카메라"));
+  if (result->camera_window == NULL) {
+    printf("카메라 앱을 찾을 수 없습니다. Windows 10 카메라 앱을 켜주세요!\n");
+    return 1;
+  }
+  result->monitor_dc = GetDC(NULL);
+  return 0;
+}
+
+void get_camera_rect(CameraData camera_data, RECT* result) {
+  GetWindowRect(camera_data.camera_window, result);
   return result;
 }
 
-RECT get_camera_rect(CameraData camera_data) {
-  RECT result;
-  GetWindowRect(camera_data.camera_window, &result);
-  return result;
-}
-
-Color get_current_color(CameraData camera_data) {
-  RECT rect = get_camera_rect(camera_data);
+void get_current_color(CameraData camera_data, Color* result) {
+  RECT rect;
+  get_camera_rect(camera_data, &rect);
   int center_x = (rect.left + rect.right) / 2,
       center_y = (rect.top + rect.bottom) / 2;
 
@@ -37,9 +40,9 @@ Color get_current_color(CameraData camera_data) {
   printf("%d %d %d\n", r_sum, g_sum, b_sum);
 
   if (r_sum >= g_sum + 70 && r_sum >= b_sum + 70)
-    return COLOR_RED;
+    *result = COLOR_RED;
   else if (b_sum >= r_sum + 70 && b_sum >= g_sum + 70)
-    return COLOR_BLUE;
+    *result = COLOR_BLUE;
   else
-    return COLOR_OTHER;
+    *result = COLOR_OTHER;
 }
