@@ -8,23 +8,11 @@
 #include "WaveAudio.h"
 
 int main() {
-  CameraData camera_data;
-  init_camera_data(&camera_data);
-  while (1) {
-    Color current_color;
-    get_current_color(camera_data, &current_color);
-    printf("%d\n", current_color);
-  }
+  HWND window = GetConsoleWindow();
+  HDC window_dc = GetDC(window);
 
-  WaveData wave_data;
-  init_wave_data(&wave_data);
+  HINSTANCE inst = GetModuleHandle(NULL);
 
-  for (int i = 0; i < 100; i++) {
-    double volume;
-    get_current_volume(wave_data, &volume);
-    printf("%lf\n", volume);
-  }
-
-  deinit_wave_data(wave_data);
+  SetWindowPos(window, (HWND)0, 100, 100, 750, 650, 0);
   system("pause");
 }

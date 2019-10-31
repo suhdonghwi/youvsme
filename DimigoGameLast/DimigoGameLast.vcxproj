@@ -19,14 +19,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bird.c" />
     <ClCompile Include="Camera.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="WaveAudio.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bird.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="WaveAudio.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DimigoGameLast.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Desktop\bird.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
