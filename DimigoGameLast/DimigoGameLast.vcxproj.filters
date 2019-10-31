@@ -42,6 +42,9 @@
     <ClCompile Include="SpriteResources.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GameObject.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">

@@ -10,7 +10,10 @@ typedef struct tagPos {
 
 typedef struct tagGameObject {
   HBITMAP* sprites;
+  size_t sprite_index;
   Pos pos;
 
   OnUpdateFunc on_update;
 } GameObject;
+
+void render_game_object(GameObject object, HDC main_dc);

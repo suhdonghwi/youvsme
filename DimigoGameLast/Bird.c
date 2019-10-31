@@ -2,8 +2,10 @@
 
 #include "SpriteResources.h"
 
-Bird make_bird() {
-  Bird result;
-  result.base.sprites = bird_sprites;
+GameObject make_bird() {
+  GameObject result;
+  result.sprites = bird_sprites;
+  result.sprite_index = 0;
+  result.pos = (Pos){100, 100};
   return result;
 }
