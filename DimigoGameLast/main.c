@@ -8,18 +8,20 @@
 #include "WaveAudio.h"
 
 int main() {
-  CameraData camera_data = init_camera_data();
+  /*CameraData camera_data = init_camera_data();
   while (1) {
     printf("%d\n", get_current_color(camera_data));
-  }
+  }*/
 
-  WaveData wave_data = init_wave_data();
+  WaveData wave_data;
+  init_wave_data(&wave_data);
 
   for (int i = 0; i < 100; i++) {
-    printf("%lf\n", get_current_volume(wave_data));
+    double volume;
+    get_current_volume(wave_data, &volume);
+    printf("%lf\n", volume);
   }
 
   deinit_wave_data(wave_data);
-
   system("pause");
 }
