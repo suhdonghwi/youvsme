@@ -4,8 +4,8 @@
 #include "WaveAudio.h"
 
 int init_wave_data(WaveData* result) {
-  result->num_pts = 8100 / 10;
-  result->sample_rate = 8100;
+  result->num_pts = 44100 / 18;
+  result->sample_rate = 44100;
   result->sample_data = malloc(sizeof(short int) * result->num_pts);
 
   // Set up and prepare header for input
