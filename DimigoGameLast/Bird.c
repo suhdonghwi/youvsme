@@ -2,7 +2,7 @@
 
 #include "SpriteResources.h"
 
-GameObject* make_bird() {
+GameObject* create_bird() {
   GameObject* bird = init_game_object();
 
   bird->sprites = bird_sprites;
