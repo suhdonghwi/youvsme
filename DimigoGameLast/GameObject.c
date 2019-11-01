@@ -16,6 +16,8 @@ GameObject* init_game_object() {
   return object;
 }
 
+void deinit_game_object(GameObject* object) {}
+
 void render_game_object(GameObject* object, HDC main_dc) {
   HDC mem_dc = CreateCompatibleDC(main_dc);
 

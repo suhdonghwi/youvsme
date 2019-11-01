@@ -23,6 +23,7 @@ void deinit_scene(GameScene* scene) {
   while (node != NULL) {
     GameSceneNode* tmp = node;
     node = node->next;
+    deinit_game_object(tmp->game_object);
     free(tmp);
   }
 }

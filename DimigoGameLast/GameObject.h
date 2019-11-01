@@ -19,4 +19,5 @@ typedef struct tagGameObject {
 } GameObject;
 
 GameObject* init_game_object();
+void deinit_game_object(GameObject* object);
 void render_game_object(GameObject* object, HDC main_dc);
