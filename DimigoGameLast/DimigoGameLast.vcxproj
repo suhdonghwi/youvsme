@@ -23,6 +23,7 @@
     <ClCompile Include="CapePlayer1.c" />
     <ClCompile Include="Camera.c" />
     <ClCompile Include="CapeGameScene.c" />
+    <ClCompile Include="CapePlayer2.c" />
     <ClCompile Include="GameObject.c" />
     <ClCompile Include="GameScene.c" />
     <ClCompile Include="main.c" />
@@ -34,6 +35,7 @@
     <ClInclude Include="CapePlayer1.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CapeGameScene.h" />
+    <ClInclude Include="CapePlayer2.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="resource.h" />
@@ -46,6 +48,8 @@
   <ItemGroup>
     <Image Include="Resource\cape_background.bmp" />
     <Image Include="Resource\cape_character.bmp" />
+    <Image Include="Resource\cape_player1.bmp" />
+    <Image Include="Resource\cape_player2.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
