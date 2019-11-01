@@ -27,6 +27,7 @@
     <ClCompile Include="GameObject.c" />
     <ClCompile Include="GameScene.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="Spit.c" />
     <ClCompile Include="SpriteResources.c" />
     <ClCompile Include="WaveAudio.c" />
   </ItemGroup>
@@ -39,6 +40,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Spit.h" />
     <ClInclude Include="SpriteResources.h" />
     <ClInclude Include="WaveAudio.h" />
   </ItemGroup>
@@ -50,6 +52,7 @@
     <Image Include="Resource\cape_character.bmp" />
     <Image Include="Resource\cape_player1.bmp" />
     <Image Include="Resource\cape_player2.bmp" />
+    <Image Include="Resource\spit.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

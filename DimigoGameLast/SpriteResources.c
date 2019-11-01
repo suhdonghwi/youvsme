@@ -15,6 +15,10 @@ void init_sprite_resources(HINSTANCE inst) {
   if (cape_background_sprites == NULL) return;
   cape_background_sprites[0] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_CAPE_BACKGROUND));
+
+  spit_sprites = malloc(sizeof(HBITMAP) * 1);
+  if (spit_sprites == NULL) return;
+  spit_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_SPIT));
 }
 
 void deinit_sprite_resources() {
@@ -26,4 +30,7 @@ void deinit_sprite_resources() {
 
   DeleteObject(cape_background_sprites[0]);
   free(cape_background_sprites);
+
+  DeleteObject(spit_sprites[0]);
+  free(spit_sprites);
 }

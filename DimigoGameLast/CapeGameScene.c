@@ -3,6 +3,7 @@
 #include "CapeBackground.h"
 #include "CapePlayer1.h"
 #include "CapePlayer2.h"
+#include "Spit.h"
 
 GameScene* create_cape_game_scene() {
   GameScene* scene = create_scene();
@@ -15,6 +16,9 @@ GameScene* create_cape_game_scene() {
 
   GameObject* cape_player2 = create_cape_player2();
   insert_game_object(cape_player2, scene);
+
+  GameObject* spit = create_spit();
+  insert_game_object(spit, scene);
 
   return scene;
 }
