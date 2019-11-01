@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CapeBackground.c" />
     <ClCompile Include="CapeChar1.c" />
     <ClCompile Include="Camera.c" />
     <ClCompile Include="CapeGameScene.c" />
@@ -29,6 +30,7 @@
     <ClCompile Include="WaveAudio.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CapeBackground.h" />
     <ClInclude Include="CapeChar1.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CapeGameScene.h" />
@@ -42,6 +44,7 @@
     <ResourceCompile Include="DimigoGameLast.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resource\cape_background.bmp" />
     <Image Include="Resource\cape_character.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
