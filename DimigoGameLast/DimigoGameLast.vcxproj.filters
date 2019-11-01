@@ -90,7 +90,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Desktop\bird.bmp">
+    <Image Include="Resource\cape_character.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

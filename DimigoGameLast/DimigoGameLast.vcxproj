@@ -42,7 +42,7 @@
     <ResourceCompile Include="DimigoGameLast.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Desktop\bird.bmp" />
+    <Image Include="Resource\cape_character.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
