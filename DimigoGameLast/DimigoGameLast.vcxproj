@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CapeBackground.c" />
-    <ClCompile Include="CapeChar1.c" />
+    <ClCompile Include="CapePlayer1.c" />
     <ClCompile Include="Camera.c" />
     <ClCompile Include="CapeGameScene.c" />
     <ClCompile Include="GameObject.c" />
@@ -31,7 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CapeBackground.h" />
-    <ClInclude Include="CapeChar1.h" />
+    <ClInclude Include="CapePlayer1.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CapeGameScene.h" />
     <ClInclude Include="GameObject.h" />

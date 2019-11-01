@@ -1,11 +1,11 @@
-#include "CapeChar1.h"
+#include "CapePlayer1.h"
 
 #include "SpriteResources.h"
 #include "WaveAudio.h"
 
 extern WaveData g_wave_data;
 
-void on_update_cape_char1(GameObject* cape_char1) {
+void on_update_cape_player1(GameObject* cape_char1) {
   double volume;
   get_current_volume(g_wave_data, &volume);
 
@@ -26,15 +26,15 @@ void on_update_cape_char1(GameObject* cape_char1) {
   }
 }
 
-GameObject* create_cape_char1() {
-  GameObject* cape_char1 = init_game_object();
+GameObject* create_cape_player1() {
+  GameObject* cape_player1 = init_game_object();
 
-  cape_char1->sprites = cape_char1_sprites;
-  cape_char1->sprite_index = 0;
-  cape_char1->pos = (Pos){60, 100};
-  cape_char1->scale = 4;
+  cape_player1->sprites = cape_player1_sprites;
+  cape_player1->sprite_index = 0;
+  cape_player1->pos = (Pos){60, 100};
+  cape_player1->scale = 4;
 
-  cape_char1->on_update = on_update_cape_char1;
+  cape_player1->on_update = on_update_cape_player1;
 
-  return cape_char1;
+  return cape_player1;
 }

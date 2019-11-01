@@ -9,7 +9,6 @@
 
 #include "SpriteResources.h"
 
-#include "CapeChar1.h"
 #include "CapeGameScene.h"
 
 #include "GameObject.h"
@@ -28,16 +27,12 @@ int main() {
   window_rect.right = (LONG)(window_rect.right * 1.3);
   window_rect.bottom = (LONG)(window_rect.bottom * 1.3);
 
-  HBRUSH background_brush = GetStockObject(BLACK_BRUSH);
-
   init_sprite_resources(inst);
   init_wave_data(&g_wave_data);
 
   GameScene* scene = create_cape_game_scene();
 
   while (1) {
-    FillRect(window_dc, &window_rect, background_brush);
-
     render_game_scene(scene, window_dc);
     Sleep(10);
   }

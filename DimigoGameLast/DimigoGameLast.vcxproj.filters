@@ -54,10 +54,10 @@
     <ClCompile Include="CapeGameScene.c">
       <Filter>Source Files\GameScenes</Filter>
     </ClCompile>
-    <ClCompile Include="CapeChar1.c">
+    <ClCompile Include="CapeBackground.c">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="CapeBackground.c">
+    <ClCompile Include="CapePlayer1.c">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,10 +83,10 @@
     <ClInclude Include="CapeGameScene.h">
       <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
-    <ClInclude Include="CapeChar1.h">
+    <ClInclude Include="CapeBackground.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="CapeBackground.h">
+    <ClInclude Include="CapePlayer1.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
