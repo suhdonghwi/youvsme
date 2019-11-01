@@ -6,7 +6,7 @@
 #include "Spit.h"
 
 GameScene* create_cape_game_scene() {
-  GameScene* scene = create_scene();
+  GameScene* scene = init_scene();
 
   GameObject* cape_background = create_cape_background();
   insert_game_object(cape_background, scene);

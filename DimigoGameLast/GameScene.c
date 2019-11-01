@@ -9,12 +9,22 @@ GameSceneNode* create_node(GameObject* object) {
   return node;
 }
 
-GameScene* create_scene() {
+GameScene* init_scene() {
   GameScene* scene = malloc(sizeof(GameScene));
   if (scene == NULL) return NULL;
 
   scene->head = NULL;
   return scene;
+}
+
+void deinit_scene(GameScene* scene) {
+  GameSceneNode* node = scene->head;
+
+  while (node != NULL) {
+    GameSceneNode* tmp = node;
+    node = node->next;
+    free(tmp);
+  }
 }
 
 void insert_game_object(GameObject* object, GameScene* scene) {

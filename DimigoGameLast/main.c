@@ -61,5 +61,6 @@ int main() {
   }
 
   deinit_sprite_resources();
+  deinit_scene(scene);
   system("pause");
 }

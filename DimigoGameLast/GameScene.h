@@ -11,8 +11,8 @@ typedef struct tagGameScene {
 } GameScene;
 
 GameSceneNode* create_node(GameObject* object);
-GameScene* create_scene();
+GameScene* init_scene();
+void deinit_scene(GameScene* scene);
 
 void insert_game_object(GameObject* game_object, GameScene* game_scene);
-
 void render_game_scene(GameScene* scene, HDC main_dc);
