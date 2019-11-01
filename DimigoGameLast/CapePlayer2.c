@@ -18,7 +18,7 @@ GameObject* create_cape_player2() {
 
   cape_player2->sprites = cape_player2_sprites;
   cape_player2->sprite_index = 0;
-  cape_player2->pos = (Pos){500, 100};
+  cape_player2->pos = (Pos){700, 100};
   cape_player2->scale = 4;
 
   cape_player2->on_update = on_update_cape_player2;

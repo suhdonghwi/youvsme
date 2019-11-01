@@ -22,12 +22,8 @@ void insert_game_object(GameObject* object, GameScene* scene) {
   if (scene->head == NULL) {
     scene->head = new_node;
   } else {
-    GameSceneNode* tail = scene->head;
-    while (tail->next != NULL) {
-      tail = tail->next;
-    }
-
-    tail->next = new_node;
+    new_node->next = scene->head;
+    scene->head = new_node;
   }
 }
 
