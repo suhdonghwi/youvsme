@@ -3,13 +3,15 @@
 #include "SpriteResources.h"
 #include "WaveAudio.h"
 
-WaveData wave_data;
+extern WaveData g_wave_data;
 
 void on_update_cape_char1(GameObject* cape_char1) {
   double volume;
-  get_current_volume(wave_data, &volume);
+  get_current_volume(g_wave_data, &volume);
 
-  if (volume > 0.6) {
+  if (volume > 0.8) {
+    cape_char1->pos.y -= 20;
+  } else if (volume > 0.6) {
     cape_char1->pos.y -= 15;
   } else if (volume > 0.4) {
     cape_char1->pos.y -= 10;
@@ -17,16 +19,14 @@ void on_update_cape_char1(GameObject* cape_char1) {
     cape_char1->pos.y += 10;
   }
 
-  if (cape_char1->pos.y > 600) {
-    cape_char1->pos.y = 600;
+  if (cape_char1->pos.y > 700) {
+    cape_char1->pos.y = 700;
   } else if (cape_char1->pos.y < 0) {
     cape_char1->pos.y = 0;
   }
 }
 
 GameObject* create_cape_char1() {
-  init_wave_data(&wave_data);
-
   GameObject* cape_char1 = init_game_object();
 
   cape_char1->sprites = cape_char1_sprites;
