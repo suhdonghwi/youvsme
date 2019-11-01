@@ -10,6 +10,8 @@
 #include "SpriteResources.h"
 
 #include "Bird.h"
+#include "CapeGameScene.h"
+
 #include "GameObject.h"
 #include "GameScene.h"
 
@@ -28,28 +30,9 @@ int main() {
 
   init_sprite_resources(inst);
 
-  GameScene* scene = create_scene();
-
-  GameObject* bird = create_bird();
-  insert_game_object(bird, scene);
-
-  WaveData wave_data;
-  init_wave_data(&wave_data);
+  GameScene* scene = create_cape_game_scene();
 
   while (1) {
-    /*double volume;
-    get_current_volume(wave_data, &volume);
-
-    if (volume > 0.8) {
-      bird.pos.y -= 40;
-    } else if (volume > 0.6) {
-      bird.pos.y -= 30;
-    } else if (volume > 0.4) {
-      bird.pos.y -= 15;
-    } else {
-      bird.pos.y += 15;
-    }*/
-
     FillRect(window_dc, &window_rect, background_brush);
 
     render_game_scene(scene, window_dc);

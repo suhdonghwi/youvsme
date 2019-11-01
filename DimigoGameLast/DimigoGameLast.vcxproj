@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Bird.c" />
     <ClCompile Include="Camera.c" />
+    <ClCompile Include="CapeGameScene.c" />
     <ClCompile Include="GameObject.c" />
     <ClCompile Include="GameScene.c" />
     <ClCompile Include="main.c" />
@@ -30,6 +31,7 @@
   <ItemGroup>
     <ClInclude Include="Bird.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CapeGameScene.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="resource.h" />

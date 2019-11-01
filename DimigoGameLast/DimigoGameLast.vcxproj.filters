@@ -25,6 +25,12 @@
     <Filter Include="Source Files\GameObjects">
       <UniqueIdentifier>{909a0b19-fa01-4791-82c7-ef4fcb867761}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameScenes">
+      <UniqueIdentifier>{367a56d7-49a3-4539-ba91-741a8950b36b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameScenes">
+      <UniqueIdentifier>{dcb4fa59-0889-433b-8195-b6bae1899691}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -48,6 +54,9 @@
     <ClCompile Include="GameScene.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CapeGameScene.c">
+      <Filter>Source Files\GameScenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">
@@ -70,6 +79,9 @@
     </ClInclude>
     <ClInclude Include="GameScene.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CapeGameScene.h">
+      <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
