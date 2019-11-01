@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Bird.c" />
+    <ClCompile Include="CapeChar1.c" />
     <ClCompile Include="Camera.c" />
     <ClCompile Include="CapeGameScene.c" />
     <ClCompile Include="GameObject.c" />
@@ -29,7 +29,7 @@
     <ClCompile Include="WaveAudio.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bird.h" />
+    <ClInclude Include="CapeChar1.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CapeGameScene.h" />
     <ClInclude Include="GameObject.h" />

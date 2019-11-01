@@ -9,7 +9,7 @@
 
 #include "SpriteResources.h"
 
-#include "Bird.h"
+#include "CapeChar1.h"
 #include "CapeGameScene.h"
 
 #include "GameObject.h"

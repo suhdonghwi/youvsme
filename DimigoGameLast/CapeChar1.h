@@ -1,4 +1,4 @@
 #pragma once
 #include "GameObject.h"
 
-GameObject* create_bird();
+GameObject* create_cape_char1();
