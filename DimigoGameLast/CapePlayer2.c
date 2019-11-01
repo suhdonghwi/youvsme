@@ -11,6 +11,12 @@ void on_update_cape_player2(GameObject* cape_player2) {
   } else if (g_pressed_map[VK_DOWN]) {
     cape_player2->pos.y += 15;
   }
+
+  if (cape_player2->pos.y > 700) {
+    cape_player2->pos.y = 700;
+  } else if (cape_player2->pos.y < 0) {
+    cape_player2->pos.y = 0;
+  }
 }
 
 GameObject* create_cape_player2() {
