@@ -10,7 +10,7 @@ void on_update_cape_char1(GameObject* cape_char1) {
   get_current_volume(wave_data, &volume);
 
   if (volume > 0.6) {
-    cape_char1->pos.y -= 13;
+    cape_char1->pos.y -= 15;
   } else if (volume > 0.4) {
     cape_char1->pos.y -= 10;
   } else {
@@ -31,8 +31,8 @@ GameObject* create_cape_char1() {
 
   cape_char1->sprites = cape_char1_sprites;
   cape_char1->sprite_index = 0;
-
-  cape_char1->pos = (Pos){100, 100};
+  cape_char1->pos = (Pos){60, 100};
+  cape_char1->scale = 4;
 
   cape_char1->on_update = on_update_cape_char1;
 

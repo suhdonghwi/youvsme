@@ -13,6 +13,8 @@ typedef struct tagGameObject {
   size_t sprite_index;
   Pos pos;
 
+  double scale;
+
   OnUpdateFunc on_update;
 } GameObject;
 
