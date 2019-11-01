@@ -35,11 +35,12 @@ void render_game_scene(GameScene* scene, HDC main_dc) {
   GameSceneNode* node = scene->head;
 
   while (node != NULL) {
+    render_game_object(node->game_object, main_dc);
+
     if (node->game_object->on_update != NULL) {
       node->game_object->on_update(node->game_object);
     }
 
-    render_game_object(node->game_object, main_dc);
     node = node->next;
   }
 }
