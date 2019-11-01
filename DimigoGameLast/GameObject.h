@@ -16,4 +16,5 @@ typedef struct tagGameObject {
   OnUpdateFunc on_update;
 } GameObject;
 
+void init_game_object(GameObject* object);
 void render_game_object(GameObject object, HDC main_dc);

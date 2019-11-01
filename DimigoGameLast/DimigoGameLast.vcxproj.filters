@@ -45,6 +45,9 @@
     <ClCompile Include="GameObject.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GameScene.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">
@@ -63,6 +66,9 @@
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="SpriteResources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

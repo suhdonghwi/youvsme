@@ -1,5 +1,13 @@
 #include "GameObject.h"
 
+void init_game_object(GameObject* object) {
+  object->sprites = NULL;
+  object->sprite_index = 0;
+  object->pos = (Pos){0, 0};
+
+  object->on_update = NULL;
+}
+
 void render_game_object(GameObject object, HDC main_dc) {
   HDC mem_dc = CreateCompatibleDC(main_dc);
 

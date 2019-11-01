@@ -11,6 +11,7 @@
 
 #include "Bird.h"
 #include "GameObject.h"
+#include "GameScene.h"
 
 int main() {
   HWND window = GetConsoleWindow();
@@ -27,30 +28,33 @@ int main() {
 
   init_sprite_resources(inst);
 
-  GameObject bird = make_bird();
+  GameScene* scene = create_scene();
+
+  GameObject bird;
+  make_bird(&bird);
+  insert_game_object(bird, scene);
 
   WaveData wave_data;
   init_wave_data(&wave_data);
 
-  int was_up = 0;
-  int y_offset = 30;
-
   while (1) {
-    double volume;
+    /*double volume;
     get_current_volume(wave_data, &volume);
 
     if (volume > 0.8) {
-      bird.pos.y -= 50;
+      bird.pos.y -= 40;
     } else if (volume > 0.6) {
       bird.pos.y -= 30;
     } else if (volume > 0.4) {
       bird.pos.y -= 15;
     } else {
       bird.pos.y += 15;
-    }
+    }*/
 
     FillRect(window_dc, &window_rect, background_brush);
-    render_game_object(bird, window_dc);
+
+    render_game_scene(scene, window_dc);
+    Sleep(10);
   }
 
   system("pause");

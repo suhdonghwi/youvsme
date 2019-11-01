@@ -22,6 +22,7 @@
     <ClCompile Include="Bird.c" />
     <ClCompile Include="Camera.c" />
     <ClCompile Include="GameObject.c" />
+    <ClCompile Include="GameScene.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="SpriteResources.c" />
     <ClCompile Include="WaveAudio.c" />
@@ -30,6 +31,7 @@
     <ClInclude Include="Bird.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameScene.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SpriteResources.h" />
     <ClInclude Include="WaveAudio.h" />
