@@ -30,8 +30,7 @@ int main() {
 
   GameScene* scene = create_scene();
 
-  GameObject bird;
-  make_bird(&bird);
+  GameObject* bird = make_bird();
   insert_game_object(bird, scene);
 
   WaveData wave_data;

@@ -4,6 +4,7 @@
 
 void init_sprite_resources(HINSTANCE inst) {
   bird_sprites = malloc(sizeof(HBITMAP) * 1);
+  if (bird_sprites == NULL) return;
   bird_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_BIRD));
 }
 
