@@ -11,7 +11,7 @@ extern GameScene* g_current_scene;
 
 clock_t last_shot_clock;
 
-void on_update_cape_player2(GameObject* cape_player2) {
+void on_render_cape_player2(GameObject* cape_player2, HDC main_dc) {
   if (g_pressed_map[VK_UP]) {
     cape_player2->pos.y -= 15;
   } else if (g_pressed_map[VK_DOWN]) {
@@ -44,7 +44,7 @@ GameObject* create_cape_player2() {
   cape_player2->pos = (Pos){700, 100};
   cape_player2->scale = 4;
 
-  cape_player2->on_update = on_update_cape_player2;
+  cape_player2->on_render = on_render_cape_player2;
 
   return cape_player2;
 }

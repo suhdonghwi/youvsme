@@ -56,6 +56,7 @@ int main() {
     }
 
     render_game_scene(g_current_scene, window_dc);
+    Sleep(15);
   }
 
   deinit_sprite_resources();

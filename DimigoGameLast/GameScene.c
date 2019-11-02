@@ -35,8 +35,11 @@ void insert_game_object(GameObject* object, GameScene* scene) {
   if (scene->head == NULL) {
     scene->head = new_node;
   } else {
-    new_node->next = scene->head;
-    scene->head = new_node;
+    GameSceneNode* current = scene->head;
+    while (current->next != NULL) {
+      current = current->next;
+    }
+    current->next = new_node;
   }
 }
 
@@ -64,6 +67,8 @@ void render_game_scene(GameScene* scene, HDC main_dc) {
       node = tmp;
     }
 
+    if (node == NULL) break;
+
     GameSceneNode* node2 = node->next;
     while (node2 != NULL) {
       RECT rect1 = get_game_object_rect(node->game_object),
@@ -82,11 +87,10 @@ void render_game_scene(GameScene* scene, HDC main_dc) {
 
     if (node == NULL) return;
 
-    render_game_object(node->game_object, main_dc);
+    if (node->game_object->on_render != NULL)
+      node->game_object->on_render(node->game_object, main_dc);
 
-    if (node->game_object->on_update != NULL) {
-      node->game_object->on_update(node->game_object);
-    }
+    render_game_object(node->game_object, main_dc);
 
     prev = node;
     node = node->next;

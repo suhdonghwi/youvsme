@@ -5,10 +5,9 @@
 
 WaveData g_wave_data;
 
-void on_update_cape_player1(GameObject* cape_player1) {
+void on_render_cape_player1(GameObject* cape_player1, HDC main_dc) {
   if (waveInUnprepareHeader(g_wave_data.wave_in, &g_wave_data.wave_hdr,
                             sizeof(WAVEHDR)) == WAVERR_STILLPLAYING) {
-    Sleep(15);
     DWORD recorded = g_wave_data.wave_hdr.dwBytesRecorded / 2;
     short int max = 0;
 
@@ -60,7 +59,7 @@ GameObject* create_cape_player1() {
   cape_player1->scale = 4;
   cape_player1->collidable = true;
 
-  cape_player1->on_update = on_update_cape_player1;
+  cape_player1->on_render = on_render_cape_player1;
   cape_player1->on_destroy = on_destroy_cape_player1;
   cape_player1->on_collide = on_collide_cape_player1;
 

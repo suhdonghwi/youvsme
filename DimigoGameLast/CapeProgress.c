@@ -11,7 +11,7 @@ HBRUSH fill_brush;
 void on_render_cape_progress(GameObject* cape_progress, HDC main_dc) {
   double progress = (double)g_wave_data.wave_hdr.dwBytesRecorded /
                     g_wave_data.wave_hdr.dwBufferLength;
-  cape_progress->pos.x = 200 + 450 * progress;
+  cape_progress->pos.x = (int)(200 + 450 * progress);
 
   RECT bar_rect;
   bar_rect.top = 20;
@@ -23,7 +23,7 @@ void on_render_cape_progress(GameObject* cape_progress, HDC main_dc) {
   fill_rect.top = 20;
   fill_rect.bottom = 20 + 30;
   fill_rect.left = 200;
-  fill_rect.right = 250 + 450 * progress;
+  fill_rect.right = (LONG)(250 + 450 * progress);
 
   FillRect(main_dc, &bar_rect, bar_brush);
   FillRect(main_dc, &fill_rect, fill_brush);
