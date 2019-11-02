@@ -38,6 +38,11 @@ void insert_game_object(GameObject* object, GameScene* scene) {
   }
 }
 
+bool rect_intersect_check(RECT r1, RECT r2) {
+  return !(r2.left > r1.right || r2.right < r1.left || r2.top > r1.bottom ||
+           r2.bottom < r1.top);
+}
+
 void render_game_scene(GameScene* scene, HDC main_dc) {
   GameSceneNode* node = scene->head;
   GameSceneNode* prev = node;
@@ -55,6 +60,22 @@ void render_game_scene(GameScene* scene, HDC main_dc) {
       free(node);
 
       node = tmp;
+    }
+
+    GameSceneNode* node2 = node->next;
+    while (node2 != NULL) {
+      RECT rect1 = get_game_object_rect(node->game_object),
+           rect2 = get_game_object_rect(node2->game_object);
+
+      if (rect_intersect_check(rect1, rect2) && node->game_object->collidable &&
+          node2->game_object->collidable) {
+        if (node->game_object->on_collide != NULL)
+          node->game_object->on_collide(node->game_object, node2->game_object);
+        if (node2->game_object->on_collide != NULL)
+          node2->game_object->on_collide(node2->game_object, node->game_object);
+      }
+
+      node2 = node2->next;
     }
 
     render_game_object(node->game_object, main_dc);

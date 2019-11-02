@@ -14,7 +14,8 @@ GameObject* create_spit() {
 
   spit->sprites = spit_sprites;
   spit->pos = (Pos){700, 100};
-  spit->scale = 5;
+  spit->scale = 6;
+  spit->collidable = true;
 
   spit->on_update = on_update_spit;
 

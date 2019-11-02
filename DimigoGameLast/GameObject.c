@@ -6,6 +6,8 @@ GameObject* init_game_object() {
   if (object == NULL) return NULL;
 
   object->alive = true;
+  object->collidable = false;
+
   object->sprites = NULL;
   object->sprite_index = 0;
   object->pos = (Pos){0, 0};
@@ -14,6 +16,7 @@ GameObject* init_game_object() {
 
   object->on_update = NULL;
   object->on_destroy = NULL;
+  object->on_collide = NULL;
 
   return object;
 }
@@ -45,4 +48,21 @@ void render_game_object(GameObject* object, HDC main_dc) {
                  (int)(object_rect.bottom / scale_root), RGB(255, 0, 255));
 
   DeleteDC(mem_dc);
+}
+
+RECT get_game_object_rect(GameObject* object) {
+  HBITMAP sprite = object->sprites[object->sprite_index];
+  BITMAP bitmap;
+
+  GetObject(sprite, sizeof(BITMAP), &bitmap);
+
+  double scale_root = sqrt(object->scale);
+
+  RECT rect;
+  rect.left = object->pos.x;
+  rect.top = object->pos.y;
+  rect.right = rect.left + (LONG)(bitmap.bmWidth * scale_root);
+  rect.bottom = rect.top + (LONG)(bitmap.bmHeight * scale_root);
+
+  return rect;
 }
