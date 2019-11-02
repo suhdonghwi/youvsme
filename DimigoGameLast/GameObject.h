@@ -1,4 +1,6 @@
 #pragma once
+#include <stdbool.h>
+
 #include <Windows.h>
 
 typedef void (*OnUpdateFunc)(struct tagGameObject*);
@@ -9,6 +11,8 @@ typedef struct tagPos {
 } Pos;
 
 typedef struct tagGameObject {
+  bool alive;
+
   HBITMAP* sprites;
   size_t sprite_index;
   Pos pos;

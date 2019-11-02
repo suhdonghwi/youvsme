@@ -5,6 +5,7 @@ GameObject* init_game_object() {
   GameObject* object = malloc(sizeof(GameObject));
   if (object == NULL) return NULL;
 
+  object->alive = true;
   object->sprites = NULL;
   object->sprite_index = 0;
   object->pos = (Pos){0, 0};

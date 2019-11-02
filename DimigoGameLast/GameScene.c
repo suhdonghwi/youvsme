@@ -40,14 +40,27 @@ void insert_game_object(GameObject* object, GameScene* scene) {
 
 void render_game_scene(GameScene* scene, HDC main_dc) {
   GameSceneNode* node = scene->head;
+  GameSceneNode* prev = node;
 
   while (node != NULL) {
+    if (!node->game_object->alive) {
+      prev->next = node->next;
+      if (node == scene->head) {
+        scene->head = node->next;
+      }
+
+      deinit_game_object(node->game_object);
+      free(node);
+      return;
+    }
+
     render_game_object(node->game_object, main_dc);
 
     if (node->game_object->on_update != NULL) {
       node->game_object->on_update(node->game_object);
     }
 
+    prev = node;
     node = node->next;
   }
 }

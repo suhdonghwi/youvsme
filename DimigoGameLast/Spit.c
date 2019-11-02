@@ -2,7 +2,12 @@
 
 #include "SpriteResources.h"
 
-void on_update_spit(GameObject* spit) { spit->pos.x -= 20; }
+void on_update_spit(GameObject* spit) {
+  spit->pos.x -= 20;
+  if (spit->pos.x < -10) {
+    spit->alive = false;
+  }
+}
 
 GameObject* create_spit() {
   GameObject* spit = init_game_object();
