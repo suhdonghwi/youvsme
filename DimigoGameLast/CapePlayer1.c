@@ -54,8 +54,8 @@ GameObject* create_cape_player1() {
   init_wave_data(&g_wave_data);
   GameObject* cape_player1 = init_game_object();
 
-  cape_player1->sprites = cape_player1_sprites;
-  cape_player1->sprite_index = 0;
+  cape_player1->sprites = player1_sprites;
+  cape_player1->sprite_index = 2;
   cape_player1->pos = (Pos){60, 100};
   cape_player1->scale = 4;
   cape_player1->collidable = true;

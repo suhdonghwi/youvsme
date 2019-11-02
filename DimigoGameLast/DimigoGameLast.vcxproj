@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CapeBackground.c" />
+    <ClCompile Include="GameResultScene.c" />
     <ClCompile Include="CapePlayer1.c" />
     <ClCompile Include="Camera.c" />
     <ClCompile Include="CapeGameScene.c" />
@@ -33,6 +34,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CapeBackground.h" />
+    <ClInclude Include="GameResultScene.h" />
     <ClInclude Include="CapePlayer1.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CapeGameScene.h" />
@@ -52,6 +54,8 @@
     <Image Include="Resource\cape_character.bmp" />
     <Image Include="Resource\cape_player1.bmp" />
     <Image Include="Resource\cape_player2.bmp" />
+    <Image Include="Resource\player1_cheering.bmp" />
+    <Image Include="Resource\player1_standing.bmp" />
     <Image Include="Resource\spit.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

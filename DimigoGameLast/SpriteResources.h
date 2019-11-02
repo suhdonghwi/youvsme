@@ -1,8 +1,8 @@
 #pragma once
 #include <Windows.h>
 
-HBITMAP* cape_player1_sprites;
-HBITMAP* cape_player2_sprites;
+HBITMAP* player1_sprites;
+HBITMAP* player2_sprites;
 HBITMAP* cape_background_sprites;
 HBITMAP* spit_sprites;
 
