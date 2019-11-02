@@ -15,7 +15,6 @@
 #include "GameObject.h"
 #include "GameScene.h"
 
-WaveData g_wave_data;
 bool g_pressed_map[0xFE] = {
     false,
 };
@@ -36,7 +35,6 @@ int main() {
   INPUT_RECORD input_buf[128];
 
   init_sprite_resources(inst);
-  init_wave_data(&g_wave_data);
 
   GameScene* scene = create_cape_game_scene();
 

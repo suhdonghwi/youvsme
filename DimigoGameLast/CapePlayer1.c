@@ -3,7 +3,7 @@
 #include "SpriteResources.h"
 #include "WaveAudio.h"
 
-extern WaveData g_wave_data;
+WaveData g_wave_data;
 
 void on_update_cape_player1(GameObject* cape_player1) {
   if (waveInUnprepareHeader(g_wave_data.wave_in, &g_wave_data.wave_hdr,
@@ -37,12 +37,15 @@ void on_update_cape_player1(GameObject* cape_player1) {
     } else if (cape_player1->pos.y < 0) {
       cape_player1->pos.y = 0;
     }
-  } else {
-    printf("HELLO!");
   }
 }
 
+void on_destroy_cape_player1(GameObject* cape_player1) {
+  deinit_wave_data(g_wave_data);
+}
+
 GameObject* create_cape_player1() {
+  init_wave_data(&g_wave_data);
   GameObject* cape_player1 = init_game_object();
 
   cape_player1->sprites = cape_player1_sprites;
@@ -51,6 +54,7 @@ GameObject* create_cape_player1() {
   cape_player1->scale = 4;
 
   cape_player1->on_update = on_update_cape_player1;
+  cape_player1->on_destroy = on_destroy_cape_player1;
 
   return cape_player1;
 }

@@ -13,11 +13,16 @@ GameObject* init_game_object() {
   object->scale = 1;
 
   object->on_update = NULL;
+  object->on_destroy = NULL;
 
   return object;
 }
 
-void deinit_game_object(GameObject* object) {}
+void deinit_game_object(GameObject* object) {
+  if (object->on_destroy != NULL) {
+    object->on_destroy(object);
+  }
+}
 
 void render_game_object(GameObject* object, HDC main_dc) {
   HDC mem_dc = CreateCompatibleDC(main_dc);

@@ -4,6 +4,7 @@
 #include <Windows.h>
 
 typedef void (*OnUpdateFunc)(struct tagGameObject*);
+typedef void (*OnDestroyFunc)(struct tagGameObject*);
 
 typedef struct tagPos {
   int x;
@@ -20,6 +21,7 @@ typedef struct tagGameObject {
   double scale;
 
   OnUpdateFunc on_update;
+  OnDestroyFunc on_destroy;
 } GameObject;
 
 GameObject* init_game_object();
