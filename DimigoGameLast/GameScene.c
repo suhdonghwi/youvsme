@@ -21,10 +21,12 @@ void deinit_scene(GameScene* scene) {
   GameSceneNode* node = scene->head;
 
   while (node != NULL) {
-    GameSceneNode* tmp = node;
-    node = node->next;
-    deinit_game_object(tmp->game_object);
-    free(tmp);
+    GameSceneNode* tmp = node->next;
+
+    deinit_game_object(node->game_object);
+    free(node);
+
+    node = tmp;
   }
 }
 
@@ -77,6 +79,8 @@ void render_game_scene(GameScene* scene, HDC main_dc) {
 
       node2 = node2->next;
     }
+
+    if (node == NULL) return;
 
     render_game_object(node->game_object, main_dc);
 
