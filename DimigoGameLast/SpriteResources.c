@@ -25,6 +25,8 @@ void init_sprite_resources(HINSTANCE inst) {
 
 void deinit_sprite_resources() {
   DeleteObject(player1_sprites[0]);
+  DeleteObject(player1_sprites[1]);
+  DeleteObject(player1_sprites[2]);
   free(player1_sprites);
 
   DeleteObject(player2_sprites[0]);
