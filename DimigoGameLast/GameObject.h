@@ -31,6 +31,8 @@ typedef struct tagGameObject {
 
 GameObject* init_game_object();
 void deinit_game_object(GameObject* object);
+
+void render_bitmap(HBITMAP bitmap, HDC main_dc, Pos pos, double scale);
 void render_game_object(GameObject* object, HDC main_dc);
 
 RECT get_game_object_rect(GameObject* object);

@@ -28,19 +28,18 @@ void deinit_game_object(GameObject* object) {
   }
 }
 
-void render_game_object(GameObject* object, HDC main_dc) {
+void render_bitmap(HBITMAP bitmap, HDC main_dc, Pos pos, double scale) {
   HDC mem_dc = CreateCompatibleDC(main_dc);
 
-  HBITMAP current_sprite = object->sprites[object->sprite_index];
+  HBITMAP current_sprite = bitmap;
   HBITMAP old_bitmap = (HBITMAP)SelectObject(mem_dc, current_sprite);
 
   BITMAP bitmap_data;
   GetObject(current_sprite, sizeof(BITMAP), &bitmap_data);
 
-  double scale_root = sqrt(object->scale);
+  double scale_root = sqrt(scale);
 
-  RECT object_rect = {object->pos.x, object->pos.y,
-                      (LONG)(bitmap_data.bmWidth * scale_root),
+  RECT object_rect = {pos.x, pos.y, (LONG)(bitmap_data.bmWidth * scale_root),
                       (LONG)(bitmap_data.bmHeight * scale_root)};
 
   TransparentBlt(main_dc, object_rect.left, object_rect.top, object_rect.right,
@@ -49,6 +48,11 @@ void render_game_object(GameObject* object, HDC main_dc) {
                  (int)(object_rect.bottom / scale_root), RGB(255, 0, 255));
 
   DeleteDC(mem_dc);
+}
+
+void render_game_object(GameObject* object, HDC main_dc) {
+  render_bitmap(object->sprites[object->sprite_index], main_dc, object->pos,
+                object->scale);
 }
 
 RECT get_game_object_rect(GameObject* object) {
