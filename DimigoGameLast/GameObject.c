@@ -18,6 +18,7 @@ GameObject* init_game_object() {
   object->on_update = NULL;
   object->on_destroy = NULL;
   object->on_collide = NULL;
+  object->on_render = NULL;
 
   return object;
 }
@@ -29,6 +30,8 @@ void deinit_game_object(GameObject* object) {
 }
 
 void render_game_object(GameObject* object, HDC main_dc) {
+  if (object->on_render != NULL) object->on_render(object, main_dc);
+
   HDC mem_dc = CreateCompatibleDC(main_dc);
 
   HBITMAP current_sprite = object->sprites[object->sprite_index];
