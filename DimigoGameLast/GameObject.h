@@ -16,6 +16,8 @@ typedef struct tagGameObject {
   bool alive;
   bool collidable;
 
+  char tag[100];
+
   HBITMAP* sprites;
   size_t sprite_index;
   Pos pos;

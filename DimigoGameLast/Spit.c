@@ -12,6 +12,7 @@ void on_update_spit(GameObject* spit) {
 GameObject* create_spit() {
   GameObject* spit = init_game_object();
 
+  strncpy(spit->tag, "spit", 100);
   spit->sprites = spit_sprites;
   spit->pos = (Pos){700, 100};
   spit->scale = 6;

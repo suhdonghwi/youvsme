@@ -5,6 +5,7 @@ GameObject* init_game_object() {
   GameObject* object = malloc(sizeof(GameObject));
   if (object == NULL) return NULL;
 
+  strncpy(object->tag, "(default)", 100);
   object->alive = true;
   object->collidable = false;
 

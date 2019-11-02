@@ -44,7 +44,11 @@ void on_destroy_cape_player1(GameObject* cape_player1) {
   deinit_wave_data(g_wave_data);
 }
 
-void on_collide_cape_player1(GameObject* cape_player1, GameObject* object) {}
+void on_collide_cape_player1(GameObject* cape_player1, GameObject* object) {
+  if (strcmp(object->tag, "spit") == 0) {
+    // TODO : player1 패배 처리
+  }
+}
 
 GameObject* create_cape_player1() {
   init_wave_data(&g_wave_data);
