@@ -21,6 +21,10 @@ void init_sprite_resources(HINSTANCE inst) {
   spit_sprites = malloc(sizeof(HBITMAP) * 1);
   if (spit_sprites == NULL) return;
   spit_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_SPIT));
+
+  finish_flag_sprites = malloc(sizeof(HBITMAP) * 1);
+  if (finish_flag_sprites == NULL) return;
+  finish_flag_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_FINISH_FLAG));
 }
 
 void deinit_sprite_resources() {
@@ -37,4 +41,7 @@ void deinit_sprite_resources() {
 
   DeleteObject(spit_sprites[0]);
   free(spit_sprites);
+
+  DeleteObject(finish_flag_sprites[0]);
+  free(finish_flag_sprites);
 }

@@ -16,17 +16,19 @@ void on_render_cape_progress(GameObject* cape_progress, HDC main_dc) {
   RECT bar_rect;
   bar_rect.top = 20;
   bar_rect.bottom = 20 + 30;
-  bar_rect.left = 200;
-  bar_rect.right = 200 + 500;
+  bar_rect.left = 190;
+  bar_rect.right = 190 + 500;
 
   RECT fill_rect;
   fill_rect.top = 20;
   fill_rect.bottom = 20 + 30;
-  fill_rect.left = 200;
-  fill_rect.right = (LONG)(250 + 450 * progress);
+  fill_rect.left = 190;
+  fill_rect.right = (LONG)(240 + 450 * progress);
 
   FillRect(main_dc, &bar_rect, bar_brush);
   FillRect(main_dc, &fill_rect, fill_brush);
+
+  render_bitmap(finish_flag_sprites[0], main_dc, (Pos){700, 15}, 0.5);
 }
 
 void on_destroy_cape_progress(GameObject* cape_progress) {
