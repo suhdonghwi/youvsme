@@ -49,9 +49,12 @@ void render_game_scene(GameScene* scene, HDC main_dc) {
         scene->head = node->next;
       }
 
+      GameSceneNode* tmp = node->next;
+
       deinit_game_object(node->game_object);
       free(node);
-      return;
+
+      node = tmp;
     }
 
     render_game_object(node->game_object, main_dc);

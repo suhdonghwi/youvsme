@@ -17,8 +17,5 @@ GameScene* create_cape_game_scene() {
   GameObject* cape_player2 = create_cape_player2();
   insert_game_object(cape_player2, scene);
 
-  GameObject* spit = create_spit();
-  insert_game_object(spit, scene);
-
   return scene;
 }

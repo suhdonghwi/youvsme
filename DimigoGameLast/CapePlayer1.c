@@ -13,7 +13,7 @@ void on_update_cape_player1(GameObject* cape_player1) {
     short int max = 0;
 
     if (recorded - 500 < 0) return;
-    for (int i = recorded - 500; i < recorded; i++) {
+    for (DWORD i = recorded - 500; i < recorded; i++) {
       short int data = g_wave_data.sample_data[i];
       if (data > max) {
         max = data;

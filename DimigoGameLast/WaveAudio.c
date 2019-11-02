@@ -29,8 +29,8 @@ int init_wave_data(WaveData* result) {
                  WAVE_FORMAT_DIRECT);
   if (open_result) {
     char fault[256];
-    waveInGetErrorText(result, fault, 256);
-    printf("오디오 입력 장치를 열 수 없습니다 : %s\n", fault);
+    waveInGetErrorText(open_result, fault, 256);
+    printf("오디오 입력 장치를 열 수 없습니다. : %s\n", fault);
     return 1;
   }
 

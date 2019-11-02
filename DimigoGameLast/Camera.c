@@ -1,8 +1,6 @@
-#include "Camera.h"
+#include <stdio.h>
 
-#define GetRValue(rgb) ((BYTE)(rgb))
-#define GetGValue(rgb) ((BYTE)(((WORD)(rgb)) >> 8))
-#define GetBValue(rgb) ((BYTE)((rgb) >> 16))
+#include "Camera.h"
 
 int init_camera_data(CameraData* result) {
   result->camera_window = FindWindow(NULL, TEXT("Ä«¸Þ¶ó"));
@@ -16,7 +14,6 @@ int init_camera_data(CameraData* result) {
 
 void get_camera_rect(CameraData camera_data, RECT* result) {
   GetWindowRect(camera_data.camera_window, result);
-  return result;
 }
 
 void get_current_color(CameraData camera_data, Color* result) {

@@ -36,13 +36,13 @@ void render_game_object(GameObject* object, HDC main_dc) {
   double scale_root = sqrt(object->scale);
 
   RECT object_rect = {object->pos.x, object->pos.y,
-                      bitmap_data.bmWidth * scale_root,
-                      bitmap_data.bmHeight * scale_root};
+                      (LONG)(bitmap_data.bmWidth * scale_root),
+                      (LONG)(bitmap_data.bmHeight * scale_root)};
 
   TransparentBlt(main_dc, object_rect.left, object_rect.top, object_rect.right,
                  object_rect.bottom, mem_dc, 0, 0,
-                 object_rect.right / scale_root,
-                 object_rect.bottom / scale_root, RGB(255, 0, 255));
+                 (int)(object_rect.right / scale_root),
+                 (int)(object_rect.bottom / scale_root), RGB(255, 0, 255));
 
   DeleteDC(mem_dc);
 }
