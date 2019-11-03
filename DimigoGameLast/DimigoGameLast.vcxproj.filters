@@ -78,6 +78,9 @@
     <ClCompile Include="Spit.c">
       <Filter>Source Files\GameObjects\CapeGame</Filter>
     </ClCompile>
+    <ClCompile Include="GameHelpScene.c">
+      <Filter>Source Files\GameScenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">
@@ -118,6 +121,9 @@
     </ClInclude>
     <ClInclude Include="Spit.h">
       <Filter>Header Files\GameObjects\CapeGame</Filter>
+    </ClInclude>
+    <ClInclude Include="GameHelpScene.h">
+      <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +166,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resource\dingding_won.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\blow_and_avoid_help.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

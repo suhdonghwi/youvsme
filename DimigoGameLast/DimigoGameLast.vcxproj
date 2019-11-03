@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="CapeProgress.c" />
     <ClCompile Include="CheeringPlayer.c" />
+    <ClCompile Include="GameHelpScene.c" />
     <ClCompile Include="GameResultScene.c" />
     <ClCompile Include="CapePlayer1.c" />
     <ClCompile Include="Camera.c" />
@@ -36,6 +37,7 @@
   <ItemGroup>
     <ClInclude Include="CapeProgress.h" />
     <ClInclude Include="CheeringPlayer.h" />
+    <ClInclude Include="GameHelpScene.h" />
     <ClInclude Include="GameResultScene.h" />
     <ClInclude Include="CapePlayer1.h" />
     <ClInclude Include="Camera.h" />
@@ -52,6 +54,7 @@
     <ResourceCompile Include="DimigoGameLast.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resource\blow_and_avoid_help.bmp" />
     <Image Include="Resource\cape_background.bmp" />
     <Image Include="Resource\cape_character.bmp" />
     <Image Include="Resource\cape_player1.bmp" />
