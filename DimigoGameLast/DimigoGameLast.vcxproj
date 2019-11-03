@@ -29,6 +29,7 @@
     <ClCompile Include="CapePlayer2.c" />
     <ClCompile Include="GameObject.c" />
     <ClCompile Include="GameScene.c" />
+    <ClCompile Include="HomeScene.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="Spit.c" />
     <ClCompile Include="SpriteResources.c" />
@@ -45,6 +46,7 @@
     <ClInclude Include="CapePlayer2.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="HomeScene.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Spit.h" />
     <ClInclude Include="SpriteResources.h" />
@@ -54,7 +56,6 @@
     <ResourceCompile Include="DimigoGameLast.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resource\blow_and_avoid_help.bmp" />
     <Image Include="Resource\cape_background.bmp" />
     <Image Include="Resource\cape_character.bmp" />
     <Image Include="Resource\cape_help.bmp" />

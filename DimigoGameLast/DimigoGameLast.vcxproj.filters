@@ -81,6 +81,9 @@
     <ClCompile Include="GameHelpScene.c">
       <Filter>Source Files\GameScenes</Filter>
     </ClCompile>
+    <ClCompile Include="HomeScene.c">
+      <Filter>Source Files\GameScenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">
@@ -125,6 +128,9 @@
     <ClInclude Include="GameHelpScene.h">
       <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
+    <ClInclude Include="HomeScene.h">
+      <Filter>Header Files\GameScenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DimigoGameLast.rc">
@@ -166,9 +172,6 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resource\dingding_won.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Resource\blow_and_avoid_help.bmp">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resource\cape_help.bmp">
