@@ -59,6 +59,8 @@
     <Image Include="Resource\finish_flag.bmp" />
     <Image Include="Resource\player1_cheering.bmp" />
     <Image Include="Resource\player1_standing.bmp" />
+    <Image Include="Resource\player2_cheering.bmp" />
+    <Image Include="Resource\player2_standing.bmp" />
     <Image Include="Resource\spit.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

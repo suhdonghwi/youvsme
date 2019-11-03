@@ -144,5 +144,11 @@
     <Image Include="Resource\finish_flag.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resource\player2_cheering.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\player2_standing.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

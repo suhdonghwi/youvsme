@@ -9,9 +9,11 @@ void init_sprite_resources(HINSTANCE inst) {
   player1_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PLAYER1_CHEERING));
   player1_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_CAPE_PLAYER1));
 
-  player2_sprites = malloc(sizeof(HBITMAP) * 1);
+  player2_sprites = malloc(sizeof(HBITMAP) * 3);
   if (player2_sprites == NULL) return;
-  player2_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_CAPE_PLAYER2));
+  player2_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PLAYER2_STANDING));
+  player2_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PLAYER2_CHEERING));
+  player2_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_CAPE_PLAYER2));
 
   cape_background_sprites = malloc(sizeof(HBITMAP) * 1);
   if (cape_background_sprites == NULL) return;
@@ -34,6 +36,8 @@ void deinit_sprite_resources() {
   free(player1_sprites);
 
   DeleteObject(player2_sprites[0]);
+  DeleteObject(player2_sprites[1]);
+  DeleteObject(player2_sprites[2]);
   free(player2_sprites);
 
   DeleteObject(cape_background_sprites[0]);
