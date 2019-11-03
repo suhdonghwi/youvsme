@@ -3,7 +3,7 @@
 #include "SpriteResources.h"
 
 void on_render_spit(GameObject* spit, HDC main_dc) {
-  spit->pos.x -= 20;
+  spit->pos.x -= 30;
   if (spit->pos.x < -10) {
     spit->alive = false;
   }
