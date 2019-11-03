@@ -57,6 +57,7 @@
     <Image Include="Resource\blow_and_avoid_help.bmp" />
     <Image Include="Resource\cape_background.bmp" />
     <Image Include="Resource\cape_character.bmp" />
+    <Image Include="Resource\cape_help.bmp" />
     <Image Include="Resource\cape_player1.bmp" />
     <Image Include="Resource\cape_player2.bmp" />
     <Image Include="Resource\coco_won.bmp" />

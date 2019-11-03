@@ -13,8 +13,8 @@
 #define IDB_PLAYER2_STANDING            110
 #define IDB_COCO_WON                    111
 #define IDB_DINGDING_WON                112
-#define IDB_BITMAP1                     113
 #define IDB_BNA_HELP                    113
+#define IDB_CAPE_HELP                   113
 
 // Next default values for new objects
 // 

@@ -33,9 +33,9 @@ void init_sprite_resources(HINSTANCE inst) {
   won_message_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_WON));
   won_message_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_WON));
 
-  game_help_sprites = malloc(sizeof(HBITMAP) * 2);
+  game_help_sprites = malloc(sizeof(HBITMAP) * 1);
   if (game_help_sprites == NULL) return;
-  game_help_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_BNA_HELP));
+  game_help_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_CAPE_HELP));
 }
 
 void deinit_sprite_resources() {
