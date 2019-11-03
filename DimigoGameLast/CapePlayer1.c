@@ -1,9 +1,11 @@
 #include "CapePlayer1.h"
 
+#include "GameResultScene.h"
 #include "SpriteResources.h"
 #include "WaveAudio.h"
 
 WaveData g_wave_data;
+extern GameScene* g_new_scene;
 
 void on_render_cape_player1(GameObject* cape_player1, HDC main_dc) {
   if (waveInUnprepareHeader(g_wave_data.wave_in, &g_wave_data.wave_hdr,
@@ -36,6 +38,8 @@ void on_render_cape_player1(GameObject* cape_player1, HDC main_dc) {
     } else if (cape_player1->pos.y < 0) {
       cape_player1->pos.y = 0;
     }
+  } else {
+    g_new_scene = create_game_result_scene(true);
   }
 }
 

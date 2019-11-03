@@ -16,6 +16,7 @@
 #include "GameScene.h"
 
 GameScene* g_current_scene;
+GameScene* g_new_scene;
 bool g_pressed_map[0xFE] = {
     false,
 };
@@ -35,9 +36,12 @@ int main() {
   DWORD num_read, num_input;
   INPUT_RECORD input_buf[128];
 
+  HBRUSH background_brush = GetStockObject(BLACK_BRUSH);
+
   init_sprite_resources(inst);
 
   g_current_scene = create_cape_game_scene();
+  g_new_scene = NULL;
 
   while (1) {
     GetNumberOfConsoleInputEvents(std_input, &num_input);
@@ -55,10 +59,19 @@ int main() {
       }
     }
 
+    FillRect(window_dc, &window_rect, background_brush);
     render_game_scene(g_current_scene, window_dc);
+
+    if (g_new_scene != NULL) {
+      deinit_scene(g_current_scene);
+      g_current_scene = g_new_scene;
+      g_new_scene = NULL;
+    }
+
     Sleep(15);
   }
 
+  DeleteObject(background_brush);
   deinit_sprite_resources();
   deinit_scene(g_current_scene);
   system("pause");
