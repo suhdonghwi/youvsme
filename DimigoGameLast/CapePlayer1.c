@@ -33,8 +33,8 @@ void on_render_cape_player1(GameObject* cape_player1, HDC main_dc) {
       cape_player1->pos.y += 10;
     }
 
-    if (cape_player1->pos.y > 700) {
-      cape_player1->pos.y = 700;
+    if (cape_player1->pos.y > 650) {
+      cape_player1->pos.y = 650;
     } else if (cape_player1->pos.y < 0) {
       cape_player1->pos.y = 0;
     }

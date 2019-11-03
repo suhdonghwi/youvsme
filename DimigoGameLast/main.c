@@ -3,6 +3,7 @@
 
 #include <Windows.h>
 #include <mmsystem.h>
+#include <shellscalingapi.h>
 #include <vfw.h>
 
 #include "Camera.h"
@@ -22,23 +23,27 @@ bool g_pressed_map[0xFE] = {
 };
 
 int main() {
+  SetProcessDpiAwareness(PROCESS_PER_MONITOR_DPI_AWARE);
+
   HWND window = GetConsoleWindow();
   HDC window_dc = GetDC(window);
   HINSTANCE inst = GetModuleHandle(NULL);
 
-  SetWindowPos(window, (HWND)0, 100, 100, 750, 650, 0);
+  init_sprite_resources(inst);
+
+  BITMAP bitmap_data;
+  GetObject(cape_background_sprites[0], sizeof(BITMAP), &bitmap_data);
+  SetWindowPos(window, (HWND)0, 0, 0, bitmap_data.bmWidth, bitmap_data.bmHeight,
+               0);
+
   RECT window_rect;
   GetClientRect(window, &window_rect);
-  window_rect.right = (LONG)(window_rect.right * 1.3);
-  window_rect.bottom = (LONG)(window_rect.bottom * 1.3);
 
   HANDLE std_input = GetStdHandle(STD_INPUT_HANDLE);
   DWORD num_read, num_input;
   INPUT_RECORD input_buf[128];
 
   HBRUSH background_brush = GetStockObject(BLACK_BRUSH);
-
-  init_sprite_resources(inst);
 
   g_current_scene = create_cape_game_scene();
   g_new_scene = NULL;
@@ -59,13 +64,14 @@ int main() {
       }
     }
 
-    FillRect(window_dc, &window_rect, background_brush);
     render_game_scene(g_current_scene, window_dc);
 
     if (g_new_scene != NULL) {
       deinit_scene(g_current_scene);
       g_current_scene = g_new_scene;
       g_new_scene = NULL;
+
+      FillRect(window_dc, &window_rect, background_brush);
     }
 
     Sleep(15);

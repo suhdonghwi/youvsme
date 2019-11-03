@@ -27,8 +27,8 @@ void on_render_cape_player2(GameObject* cape_player2, HDC main_dc) {
     }
   }
 
-  if (cape_player2->pos.y > 700) {
-    cape_player2->pos.y = 700;
+  if (cape_player2->pos.y > 650) {
+    cape_player2->pos.y = 650;
   } else if (cape_player2->pos.y < 0) {
     cape_player2->pos.y = 0;
   }
