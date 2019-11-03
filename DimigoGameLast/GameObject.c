@@ -26,6 +26,8 @@ void deinit_game_object(GameObject* object) {
   if (object->on_destroy != NULL) {
     object->on_destroy(object);
   }
+
+  free(object);
 }
 
 void render_bitmap(HBITMAP bitmap, HDC main_dc, Pos pos, double scale) {
