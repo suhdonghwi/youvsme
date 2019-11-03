@@ -23,6 +23,7 @@ GameScene* create_cape_game_scene() {
   insert_game_object(cape_progress, scene);
 
   scene->on_render = on_render_cape_game_scene;
+  scene->sleep_duration = 15;
 
   return scene;
 }

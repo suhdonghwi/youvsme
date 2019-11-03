@@ -14,7 +14,7 @@ GameScene* init_scene() {
   if (scene == NULL) return NULL;
 
   scene->head = NULL;
-  scene->on_render = NULL;
+  scene->sleep_duration = 0;
   return scene;
 }
 
@@ -98,4 +98,6 @@ void render_game_scene(GameScene* scene, HDC main_dc) {
     prev = node;
     node = node->next;
   }
+
+  Sleep(scene->sleep_duration);
 }

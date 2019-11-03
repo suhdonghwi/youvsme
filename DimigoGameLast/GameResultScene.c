@@ -15,6 +15,7 @@ GameScene* create_game_result_scene(bool player1_won) {
   insert_game_object(cheering_player, scene);
 
   scene->on_render = on_render_game_result_scene;
+  scene->sleep_duration = 100;
 
   return scene;
 }

@@ -14,6 +14,7 @@ GameScene* create_game_help_scene(HBITMAP help_bitmap) {
 
   GameScene* scene = init_scene();
   scene->on_render = on_render_game_help_scene;
+  scene->sleep_duration = 100;
 
   return scene;
 }
