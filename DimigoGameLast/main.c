@@ -46,8 +46,9 @@ int main() {
 
   HBRUSH background_brush = GetStockObject(BLACK_BRUSH);
 
-  // g_current_scene = create_game_help_scene(game_help_sprites[0]);
-  g_current_scene = create_cape_game_scene();
+  g_current_scene =
+      create_game_help_scene(game_help_sprites[0], create_cape_game_scene());
+  // g_current_scene = create_cape_game_scene();
   g_new_scene = NULL;
 
   while (1) {
