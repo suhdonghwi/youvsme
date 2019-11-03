@@ -1,6 +1,8 @@
 #pragma once
 #include "GameObject.h"
 
+typedef void (*OnRenderScene)(struct tagGameScene*, HDC);
+
 typedef struct tagGameSceneNode {
   GameObject* game_object;
   struct tagGameSceneNode* next;
@@ -8,6 +10,7 @@ typedef struct tagGameSceneNode {
 
 typedef struct tagGameScene {
   GameSceneNode* head;
+  OnRenderScene on_render;
 } GameScene;
 
 GameSceneNode* create_node(GameObject* object);

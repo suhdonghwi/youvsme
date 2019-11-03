@@ -31,6 +31,12 @@
     <Filter Include="Source Files\GameScenes">
       <UniqueIdentifier>{dcb4fa59-0889-433b-8195-b6bae1899691}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameObjects\CapeGame">
+      <UniqueIdentifier>{01134979-e85b-4767-9597-0dcbcdb6d169}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\CapeGame">
+      <UniqueIdentifier>{d980ecd4-4379-4dda-8630-886f004934e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -54,26 +60,23 @@
     <ClCompile Include="CapeGameScene.c">
       <Filter>Source Files\GameScenes</Filter>
     </ClCompile>
-    <ClCompile Include="CapeBackground.c">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="CapePlayer1.c">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="CapePlayer2.c">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Spit.c">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
     <ClCompile Include="GameResultScene.c">
       <Filter>Source Files\GameScenes</Filter>
     </ClCompile>
-    <ClCompile Include="CapeProgress.c">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
     <ClCompile Include="CheeringPlayer.c">
       <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CapePlayer1.c">
+      <Filter>Source Files\GameObjects\CapeGame</Filter>
+    </ClCompile>
+    <ClCompile Include="CapeProgress.c">
+      <Filter>Source Files\GameObjects\CapeGame</Filter>
+    </ClCompile>
+    <ClCompile Include="CapePlayer2.c">
+      <Filter>Source Files\GameObjects\CapeGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Spit.c">
+      <Filter>Source Files\GameObjects\CapeGame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -95,29 +98,26 @@
     <ClInclude Include="GameScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CapeBackground.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="CapePlayer1.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="CapePlayer2.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Spit.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="CapeGameScene.h">
       <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
     <ClInclude Include="GameResultScene.h">
       <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
-    <ClInclude Include="CapeProgress.h">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="CheeringPlayer.h">
       <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CapePlayer1.h">
+      <Filter>Header Files\GameObjects\CapeGame</Filter>
+    </ClInclude>
+    <ClInclude Include="CapePlayer2.h">
+      <Filter>Header Files\GameObjects\CapeGame</Filter>
+    </ClInclude>
+    <ClInclude Include="CapeProgress.h">
+      <Filter>Header Files\GameObjects\CapeGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Spit.h">
+      <Filter>Header Files\GameObjects\CapeGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

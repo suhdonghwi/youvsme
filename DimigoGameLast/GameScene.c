@@ -14,6 +14,7 @@ GameScene* init_scene() {
   if (scene == NULL) return NULL;
 
   scene->head = NULL;
+  scene->on_render = NULL;
   return scene;
 }
 
@@ -49,6 +50,8 @@ bool rect_intersect_check(RECT r1, RECT r2) {
 }
 
 void render_game_scene(GameScene* scene, HDC main_dc) {
+  if (scene->on_render != NULL) scene->on_render(scene, main_dc);
+
   GameSceneNode* node = scene->head;
   GameSceneNode* prev = node;
 

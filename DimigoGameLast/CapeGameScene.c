@@ -1,16 +1,17 @@
 #include "CapeGameScene.h"
 
-#include "CapeBackground.h"
 #include "CapePlayer1.h"
 #include "CapePlayer2.h"
 #include "CapeProgress.h"
 #include "Spit.h"
+#include "SpriteResources.h"
+
+void on_render_cape_game_scene(GameScene* scene, HDC main_dc) {
+  render_bitmap(cape_background_sprites[0], main_dc, (Pos){0, 0}, 1.0);
+}
 
 GameScene* create_cape_game_scene() {
   GameScene* scene = init_scene();
-
-  GameObject* cape_background = create_cape_background();
-  insert_game_object(cape_background, scene);
 
   GameObject* cape_player1 = create_cape_player1();
   insert_game_object(cape_player1, scene);
@@ -20,6 +21,8 @@ GameScene* create_cape_game_scene() {
 
   GameObject* cape_progress = create_cape_progress();
   insert_game_object(cape_progress, scene);
+
+  scene->on_render = on_render_cape_game_scene;
 
   return scene;
 }

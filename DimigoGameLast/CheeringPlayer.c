@@ -5,8 +5,7 @@
 
 clock_t last_change_clock;
 
-GameObject* on_render_cheering_player(GameObject* cheering_player,
-                                      HDC main_dc) {
+void on_render_cheering_player(GameObject* cheering_player, HDC main_dc) {
   clock_t current_clock = clock();
   if (((double)current_clock - last_change_clock) / CLOCKS_PER_SEC > 0.5) {
     cheering_player->sprite_index = cheering_player->sprite_index == 0 ? 1 : 0;
