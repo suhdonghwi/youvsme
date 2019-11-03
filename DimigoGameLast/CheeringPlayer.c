@@ -4,6 +4,7 @@
 #include "SpriteResources.h"
 
 clock_t last_change_clock;
+bool player1_won;
 
 void on_render_cheering_player(GameObject* cheering_player, HDC main_dc) {
   clock_t current_clock = clock();
@@ -14,6 +15,12 @@ void on_render_cheering_player(GameObject* cheering_player, HDC main_dc) {
     else
       cheering_player->pos.x -= 13;
     last_change_clock = clock();
+  }
+
+  if (cheering_player->sprites == player1_sprites) {
+    render_bitmap(won_message_sprites[1], main_dc, (Pos){150, 50}, 1);
+  } else {
+    render_bitmap(won_message_sprites[0], main_dc, (Pos){150, 50}, 1);
   }
 }
 

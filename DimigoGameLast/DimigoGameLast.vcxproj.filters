@@ -156,5 +156,11 @@
     <Image Include="Resource\player2_standing.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resource\coco_won.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dingding_won.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

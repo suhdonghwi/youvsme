@@ -27,6 +27,11 @@ void init_sprite_resources(HINSTANCE inst) {
   finish_flag_sprites = malloc(sizeof(HBITMAP) * 1);
   if (finish_flag_sprites == NULL) return;
   finish_flag_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_FINISH_FLAG));
+
+  won_message_sprites = malloc(sizeof(HBITMAP) * 2);
+  if (won_message_sprites == NULL) return;
+  won_message_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_WON));
+  won_message_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_WON));
 }
 
 void deinit_sprite_resources() {
@@ -48,4 +53,8 @@ void deinit_sprite_resources() {
 
   DeleteObject(finish_flag_sprites[0]);
   free(finish_flag_sprites);
+
+  DeleteObject(won_message_sprites[0]);
+  DeleteObject(won_message_sprites[1]);
+  free(won_message_sprites);
 }
