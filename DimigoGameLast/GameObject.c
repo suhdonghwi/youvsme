@@ -39,15 +39,16 @@ void render_bitmap(HBITMAP bitmap, HDC main_dc, Pos pos, double scale) {
   BITMAP bitmap_data;
   GetObject(current_sprite, sizeof(BITMAP), &bitmap_data);
 
-  double scale_root = sqrt(scale);
+  double scale_root = sqrt(scale),
+         real_width = bitmap_data.bmWidth * scale_root,
+         real_height = bitmap_data.bmHeight * scale_root;
 
-  RECT object_rect = {pos.x, pos.y, (LONG)(bitmap_data.bmWidth * scale_root),
-                      (LONG)(bitmap_data.bmHeight * scale_root)};
+  RECT object_rect = {pos.x, pos.y, (LONG)real_width, (LONG)real_height};
 
   TransparentBlt(main_dc, object_rect.left, object_rect.top, object_rect.right,
                  object_rect.bottom, mem_dc, 0, 0,
-                 (int)(object_rect.right / scale_root),
-                 (int)(object_rect.bottom / scale_root), RGB(255, 0, 255));
+                 (int)ceil(object_rect.right / scale_root),
+                 (int)ceil(object_rect.bottom / scale_root), RGB(255, 0, 255));
 
   DeleteDC(mem_dc);
 }

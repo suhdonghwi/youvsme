@@ -49,6 +49,7 @@ void on_destroy_cape_player1(GameObject* cape_player1) {
 
 void on_collide_cape_player1(GameObject* cape_player1, GameObject* object) {
   if (strcmp(object->tag, "spit") == 0) {
+    g_new_scene = create_game_result_scene(false);
     // TODO : player1 패배 처리
   }
 }
