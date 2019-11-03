@@ -1,7 +1,7 @@
 #include "GameObject.h"
 #include <math.h>
 
-GameObject* init_game_object() {
+GameObject* init_game_object(HBITMAP* sprites) {
   GameObject* object = malloc(sizeof(GameObject));
   if (object == NULL) return NULL;
 
@@ -9,7 +9,7 @@ GameObject* init_game_object() {
   object->alive = true;
   object->collidable = false;
 
-  object->sprites = NULL;
+  object->sprites = sprites;
   object->sprite_index = 0;
   object->pos = (Pos){0, 0};
 

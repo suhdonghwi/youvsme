@@ -51,9 +51,8 @@ void on_collide_cape_player1(GameObject* cape_player1, GameObject* object) {
 
 GameObject* create_cape_player1() {
   init_wave_data(&g_wave_data);
-  GameObject* cape_player1 = init_game_object();
+  GameObject* cape_player1 = init_game_object(player1_sprites);
 
-  cape_player1->sprites = player1_sprites;
   cape_player1->sprite_index = 2;
   cape_player1->pos = (Pos){60, 100};
   cape_player1->scale = 4;

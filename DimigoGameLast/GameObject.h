@@ -29,7 +29,7 @@ typedef struct tagGameObject {
   OnRender on_render;
 } GameObject;
 
-GameObject* init_game_object();
+GameObject* init_game_object(HBITMAP* sprites);
 void deinit_game_object(GameObject* object);
 
 void render_bitmap(HBITMAP bitmap, HDC main_dc, Pos pos, double scale);

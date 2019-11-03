@@ -40,9 +40,8 @@ GameObject* create_cape_progress() {
   bar_brush = GetStockObject(LTGRAY_BRUSH);
   fill_brush = CreateSolidBrush(RGB(0, 200, 0));
 
-  GameObject* cape_progress = init_game_object();
+  GameObject* cape_progress = init_game_object(player1_sprites);
 
-  cape_progress->sprites = player1_sprites;
   cape_progress->sprite_index = 2;
   cape_progress->pos = (Pos){200, 20};
 

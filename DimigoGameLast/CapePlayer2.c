@@ -37,9 +37,8 @@ void on_render_cape_player2(GameObject* cape_player2, HDC main_dc) {
 GameObject* create_cape_player2() {
   last_shot_clock = clock();
 
-  GameObject* cape_player2 = init_game_object();
+  GameObject* cape_player2 = init_game_object(player2_sprites);
 
-  cape_player2->sprites = player2_sprites;
   cape_player2->sprite_index = 2;
   cape_player2->pos = (Pos){700, 100};
   cape_player2->scale = 4;

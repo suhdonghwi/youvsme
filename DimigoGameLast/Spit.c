@@ -10,10 +10,9 @@ void on_render_spit(GameObject* spit, HDC main_dc) {
 }
 
 GameObject* create_spit() {
-  GameObject* spit = init_game_object();
+  GameObject* spit = init_game_object(spit_sprites);
 
   strncpy(spit->tag, "spit", 100);
-  spit->sprites = spit_sprites;
   spit->pos = (Pos){700, 100};
   spit->scale = 6;
   spit->collidable = true;
