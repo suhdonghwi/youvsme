@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="CapeBackground.c" />
     <ClCompile Include="CapeProgress.c" />
+    <ClCompile Include="CheeringPlayer.c" />
     <ClCompile Include="GameResultScene.c" />
     <ClCompile Include="CapePlayer1.c" />
     <ClCompile Include="Camera.c" />
@@ -36,6 +37,7 @@
   <ItemGroup>
     <ClInclude Include="CapeBackground.h" />
     <ClInclude Include="CapeProgress.h" />
+    <ClInclude Include="CheeringPlayer.h" />
     <ClInclude Include="GameResultScene.h" />
     <ClInclude Include="CapePlayer1.h" />
     <ClInclude Include="Camera.h" />

@@ -72,6 +72,9 @@
     <ClCompile Include="CapeProgress.c">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="CheeringPlayer.c">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">
@@ -111,6 +114,9 @@
       <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
     <ClInclude Include="CapeProgress.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CheeringPlayer.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
