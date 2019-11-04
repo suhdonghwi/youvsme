@@ -31,6 +31,7 @@
     <ClCompile Include="GameScene.c" />
     <ClCompile Include="HomeScene.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="Plane.c" />
     <ClCompile Include="PlaneGameScene.c" />
     <ClCompile Include="ReadyStartScene.c" />
     <ClCompile Include="Spit.c" />
@@ -49,6 +50,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="HomeScene.h" />
+    <ClInclude Include="Plane.h" />
     <ClInclude Include="PlaneGameScene.h" />
     <ClInclude Include="ReadyStartScene.h" />
     <ClInclude Include="resource.h" />
@@ -65,9 +67,12 @@
     <Image Include="Resource\cape_help.bmp" />
     <Image Include="Resource\cape_player1.bmp" />
     <Image Include="Resource\cape_player2.bmp" />
+    <Image Include="Resource\coco_plane.bmp" />
     <Image Include="Resource\coco_won.bmp" />
+    <Image Include="Resource\dingding_plane.bmp" />
     <Image Include="Resource\dingding_won.bmp" />
     <Image Include="Resource\finish_flag.bmp" />
+    <Image Include="Resource\plane_background.bmp" />
     <Image Include="Resource\player1_cheering.bmp" />
     <Image Include="Resource\player1_standing.bmp" />
     <Image Include="Resource\player2_cheering.bmp" />

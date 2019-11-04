@@ -4,18 +4,19 @@
 #include "SpriteResources.h"
 #include "WaveAudio.h"
 
-WaveData g_wave_data;
+WaveData g_cape_wave_data;
 extern GameScene* g_new_scene;
 
 void on_render_cape_player1(GameObject* cape_player1, HDC main_dc) {
-  if (waveInUnprepareHeader(g_wave_data.wave_in, &g_wave_data.wave_hdr,
+  if (waveInUnprepareHeader(g_cape_wave_data.wave_in,
+                            &g_cape_wave_data.wave_hdr,
                             sizeof(WAVEHDR)) == WAVERR_STILLPLAYING) {
-    DWORD recorded = g_wave_data.wave_hdr.dwBytesRecorded / 2;
+    DWORD recorded = g_cape_wave_data.wave_hdr.dwBytesRecorded / 2;
     short int max = 0;
 
     if (recorded - 300 < 0) return;
     for (DWORD i = recorded - 300; i < recorded; i++) {
-      short int data = g_wave_data.sample_data[i];
+      short int data = g_cape_wave_data.sample_data[i];
       if (data > max) {
         max = data;
       }
@@ -44,7 +45,7 @@ void on_render_cape_player1(GameObject* cape_player1, HDC main_dc) {
 }
 
 void on_destroy_cape_player1(GameObject* cape_player1) {
-  deinit_wave_data(g_wave_data);
+  deinit_wave_data(g_cape_wave_data);
 }
 
 void on_collide_cape_player1(GameObject* cape_player1, GameObject* object) {
@@ -55,7 +56,7 @@ void on_collide_cape_player1(GameObject* cape_player1, GameObject* object) {
 }
 
 GameObject* create_cape_player1() {
-  init_wave_data(&g_wave_data);
+  init_wave_data(&g_cape_wave_data);
   GameObject* cape_player1 = init_game_object(player1_sprites);
 
   cape_player1->sprite_index = 2;

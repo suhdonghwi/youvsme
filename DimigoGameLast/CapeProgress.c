@@ -3,14 +3,14 @@
 #include "CapeProgress.h"
 #include "SpriteResources.h"
 
-extern WaveData g_wave_data;
+extern WaveData g_cape_wave_data;
 
 static HBRUSH bar_brush;
 static HBRUSH fill_brush;
 
 void on_render_cape_progress(GameObject* cape_progress, HDC main_dc) {
-  double progress = (double)g_wave_data.wave_hdr.dwBytesRecorded /
-                    g_wave_data.wave_hdr.dwBufferLength;
+  double progress = (double)g_cape_wave_data.wave_hdr.dwBytesRecorded /
+                    g_cape_wave_data.wave_hdr.dwBufferLength;
   cape_progress->pos.x = (int)(200 + 450 * progress);
 
   RECT bar_rect;

@@ -15,6 +15,7 @@ GameScene* init_scene() {
 
   scene->head = NULL;
   scene->sleep_duration = 0;
+  scene->on_render = NULL;
   return scene;
 }
 

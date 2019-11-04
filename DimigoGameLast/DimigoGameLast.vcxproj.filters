@@ -37,6 +37,12 @@
     <Filter Include="Source Files\GameObjects\CapeGame">
       <UniqueIdentifier>{d980ecd4-4379-4dda-8630-886f004934e9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameObjects\PlaneGame">
+      <UniqueIdentifier>{30c287bc-6789-4a21-aa5c-d51a8053bb97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\PlaneGame">
+      <UniqueIdentifier>{36634f11-1f64-4b97-b0c5-a7622a1afc91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -89,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="ReadyStartScene.c">
       <Filter>Source Files\GameScenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane.c">
+      <Filter>Source Files\GameObjects\PlaneGame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +152,9 @@
     <ClInclude Include="ReadyStartScene.h">
       <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>Header Files\GameObjects\PlaneGame</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DimigoGameLast.rc">
@@ -193,6 +205,15 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resource\start.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\coco_plane.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dingding_plane.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\plane_background.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -15,10 +15,12 @@ void init_sprite_resources(HINSTANCE inst) {
   player2_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PLAYER2_CHEERING));
   player2_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_CAPE_PLAYER2));
 
-  cape_background_sprites = malloc(sizeof(HBITMAP) * 1);
-  if (cape_background_sprites == NULL) return;
-  cape_background_sprites[0] =
+  background_sprites = malloc(sizeof(HBITMAP) * 2);
+  if (background_sprites == NULL) return;
+  background_sprites[0] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_CAPE_BACKGROUND));
+  background_sprites[1] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_PLANE_BACKGROUND));
 
   spit_sprites = malloc(sizeof(HBITMAP) * 1);
   if (spit_sprites == NULL) return;
@@ -41,6 +43,11 @@ void init_sprite_resources(HINSTANCE inst) {
   if (ready_start_sprites == NULL) return;
   ready_start_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_READY));
   ready_start_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_START));
+
+  plane_sprites = malloc(sizeof(HBITMAP) * 2);
+  if (plane_sprites == NULL) return;
+  plane_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_PLANE));
+  plane_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_PLANE));
 }
 
 void deinit_sprite_resources() {
@@ -54,8 +61,9 @@ void deinit_sprite_resources() {
   DeleteObject(player2_sprites[2]);
   free(player2_sprites);
 
-  DeleteObject(cape_background_sprites[0]);
-  free(cape_background_sprites);
+  DeleteObject(background_sprites[0]);
+  DeleteObject(background_sprites[1]);
+  free(background_sprites);
 
   DeleteObject(spit_sprites[0]);
   free(spit_sprites);
@@ -73,4 +81,8 @@ void deinit_sprite_resources() {
   DeleteObject(ready_start_sprites[0]);
   DeleteObject(ready_start_sprites[1]);
   free(ready_start_sprites);
+
+  DeleteObject(plane_sprites[0]);
+  DeleteObject(plane_sprites[1]);
+  free(plane_sprites);
 }

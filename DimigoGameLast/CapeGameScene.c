@@ -7,7 +7,7 @@
 #include "SpriteResources.h"
 
 void on_render_cape_game_scene(GameScene* scene, HDC main_dc) {
-  render_bitmap(cape_background_sprites[0], main_dc, (Pos){0, 0}, 1.0);
+  render_bitmap(background_sprites[0], main_dc, (Pos){0, 0}, 1.0);
 }
 
 GameScene* create_cape_game_scene() {

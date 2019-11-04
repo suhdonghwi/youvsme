@@ -16,7 +16,7 @@ void on_render_readystart_scene(GameScene* scene, HDC main_dc) {
     return;
   }
 
-  render_bitmap(cape_background_sprites[0], main_dc, (Pos){0, 0}, 1);
+  render_bitmap(background_sprites[0], main_dc, (Pos){0, 0}, 1);
   render_bitmap(slide_bitmaps[current_index], main_dc, render_pos, 1);
   Sleep(1000);
 
