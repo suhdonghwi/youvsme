@@ -87,6 +87,9 @@
     <ClCompile Include="PlaneGameScene.c">
       <Filter>Source Files\GameScenes</Filter>
     </ClCompile>
+    <ClCompile Include="ReadyStartScene.c">
+      <Filter>Source Files\GameScenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">
@@ -135,6 +138,9 @@
       <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
     <ClInclude Include="PlaneGameScene.h">
+      <Filter>Header Files\GameScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ReadyStartScene.h">
       <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
   </ItemGroup>

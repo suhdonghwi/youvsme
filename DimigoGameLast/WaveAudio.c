@@ -53,22 +53,3 @@ void deinit_wave_data(WaveData wave_data) {
   free(wave_data.sample_data);
   waveInClose(wave_data.wave_in);
 }
-
-int get_current_volume(WaveData wave_data, double* result) {
-  // Sleep((DWORD)((wave_data.num_pts / (double)wave_data.sample_rate) * 1000));
-  while (waveInUnprepareHeader(wave_data.wave_in, &wave_data.wave_hdr,
-                               sizeof(WAVEHDR)) == WAVERR_STILLPLAYING) {
-    printf("%d\n", wave_data.sample_data[wave_data.wave_hdr.dwBytesRecorded]);
-  }
-
-  short int max = 0;
-  for (int i = 0; i < wave_data.num_pts; i++) {
-    short int data = wave_data.sample_data[i];
-    if (data > max) {
-      max = data;
-    }
-  }
-
-  *result = max / 32767.0;
-  return 0;
-}
