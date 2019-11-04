@@ -5,8 +5,8 @@
 
 extern WaveData g_wave_data;
 
-HBRUSH bar_brush;
-HBRUSH fill_brush;
+static HBRUSH bar_brush;
+static HBRUSH fill_brush;
 
 void on_render_cape_progress(GameObject* cape_progress, HDC main_dc) {
   double progress = (double)g_wave_data.wave_hdr.dwBytesRecorded /

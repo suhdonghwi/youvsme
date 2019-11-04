@@ -3,8 +3,8 @@
 #include "CheeringPlayer.h"
 #include "SpriteResources.h"
 
-clock_t last_change_clock;
-bool player1_won;
+static clock_t last_change_clock;
+static bool player1_won;
 
 void on_render_cheering_player(GameObject* cheering_player, HDC main_dc) {
   clock_t current_clock = clock();

@@ -2,8 +2,9 @@
 
 #include "SpriteResources.h"
 
-HBITMAP help_image;
-GameScene* dest_game_scene;
+static HBITMAP help_image;
+static GameScene* dest_game_scene;
+
 extern bool g_pressed_map[0xFE];
 extern GameScene* g_new_scene;
 

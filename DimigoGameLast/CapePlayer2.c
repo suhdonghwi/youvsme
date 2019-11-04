@@ -9,7 +9,7 @@
 extern bool g_pressed_map[0xFE];
 extern GameScene* g_current_scene;
 
-clock_t last_shot_clock;
+static clock_t last_shot_clock;
 
 void on_render_cape_player2(GameObject* cape_player2, HDC main_dc) {
   if (g_pressed_map[VK_UP]) {
