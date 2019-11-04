@@ -84,6 +84,9 @@
     <ClCompile Include="HomeScene.c">
       <Filter>Source Files\GameScenes</Filter>
     </ClCompile>
+    <ClCompile Include="BitmapDisplay.c">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">
@@ -130,6 +133,9 @@
     </ClInclude>
     <ClInclude Include="HomeScene.h">
       <Filter>Header Files\GameScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="BitmapDisplay.h">
+      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

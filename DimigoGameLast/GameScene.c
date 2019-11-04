@@ -95,6 +95,9 @@ void render_game_scene(GameScene* scene, HDC main_dc) {
 
     render_game_object(node->game_object, main_dc);
 
+    if (node->game_object->after_render != NULL)
+      node->game_object->after_render(node->game_object, main_dc);
+
     prev = node;
     node = node->next;
   }

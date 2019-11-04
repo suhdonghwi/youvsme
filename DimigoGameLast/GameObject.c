@@ -18,6 +18,7 @@ GameObject* init_game_object(HBITMAP* sprites) {
   object->on_destroy = NULL;
   object->on_collide = NULL;
   object->on_render = NULL;
+  object->after_render = NULL;
 
   return object;
 }

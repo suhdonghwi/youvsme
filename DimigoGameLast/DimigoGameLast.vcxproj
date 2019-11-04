@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BitmapDisplay.c" />
     <ClCompile Include="CapeProgress.c" />
     <ClCompile Include="CheeringPlayer.c" />
     <ClCompile Include="GameHelpScene.c" />
@@ -49,6 +50,7 @@
     <ClInclude Include="HomeScene.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Spit.h" />
+    <ClInclude Include="BitmapDisplay.h" />
     <ClInclude Include="SpriteResources.h" />
     <ClInclude Include="WaveAudio.h" />
   </ItemGroup>
