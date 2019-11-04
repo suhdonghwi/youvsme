@@ -1,6 +1,5 @@
 #include "CapeGameScene.h"
 
-#include "BitmapDisplay.h"
 #include "CapePlayer1.h"
 #include "CapePlayer2.h"
 #include "CapeProgress.h"
@@ -13,9 +12,6 @@ void on_render_cape_game_scene(GameScene* scene, HDC main_dc) {
 
 GameScene* create_cape_game_scene() {
   GameScene* scene = init_scene();
-
-  GameObject* help_sign = create_bitmap_display(game_help_sprites, 5000);
-  insert_game_object(help_sign, scene);
 
   GameObject* cape_player1 = create_cape_player1();
   insert_game_object(cape_player1, scene);

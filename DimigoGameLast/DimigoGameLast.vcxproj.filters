@@ -84,8 +84,8 @@
     <ClCompile Include="HomeScene.c">
       <Filter>Source Files\GameScenes</Filter>
     </ClCompile>
-    <ClCompile Include="BitmapDisplay.c">
-      <Filter>Source Files\GameObjects</Filter>
+    <ClCompile Include="PlaneGameScene.c">
+      <Filter>Source Files\GameScenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -134,8 +134,8 @@
     <ClInclude Include="HomeScene.h">
       <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
-    <ClInclude Include="BitmapDisplay.h">
-      <Filter>Header Files\GameObjects</Filter>
+    <ClInclude Include="PlaneGameScene.h">
+      <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +181,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resource\cape_help.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\ready.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\start.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

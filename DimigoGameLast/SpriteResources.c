@@ -36,6 +36,11 @@ void init_sprite_resources(HINSTANCE inst) {
   game_help_sprites = malloc(sizeof(HBITMAP) * 1);
   if (game_help_sprites == NULL) return;
   game_help_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_CAPE_HELP));
+
+  ready_start_sprites = malloc(sizeof(HBITMAP) * 2);
+  if (ready_start_sprites == NULL) return;
+  ready_start_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_READY));
+  ready_start_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_START));
 }
 
 void deinit_sprite_resources() {
@@ -64,4 +69,8 @@ void deinit_sprite_resources() {
 
   DeleteObject(game_help_sprites[0]);
   free(game_help_sprites);
+
+  DeleteObject(ready_start_sprites[0]);
+  DeleteObject(ready_start_sprites[1]);
+  free(ready_start_sprites);
 }

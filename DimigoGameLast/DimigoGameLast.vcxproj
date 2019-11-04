@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BitmapDisplay.c" />
     <ClCompile Include="CapeProgress.c" />
     <ClCompile Include="CheeringPlayer.c" />
     <ClCompile Include="GameHelpScene.c" />
@@ -32,6 +31,7 @@
     <ClCompile Include="GameScene.c" />
     <ClCompile Include="HomeScene.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="PlaneGameScene.c" />
     <ClCompile Include="Spit.c" />
     <ClCompile Include="SpriteResources.c" />
     <ClCompile Include="WaveAudio.c" />
@@ -48,9 +48,9 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="HomeScene.h" />
+    <ClInclude Include="PlaneGameScene.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Spit.h" />
-    <ClInclude Include="BitmapDisplay.h" />
     <ClInclude Include="SpriteResources.h" />
     <ClInclude Include="WaveAudio.h" />
   </ItemGroup>
@@ -70,7 +70,9 @@
     <Image Include="Resource\player1_standing.bmp" />
     <Image Include="Resource\player2_cheering.bmp" />
     <Image Include="Resource\player2_standing.bmp" />
+    <Image Include="Resource\ready.bmp" />
     <Image Include="Resource\spit.bmp" />
+    <Image Include="Resource\start.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
