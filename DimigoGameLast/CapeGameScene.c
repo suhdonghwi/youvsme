@@ -2,7 +2,6 @@
 
 #include "CapePlayer1.h"
 #include "CapePlayer2.h"
-#include "CapeProgress.h"
 #include "Spit.h"
 #include "SpriteResources.h"
 
@@ -18,9 +17,6 @@ GameScene* create_cape_game_scene() {
 
   GameObject* cape_player2 = create_cape_player2();
   insert_game_object(cape_player2, scene);
-
-  GameObject* cape_progress = create_cape_progress();
-  insert_game_object(cape_progress, scene);
 
   scene->on_render = on_render_cape_game_scene;
   scene->sleep_duration = 15;

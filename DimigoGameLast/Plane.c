@@ -13,6 +13,7 @@ typedef struct tagPlaneData {
 
 void on_render_plane(GameObject* plane, HDC main_dc) {
   PlaneData* plane_data = (PlaneData*)(plane->data);
+
   if (waveInUnprepareHeader(plane_data->wave_data.wave_in,
                             &plane_data->wave_data.wave_hdr,
                             sizeof(WAVEHDR)) == WAVERR_STILLPLAYING) {

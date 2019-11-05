@@ -75,9 +75,6 @@
     <ClCompile Include="CapePlayer1.c">
       <Filter>Source Files\GameObjects\CapeGame</Filter>
     </ClCompile>
-    <ClCompile Include="CapeProgress.c">
-      <Filter>Source Files\GameObjects\CapeGame</Filter>
-    </ClCompile>
     <ClCompile Include="CapePlayer2.c">
       <Filter>Source Files\GameObjects\CapeGame</Filter>
     </ClCompile>
@@ -132,9 +129,6 @@
       <Filter>Header Files\GameObjects\CapeGame</Filter>
     </ClInclude>
     <ClInclude Include="CapePlayer2.h">
-      <Filter>Header Files\GameObjects\CapeGame</Filter>
-    </ClInclude>
-    <ClInclude Include="CapeProgress.h">
       <Filter>Header Files\GameObjects\CapeGame</Filter>
     </ClInclude>
     <ClInclude Include="Spit.h">

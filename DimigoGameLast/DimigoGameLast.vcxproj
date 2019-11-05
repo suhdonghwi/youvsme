@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CapeProgress.c" />
     <ClCompile Include="CheeringPlayer.c" />
     <ClCompile Include="GameHelpScene.c" />
     <ClCompile Include="GameResultScene.c" />
@@ -39,7 +38,6 @@
     <ClCompile Include="WaveAudio.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CapeProgress.h" />
     <ClInclude Include="CheeringPlayer.h" />
     <ClInclude Include="GameHelpScene.h" />
     <ClInclude Include="GameResultScene.h" />
