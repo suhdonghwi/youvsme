@@ -15,6 +15,8 @@ GameObject* init_game_object(HBITMAP* sprites) {
 
   object->scale = 1;
 
+  object->data = NULL;
+
   object->on_destroy = NULL;
   object->on_collide = NULL;
   object->on_render = NULL;
@@ -28,6 +30,7 @@ void deinit_game_object(GameObject* object) {
     object->on_destroy(object);
   }
 
+  free(object->data);
   free(object);
 }
 

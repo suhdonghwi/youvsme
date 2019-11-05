@@ -25,6 +25,8 @@ typedef struct tagGameObject {
 
   double scale;
 
+  void* data;
+
   OnDestroyFunc on_destroy;
   OnCollideFunc on_collide;
   OnRender on_render;
