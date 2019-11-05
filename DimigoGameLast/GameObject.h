@@ -6,7 +6,6 @@
 typedef void (*OnDestroyFunc)(struct tagGameObject*);
 typedef void (*OnCollideFunc)(struct tagGameObject*, struct tagGameObject*);
 typedef void (*OnRender)(struct tagGameObject*, HDC);
-typedef void (*AfterRender)(struct tagGameObject*, HDC);
 
 typedef struct tagPos {
   int x;
@@ -30,7 +29,6 @@ typedef struct tagGameObject {
   OnDestroyFunc on_destroy;
   OnCollideFunc on_collide;
   OnRender on_render;
-  AfterRender after_render;
 } GameObject;
 
 GameObject* init_game_object(HBITMAP* sprites);
