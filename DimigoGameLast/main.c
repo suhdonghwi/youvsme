@@ -49,7 +49,7 @@ int main() {
   HBRUSH background_brush = GetStockObject(BLACK_BRUSH);
 
   GameScene* ready_scene = create_readystart_scene(
-      create_cape_game_scene, ready_start_sprites, 2, (Pos){100, 150});
+      create_plane_game_scene, ready_start_sprites, 2, (Pos){100, 150});
   g_current_scene = create_game_help_scene(game_help_sprites[0], ready_scene);
   g_new_scene = NULL;
 
@@ -80,6 +80,7 @@ int main() {
     }
   }
 
+  ReleaseDC(window, window_dc);
   DeleteObject(background_brush);
   deinit_sprite_resources();
   deinit_scene(g_current_scene);

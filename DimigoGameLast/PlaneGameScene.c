@@ -10,10 +10,10 @@ GameScene* create_plane_game_scene() {
   GameScene* scene = init_scene();
 
   GameObject* plane = create_plane();
-  plane->pos = (Pos){200, 200};
+  plane->pos = (Pos){100, 450};
   insert_game_object(plane, scene);
 
-  scene->sleep_duration = 20;
+  scene->sleep_duration = 30;
   scene->on_render = on_render_plane_game_scene;
 
   return scene;

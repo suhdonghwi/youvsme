@@ -5,10 +5,16 @@
 
 extern GameScene* g_current_scene;
 
+typedef enum tagPlaneState {
+  PLANE_READY,
+  PLANE_FLYING,
+  PLANE_DESCENDING,
+  PLANE_LANDED
+} PlaneState;
+
 typedef struct tagPlaneData {
   WaveData wave_data;
-  bool is_flying;
-  bool is_landed;
+  PlaneState state;
 } PlaneData;
 
 void on_render_plane(GameObject* plane, HDC main_dc) {
@@ -30,21 +36,32 @@ void on_render_plane(GameObject* plane, HDC main_dc) {
 
     double volume = max / 32767.0;
 
-    if (plane_data->is_landed) return;
-
-    if (volume > 0.4) {
-      if (plane_data->is_flying) {
+    switch (plane_data->state) {
+      case PLANE_READY:
+        if (volume > 0.6) {
+          plane_data->state = PLANE_FLYING;
+        }
+        break;
+      case PLANE_FLYING:
+        if (volume > 0.4) {
+          plane->pos.x += 3;
+        } else {
+          plane_data->state = PLANE_DESCENDING;
+        }
+        break;
+      case PLANE_DESCENDING:
         plane->pos.x += 3;
-      } else {
-        plane_data->is_flying = true;
-      }
-    } else {
-      if (plane_data->is_flying) {
-        plane_data->is_flying = false;
-        plane_data->is_landed = true;
+        plane->pos.y += 3;
 
-        insert_game_object(create_plane(), g_current_scene);
-      }
+        if (plane->pos.y >= 550) {
+          GameObject* new_plane = create_plane();
+          new_plane->pos = (Pos){100, 450};
+          insert_game_object(new_plane, g_current_scene);
+          plane_data->state = PLANE_LANDED;
+        }
+        break;
+      case PLANE_LANDED:
+        break;
     }
   }
 }
@@ -57,8 +74,7 @@ GameObject* create_plane() {
   PlaneData* plane_data = malloc(sizeof(PlaneData));
   if (plane_data == NULL) return NULL;
 
-  plane_data->is_flying = false;
-  plane_data->is_landed = false;
+  plane_data->state = PLANE_READY;
   init_wave_data(&plane_data->wave_data);
 
   plane->data = plane_data;
