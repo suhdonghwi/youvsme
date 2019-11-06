@@ -1,21 +1,10 @@
 #include "Plane.h"
+
 #include "GameScene.h"
 #include "SpriteResources.h"
 #include "WaveAudio.h"
 
 extern GameScene* g_current_scene;
-
-typedef enum tagPlaneState {
-  PLANE_READY,
-  PLANE_FLYING,
-  PLANE_DESCENDING,
-  PLANE_LANDED
-} PlaneState;
-
-typedef struct tagPlaneData {
-  WaveData wave_data;
-  PlaneState state;
-} PlaneData;
 
 void on_render_plane(GameObject* plane, HDC main_dc) {
   PlaneData* plane_data = (PlaneData*)(plane->data);

@@ -96,6 +96,9 @@
     <ClCompile Include="Plane.c">
       <Filter>Source Files\GameObjects\PlaneGame</Filter>
     </ClCompile>
+    <ClCompile Include="BlowingPlayer.c">
+      <Filter>Source Files\GameObjects\PlaneGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">
@@ -147,6 +150,9 @@
       <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
     <ClInclude Include="Plane.h">
+      <Filter>Header Files\GameObjects\PlaneGame</Filter>
+    </ClInclude>
+    <ClInclude Include="BlowingPlayer.h">
       <Filter>Header Files\GameObjects\PlaneGame</Filter>
     </ClInclude>
   </ItemGroup>
@@ -217,6 +223,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resource\now_blow.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\coco_blowing.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dingding_blowing.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

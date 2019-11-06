@@ -3,17 +3,19 @@
 #include "resource.h"
 
 void init_sprite_resources(HINSTANCE inst) {
-  player1_sprites = malloc(sizeof(HBITMAP) * 3);
-  if (player1_sprites == NULL) return;
-  player1_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PLAYER1_STANDING));
-  player1_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PLAYER1_CHEERING));
-  player1_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_CAPE_PLAYER1));
+  dingding_sprites = malloc(sizeof(HBITMAP) * 4);
+  if (dingding_sprites == NULL) return;
+  dingding_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PLAYER1_STANDING));
+  dingding_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PLAYER1_CHEERING));
+  dingding_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_CAPE_PLAYER1));
+  dingding_sprites[3] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_BLOWING));
 
-  player2_sprites = malloc(sizeof(HBITMAP) * 3);
-  if (player2_sprites == NULL) return;
-  player2_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PLAYER2_STANDING));
-  player2_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PLAYER2_CHEERING));
-  player2_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_CAPE_PLAYER2));
+  coco_sprites = malloc(sizeof(HBITMAP) * 3);
+  if (coco_sprites == NULL) return;
+  coco_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PLAYER2_STANDING));
+  coco_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PLAYER2_CHEERING));
+  coco_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_CAPE_PLAYER2));
+  coco_sprites[3] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_BLOWING));
 
   background_sprites = malloc(sizeof(HBITMAP) * 2);
   if (background_sprites == NULL) return;
@@ -64,15 +66,17 @@ void init_sprite_resources(HINSTANCE inst) {
 }
 
 void deinit_sprite_resources() {
-  DeleteObject(player1_sprites[0]);
-  DeleteObject(player1_sprites[1]);
-  DeleteObject(player1_sprites[2]);
-  free(player1_sprites);
+  DeleteObject(dingding_sprites[0]);
+  DeleteObject(dingding_sprites[1]);
+  DeleteObject(dingding_sprites[2]);
+  DeleteObject(dingding_sprites[3]);
+  free(dingding_sprites);
 
-  DeleteObject(player2_sprites[0]);
-  DeleteObject(player2_sprites[1]);
-  DeleteObject(player2_sprites[2]);
-  free(player2_sprites);
+  DeleteObject(coco_sprites[0]);
+  DeleteObject(coco_sprites[1]);
+  DeleteObject(coco_sprites[2]);
+  DeleteObject(coco_sprites[3]);
+  free(coco_sprites);
 
   DeleteObject(background_sprites[0]);
   DeleteObject(background_sprites[1]);

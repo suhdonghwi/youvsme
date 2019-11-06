@@ -21,14 +21,16 @@
 #define IDB_PLANE_BACKGROUND            118
 #define IDB_COCO_TURN                   119
 #define IDB_DINGDING_TURN               120
-#define IDB_BITMAP1                     121
 #define IDB_NOW_BLOW                    121
+#define IDB_COCO_BLOWING                122
+#define IDB_BITMAP2                     123
+#define IDB_DINGDING_BLOWING            123
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        122
+#define _APS_NEXT_RESOURCE_VALUE        124
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101

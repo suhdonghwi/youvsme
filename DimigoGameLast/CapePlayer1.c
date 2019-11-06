@@ -81,7 +81,7 @@ void on_collide_cape_player1(GameObject* cape_player1, GameObject* object) {
 }
 
 GameObject* create_cape_player1() {
-  GameObject* cape_player1 = init_game_object(player1_sprites);
+  GameObject* cape_player1 = init_game_object(dingding_sprites);
 
   cape_player1->sprite_index = 2;
   cape_player1->pos = (Pos){60, 100};

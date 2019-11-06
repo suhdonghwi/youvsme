@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BlowingPlayer.c" />
     <ClCompile Include="CheeringPlayer.c" />
     <ClCompile Include="GameHelpScene.c" />
     <ClCompile Include="GameResultScene.c" />
@@ -38,6 +39,7 @@
     <ClCompile Include="WaveAudio.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BlowingPlayer.h" />
     <ClInclude Include="CheeringPlayer.h" />
     <ClInclude Include="GameHelpScene.h" />
     <ClInclude Include="GameResultScene.h" />
@@ -65,9 +67,11 @@
     <Image Include="Resource\cape_help.bmp" />
     <Image Include="Resource\cape_player1.bmp" />
     <Image Include="Resource\cape_player2.bmp" />
+    <Image Include="Resource\coco_blowing.bmp" />
     <Image Include="Resource\coco_plane.bmp" />
     <Image Include="Resource\coco_turn.bmp" />
     <Image Include="Resource\coco_won.bmp" />
+    <Image Include="Resource\dingding_blowing.bmp" />
     <Image Include="Resource\dingding_plane.bmp" />
     <Image Include="Resource\dingding_turn.bmp" />
     <Image Include="Resource\dingding_won.bmp" />

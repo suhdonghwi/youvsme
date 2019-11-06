@@ -17,7 +17,7 @@ void on_render_cheering_player(GameObject* cheering_player, HDC main_dc) {
     last_change_clock = clock();
   }
 
-  if (cheering_player->sprites == player1_sprites) {
+  if (cheering_player->sprites == dingding_sprites) {
     render_bitmap(won_message_sprites[1], main_dc, (Pos){150, 50}, 1);
   } else {
     render_bitmap(won_message_sprites[0], main_dc, (Pos){150, 50}, 1);
@@ -26,7 +26,7 @@ void on_render_cheering_player(GameObject* cheering_player, HDC main_dc) {
 
 GameObject* create_cheering_player(bool player1_won) {
   GameObject* cheering_player =
-      init_game_object(player1_won ? player1_sprites : player2_sprites);
+      init_game_object(player1_won ? dingding_sprites : coco_sprites);
 
   cheering_player->sprite_index = 0;
   cheering_player->pos = (Pos){400, 400};
