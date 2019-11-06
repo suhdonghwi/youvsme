@@ -6,13 +6,13 @@ extern GameScene* g_new_scene;
 
 static int current_index = 0;
 static int slide_size;
-static CreateScene scene_factory;
+static GameScene* dest_scene;
 static HBITMAP* slide_bitmaps;
 static Pos render_pos;
 
 void on_render_readystart_scene(GameScene* scene, HDC main_dc) {
   if (current_index >= slide_size) {
-    g_new_scene = scene_factory();
+    g_new_scene = dest_scene;
     return;
   }
 
@@ -23,11 +23,11 @@ void on_render_readystart_scene(GameScene* scene, HDC main_dc) {
   current_index++;
 }
 
-GameScene* create_readystart_scene(CreateScene create_scene, HBITMAP* slides,
+GameScene* create_readystart_scene(GameScene* ready_scene, HBITMAP* slides,
                                    int size, Pos pos) {
   GameScene* scene = init_scene();
 
-  scene_factory = create_scene;
+  dest_scene = ready_scene;
   slide_bitmaps = slides;
   slide_size = size;
   render_pos = pos;

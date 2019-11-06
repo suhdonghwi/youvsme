@@ -8,6 +8,7 @@ extern GameScene* g_new_scene;
 
 typedef struct tagCapePlayer1Data {
   WaveData wave_data;
+  bool wave_initalized;
 
   RECT bar_rect;
   HBRUSH bar_brush, fill_brush;
@@ -29,6 +30,11 @@ void on_render_cape_player1(GameObject* cape_player1, HDC main_dc) {
   FillRect(main_dc, &fill_rect, player_data->fill_brush);
 
   render_bitmap(finish_flag_sprites[0], main_dc, (Pos){700, 15}, 0.5);
+
+  if (!player_data->wave_initalized) {
+    init_wave_data(&player_data->wave_data, 30);
+    player_data->wave_initalized = true;
+  }
 
   if (waveInUnprepareHeader(player_data->wave_data.wave_in,
                             &player_data->wave_data.wave_hdr,
@@ -94,8 +100,8 @@ GameObject* create_cape_player1() {
 
   CapePlayer1Data* player_data = malloc(sizeof(CapePlayer1Data));
   if (player_data == NULL) return NULL;
-  init_wave_data(&player_data->wave_data, 30);
 
+  player_data->wave_initalized = false;
   player_data->bar_rect.top = 20;
   player_data->bar_rect.bottom = 20 + 30;
   player_data->bar_rect.left = 190;
