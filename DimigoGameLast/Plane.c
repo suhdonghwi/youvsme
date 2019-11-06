@@ -62,7 +62,7 @@ GameObject* create_plane(bool coco_plane) {
   if (plane_data == NULL) return NULL;
 
   plane_data->state = PLANE_READY;
-  init_wave_data(&plane_data->wave_data);
+  init_wave_data(&plane_data->wave_data, 300);
 
   plane->data = plane_data;
   return plane;

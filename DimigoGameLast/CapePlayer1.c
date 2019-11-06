@@ -94,7 +94,7 @@ GameObject* create_cape_player1() {
 
   CapePlayer1Data* player_data = malloc(sizeof(CapePlayer1Data));
   if (player_data == NULL) return NULL;
-  init_wave_data(&player_data->wave_data);
+  init_wave_data(&player_data->wave_data, 30);
 
   player_data->bar_rect.top = 20;
   player_data->bar_rect.bottom = 20 + 30;
