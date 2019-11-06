@@ -18,6 +18,7 @@ void on_render_plane_game_scene(GameScene* scene, HDC main_dc) {
 
   if (data->plane->pos.y >= 550) {
     ((PlaneData*)data->plane->data)->state = PLANE_LANDED;
+    Sleep(2000);
 
     if (data->plane->sprite_index == 0) {
       GameObject* fallen_plane = create_plane(true);
