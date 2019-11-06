@@ -1,5 +1,6 @@
 #include "PlaneGameScene.h"
 #include "BlowingPlayer.h"
+#include "GameResultScene.h"
 #include "Plane.h"
 #include "ReadyStartScene.h"
 #include "SpriteResources.h"
@@ -29,6 +30,13 @@ void on_render_plane_game_scene(GameScene* scene, HDC main_dc) {
           plane_scene, dingding_turn_sprites, 3, (Pos){70, 100});
 
       g_new_scene = new_scene;
+    } else {
+      if (data->fallen_plane == NULL) return;
+      if (data->fallen_plane->pos.x >= data->plane->pos.x) {
+        g_new_scene = create_game_result_scene(false);
+      } else {
+        g_new_scene = create_game_result_scene(true);
+      }
     }
   }
 
