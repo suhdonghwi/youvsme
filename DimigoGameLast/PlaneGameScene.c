@@ -12,7 +12,6 @@ GameScene* create_plane_game_scene(bool coco_turn) {
 
   GameObject* plane = create_plane(coco_turn);
   plane->pos = (Pos){100, 500};
-  plane->scale = 2;
   insert_game_object(plane, scene);
 
   GameObject* player =

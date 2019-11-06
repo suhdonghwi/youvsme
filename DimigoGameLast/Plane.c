@@ -1,10 +1,12 @@
 #include "Plane.h"
 
 #include "GameScene.h"
+#include "PlaneGameScene.h"
 #include "SpriteResources.h"
 #include "WaveAudio.h"
 
 extern GameScene* g_current_scene;
+extern GameScene* g_new_scene;
 
 void on_render_plane(GameObject* plane, HDC main_dc) {
   PlaneData* plane_data = (PlaneData*)(plane->data);
@@ -32,7 +34,7 @@ void on_render_plane(GameObject* plane, HDC main_dc) {
         }
         break;
       case PLANE_FLYING:
-        if (volume > 0.4) {
+        if (volume > 0.1) {
           plane->pos.x += 3;
         } else {
           plane_data->state = PLANE_DESCENDING;
@@ -45,10 +47,17 @@ void on_render_plane(GameObject* plane, HDC main_dc) {
         if (plane->pos.y >= 550) {
           plane_data->state = PLANE_LANDED;
 
-          GameObject* new_plane = create_plane(false);
-          new_plane->pos = (Pos){100, 450};
+          if (plane->sprite_index == 0) {
+            GameScene* new_scene = create_plane_game_scene(false);
 
-          insert_game_object(new_plane, g_current_scene);
+            GameObject* new_plane = create_plane(true);
+            new_plane->pos = plane->pos;
+            ((PlaneData*)new_plane->data)->state = PLANE_LANDED;
+
+            insert_game_object(new_plane, new_scene);
+
+            g_new_scene = new_scene;
+          }
         }
         break;
       case PLANE_LANDED:
@@ -61,6 +70,7 @@ GameObject* create_plane(bool coco_plane) {
   GameObject* plane = init_game_object(plane_sprites);
   if (!coco_plane) plane->sprite_index = 1;
 
+  plane->scale = 2;
   plane->on_render = on_render_plane;
 
   PlaneData* plane_data = malloc(sizeof(PlaneData));
