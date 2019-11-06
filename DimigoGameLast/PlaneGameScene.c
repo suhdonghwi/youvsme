@@ -6,6 +6,8 @@
 #include "SpriteResources.h"
 
 extern GameScene* g_new_scene;
+extern int g_coco_score;
+extern int g_dingding_score;
 
 void on_render_plane_game_scene(GameScene* scene, HDC main_dc) {
   PlaneGameData* data = (PlaneGameData*)scene->data;
@@ -18,7 +20,7 @@ void on_render_plane_game_scene(GameScene* scene, HDC main_dc) {
 
   if (data->plane->pos.y >= 550) {
     ((PlaneData*)data->plane->data)->state = PLANE_LANDED;
-    Sleep(2000);
+    Sleep(1500);
 
     if (data->plane->sprite_index == 0) {
       GameObject* fallen_plane = create_plane(true);
@@ -35,8 +37,10 @@ void on_render_plane_game_scene(GameScene* scene, HDC main_dc) {
       if (data->fallen_plane == NULL) return;
       if (data->fallen_plane->pos.x >= data->plane->pos.x) {
         g_new_scene = create_game_result_scene(false);
+        g_dingding_score++;
       } else {
         g_new_scene = create_game_result_scene(true);
+        g_coco_score++;
       }
     }
   }

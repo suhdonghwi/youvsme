@@ -24,6 +24,8 @@ GameScene* g_new_scene;
 bool g_pressed_map[0xFE] = {
     false,
 };
+int g_coco_score = 0;
+int g_dingding_score = 0;
 
 GameScene* main_plane_game_scene() {
   return create_plane_game_scene(true, NULL);
