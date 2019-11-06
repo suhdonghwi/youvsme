@@ -4,33 +4,33 @@
 
 extern GameScene* g_new_scene;
 
-static int current_index = 0;
-static int slide_size;
-static GameScene* dest_scene;
-static HBITMAP* slide_bitmaps;
-static Pos render_pos;
-
 void on_render_readystart_scene(GameScene* scene, HDC main_dc) {
-  if (current_index >= slide_size) {
-    g_new_scene = dest_scene;
+  ReadyStartData* data = (ReadyStartData*)scene->data;
+
+  if (data->index >= data->slide_size) {
+    g_new_scene = data->dest_scene;
     return;
   }
 
   render_bitmap(background_sprites[0], main_dc, (Pos){0, 0}, 1);
-  render_bitmap(slide_bitmaps[current_index], main_dc, render_pos, 1);
+  render_bitmap(data->slide_bitmaps[data->index], main_dc, data->render_pos, 1);
   Sleep(1000);
 
-  current_index++;
+  data->index++;
 }
 
-GameScene* create_readystart_scene(GameScene* ready_scene, HBITMAP* slides,
-                                   int size, Pos pos) {
+GameScene* create_readystart_scene(GameScene* dest_scene,
+                                   HBITMAP* slide_bitmaps, int size, Pos pos) {
   GameScene* scene = init_scene();
 
-  dest_scene = ready_scene;
-  slide_bitmaps = slides;
-  slide_size = size;
-  render_pos = pos;
+  ReadyStartData* data = malloc(sizeof(ReadyStartData));
+  if (data == NULL) return NULL;
+  data->dest_scene = dest_scene;
+  data->slide_bitmaps = slide_bitmaps;
+  data->slide_size = size;
+  data->render_pos = pos;
+  data->index = 0;
+  scene->data = data;
 
   scene->on_render = on_render_readystart_scene;
   scene->sleep_duration = 20;

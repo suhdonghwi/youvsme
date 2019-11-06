@@ -1,6 +1,7 @@
 #include "PlaneGameScene.h"
 #include "BlowingPlayer.h"
 #include "Plane.h"
+#include "ReadyStartScene.h"
 #include "SpriteResources.h"
 
 extern GameScene* g_new_scene;
@@ -23,7 +24,9 @@ void on_render_plane_game_scene(GameScene* scene, HDC main_dc) {
       fallen_plane->pos.x += data->background_offset;
       ((PlaneData*)fallen_plane->data)->state = PLANE_LANDED;
 
-      GameScene* new_scene = create_plane_game_scene(false, fallen_plane);
+      GameScene* plane_scene = create_plane_game_scene(false, fallen_plane);
+      GameScene* new_scene = create_readystart_scene(
+          plane_scene, dingding_turn_sprites, 3, (Pos){70, 100});
 
       g_new_scene = new_scene;
     }
