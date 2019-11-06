@@ -25,6 +25,10 @@ bool g_pressed_map[0xFE] = {
     false,
 };
 
+GameScene* main_plane_game_scene() {
+  return create_plane_game_scene(true, NULL);
+}
+
 int main() {
   SetProcessDpiAwareness(PROCESS_PER_MONITOR_DPI_AWARE);
 
@@ -48,7 +52,7 @@ int main() {
   HBRUSH background_brush = GetStockObject(BLACK_BRUSH);
 
   GameScene* ready_scene = create_readystart_scene(
-      create_plane_game_scene, coco_turn_sprites, 3, (Pos){70, 100});
+      main_plane_game_scene, coco_turn_sprites, 3, (Pos){70, 100});
   g_current_scene = create_game_help_scene(game_help_sprites[0], ready_scene);
   g_new_scene = NULL;
 

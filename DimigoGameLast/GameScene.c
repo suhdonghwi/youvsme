@@ -33,6 +33,8 @@ void deinit_scene(GameScene* scene) {
 }
 
 void insert_game_object(GameObject* object, GameScene* scene) {
+  if (object == NULL) return;
+
   GameSceneNode* new_node = create_node(object);
   if (scene->head == NULL) {
     scene->head = new_node;

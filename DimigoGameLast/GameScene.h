@@ -12,6 +12,8 @@ typedef struct tagGameScene {
   GameSceneNode* head;
   int sleep_duration;
 
+  void* data;
+
   OnRenderScene on_render;
 } GameScene;
 
