@@ -10,6 +10,8 @@ HBITMAP* won_message_sprites;
 HBITMAP* game_help_sprites;
 HBITMAP* ready_start_sprites;
 HBITMAP* plane_sprites;
+HBITMAP* coco_turn_sprites;
+HBITMAP* dingding_turn_sprites;
 
 void init_sprite_resources(HINSTANCE inst);
 void deinit_sprite_resources();

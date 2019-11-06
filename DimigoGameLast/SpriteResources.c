@@ -48,6 +48,19 @@ void init_sprite_resources(HINSTANCE inst) {
   if (plane_sprites == NULL) return;
   plane_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_PLANE));
   plane_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_PLANE));
+
+  coco_turn_sprites = malloc(sizeof(HBITMAP) * 3);
+  if (coco_turn_sprites == NULL) return;
+  coco_turn_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_TURN));
+  coco_turn_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_READY));
+  coco_turn_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_NOW_BLOW));
+
+  dingding_turn_sprites = malloc(sizeof(HBITMAP) * 3);
+  if (dingding_turn_sprites == NULL) return;
+  dingding_turn_sprites[0] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_TURN));
+  dingding_turn_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_READY));
+  dingding_turn_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_NOW_BLOW));
 }
 
 void deinit_sprite_resources() {
@@ -85,4 +98,14 @@ void deinit_sprite_resources() {
   DeleteObject(plane_sprites[0]);
   DeleteObject(plane_sprites[1]);
   free(plane_sprites);
+
+  DeleteObject(coco_turn_sprites[0]);
+  DeleteObject(coco_turn_sprites[1]);
+  DeleteObject(coco_turn_sprites[2]);
+  free(coco_turn_sprites);
+
+  DeleteObject(dingding_turn_sprites[0]);
+  DeleteObject(dingding_turn_sprites[1]);
+  DeleteObject(dingding_turn_sprites[2]);
+  free(dingding_turn_sprites);
 }

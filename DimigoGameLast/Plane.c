@@ -54,10 +54,12 @@ void on_render_plane(GameObject* plane, HDC main_dc) {
         plane->pos.y += 3;
 
         if (plane->pos.y >= 550) {
-          GameObject* new_plane = create_plane();
-          new_plane->pos = (Pos){100, 450};
-          insert_game_object(new_plane, g_current_scene);
           plane_data->state = PLANE_LANDED;
+
+          GameObject* new_plane = create_plane(false);
+          new_plane->pos = (Pos){100, 450};
+
+          insert_game_object(new_plane, g_current_scene);
         }
         break;
       case PLANE_LANDED:
@@ -66,8 +68,9 @@ void on_render_plane(GameObject* plane, HDC main_dc) {
   }
 }
 
-GameObject* create_plane() {
+GameObject* create_plane(bool coco_plane) {
   GameObject* plane = init_game_object(plane_sprites);
+  if (!coco_plane) plane->sprite_index = 1;
 
   plane->on_render = on_render_plane;
 

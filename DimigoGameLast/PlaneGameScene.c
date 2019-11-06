@@ -9,7 +9,7 @@ void on_render_plane_game_scene(GameScene* scene, HDC main_dc) {
 GameScene* create_plane_game_scene() {
   GameScene* scene = init_scene();
 
-  GameObject* plane = create_plane();
+  GameObject* plane = create_plane(true);
   plane->pos = (Pos){100, 450};
   insert_game_object(plane, scene);
 

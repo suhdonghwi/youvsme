@@ -66,10 +66,13 @@
     <Image Include="Resource\cape_player1.bmp" />
     <Image Include="Resource\cape_player2.bmp" />
     <Image Include="Resource\coco_plane.bmp" />
+    <Image Include="Resource\coco_turn.bmp" />
     <Image Include="Resource\coco_won.bmp" />
     <Image Include="Resource\dingding_plane.bmp" />
+    <Image Include="Resource\dingding_turn.bmp" />
     <Image Include="Resource\dingding_won.bmp" />
     <Image Include="Resource\finish_flag.bmp" />
+    <Image Include="Resource\now_blow.bmp" />
     <Image Include="Resource\plane_background.bmp" />
     <Image Include="Resource\player1_cheering.bmp" />
     <Image Include="Resource\player1_standing.bmp" />

@@ -210,5 +210,14 @@
     <Image Include="Resource\plane_background.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resource\coco_turn.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dingding_turn.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\now_blow.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

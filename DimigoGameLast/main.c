@@ -49,7 +49,7 @@ int main() {
   HBRUSH background_brush = GetStockObject(BLACK_BRUSH);
 
   GameScene* ready_scene = create_readystart_scene(
-      create_plane_game_scene, ready_start_sprites, 2, (Pos){100, 150});
+      create_plane_game_scene, coco_turn_sprites, 3, (Pos){70, 100});
   g_current_scene = create_game_help_scene(game_help_sprites[0], ready_scene);
   g_new_scene = NULL;
 
