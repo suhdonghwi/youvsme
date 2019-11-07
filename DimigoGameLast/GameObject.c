@@ -57,11 +57,22 @@ void render_bitmap(HBITMAP bitmap, HDC main_dc, Pos pos, double scale) {
 }
 
 void render_game_object(GameObject* object, HDC main_dc) {
+  if (object->sprites == NULL) return;
   render_bitmap(object->sprites[object->sprite_index], main_dc, object->pos,
                 object->scale);
 }
 
 RECT get_game_object_rect(GameObject* object) {
+  if (object->sprites == NULL) {
+    RECT result;
+    result.left = object->pos.x;
+    result.top = object->pos.y;
+    result.right = 0;
+    result.bottom = 0;
+
+    return result;
+  }
+
   HBITMAP sprite = object->sprites[object->sprite_index];
   BITMAP bitmap;
 

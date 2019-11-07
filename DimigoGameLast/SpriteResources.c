@@ -10,7 +10,7 @@ void init_sprite_resources(HINSTANCE inst) {
   dingding_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_CAPE_PLAYER1));
   dingding_sprites[3] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_BLOWING));
 
-  coco_sprites = malloc(sizeof(HBITMAP) * 3);
+  coco_sprites = malloc(sizeof(HBITMAP) * 4);
   if (coco_sprites == NULL) return;
   coco_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PLAYER2_STANDING));
   coco_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PLAYER2_CHEERING));

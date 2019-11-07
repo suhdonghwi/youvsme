@@ -13,9 +13,9 @@ void on_render_plane_game_scene(GameScene* scene, HDC main_dc) {
   PlaneGameData* data = (PlaneGameData*)scene->data;
 
   if (data->plane->pos.x >= 200) {
-    data->plane->pos.x -= 3;
-    if (data->fallen_plane != NULL) data->fallen_plane->pos.x -= 3;
-    data->background_offset += 3;
+    data->plane->pos.x -= 5;
+    if (data->fallen_plane != NULL) data->fallen_plane->pos.x -= 5;
+    data->background_offset += 5;
   }
 
   if (data->plane->pos.y >= 550) {
@@ -37,10 +37,10 @@ void on_render_plane_game_scene(GameScene* scene, HDC main_dc) {
       if (data->fallen_plane == NULL) return;
       if (data->fallen_plane->pos.x >= data->plane->pos.x) {
         g_new_scene = create_game_result_scene(false);
-        g_dingding_score++;
+        g_coco_score++;
       } else {
         g_new_scene = create_game_result_scene(true);
-        g_coco_score++;
+        g_dingding_score++;
       }
     }
   }

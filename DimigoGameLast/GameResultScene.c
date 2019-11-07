@@ -2,6 +2,7 @@
 
 #include "CheeringPlayer.h"
 #include "GameScene.h"
+#include "ScoreDisplay.h"
 #include "SpriteResources.h"
 
 void on_render_game_result_scene(GameScene* scene, HDC main_dc) {
@@ -13,6 +14,9 @@ GameScene* create_game_result_scene(bool player1_won) {
 
   GameObject* cheering_player = create_cheering_player(player1_won);
   insert_game_object(cheering_player, scene);
+
+  GameObject* score = create_score_display();
+  insert_game_object(score, scene);
 
   scene->on_render = on_render_game_result_scene;
   scene->sleep_duration = 100;

@@ -35,14 +35,14 @@ void on_render_plane(GameObject* plane, HDC main_dc) {
         break;
       case PLANE_FLYING:
         if (volume > 0.1) {
-          plane->pos.x += 3;
+          plane->pos.x += 5;
         } else {
           plane_data->state = PLANE_DESCENDING;
         }
         break;
       case PLANE_DESCENDING:
-        plane->pos.x += 3;
-        plane->pos.y += 3;
+        plane->pos.x += 5;
+        plane->pos.y += 5;
 
         break;
       case PLANE_LANDED:

@@ -13,6 +13,7 @@
 
 #include "CapeGameScene.h"
 #include "GameHelpScene.h"
+#include "GameResultScene.h"
 #include "PlaneGameScene.h"
 #include "ReadyStartScene.h"
 
@@ -53,6 +54,12 @@ int main() {
 
   HBRUSH background_brush = GetStockObject(BLACK_BRUSH);
 
+  HFONT score_font = CreateFont(50, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0,
+                                0, VARIABLE_PITCH | FF_ROMAN,
+                                TEXT("DSEG7 Classic Mini-Bold Italic"));
+  SelectObject(window_dc, score_font);
+  SetBkMode(window_dc, TRANSPARENT);
+
   GameScene* ready_scene =
       create_readystart_scene(create_plane_game_scene(true, NULL),
                               coco_turn_sprites, 3, (Pos){70, 100});
@@ -87,6 +94,7 @@ int main() {
   }
 
   ReleaseDC(window, window_dc);
+  DeleteObject(score_font);
   DeleteObject(background_brush);
   deinit_sprite_resources();
   deinit_scene(g_current_scene);
