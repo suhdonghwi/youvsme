@@ -18,8 +18,7 @@ void on_render_plane_game_scene(GameScene* scene, HDC main_dc) {
     data->background_offset += 5;
   }
 
-  if (data->plane->pos.y >= 550) {
-    ((PlaneData*)data->plane->data)->state = PLANE_LANDED;
+  if (((PlaneData*)data->plane->data)->state == PLANE_LANDED) {
     Sleep(1500);
 
     if (data->plane->sprite_index == 0) {
@@ -47,6 +46,15 @@ void on_render_plane_game_scene(GameScene* scene, HDC main_dc) {
 
   render_bitmap(background_sprites[1], main_dc,
                 (Pos){-data->background_offset, 0}, 1);
+
+  if (data->player->sprites == coco_sprites) {
+    render_bitmap(dingding_sprites[0], main_dc,
+                  (Pos){60 - data->background_offset, 400}, 4);
+  } else {
+    render_bitmap(coco_sprites[0], main_dc,
+                  (Pos){60 - data->background_offset, 100}, 4);
+  }
+
   data->player->pos.x = 50 - data->background_offset;
 }
 
@@ -54,13 +62,21 @@ GameScene* create_plane_game_scene(bool coco_turn, GameObject* fallen_plane) {
   GameScene* scene = init_scene();
 
   GameObject* plane = create_plane(coco_turn);
-  plane->pos = (Pos){100, 500};
+  if (coco_turn) {
+    plane->pos = (Pos){120, 120};
+  } else {
+    plane->pos = (Pos){120, 420};
+  }
   insert_game_object(plane, scene);
 
   GameObject* player =
       create_blowing_player(coco_turn ? coco_sprites : dingding_sprites, plane);
-  player->pos = (Pos){50, 490};
-  player->scale = 2;
+  if (coco_turn) {
+    player->pos = (Pos){100, 100};
+  } else {
+    player->pos = (Pos){100, 400};
+  }
+  player->scale = 4;
   insert_game_object(player, scene);
 
   insert_game_object(fallen_plane, scene);

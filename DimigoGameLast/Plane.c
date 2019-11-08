@@ -43,7 +43,11 @@ void on_render_plane(GameObject* plane, HDC main_dc) {
       case PLANE_DESCENDING:
         plane->pos.x += 5;
         plane->pos.y += 5;
+        plane_data->descend_count++;
 
+        if (plane_data->descend_count >= 13) {
+          plane_data->state = PLANE_LANDED;
+        }
         break;
       case PLANE_LANDED:
         break;
@@ -63,6 +67,7 @@ GameObject* create_plane(bool coco_plane) {
 
   plane_data->state = PLANE_READY;
   init_wave_data(&plane_data->wave_data, 300);
+  plane_data->descend_count = 0;
 
   plane->data = plane_data;
   return plane;

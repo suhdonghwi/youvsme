@@ -12,6 +12,7 @@ typedef enum tagPlaneState {
 typedef struct tagPlaneData {
   WaveData wave_data;
   PlaneState state;
+  int descend_count;
 } PlaneData;
 
 GameObject* create_plane(bool coco_plane);
