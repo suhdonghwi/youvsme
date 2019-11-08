@@ -4,16 +4,16 @@
 //
 #define IDB_SPIT                        105
 #define IDB_DINGDING_STANDING           106
-#define IDB_PLAYER1_CHEERING            107
+#define IDB_DINGDING_CHEERING           107
 #define IDB_FINISH_FLAG                 108
 #define IDB_PLAYER2_CHEERING            109
+#define IDB_COCO_CHEERING               109
 #define IDB_COCO_STANDING               110
 #define IDB_COCO_WON                    111
 #define IDB_DINGDING_WON                112
 #define IDB_READY                       114
 #define IDB_START                       115
 #define IDB_COCO_DISK                   116
-#define IDB_DINGDING_PLANE              117
 #define IDB_DINGDING_DISK               117
 #define IDB_DISK_BACKGROUND             118
 #define IDB_COCO_TURN                   119

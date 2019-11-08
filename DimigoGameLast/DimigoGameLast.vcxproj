@@ -62,6 +62,7 @@
     <Image Include="Resource\cape_player1.bmp" />
     <Image Include="Resource\cape_player2.bmp" />
     <Image Include="Resource\coco_blowing.bmp" />
+    <Image Include="Resource\coco_cheering.bmp" />
     <Image Include="Resource\coco_disk.bmp" />
     <Image Include="Resource\coco_plane.bmp" />
     <Image Include="Resource\coco_standing.bmp" />
@@ -69,6 +70,7 @@
     <Image Include="Resource\coco_turn.bmp" />
     <Image Include="Resource\coco_won.bmp" />
     <Image Include="Resource\dingding_blowing.bmp" />
+    <Image Include="Resource\dingding_cheering.bmp" />
     <Image Include="Resource\dingding_disk.bmp" />
     <Image Include="Resource\dingding_plane.bmp" />
     <Image Include="Resource\dingding_standing.bmp" />

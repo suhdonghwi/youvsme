@@ -1,5 +1,5 @@
-#include "Disk.h"
 #include "DiskGameScene.h"
+#include "Disk.h"
 #include "GameResultScene.h"
 #include "ReadyStartScene.h"
 #include "SpriteResources.h"
@@ -63,9 +63,9 @@ GameScene* create_disk_game_scene(bool coco_turn, GameObject* fallen_disk) {
 
   GameObject* disk = create_disk(coco_turn);
   if (coco_turn) {
-    disk->pos = (Pos){120, 180};
+    disk->pos = (Pos){140, 180};
   } else {
-    disk->pos = (Pos){120, 480};
+    disk->pos = (Pos){140, 480};
   }
   insert_game_object(disk, scene);
 
