@@ -9,7 +9,7 @@ HBITMAP* finish_flag_sprites;
 HBITMAP* won_message_sprites;
 HBITMAP* game_help_sprites;
 HBITMAP* ready_start_sprites;
-HBITMAP* plane_sprites;
+HBITMAP* disk_sprites;
 HBITMAP* coco_turn_sprites;
 HBITMAP* dingding_turn_sprites;
 HBITMAP* score_board_sprites;

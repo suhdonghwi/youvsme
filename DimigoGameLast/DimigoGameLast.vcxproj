@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BlowingPlayer.c" />
+    <ClCompile Include="ThrowingPlayer.c" />
     <ClCompile Include="CheeringPlayer.c" />
     <ClCompile Include="GameHelpScene.c" />
     <ClCompile Include="GameResultScene.c" />
@@ -28,15 +28,15 @@
     <ClCompile Include="GameScene.c" />
     <ClCompile Include="HomeScene.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="Plane.c" />
-    <ClCompile Include="PlaneGameScene.c" />
+    <ClCompile Include="Disk.c" />
+    <ClCompile Include="DiskGameScene.c" />
     <ClCompile Include="ReadyStartScene.c" />
     <ClCompile Include="ScoreDisplay.c" />
     <ClCompile Include="SpriteResources.c" />
     <ClCompile Include="WaveAudio.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BlowingPlayer.h" />
+    <ClInclude Include="ThrowingPlayer.h" />
     <ClInclude Include="CheeringPlayer.h" />
     <ClInclude Include="GameHelpScene.h" />
     <ClInclude Include="GameResultScene.h" />
@@ -44,8 +44,8 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="HomeScene.h" />
-    <ClInclude Include="Plane.h" />
-    <ClInclude Include="PlaneGameScene.h" />
+    <ClInclude Include="Disk.h" />
+    <ClInclude Include="DiskGameScene.h" />
     <ClInclude Include="ReadyStartScene.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="ScoreDisplay.h" />
@@ -62,17 +62,20 @@
     <Image Include="Resource\cape_player1.bmp" />
     <Image Include="Resource\cape_player2.bmp" />
     <Image Include="Resource\coco_blowing.bmp" />
+    <Image Include="Resource\coco_disk.bmp" />
     <Image Include="Resource\coco_plane.bmp" />
     <Image Include="Resource\coco_standing.bmp" />
     <Image Include="Resource\coco_throwing.bmp" />
     <Image Include="Resource\coco_turn.bmp" />
     <Image Include="Resource\coco_won.bmp" />
     <Image Include="Resource\dingding_blowing.bmp" />
+    <Image Include="Resource\dingding_disk.bmp" />
     <Image Include="Resource\dingding_plane.bmp" />
     <Image Include="Resource\dingding_standing.bmp" />
     <Image Include="Resource\dingding_throwing.bmp" />
     <Image Include="Resource\dingding_turn.bmp" />
     <Image Include="Resource\dingding_won.bmp" />
+    <Image Include="Resource\disk_background.bmp" />
     <Image Include="Resource\finish_flag.bmp" />
     <Image Include="Resource\now_blow.bmp" />
     <Image Include="Resource\plane_background.bmp" />

@@ -11,9 +11,9 @@
 
 #include "SpriteResources.h"
 
+#include "DiskGameScene.h"
 #include "GameHelpScene.h"
 #include "GameResultScene.h"
-#include "PlaneGameScene.h"
 #include "ReadyStartScene.h"
 
 #include "GameObject.h"
@@ -26,10 +26,6 @@ bool g_pressed_map[0xFE] = {
 };
 int g_coco_score = 0;
 int g_dingding_score = 0;
-
-GameScene* main_plane_game_scene() {
-  return create_plane_game_scene(true, NULL);
-}
 
 int main() {
   SetProcessDpiAwareness(PROCESS_PER_MONITOR_DPI_AWARE);
@@ -61,11 +57,12 @@ int main() {
   SetTextColor(window_dc, RGB(255, 0, 0));
 
   // GameScene* ready_scene =
-  create_readystart_scene(create_plane_game_scene(true, NULL),
-                          coco_turn_sprites, 3, (Pos){70, 100});
-  // g_current_scene = create_game_help_scene(game_help_sprites[0],
+  // create_readystart_scene(create_plane_game_scene(true, NULL),
+  // coco_turn_sprites, 3, (Pos){70, 100});
+  // g_current_scene =
+  // create_game_help_scene(game_help_sprites[0],
   // ready_scene);
-  g_current_scene = create_plane_game_scene(true, NULL);
+  g_current_scene = create_disk_game_scene(true, NULL);
   g_new_scene = NULL;
 
   while (1) {

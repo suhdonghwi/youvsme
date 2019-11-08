@@ -31,11 +31,11 @@
     <Filter Include="Source Files\GameScenes">
       <UniqueIdentifier>{dcb4fa59-0889-433b-8195-b6bae1899691}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\GameObjects\PlaneGame">
-      <UniqueIdentifier>{30c287bc-6789-4a21-aa5c-d51a8053bb97}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\GameObjects\PlaneGame">
       <UniqueIdentifier>{36634f11-1f64-4b97-b0c5-a7622a1afc91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects\DiskGame">
+      <UniqueIdentifier>{30c287bc-6789-4a21-aa5c-d51a8053bb97}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -69,20 +69,20 @@
     <ClCompile Include="HomeScene.c">
       <Filter>Source Files\GameScenes</Filter>
     </ClCompile>
-    <ClCompile Include="PlaneGameScene.c">
-      <Filter>Source Files\GameScenes</Filter>
-    </ClCompile>
     <ClCompile Include="ReadyStartScene.c">
       <Filter>Source Files\GameScenes</Filter>
     </ClCompile>
-    <ClCompile Include="Plane.c">
-      <Filter>Source Files\GameObjects\PlaneGame</Filter>
-    </ClCompile>
-    <ClCompile Include="BlowingPlayer.c">
-      <Filter>Source Files\GameObjects\PlaneGame</Filter>
-    </ClCompile>
     <ClCompile Include="ScoreDisplay.c">
       <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="ThrowingPlayer.c">
+      <Filter>Source Files\GameObjects\PlaneGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Disk.c">
+      <Filter>Source Files\GameObjects\PlaneGame</Filter>
+    </ClCompile>
+    <ClCompile Include="DiskGameScene.c">
+      <Filter>Source Files\GameScenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -116,20 +116,20 @@
     <ClInclude Include="HomeScene.h">
       <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
-    <ClInclude Include="PlaneGameScene.h">
-      <Filter>Header Files\GameScenes</Filter>
-    </ClInclude>
     <ClInclude Include="ReadyStartScene.h">
       <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
-    <ClInclude Include="Plane.h">
-      <Filter>Header Files\GameObjects\PlaneGame</Filter>
-    </ClInclude>
-    <ClInclude Include="BlowingPlayer.h">
-      <Filter>Header Files\GameObjects\PlaneGame</Filter>
-    </ClInclude>
     <ClInclude Include="ScoreDisplay.h">
       <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="ThrowingPlayer.h">
+      <Filter>Header Files\GameObjects\DiskGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Disk.h">
+      <Filter>Header Files\GameObjects\DiskGame</Filter>
+    </ClInclude>
+    <ClInclude Include="DiskGameScene.h">
+      <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +220,15 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resource\dingding_throwing.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\disk_background.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\coco_disk.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dingding_disk.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
