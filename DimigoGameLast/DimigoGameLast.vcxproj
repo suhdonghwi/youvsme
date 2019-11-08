@@ -63,10 +63,14 @@
     <Image Include="Resource\cape_player2.bmp" />
     <Image Include="Resource\coco_blowing.bmp" />
     <Image Include="Resource\coco_plane.bmp" />
+    <Image Include="Resource\coco_standing.bmp" />
+    <Image Include="Resource\coco_throwing.bmp" />
     <Image Include="Resource\coco_turn.bmp" />
     <Image Include="Resource\coco_won.bmp" />
     <Image Include="Resource\dingding_blowing.bmp" />
     <Image Include="Resource\dingding_plane.bmp" />
+    <Image Include="Resource\dingding_standing.bmp" />
+    <Image Include="Resource\dingding_throwing.bmp" />
     <Image Include="Resource\dingding_turn.bmp" />
     <Image Include="Resource\dingding_won.bmp" />
     <Image Include="Resource\finish_flag.bmp" />

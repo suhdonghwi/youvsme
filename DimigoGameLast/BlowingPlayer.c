@@ -10,7 +10,7 @@ void on_render_blowing_player(GameObject* blowing_player, HDC main_dc) {
   PlaneData* plane_data = (PlaneData*)player_data->plane->data;
 
   if (plane_data->state != PLANE_READY) {
-    blowing_player->sprite_index = 3;
+    blowing_player->sprite_index = 2;
   }
 }
 

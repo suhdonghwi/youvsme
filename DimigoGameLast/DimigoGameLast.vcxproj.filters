@@ -210,5 +210,17 @@
     <Image Include="Resource\score_board.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resource\dingding_standing.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\coco_standing.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\coco_throwing.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dingding_throwing.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
