@@ -11,7 +11,6 @@
 
 #include "SpriteResources.h"
 
-#include "CapeGameScene.h"
 #include "GameHelpScene.h"
 #include "GameResultScene.h"
 #include "PlaneGameScene.h"
@@ -59,11 +58,13 @@ int main() {
                                 TEXT("DSEG7 Classic Mini-Bold Italic"));
   SelectObject(window_dc, score_font);
   SetBkMode(window_dc, TRANSPARENT);
+  SetTextColor(window_dc, RGB(255, 0, 0));
 
   GameScene* ready_scene =
       create_readystart_scene(create_plane_game_scene(true, NULL),
                               coco_turn_sprites, 3, (Pos){70, 100});
   g_current_scene = create_game_help_scene(game_help_sprites[0], ready_scene);
+  // g_current_scene = create_game_result_scene(true);
   g_new_scene = NULL;
 
   while (1) {

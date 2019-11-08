@@ -63,6 +63,10 @@ void init_sprite_resources(HINSTANCE inst) {
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_TURN));
   dingding_turn_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_READY));
   dingding_turn_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_NOW_BLOW));
+
+  score_board_sprites = malloc(sizeof(HBITMAP) * 1);
+  if (score_board_sprites == NULL) return;
+  score_board_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_SCORE_BOARD));
 }
 
 void deinit_sprite_resources() {
@@ -112,4 +116,7 @@ void deinit_sprite_resources() {
   DeleteObject(dingding_turn_sprites[1]);
   DeleteObject(dingding_turn_sprites[2]);
   free(dingding_turn_sprites);
+
+  DeleteObject(score_board_sprites[0]);
+  free(score_board_sprites);
 }

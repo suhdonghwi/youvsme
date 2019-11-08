@@ -1,5 +1,7 @@
 #include "GameScene.h"
 
+extern GameScene* g_new_scene;
+
 GameSceneNode* create_node(GameObject* object) {
   GameSceneNode* node = malloc(sizeof(GameSceneNode));
   if (node == NULL) return NULL;
@@ -90,6 +92,8 @@ void render_game_scene(GameScene* scene, HDC main_dc) {
 
       node2 = node2->next;
     }
+
+    if (g_new_scene != NULL) return;
 
     if (node == NULL) return;
 
