@@ -56,9 +56,12 @@ bool rect_intersect_check(RECT r1, RECT r2) {
            r2.bottom < r1.top);
 }
 
-void render_game_scene(GameScene* scene, HDC main_dc) {
+void render_game_scene(GameScene* scene, HDC main_dc, int window_width,
+                       int window_height) {
   HDC back_dc = CreateCompatibleDC(main_dc);
-  HBITMAP back_bitmap = CreateCompatibleBitmap(main_dc, 900, 780);
+
+  HBITMAP back_bitmap =
+      CreateCompatibleBitmap(main_dc, window_width, window_height);
   SelectObject(back_dc, back_bitmap);
   DeleteObject(back_bitmap);
 
@@ -112,7 +115,7 @@ void render_game_scene(GameScene* scene, HDC main_dc) {
     node = node->next;
   }
 
-  BitBlt(main_dc, 0, 0, 900, 780, back_dc, 0, 0, SRCCOPY);
+  BitBlt(main_dc, 0, 0, window_width, window_height, back_dc, 0, 0, SRCCOPY);
   DeleteDC(back_dc);
 
   Sleep(scene->sleep_duration);

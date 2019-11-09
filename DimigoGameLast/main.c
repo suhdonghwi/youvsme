@@ -37,8 +37,10 @@ int main() {
   init_sprite_resources(inst);
 
   BITMAP bitmap_data;
-  GetObject(background_sprites[0], sizeof(BITMAP), &bitmap_data);
-  SetWindowPos(window, (HWND)0, 0, 0, 900, 780, 0);
+  GetObject(background_sprites[1], sizeof(BITMAP), &bitmap_data);
+  int window_width = bitmap_data.bmWidth * 4.5,
+      window_height = bitmap_data.bmHeight * 5;
+  SetWindowPos(window, (HWND)0, 0, 0, window_width, window_height, 0);
 
   RECT window_rect;
   GetClientRect(window, &window_rect);
@@ -79,7 +81,7 @@ int main() {
       }
     }
 
-    render_game_scene(g_current_scene, window_dc);
+    render_game_scene(g_current_scene, window_dc, window_width, window_height);
 
     if (g_new_scene != NULL) {
       deinit_scene(g_current_scene);

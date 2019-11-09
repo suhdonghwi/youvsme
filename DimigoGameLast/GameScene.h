@@ -22,4 +22,5 @@ GameScene* init_scene();
 void deinit_scene(GameScene* scene);
 
 void insert_game_object(GameObject* game_object, GameScene* game_scene);
-void render_game_scene(GameScene* scene, HDC main_dc);
+void render_game_scene(GameScene* scene, HDC main_dc, int window_width,
+                       int window_height);
