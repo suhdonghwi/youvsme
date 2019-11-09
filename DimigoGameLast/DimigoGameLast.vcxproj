@@ -90,6 +90,7 @@
     <Image Include="Resource\player1_standing.bmp" />
     <Image Include="Resource\player2_cheering.bmp" />
     <Image Include="Resource\player2_standing.bmp" />
+    <Image Include="Resource\pull_background.bmp" />
     <Image Include="Resource\ready.bmp" />
     <Image Include="Resource\score_board.bmp" />
     <Image Include="Resource\sky_background.bmp" />

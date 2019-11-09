@@ -23,8 +23,8 @@ void on_render_string(GameObject* string, HDC main_dc) {
 
 GameObject* create_string() {
   GameObject* string = init_game_object(string_sprites);
-  string->scale = 5;
-  string->pos = (Pos){250, 420};
+  string->scale = 8;
+  string->pos = (Pos){170, 350};
   string->on_render = on_render_string;
 
   StringData* data = malloc(sizeof(StringData));

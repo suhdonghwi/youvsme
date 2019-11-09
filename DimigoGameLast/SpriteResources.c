@@ -18,11 +18,13 @@ void init_sprite_resources(HINSTANCE inst) {
   coco_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_CHEERING));
   coco_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_THROWING));
 
-  background_sprites = malloc(sizeof(HBITMAP) * 2);
+  background_sprites = malloc(sizeof(HBITMAP) * 3);
   if (background_sprites == NULL) return;
   background_sprites[0] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_BACKGROUND));
   background_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_SKY_BACKGROUND));
+  background_sprites[2] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_PULL_BACKGROUND));
 
   spit_sprites = malloc(sizeof(HBITMAP) * 1);
   if (spit_sprites == NULL) return;
