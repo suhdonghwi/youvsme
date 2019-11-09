@@ -11,15 +11,17 @@ extern int g_dingding_score;
 
 void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
   DiskGameData* data = (DiskGameData*)scene->data;
+  DiskData* disk_data = (DiskData*)data->disk->data;
 
   if (data->disk->pos.x >= 200) {
-    data->disk->pos.x -= 5;
+    data->disk->pos.x -= disk_data->speed;
     if (!(data->fallen_pos.x == 0 && data->fallen_pos.y == 0))
-      data->fallen_pos.x -= 5;
-    data->background_offset += 5;
+      data->fallen_pos.x -= disk_data->speed;
+
+    data->background_offset += disk_data->speed;
   }
 
-  if (((DiskData*)data->disk->data)->state == DISK_LANDED) {
+  if (disk_data->state == DISK_LANDED) {
     Sleep(1500);
 
     if (data->disk->sprite_index == 0) {
@@ -32,6 +34,7 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
       g_new_scene = new_scene;
     } else {
       if (data->fallen_pos.x == 0 && data->fallen_pos.y == 0) return;
+
       if (data->fallen_pos.x >= data->disk->pos.x) {
         g_new_scene = create_game_result_scene(false);
         g_coco_score++;
@@ -64,7 +67,7 @@ GameScene* create_disk_game_scene(bool coco_turn, Pos fallen_pos) {
   GameScene* scene = init_scene();
 
   GameObject* disk =
-      create_disk(coco_turn, coco_turn ? (Pos){140, 180} : (Pos){140, 480});
+      create_disk(coco_turn, coco_turn ? (Pos){140, 180} : (Pos){140, 480}, 2);
   insert_game_object(disk, scene);
 
   GameObject* player =
@@ -77,7 +80,7 @@ GameScene* create_disk_game_scene(bool coco_turn, Pos fallen_pos) {
   player->scale = 24;
   insert_game_object(player, scene);
 
-  scene->sleep_duration = 10;
+  scene->sleep_duration = 0;
   scene->on_render = on_render_disk_game_scene;
 
   DiskGameData* data = malloc(sizeof(DiskGameData));

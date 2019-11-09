@@ -10,10 +10,12 @@ typedef enum tagDiskState {
 } DiskState;
 
 typedef struct tagDiskData {
+  int speed;
+
   WaveData wave_data;
   DiskState state;
   int descend_count;
   Pos shadow_pos;
 } DiskData;
 
-GameObject* create_disk(bool coco_disk, Pos pos);
+GameObject* create_disk(bool coco_disk, Pos pos, int speed);

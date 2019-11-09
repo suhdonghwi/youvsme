@@ -35,17 +35,18 @@ void on_render_disk(GameObject* disk, HDC main_dc) {
         break;
       case DISK_FLYING:
         if (volume > 0.1) {
-          disk->pos.x += 5;
+          disk->pos.x += disk_data->speed;
         } else {
           disk_data->state = DISK_DESCENDING;
         }
         break;
       case DISK_DESCENDING:
-        disk->pos.x += 5;
-        disk->pos.y += 5;
+        disk->pos.x += disk_data->speed;
+        disk->pos.y += disk_data->speed;
         disk_data->descend_count++;
 
-        if (disk_data->descend_count >= 13) {
+        if (disk_data->descend_count * disk_data->speed >= 65) {
+          disk->pos.y = disk_data->shadow_pos.y;
           disk_data->state = DISK_LANDED;
         }
         break;
@@ -65,7 +66,7 @@ void on_destroy_disk(GameObject* disk) {
   deinit_wave_data(&disk_data->wave_data);
 }
 
-GameObject* create_disk(bool coco_disk, Pos pos) {
+GameObject* create_disk(bool coco_disk, Pos pos, int speed) {
   GameObject* disk = init_game_object(disk_sprites);
   if (!coco_disk) disk->sprite_index = 1;
 
@@ -81,6 +82,7 @@ GameObject* create_disk(bool coco_disk, Pos pos) {
   init_wave_data(&disk_data->wave_data, 100);
   disk_data->descend_count = 0;
   disk_data->shadow_pos = (Pos){pos.x, pos.y + 65};
+  disk_data->speed = speed;
 
   disk->data = disk_data;
   return disk;
