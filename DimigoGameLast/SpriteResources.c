@@ -67,6 +67,10 @@ void init_sprite_resources(HINSTANCE inst) {
   score_board_sprites = malloc(sizeof(HBITMAP) * 1);
   if (score_board_sprites == NULL) return;
   score_board_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_SCORE_BOARD));
+
+  string_sprites = malloc(sizeof(HBITMAP) * 1);
+  if (string_sprites == NULL) return;
+  string_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_STRING));
 }
 
 void deinit_sprite_resources() {

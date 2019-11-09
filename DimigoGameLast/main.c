@@ -14,6 +14,7 @@
 #include "DiskGameScene.h"
 #include "GameHelpScene.h"
 #include "GameResultScene.h"
+#include "PullGameScene.h"
 #include "ReadyStartScene.h"
 
 #include "GameObject.h"
@@ -40,8 +41,8 @@ int main() {
   GetObject(background_sprites[1], sizeof(BITMAP), &bitmap_data);
   int window_width = bitmap_data.bmWidth * 5,
       window_height = bitmap_data.bmHeight * 5;
-  SetWindowPos(window, (HWND)0, 0, 0, window_width * 1.031,
-               window_height * 1.063, 0);
+  SetWindowPos(window, (HWND)0, 0, 0, (int)(window_width * 1.031),
+               (int)(window_height * 1.063), 0);
 
   RECT window_rect;
   GetClientRect(window, &window_rect);
@@ -58,8 +59,9 @@ int main() {
   // create_disk_game_scene(true, NULL), coco_turn_sprites, 3, (Pos){70, 100});
   // g_current_scene = create_game_help_scene(game_help_sprites[0],
   // ready_scene);
-  g_current_scene = create_disk_game_scene(true, (Pos){0, 0});
+  // g_current_scene = create_disk_game_scene(true, (Pos){0, 0});
   // g_current_scene = create_game_result_scene(false);
+  g_current_scene = create_pull_game_scene();
   g_new_scene = NULL;
 
   while (1) {

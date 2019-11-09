@@ -37,6 +37,12 @@
     <Filter Include="Header Files\GameObjects\DiskGame">
       <UniqueIdentifier>{30c287bc-6789-4a21-aa5c-d51a8053bb97}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameObjects\PullGame">
+      <UniqueIdentifier>{d27276b7-ccc8-4c12-aafb-64e0eae3e66a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\PullGame">
+      <UniqueIdentifier>{64830f56-b8ee-4726-8a74-f61fd2ea98f4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -84,6 +90,12 @@
     <ClCompile Include="DiskGameScene.c">
       <Filter>Source Files\GameScenes</Filter>
     </ClCompile>
+    <ClCompile Include="PullGameScene.c">
+      <Filter>Source Files\GameScenes</Filter>
+    </ClCompile>
+    <ClCompile Include="String.c">
+      <Filter>Source Files\GameObjects\PullGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">
@@ -130,6 +142,12 @@
     </ClInclude>
     <ClInclude Include="DiskGameScene.h">
       <Filter>Header Files\GameScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="PullGameScene.h">
+      <Filter>Header Files\GameScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="String.h">
+      <Filter>Header Files\GameObjects\PullGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +259,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resource\sky_background.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\string.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

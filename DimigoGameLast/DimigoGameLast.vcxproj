@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="PullGameScene.c" />
+    <ClCompile Include="String.c" />
     <ClCompile Include="ThrowingPlayer.c" />
     <ClCompile Include="CheeringPlayer.c" />
     <ClCompile Include="GameHelpScene.c" />
@@ -36,6 +38,8 @@
     <ClCompile Include="WaveAudio.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PullGameScene.h" />
+    <ClInclude Include="String.h" />
     <ClInclude Include="ThrowingPlayer.h" />
     <ClInclude Include="CheeringPlayer.h" />
     <ClInclude Include="GameHelpScene.h" />
@@ -91,6 +95,7 @@
     <Image Include="Resource\sky_background.bmp" />
     <Image Include="Resource\spit.bmp" />
     <Image Include="Resource\start.bmp" />
+    <Image Include="Resource\string.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

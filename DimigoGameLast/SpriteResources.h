@@ -13,6 +13,7 @@ HBITMAP* disk_sprites;
 HBITMAP* coco_turn_sprites;
 HBITMAP* dingding_turn_sprites;
 HBITMAP* score_board_sprites;
+HBITMAP* string_sprites;
 
 void init_sprite_resources(HINSTANCE inst);
 void deinit_sprite_resources();
