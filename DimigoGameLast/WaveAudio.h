@@ -18,4 +18,4 @@ typedef struct tagWaveData {
 int init_wave_data(WaveData* result, int record_seconds);
 
 // WaveData 사용을 마쳤을 때 메모리 할당을 해제시키는 함수입니다.
-void deinit_wave_data(WaveData wave_data);
+void deinit_wave_data(WaveData* wave_data);

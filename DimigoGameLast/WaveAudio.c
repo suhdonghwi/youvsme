@@ -49,7 +49,10 @@ int init_wave_data(WaveData* result, int record_seconds) {
   return 0;
 }
 
-void deinit_wave_data(WaveData wave_data) {
-  free(wave_data.sample_data);
-  waveInClose(wave_data.wave_in);
+void deinit_wave_data(WaveData* wave_data) {
+  waveInUnprepareHeader(wave_data->wave_in, &wave_data->wave_hdr,
+                        sizeof(WAVEHDR));
+  waveInStop(wave_data->wave_in);
+  waveInClose(wave_data->wave_in);
+  free(wave_data->sample_data);
 }

@@ -14,7 +14,8 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
 
   if (data->disk->pos.x >= 200) {
     data->disk->pos.x -= 5;
-    if (data->fallen_disk != NULL) data->fallen_disk->pos.x -= 5;
+    if (!(data->fallen_pos.x == 0 && data->fallen_pos.y == 0))
+      data->fallen_pos.x -= 5;
     data->background_offset += 5;
   }
 
@@ -22,19 +23,16 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
     Sleep(1500);
 
     if (data->disk->sprite_index == 0) {
-      GameObject* fallen_disk = create_disk(true, data->disk->pos);
-      fallen_disk->pos.x += data->background_offset;
-      ((DiskData*)fallen_disk->data)->state = DISK_LANDED;
-      ((DiskData*)fallen_disk->data)->shadow_pos.y = data->disk->pos.y;
-
-      GameScene* disk_scene = create_disk_game_scene(false, fallen_disk);
+      GameScene* disk_scene = create_disk_game_scene(
+          false, (Pos){data->disk->pos.x + data->background_offset,
+                       data->disk->pos.y});
       GameScene* new_scene = create_readystart_scene(
           disk_scene, dingding_turn_sprites, 3, (Pos){70, 100});
 
       g_new_scene = new_scene;
     } else {
-      if (data->fallen_disk == NULL) return;
-      if (data->fallen_disk->pos.x >= data->disk->pos.x) {
+      if (data->fallen_pos.x == 0 && data->fallen_pos.y == 0) return;
+      if (data->fallen_pos.x >= data->disk->pos.x) {
         g_new_scene = create_game_result_scene(false);
         g_coco_score++;
       } else {
@@ -56,9 +54,13 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
   }
 
   data->player->pos.x = 50 - data->background_offset;
+
+  if (!(data->fallen_pos.x == 0 && data->fallen_pos.y == 0)) {
+    render_bitmap(disk_sprites[0], main_dc, data->fallen_pos, 24);
+  }
 }
 
-GameScene* create_disk_game_scene(bool coco_turn, GameObject* fallen_disk) {
+GameScene* create_disk_game_scene(bool coco_turn, Pos fallen_pos) {
   GameScene* scene = init_scene();
 
   GameObject* disk =
@@ -75,15 +77,13 @@ GameScene* create_disk_game_scene(bool coco_turn, GameObject* fallen_disk) {
   player->scale = 24;
   insert_game_object(player, scene);
 
-  insert_game_object(fallen_disk, scene);
-
   scene->sleep_duration = 30;
   scene->on_render = on_render_disk_game_scene;
 
   DiskGameData* data = malloc(sizeof(DiskGameData));
   if (data == NULL) return NULL;
   data->disk = disk;
-  data->fallen_disk = fallen_disk;
+  data->fallen_pos = fallen_pos;
   data->player = player;
   data->background_offset = 0;
 

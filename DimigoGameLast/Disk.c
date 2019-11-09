@@ -52,10 +52,17 @@ void on_render_disk(GameObject* disk, HDC main_dc) {
       case DISK_LANDED:
         break;
     }
+  } else {
+    disk_data->state = DISK_DESCENDING;
   }
 
   render_bitmap(disk_sprites[2], main_dc,
                 (Pos){disk->pos.x, disk_data->shadow_pos.y}, 24);
+}
+
+void on_destroy_disk(GameObject* disk) {
+  DiskData* disk_data = (DiskData*)(disk->data);
+  deinit_wave_data(&disk_data->wave_data);
 }
 
 GameObject* create_disk(bool coco_disk, Pos pos) {
@@ -65,12 +72,13 @@ GameObject* create_disk(bool coco_disk, Pos pos) {
   disk->scale = 24;
   disk->pos = pos;
   disk->on_render = on_render_disk;
+  disk->on_destroy = on_destroy_disk;
 
   DiskData* disk_data = malloc(sizeof(DiskData));
   if (disk_data == NULL) return NULL;
 
   disk_data->state = DISK_READY;
-  init_wave_data(&disk_data->wave_data, 300);
+  init_wave_data(&disk_data->wave_data, 100);
   disk_data->descend_count = 0;
   disk_data->shadow_pos = (Pos){pos.x, pos.y + 65};
 

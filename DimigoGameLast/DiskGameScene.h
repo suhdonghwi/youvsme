@@ -3,7 +3,8 @@
 
 typedef struct tagDiskGameData {
   int background_offset;
-  GameObject *disk, *fallen_disk, *player;
+  GameObject *disk, *player;
+  Pos fallen_pos;
 } DiskGameData;
 
-GameScene* create_disk_game_scene(bool coco_turn, GameObject* fallen_disk);
+GameScene* create_disk_game_scene(bool coco_turn, Pos fallen_pos);

@@ -45,7 +45,7 @@ int main() {
 
   HANDLE std_input = GetStdHandle(STD_INPUT_HANDLE);
   DWORD num_read, num_input;
-  INPUT_RECORD input_buf[128];
+  INPUT_RECORD input_buf[32];
 
   HBRUSH background_brush = GetStockObject(BLACK_BRUSH);
 
@@ -60,14 +60,14 @@ int main() {
   // create_disk_game_scene(true, NULL), coco_turn_sprites, 3, (Pos){70, 100});
   // g_current_scene = create_game_help_scene(game_help_sprites[0],
   // ready_scene);
-  g_current_scene = create_disk_game_scene(true, NULL);
+  g_current_scene = create_disk_game_scene(true, (Pos){0, 0});
   g_new_scene = NULL;
 
   while (1) {
     GetNumberOfConsoleInputEvents(std_input, &num_input);
 
     if (num_input > 0) {
-      ReadConsoleInput(std_input, input_buf, 128, &num_read);
+      ReadConsoleInput(std_input, input_buf, 32, &num_read);
 
       for (WORD i = 0; i < num_read; i++) {
         switch (input_buf[i].EventType) {
