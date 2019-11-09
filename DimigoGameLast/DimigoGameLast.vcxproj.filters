@@ -96,6 +96,9 @@
     <ClCompile Include="String.c">
       <Filter>Source Files\GameObjects\PullGame</Filter>
     </ClCompile>
+    <ClCompile Include="Flag.c">
+      <Filter>Source Files\GameObjects\PullGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">
@@ -147,6 +150,9 @@
       <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
     <ClInclude Include="String.h">
+      <Filter>Header Files\GameObjects\PullGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Flag.h">
       <Filter>Header Files\GameObjects\PullGame</Filter>
     </ClInclude>
   </ItemGroup>
@@ -265,6 +271,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resource\pull_background.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\coco_flag.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dingding_flag.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

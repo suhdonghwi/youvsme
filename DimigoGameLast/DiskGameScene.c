@@ -6,8 +6,6 @@
 #include "ThrowingPlayer.h"
 
 extern GameScene* g_new_scene;
-extern int g_coco_score;
-extern int g_dingding_score;
 
 void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
   DiskGameData* data = (DiskGameData*)scene->data;
@@ -39,10 +37,8 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
 
       if (data->fallen_pos.x >= data->disk->pos.x) {
         g_new_scene = create_game_result_scene(false);
-        g_coco_score++;
       } else {
         g_new_scene = create_game_result_scene(true);
-        g_dingding_score++;
       }
     }
   }

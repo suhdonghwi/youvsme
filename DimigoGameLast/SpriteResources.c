@@ -73,6 +73,11 @@ void init_sprite_resources(HINSTANCE inst) {
   string_sprites = malloc(sizeof(HBITMAP) * 1);
   if (string_sprites == NULL) return;
   string_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_STRING));
+
+  flag_sprites = malloc(sizeof(HBITMAP) * 2);
+  if (flag_sprites == NULL) return;
+  flag_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_FLAG));
+  flag_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_FLAG));
 }
 
 void deinit_sprite_resources() {
@@ -122,4 +127,11 @@ void deinit_sprite_resources() {
 
   DeleteObject(score_board_sprites[0]);
   free(score_board_sprites);
+
+  DeleteObject(string_sprites[0]);
+  free(string_sprites);
+
+  DeleteObject(flag_sprites[0]);
+  DeleteObject(flag_sprites[1]);
+  free(flag_sprites);
 }

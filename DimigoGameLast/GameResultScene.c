@@ -5,11 +5,19 @@
 #include "ScoreDisplay.h"
 #include "SpriteResources.h"
 
+extern int g_coco_score;
+extern int g_dingding_score;
+
 void on_render_game_result_scene(GameScene* scene, HDC main_dc) {
   render_bitmap(background_sprites[1], main_dc, (Pos){0, 0}, 25);
 }
 
 GameScene* create_game_result_scene(bool player1_won) {
+  if (player1_won)
+    g_dingding_score++;
+  else
+    g_coco_score++;
+
   GameScene* scene = init_scene();
 
   GameObject* cheering_player = create_cheering_player(player1_won);

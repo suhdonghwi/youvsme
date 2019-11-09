@@ -1,7 +1,9 @@
 #include "String.h"
+#include "GameScene.h"
 #include "SpriteResources.h"
 
 extern bool g_pressed_map[0xFE];
+extern GameScene* g_new_scene;
 
 void on_render_string(GameObject* string, HDC main_dc) {
   StringData* data = (StringData*)string->data;
@@ -21,16 +23,30 @@ void on_render_string(GameObject* string, HDC main_dc) {
   }
 }
 
+void on_collide_string(GameObject* string, GameObject* object) {
+  if (strcmp(object->tag, "flag") == 0) {
+    if (object->sprite_index == 0) {
+      g_new_scene = create_game_result_scene(false);
+    } else {
+      g_new_scene = create_game_result_scene(true);
+    }
+  }
+}
+
 GameObject* create_string() {
   GameObject* string = init_game_object(string_sprites);
   string->scale = 8;
   string->pos = (Pos){170, 350};
+  string->collidable = true;
+
   string->on_render = on_render_string;
+  string->on_collide = on_collide_string;
 
   StringData* data = malloc(sizeof(StringData));
   if (data == NULL) return NULL;
   data->coco_pressed = false;
   data->dingding_pressed = false;
+
   string->data = data;
 
   return string;
