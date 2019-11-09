@@ -46,7 +46,7 @@ void on_render_disk(GameObject* disk, HDC main_dc) {
         disk_data->descend_count++;
 
         if (disk_data->descend_count * disk_data->speed >= 65) {
-          disk->pos.y = disk_data->shadow_pos.y;
+          disk->pos.y = disk_data->shadow_y_pos;
           disk_data->state = DISK_LANDED;
         }
         break;
@@ -58,7 +58,7 @@ void on_render_disk(GameObject* disk, HDC main_dc) {
   }
 
   render_bitmap(disk_sprites[2], main_dc,
-                (Pos){disk->pos.x, disk_data->shadow_pos.y}, 24);
+                (Pos){disk->pos.x, disk_data->shadow_y_pos}, 24);
 }
 
 void on_destroy_disk(GameObject* disk) {
@@ -81,7 +81,7 @@ GameObject* create_disk(bool coco_disk, Pos pos, int speed) {
   disk_data->state = DISK_READY;
   init_wave_data(&disk_data->wave_data, 100);
   disk_data->descend_count = 0;
-  disk_data->shadow_pos = (Pos){pos.x, pos.y + 65};
+  disk_data->shadow_y_pos = pos.y + 65;
   disk_data->speed = speed;
 
   disk->data = disk_data;

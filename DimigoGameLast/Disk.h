@@ -15,7 +15,7 @@ typedef struct tagDiskData {
   WaveData wave_data;
   DiskState state;
   int descend_count;
-  Pos shadow_pos;
+  int shadow_y_pos;
 } DiskData;
 
 GameObject* create_disk(bool coco_disk, Pos pos, int speed);
