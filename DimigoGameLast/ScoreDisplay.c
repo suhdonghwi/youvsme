@@ -6,17 +6,17 @@
 extern int g_coco_score;
 extern int g_dingding_score;
 
-void on_render_score_display(GameObject* score_display, HDC main_dc) {
-  // render_bitmap(score_board_sprites[0], main_dc, (Pos){280, 560}, 0.15);
-
+void after_render_score_display(GameObject* score_display, HDC main_dc) {
   char score_str[100] = {'\0'};
-  sprintf(score_str, "%d %d", g_coco_score, g_dingding_score);
-  TextOut(main_dc, 280, 560, score_str, strlen(score_str));
+  sprintf(score_str, "%d    %d", g_coco_score, g_dingding_score);
+  TextOut(main_dc, score_display->pos.x + 45, score_display->pos.y + 50,
+          score_str, strlen(score_str));
 }
 
 GameObject* create_score_display() {
-  GameObject* score_display = init_game_object(NULL);
+  GameObject* score_display = init_game_object(score_board_sprites);
+  score_display->scale = 0.1;
 
-  score_display->on_render = on_render_score_display;
+  score_display->after_render = after_render_score_display;
   return score_display;
 }

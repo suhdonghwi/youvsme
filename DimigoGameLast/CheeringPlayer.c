@@ -18,9 +18,9 @@ void on_render_cheering_player(GameObject* cheering_player, HDC main_dc) {
   }
 
   if (cheering_player->sprites == dingding_sprites) {
-    render_bitmap(won_message_sprites[1], main_dc, (Pos){150, 50}, 1);
+    render_bitmap(won_message_sprites[1], main_dc, (Pos){330, 50}, 1);
   } else {
-    render_bitmap(won_message_sprites[0], main_dc, (Pos){150, 50}, 1);
+    render_bitmap(won_message_sprites[0], main_dc, (Pos){330, 50}, 1);
   }
 }
 
@@ -29,8 +29,8 @@ GameObject* create_cheering_player(bool player1_won) {
       init_game_object(player1_won ? dingding_sprites : coco_sprites);
 
   cheering_player->sprite_index = 0;
-  cheering_player->pos = (Pos){400, 400};
-  cheering_player->scale = 5;
+  cheering_player->pos = (Pos){580, 400};
+  cheering_player->scale = 25;
 
   cheering_player->on_render = on_render_cheering_player;
 
