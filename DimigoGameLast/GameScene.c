@@ -1,5 +1,7 @@
 #include "GameScene.h"
 
+#include "SpriteResources.h"
+
 extern GameScene* g_new_scene;
 
 GameSceneNode* create_node(GameObject* object) {
@@ -55,7 +57,12 @@ bool rect_intersect_check(RECT r1, RECT r2) {
 }
 
 void render_game_scene(GameScene* scene, HDC main_dc) {
-  if (scene->on_render != NULL) scene->on_render(scene, main_dc);
+  HDC back_dc = CreateCompatibleDC(main_dc);
+  HBITMAP back_bitmap = CreateCompatibleBitmap(main_dc, 900, 780);
+  SelectObject(back_dc, back_bitmap);
+  DeleteObject(back_bitmap);
+
+  if (scene->on_render != NULL) scene->on_render(scene, back_dc);
 
   GameSceneNode* node = scene->head;
   GameSceneNode* prev = node;
@@ -94,17 +101,19 @@ void render_game_scene(GameScene* scene, HDC main_dc) {
     }
 
     if (g_new_scene != NULL) return;
-
     if (node == NULL) return;
 
     if (node->game_object->on_render != NULL)
-      node->game_object->on_render(node->game_object, main_dc);
+      node->game_object->on_render(node->game_object, back_dc);
 
-    render_game_object(node->game_object, main_dc);
+    render_game_object(node->game_object, back_dc);
 
     prev = node;
     node = node->next;
   }
+
+  BitBlt(main_dc, 0, 0, 900, 780, back_dc, 0, 0, SRCCOPY);
+  DeleteDC(back_dc);
 
   Sleep(scene->sleep_duration);
 }

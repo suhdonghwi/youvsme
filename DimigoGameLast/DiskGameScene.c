@@ -77,7 +77,7 @@ GameScene* create_disk_game_scene(bool coco_turn, Pos fallen_pos) {
   player->scale = 24;
   insert_game_object(player, scene);
 
-  scene->sleep_duration = 30;
+  scene->sleep_duration = 10;
   scene->on_render = on_render_disk_game_scene;
 
   DiskGameData* data = malloc(sizeof(DiskGameData));
