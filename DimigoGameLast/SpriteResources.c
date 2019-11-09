@@ -18,10 +18,11 @@ void init_sprite_resources(HINSTANCE inst) {
   coco_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_CHEERING));
   coco_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_THROWING));
 
-  background_sprites = malloc(sizeof(HBITMAP) * 1);
+  background_sprites = malloc(sizeof(HBITMAP) * 2);
   if (background_sprites == NULL) return;
   background_sprites[0] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_BACKGROUND));
+  background_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_SKY_BACKGROUND));
 
   spit_sprites = malloc(sizeof(HBITMAP) * 1);
   if (spit_sprites == NULL) return;
@@ -44,10 +45,11 @@ void init_sprite_resources(HINSTANCE inst) {
   ready_start_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_READY));
   ready_start_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_START));
 
-  disk_sprites = malloc(sizeof(HBITMAP) * 2);
+  disk_sprites = malloc(sizeof(HBITMAP) * 3);
   if (disk_sprites == NULL) return;
   disk_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_DISK));
   disk_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_DISK));
+  disk_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_SHADOW));
 
   coco_turn_sprites = malloc(sizeof(HBITMAP) * 3);
   if (coco_turn_sprites == NULL) return;

@@ -78,6 +78,7 @@
     <Image Include="Resource\dingding_turn.bmp" />
     <Image Include="Resource\dingding_won.bmp" />
     <Image Include="Resource\disk_background.bmp" />
+    <Image Include="Resource\disk_shadow.bmp" />
     <Image Include="Resource\finish_flag.bmp" />
     <Image Include="Resource\now_blow.bmp" />
     <Image Include="Resource\plane_background.bmp" />
@@ -87,6 +88,7 @@
     <Image Include="Resource\player2_standing.bmp" />
     <Image Include="Resource\ready.bmp" />
     <Image Include="Resource\score_board.bmp" />
+    <Image Include="Resource\sky_background.bmp" />
     <Image Include="Resource\spit.bmp" />
     <Image Include="Resource\start.bmp" />
   </ItemGroup>

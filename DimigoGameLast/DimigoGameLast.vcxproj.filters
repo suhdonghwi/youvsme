@@ -237,5 +237,11 @@
     <Image Include="Resource\coco_cheering.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resource\disk_shadow.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\sky_background.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

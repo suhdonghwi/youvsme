@@ -22,10 +22,10 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
     Sleep(1500);
 
     if (data->disk->sprite_index == 0) {
-      GameObject* fallen_disk = create_disk(true);
-      fallen_disk->pos = data->disk->pos;
+      GameObject* fallen_disk = create_disk(true, data->disk->pos);
       fallen_disk->pos.x += data->background_offset;
       ((DiskData*)fallen_disk->data)->state = DISK_LANDED;
+      ((DiskData*)fallen_disk->data)->shadow_pos.y = data->disk->pos.y;
 
       GameScene* disk_scene = create_disk_game_scene(false, fallen_disk);
       GameScene* new_scene = create_readystart_scene(
@@ -61,12 +61,8 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
 GameScene* create_disk_game_scene(bool coco_turn, GameObject* fallen_disk) {
   GameScene* scene = init_scene();
 
-  GameObject* disk = create_disk(coco_turn);
-  if (coco_turn) {
-    disk->pos = (Pos){140, 180};
-  } else {
-    disk->pos = (Pos){140, 480};
-  }
+  GameObject* disk =
+      create_disk(coco_turn, coco_turn ? (Pos){140, 180} : (Pos){140, 480});
   insert_game_object(disk, scene);
 
   GameObject* player =

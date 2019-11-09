@@ -56,13 +56,10 @@ int main() {
   SetBkMode(window_dc, TRANSPARENT);
   SetTextColor(window_dc, RGB(255, 0, 0));
 
-  // GameScene* ready_scene =
-  // create_readystart_scene(create_plane_game_scene(true, NULL),
-  // coco_turn_sprites, 3, (Pos){70, 100});
-  // g_current_scene =
-  // create_game_help_scene(game_help_sprites[0],
-  // ready_scene);
-  g_current_scene = create_disk_game_scene(true, NULL);
+  GameScene* ready_scene = create_readystart_scene(
+      create_disk_game_scene(true, NULL), coco_turn_sprites, 3, (Pos){70, 100});
+  g_current_scene = create_game_help_scene(game_help_sprites[0], ready_scene);
+  // g_current_scene = create_disk_game_scene(true, NULL);
   g_new_scene = NULL;
 
   while (1) {
