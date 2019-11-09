@@ -86,6 +86,7 @@
     <Image Include="Resource\dingding_turn.bmp" />
     <Image Include="Resource\dingding_won.bmp" />
     <Image Include="Resource\disk_background.bmp" />
+    <Image Include="Resource\disk_help.bmp" />
     <Image Include="Resource\disk_shadow.bmp" />
     <Image Include="Resource\finish_flag.bmp" />
     <Image Include="Resource\now_blow.bmp" />

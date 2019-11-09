@@ -27,14 +27,15 @@
 #define IDB_STRING                      127
 #define IDB_PULL_BACKGROUND             128
 #define IDB_COCO_FLAG                   129
-#define IDB_BITMAP3                     130
 #define IDB_DINGDING_FLAG               130
+#define IDB_BITMAP2                     131
+#define IDB_DISK_HELP                   131
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        131
+#define _APS_NEXT_RESOURCE_VALUE        132
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101

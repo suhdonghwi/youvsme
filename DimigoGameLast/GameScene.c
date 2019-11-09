@@ -65,12 +65,6 @@ void render_game_scene(GameScene* scene, HDC main_dc, int window_width,
   SelectObject(back_dc, back_bitmap);
   DeleteObject(back_bitmap);
 
-  HFONT score_font = CreateFont(50, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0,
-                                0, VARIABLE_PITCH | FF_ROMAN, TEXT("µÕ±Ù¸ð²Ã"));
-  SelectObject(back_dc, score_font);
-  SetBkMode(back_dc, TRANSPARENT);
-  SetTextColor(back_dc, RGB(255, 0, 0));
-
   if (scene->on_render != NULL) scene->on_render(scene, back_dc);
 
   GameSceneNode* node = scene->head;
@@ -126,7 +120,6 @@ void render_game_scene(GameScene* scene, HDC main_dc, int window_width,
 
   BitBlt(main_dc, 0, 0, window_width, window_height, back_dc, 0, 0, SRCCOPY);
   DeleteDC(back_dc);
-  DeleteObject(score_font);
 
   Sleep(scene->sleep_duration);
 }
