@@ -4,7 +4,6 @@
 #include "SpriteResources.h"
 
 static clock_t last_change_clock;
-static bool player1_won;
 
 void on_render_cheering_player(GameObject* cheering_player, HDC main_dc) {
   clock_t current_clock = clock();
@@ -24,9 +23,9 @@ void on_render_cheering_player(GameObject* cheering_player, HDC main_dc) {
   }
 }
 
-GameObject* create_cheering_player(bool player1_won) {
+GameObject* create_cheering_player(bool coco_won) {
   GameObject* cheering_player =
-      init_game_object(player1_won ? dingding_sprites : coco_sprites);
+      init_game_object(coco_won ? coco_sprites : dingding_sprites);
 
   cheering_player->sprite_index = 0;
   cheering_player->pos = (Pos){580, 400};

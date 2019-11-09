@@ -26,9 +26,9 @@ void on_render_string(GameObject* string, HDC main_dc) {
 void on_collide_string(GameObject* string, GameObject* object) {
   if (strcmp(object->tag, "flag") == 0) {
     if (object->sprite_index == 0) {
-      g_new_scene = create_game_result_scene(false);
-    } else {
       g_new_scene = create_game_result_scene(true);
+    } else {
+      g_new_scene = create_game_result_scene(false);
     }
   }
 }

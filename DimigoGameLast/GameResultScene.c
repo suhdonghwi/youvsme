@@ -12,15 +12,15 @@ void on_render_game_result_scene(GameScene* scene, HDC main_dc) {
   render_bitmap(background_sprites[1], main_dc, (Pos){0, 0}, 25);
 }
 
-GameScene* create_game_result_scene(bool player1_won) {
-  if (player1_won)
-    g_dingding_score++;
-  else
+GameScene* create_game_result_scene(bool coco_won) {
+  if (coco_won)
     g_coco_score++;
+  else
+    g_dingding_score++;
 
   GameScene* scene = init_scene();
 
-  GameObject* cheering_player = create_cheering_player(player1_won);
+  GameObject* cheering_player = create_cheering_player(coco_won);
   insert_game_object(cheering_player, scene);
 
   GameObject* score = create_score_display();
