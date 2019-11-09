@@ -58,7 +58,7 @@ void on_render_disk(GameObject* disk, HDC main_dc) {
   }
 
   render_bitmap(disk_sprites[2], main_dc,
-                (Pos){disk->pos.x, disk_data->shadow_y_pos}, 22);
+                (Pos){disk->pos.x, disk_data->shadow_y_pos}, 25);
 }
 
 void on_destroy_disk(GameObject* disk) {
@@ -70,7 +70,7 @@ GameObject* create_disk(bool coco_disk, Pos pos, int speed) {
   GameObject* disk = init_game_object(disk_sprites);
   if (!coco_disk) disk->sprite_index = 1;
 
-  disk->scale = 22;
+  disk->scale = 25;
   disk->pos = pos;
   disk->on_render = on_render_disk;
   disk->on_destroy = on_destroy_disk;

@@ -7,7 +7,7 @@ extern GameScene* g_new_scene;
 void on_render_readystart_scene(GameScene* scene, HDC main_dc) {
   ReadyStartData* data = (ReadyStartData*)scene->data;
 
-  render_bitmap(background_sprites[1], main_dc, (Pos){0, 0}, 22);
+  render_bitmap(background_sprites[1], main_dc, (Pos){0, 0}, 25);
   render_bitmap(data->slide_bitmaps[data->index], main_dc, data->render_pos, 1);
 
   data->index++;

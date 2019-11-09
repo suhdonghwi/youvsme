@@ -38,9 +38,10 @@ int main() {
 
   BITMAP bitmap_data;
   GetObject(background_sprites[1], sizeof(BITMAP), &bitmap_data);
-  int window_width = bitmap_data.bmWidth * 4.5,
+  int window_width = bitmap_data.bmWidth * 5,
       window_height = bitmap_data.bmHeight * 5;
-  SetWindowPos(window, (HWND)0, 0, 0, window_width, window_height, 0);
+  SetWindowPos(window, (HWND)0, 0, 0, window_width * 1.031,
+               window_height * 1.063, 0);
 
   RECT window_rect;
   GetClientRect(window, &window_rect);
