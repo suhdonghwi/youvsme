@@ -330,5 +330,23 @@
     <Image Include="Resource\dingding_crying.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resource\key_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\key_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\key_3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\key_7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\key_8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\key_9.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

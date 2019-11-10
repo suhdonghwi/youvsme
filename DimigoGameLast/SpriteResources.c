@@ -113,6 +113,15 @@ void init_sprite_resources(HINSTANCE inst) {
   ment_sprites = malloc(sizeof(HBITMAP) * 1);
   if (ment_sprites == NULL) return;
   ment_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_NO_MENT));
+
+  key_sprites = malloc(sizeof(HBITMAP) * 6);
+  if (key_sprites == NULL) return;
+  key_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_KEY_1));
+  key_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_KEY_2));
+  key_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_KEY_3));
+  key_sprites[3] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_KEY_7));
+  key_sprites[4] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_KEY_8));
+  key_sprites[5] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_KEY_9));
 }
 
 void deinit_sprite_resources() {
@@ -192,4 +201,12 @@ void deinit_sprite_resources() {
 
   DeleteObject(ment_sprites[0]);
   free(ment_sprites);
+
+  DeleteObject(key_sprites[0]);
+  DeleteObject(key_sprites[1]);
+  DeleteObject(key_sprites[2]);
+  DeleteObject(key_sprites[3]);
+  DeleteObject(key_sprites[4]);
+  DeleteObject(key_sprites[5]);
+  free(key_sprites)
 }

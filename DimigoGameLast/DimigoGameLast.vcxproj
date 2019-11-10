@@ -102,6 +102,12 @@
     <Image Include="Resource\disk_logo.bmp" />
     <Image Include="Resource\disk_shadow.bmp" />
     <Image Include="Resource\finish_flag.bmp" />
+    <Image Include="Resource\key_1.bmp" />
+    <Image Include="Resource\key_2.bmp" />
+    <Image Include="Resource\key_3.bmp" />
+    <Image Include="Resource\key_7.bmp" />
+    <Image Include="Resource\key_8.bmp" />
+    <Image Include="Resource\key_9.bmp" />
     <Image Include="Resource\now_blow.bmp" />
     <Image Include="Resource\no_ment.bmp" />
     <Image Include="Resource\plane_background.bmp" />
