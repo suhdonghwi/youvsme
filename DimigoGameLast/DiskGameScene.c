@@ -71,7 +71,7 @@ GameScene* create_disk_game_scene(bool coco_turn, Pos fallen_pos) {
   GameScene* scene = init_scene();
 
   GameObject* disk =
-      create_disk(coco_turn, coco_turn ? (Pos){140, 180} : (Pos){140, 480}, 3);
+      create_disk(coco_turn, coco_turn ? (Pos){140, 180} : (Pos){140, 480}, 7);
   insert_game_object(disk, scene);
 
   GameObject* player =
@@ -84,7 +84,7 @@ GameScene* create_disk_game_scene(bool coco_turn, Pos fallen_pos) {
   player->scale = 25;
   insert_game_object(player, scene);
 
-  scene->sleep_duration = 0;
+  scene->sleep_duration = 5;
   scene->on_render = on_render_disk_game_scene;
 
   DiskGameData* data = malloc(sizeof(DiskGameData));
