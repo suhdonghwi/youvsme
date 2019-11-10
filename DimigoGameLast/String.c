@@ -1,4 +1,5 @@
 #include "String.h"
+#include "GameResultScene.h"
 #include "GameScene.h"
 #include "SpriteResources.h"
 

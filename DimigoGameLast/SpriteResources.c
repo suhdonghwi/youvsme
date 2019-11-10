@@ -39,9 +39,10 @@ void init_sprite_resources(HINSTANCE inst) {
   won_message_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_WON));
   won_message_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_WON));
 
-  game_help_sprites = malloc(sizeof(HBITMAP) * 1);
+  game_help_sprites = malloc(sizeof(HBITMAP) * 2);
   if (game_help_sprites == NULL) return;
   game_help_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_HELP));
+  game_help_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PULL_HELP));
 
   ready_start_sprites = malloc(sizeof(HBITMAP) * 2);
   if (ready_start_sprites == NULL) return;
@@ -79,6 +80,11 @@ void init_sprite_resources(HINSTANCE inst) {
   if (flag_sprites == NULL) return;
   flag_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_FLAG));
   flag_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_FLAG));
+
+  logo_sprites = malloc(sizeof(HBITMAP) * 2);
+  if (logo_sprites == NULL) return;
+  logo_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_LOGO));
+  logo_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PULL_LOGO));
 }
 
 void deinit_sprite_resources() {
@@ -106,6 +112,7 @@ void deinit_sprite_resources() {
   free(won_message_sprites);
 
   DeleteObject(game_help_sprites[0]);
+  DeleteObject(game_help_sprites[1]);
   free(game_help_sprites);
 
   DeleteObject(ready_start_sprites[0]);
@@ -135,4 +142,8 @@ void deinit_sprite_resources() {
   DeleteObject(flag_sprites[0]);
   DeleteObject(flag_sprites[1]);
   free(flag_sprites);
+
+  DeleteObject(logo_sprites[0]);
+  DeleteObject(logo_sprites[1]);
+  free(logo_sprites);
 }
