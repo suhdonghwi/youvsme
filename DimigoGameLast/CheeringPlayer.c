@@ -17,9 +17,9 @@ void on_render_cheering_player(GameObject* cheering_player, HDC main_dc) {
   }
 
   if (cheering_player->sprites == dingding_sprites) {
-    render_bitmap(won_message_sprites[1], main_dc, (Pos){330, 50}, 1);
+    render_bitmap(won_message_sprites[1], main_dc, (Pos){220, 50}, 20.25);
   } else {
-    render_bitmap(won_message_sprites[0], main_dc, (Pos){330, 50}, 1);
+    render_bitmap(won_message_sprites[0], main_dc, (Pos){220, 50}, 20.25);
   }
 }
 
