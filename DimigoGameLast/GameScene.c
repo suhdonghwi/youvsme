@@ -59,6 +59,7 @@ bool rect_intersect_check(RECT r1, RECT r2) {
 void render_game_scene(GameScene* scene, HDC main_dc, int window_width,
                        int window_height) {
   HDC back_dc = CreateCompatibleDC(main_dc);
+  SetBkMode(back_dc, TRANSPARENT);
 
   HBITMAP back_bitmap =
       CreateCompatibleBitmap(main_dc, window_width, window_height);

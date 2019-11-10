@@ -8,10 +8,7 @@ extern GameScene* g_new_scene;
 void on_render_game_help_scene(GameScene* scene, HDC main_dc) {
   GameHelpData* data = (GameHelpData*)scene->data;
 
-  HFONT score_font = CreateFont(25, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0,
-                                0, VARIABLE_PITCH | FF_ROMAN, TEXT("µÕ±Ù¸ğ²Ã"));
-  SelectObject(main_dc, score_font);
-  SetBkMode(main_dc, TRANSPARENT);
+  SelectObject(main_dc, data->font);
 
   render_bitmap(background_sprites[1], main_dc, (Pos){0, 0}, 25);
   render_bitmap(data->logo, main_dc, (Pos){400, 40}, 13);
@@ -41,6 +38,8 @@ GameScene* create_game_help_scene(HBITMAP help_message, HBITMAP logo,
   data->help_message = help_message;
   data->logo = logo;
   data->dest_scene = game_scene;
+  data->font = CreateFont(25, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
+                          VARIABLE_PITCH | FF_ROMAN, TEXT("µÕ±Ù¸ğ²Ã"));
 
   scene->data = data;
 

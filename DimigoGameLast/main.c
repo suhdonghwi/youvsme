@@ -59,6 +59,7 @@ int main() {
   HBRUSH background_brush = GetStockObject(BLACK_BRUSH);
 
   AddFontResource("DungGeunMo.ttf");
+  // RemoveFontResource("DungGeunMo.ttf");
 
   GameScene* ready_scene = create_readystart_scene(
       create_pull_game_scene(), pull_ready_sprites, 2, (Pos){330, 240});

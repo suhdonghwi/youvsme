@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <time.h>
 
 #include "GameResultScene.h"
 #include "GameScene.h"

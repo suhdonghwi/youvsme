@@ -4,6 +4,7 @@
 typedef struct tagGameHelpData {
   HBITMAP help_message, logo;
   GameScene* dest_scene;
+  HFONT font;
 } GameHelpData;
 
 GameScene* create_game_help_scene(HBITMAP help_message, HBITMAP logo,
