@@ -11,16 +11,16 @@ void on_render_game_help_scene(GameScene* scene, HDC main_dc) {
   SelectObject(main_dc, data->font);
 
   render_bitmap(background_sprites[1], main_dc, (Pos){0, 0}, 25);
-  render_bitmap(data->logo, main_dc, (Pos){400, 40}, 13);
-  render_bitmap(data->help_message, main_dc, (Pos){300, 280}, 3.5);
+  render_bitmap(data->logo, main_dc, (Pos){360, 40}, 13);
+  render_bitmap(data->help_message, main_dc, (Pos){250, 240}, 3.5);
 
   char* press_s = TEXT("[S]키를 눌러서 시작하세요!");
 
   SetTextColor(main_dc, RGB(150, 150, 150));
-  TextOut(main_dc, 462, 642, press_s, strlen(press_s));
+  TextOut(main_dc, 382, 592, press_s, strlen(press_s));
 
   SetTextColor(main_dc, RGB(60, 60, 60));
-  TextOut(main_dc, 460, 640, press_s, strlen(press_s));
+  TextOut(main_dc, 380, 590, press_s, strlen(press_s));
 
   if (g_pressed_map[0x53]) {
     g_new_scene = data->dest_scene;

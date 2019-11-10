@@ -44,8 +44,8 @@ int main() {
 
   BITMAP bitmap_data;
   GetObject(background_sprites[1], sizeof(BITMAP), &bitmap_data);
-  int window_width = bitmap_data.bmWidth * 5,
-      window_height = bitmap_data.bmHeight * 5;
+  int window_width = bitmap_data.bmWidth * 4.5,
+      window_height = bitmap_data.bmHeight * 4.5;
   SetWindowPos(window, (HWND)0, 0, 0, (int)(window_width * 1.031),
                (int)(window_height * 1.063), 0);
 
