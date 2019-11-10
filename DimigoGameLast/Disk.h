@@ -15,6 +15,8 @@ typedef struct tagDiskData {
   int speed;
 
   WaveData wave_data;
+  bool initialized_wave;
+
   DiskState state;
   int descend_count;
   int shadow_y_pos;

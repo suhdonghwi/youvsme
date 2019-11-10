@@ -12,6 +12,7 @@ HBITMAP* ready_start_sprites;
 HBITMAP* coco_disk_sprites;
 HBITMAP* dingding_disk_sprites;
 HBITMAP* disk_shadow_sprites;
+HBITMAP* disk_line_sprites;
 HBITMAP* coco_turn_sprites;
 HBITMAP* dingding_turn_sprites;
 HBITMAP* score_board_sprites;

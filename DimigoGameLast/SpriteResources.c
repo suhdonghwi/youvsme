@@ -57,7 +57,7 @@ void init_sprite_resources(HINSTANCE inst) {
   coco_disk_sprites[3] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_DISK4));
 
   dingding_disk_sprites = malloc(sizeof(HBITMAP) * 4);
-  if (dingding_disk_sprites == NULL) return NULL;
+  if (dingding_disk_sprites == NULL) return;
   dingding_disk_sprites[0] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_DISK1));
   dingding_disk_sprites[1] =
@@ -68,7 +68,14 @@ void init_sprite_resources(HINSTANCE inst) {
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_DISK4));
 
   disk_shadow_sprites = malloc(sizeof(HBITMAP) * 1);
+  if (disk_shadow_sprites == NULL) return NULL;
   disk_shadow_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_SHADOW));
+
+  disk_line_sprites = malloc(sizeof(HBITMAP) * 2);
+  if (disk_line_sprites == NULL) return NULL;
+  disk_line_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_LINE));
+  disk_line_sprites[1] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_CROSSED_LINE));
 
   coco_turn_sprites = malloc(sizeof(HBITMAP) * 3);
   if (coco_turn_sprites == NULL) return;
@@ -148,6 +155,10 @@ void deinit_sprite_resources() {
 
   DeleteObject(disk_shadow_sprites[0]);
   free(disk_shadow_sprites);
+
+  DeleteObject(disk_line_sprites[0]);
+  DeleteObject(disk_line_sprites[1]);
+  free(disk_line_sprites);
 
   DeleteObject(coco_turn_sprites[0]);
   DeleteObject(coco_turn_sprites[1]);

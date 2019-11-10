@@ -33,8 +33,6 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
 
       g_new_scene = new_scene;
     } else {
-      // if (data->fallen_pos.x == 0 && data->fallen_pos.y == 0) return;
-
       if (data->fallen_pos.x >= data->disk->pos.x) {
         g_new_scene = create_game_result_scene(true);
       } else {
@@ -56,6 +54,13 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
 
   if (!(data->fallen_pos.x == 0 && data->fallen_pos.y == 0)) {
     render_bitmap(coco_disk_sprites[0], main_dc, data->fallen_pos, 10);
+    if (data->disk->pos.x >= data->fallen_pos.x) {
+      render_bitmap(disk_line_sprites[1], main_dc,
+                    (Pos){data->fallen_pos.x + 110, 185}, 25);
+    } else {
+      render_bitmap(disk_line_sprites[0], main_dc,
+                    (Pos){data->fallen_pos.x + 110, 185}, 25);
+    }
   }
 }
 

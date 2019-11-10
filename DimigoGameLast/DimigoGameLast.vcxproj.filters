@@ -315,5 +315,11 @@
     <Image Include="Resource\dingding_disk4.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resource\disk_crossed_line.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\disk_line.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

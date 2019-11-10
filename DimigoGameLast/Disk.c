@@ -11,6 +11,11 @@ extern GameScene* g_new_scene;
 void on_render_disk(GameObject* disk, HDC main_dc) {
   DiskData* disk_data = (DiskData*)(disk->data);
 
+  if (!disk_data->initialized_wave) {
+    init_wave_data(&disk_data->wave_data, 100);
+    disk_data->initialized_wave = true;
+  }
+
   if (waveInUnprepareHeader(disk_data->wave_data.wave_in,
                             &disk_data->wave_data.wave_hdr,
                             sizeof(WAVEHDR)) == WAVERR_STILLPLAYING) {
@@ -87,7 +92,7 @@ GameObject* create_disk(bool coco_disk, Pos pos, int speed) {
   if (disk_data == NULL) return NULL;
 
   disk_data->state = DISK_READY;
-  init_wave_data(&disk_data->wave_data, 100);
+  disk_data->initialized_wave = false;
   disk_data->descend_count = 0;
   disk_data->shadow_y_pos = pos.y + 65;
   disk_data->speed = speed;
