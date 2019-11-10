@@ -89,8 +89,8 @@ void on_render_string(GameObject* string, HDC main_dc) {
   }
 
   for (int i = 0; i < 3; i++) {
-    Pos coco_pos = {string->pos.x + 38 + i * 43, string->pos.y - 40},
-        dingding_pos = {string->pos.x + 750 + i * 43, string->pos.y - 40};
+    Pos coco_pos = {string->pos.x + 23 + i * 43, string->pos.y - 40},
+        dingding_pos = {string->pos.x + 640 + i * 43, string->pos.y - 40};
 
     render_bitmap(key_sprites[data->coco_combo[i] - 1], main_dc, coco_pos, 5);
     if (i < data->coco_index)
@@ -104,7 +104,10 @@ void on_render_string(GameObject* string, HDC main_dc) {
 }
 
 void on_collide_string(GameObject* string, GameObject* object) {
-  if (strcmp(object->tag, "flag") == 0) {
+  StringData* data = (StringData*)string->data;
+  if (strcmp(object->tag, "flag") == 0 && !data->coco_pulling &&
+      !data->dingding_pulling) {
+    Sleep(1000);
     if (object->sprite_index == 0) {
       g_new_scene = create_game_result_scene(true);
     } else {
@@ -115,7 +118,7 @@ void on_collide_string(GameObject* string, GameObject* object) {
 
 GameObject* create_string() {
   GameObject* string = init_game_object(string_sprites);
-  string->scale = 8;
+  string->scale = 6;
   string->pos = (Pos){170, 350};
   string->collidable = true;
 
