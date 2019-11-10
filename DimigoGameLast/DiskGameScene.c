@@ -29,7 +29,7 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
           false, (Pos){data->disk->pos.x + data->background_offset,
                        data->disk->pos.y});
       GameScene* new_scene = create_readystart_scene(
-          disk_scene, dingding_disk_ready_sprites, 3, (Pos){330, 240});
+          disk_scene, dingding_disk_ready_sprites, 3, (Pos){560, 300});
 
       g_new_scene = new_scene;
     } else {
@@ -71,7 +71,7 @@ GameScene* create_disk_game_scene(bool coco_turn, Pos fallen_pos) {
   GameScene* scene = init_scene();
 
   GameObject* disk =
-      create_disk(coco_turn, coco_turn ? (Pos){140, 180} : (Pos){140, 480}, 7);
+      create_disk(coco_turn, coco_turn ? (Pos){140, 180} : (Pos){140, 480}, 10);
   insert_game_object(disk, scene);
 
   GameObject* player =
@@ -84,7 +84,7 @@ GameScene* create_disk_game_scene(bool coco_turn, Pos fallen_pos) {
   player->scale = 20.25;
   insert_game_object(player, scene);
 
-  scene->sleep_duration = 5;
+  scene->sleep_duration = 20;
   scene->on_render = on_render_disk_game_scene;
 
   DiskGameData* data = malloc(sizeof(DiskGameData));

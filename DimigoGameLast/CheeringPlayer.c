@@ -28,8 +28,7 @@ GameObject* create_cheering_player(bool coco_won) {
       init_game_object(coco_won ? coco_sprites : dingding_sprites);
 
   cheering_player->sprite_index = 0;
-  cheering_player->pos = (Pos){580, 400};
-  cheering_player->scale = 25;
+  cheering_player->scale = 20.25;
 
   cheering_player->on_render = on_render_cheering_player;
 
