@@ -4,8 +4,6 @@
 HBITMAP* dingding_sprites;
 HBITMAP* coco_sprites;
 HBITMAP* background_sprites;
-HBITMAP* spit_sprites;
-HBITMAP* finish_flag_sprites;
 HBITMAP* won_message_sprites;
 HBITMAP* game_help_sprites;
 HBITMAP* ready_start_sprites;
@@ -21,6 +19,7 @@ HBITMAP* flag_sprites;
 HBITMAP* logo_sprites;
 HBITMAP* ment_sprites;
 HBITMAP* key_sprites;
+HBITMAP* sign_sprites;
 
 void init_sprite_resources(HINSTANCE inst);
 void deinit_sprite_resources();

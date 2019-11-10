@@ -1,5 +1,6 @@
 #include <stdbool.h>
 #include <stdio.h>
+#include <time.h>
 
 #include <Windows.h>
 #include <mmsystem.h>
@@ -32,6 +33,7 @@ int g_coco_score = 0;
 int g_dingding_score = 0;
 
 int main() {
+  srand((unsigned int)time(NULL));
   SetProcessDpiAwareness(PROCESS_PER_MONITOR_DPI_AWARE);
 
   HWND window = GetConsoleWindow();

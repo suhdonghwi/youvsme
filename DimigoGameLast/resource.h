@@ -57,12 +57,14 @@
 #define IDB_KEY_7                       150
 #define IDB_KEY_8                       151
 #define IDB_KEY_9                       152
+#define IDB_BITMAP5                     153
+#define IDB_OK                          153
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        153
+#define _APS_NEXT_RESOURCE_VALUE        154
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101

@@ -348,5 +348,8 @@
     <Image Include="Resource\key_9.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resource\ok.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

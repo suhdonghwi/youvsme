@@ -28,14 +28,6 @@ void init_sprite_resources(HINSTANCE inst) {
   background_sprites[2] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_PULL_BACKGROUND));
 
-  spit_sprites = malloc(sizeof(HBITMAP) * 1);
-  if (spit_sprites == NULL) return;
-  spit_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_SPIT));
-
-  finish_flag_sprites = malloc(sizeof(HBITMAP) * 1);
-  if (finish_flag_sprites == NULL) return;
-  finish_flag_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_FINISH_FLAG));
-
   won_message_sprites = malloc(sizeof(HBITMAP) * 2);
   if (won_message_sprites == NULL) return;
   won_message_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_WON));
@@ -122,6 +114,10 @@ void init_sprite_resources(HINSTANCE inst) {
   key_sprites[3] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_KEY_7));
   key_sprites[4] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_KEY_8));
   key_sprites[5] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_KEY_9));
+
+  sign_sprites = malloc(sizeof(HBITMAP) * 1);
+  if (sign_sprites == NULL) return;
+  sign_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_OK));
 }
 
 void deinit_sprite_resources() {
@@ -137,12 +133,6 @@ void deinit_sprite_resources() {
 
   DeleteObject(background_sprites[0]);
   free(background_sprites);
-
-  DeleteObject(spit_sprites[0]);
-  free(spit_sprites);
-
-  DeleteObject(finish_flag_sprites[0]);
-  free(finish_flag_sprites);
 
   DeleteObject(won_message_sprites[0]);
   DeleteObject(won_message_sprites[1]);
@@ -209,4 +199,7 @@ void deinit_sprite_resources() {
   DeleteObject(key_sprites[4]);
   DeleteObject(key_sprites[5]);
   free(key_sprites);
+
+  DeleteObject(sign_sprites[0]);
+  free(sign_sprites);
 }
