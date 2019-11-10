@@ -27,6 +27,8 @@ GameObject* create_score_display() {
   data->font = CreateFont(50, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
                           VARIABLE_PITCH | FF_ROMAN, TEXT("µÕ±Ù¸ğ²Ã"));
 
+  score_display->data = data;
+
   score_display->after_render = after_render_score_display;
   return score_display;
 }
