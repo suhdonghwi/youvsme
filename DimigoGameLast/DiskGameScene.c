@@ -29,7 +29,7 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
           false, (Pos){data->disk->pos.x + data->background_offset,
                        data->disk->pos.y});
       GameScene* new_scene = create_readystart_scene(
-          disk_scene, dingding_turn_sprites, 3, (Pos){70, 100});
+          disk_scene, dingding_turn_sprites, 3, (Pos){330, 240});
 
       g_new_scene = new_scene;
     } else {
@@ -51,16 +51,18 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
 
   if (!(data->fallen_pos.x == 0 && data->fallen_pos.y == 0)) {
     render_bitmap(coco_disk_sprites[0], main_dc, data->fallen_pos, 10);
-    render_bitmap(coco_sprites[0], main_dc, (Pos){data->fallen_pos.x + 77, 30},
-                  20);
-    render_bitmap(ment_sprites[0], main_dc, (Pos){data->fallen_pos.x + 152, 10},
-                  1);
     if (data->disk->pos.x >= data->fallen_pos.x) {
       render_bitmap(disk_line_sprites[1], main_dc,
                     (Pos){data->fallen_pos.x + 110, 185}, 25);
+      render_bitmap(coco_sprites[3], main_dc,
+                    (Pos){data->fallen_pos.x + 77, 30}, 20);
     } else {
       render_bitmap(disk_line_sprites[0], main_dc,
                     (Pos){data->fallen_pos.x + 110, 185}, 25);
+      render_bitmap(coco_sprites[0], main_dc,
+                    (Pos){data->fallen_pos.x + 77, 30}, 20);
+      render_bitmap(ment_sprites[0], main_dc,
+                    (Pos){data->fallen_pos.x + 152, 10}, 1);
     }
   }
 }

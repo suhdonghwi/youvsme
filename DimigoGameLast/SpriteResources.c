@@ -3,7 +3,7 @@
 #include "resource.h"
 
 void init_sprite_resources(HINSTANCE inst) {
-  dingding_sprites = malloc(sizeof(HBITMAP) * 3);
+  dingding_sprites = malloc(sizeof(HBITMAP) * 4);
   if (dingding_sprites == NULL) return;
   dingding_sprites[0] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_STANDING));
@@ -11,12 +11,14 @@ void init_sprite_resources(HINSTANCE inst) {
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_CHEERING));
   dingding_sprites[2] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_THROWING));
+  dingding_sprites[3] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_CRYING));
 
-  coco_sprites = malloc(sizeof(HBITMAP) * 3);
+  coco_sprites = malloc(sizeof(HBITMAP) * 4);
   if (coco_sprites == NULL) return;
   coco_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_STANDING));
   coco_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_CHEERING));
   coco_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_THROWING));
+  coco_sprites[3] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_CRYING));
 
   background_sprites = malloc(sizeof(HBITMAP) * 3);
   if (background_sprites == NULL) return;
@@ -68,11 +70,11 @@ void init_sprite_resources(HINSTANCE inst) {
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_DISK4));
 
   disk_shadow_sprites = malloc(sizeof(HBITMAP) * 1);
-  if (disk_shadow_sprites == NULL) return NULL;
+  if (disk_shadow_sprites == NULL) return;
   disk_shadow_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_SHADOW));
 
   disk_line_sprites = malloc(sizeof(HBITMAP) * 2);
-  if (disk_line_sprites == NULL) return NULL;
+  if (disk_line_sprites == NULL) return;
   disk_line_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_LINE));
   disk_line_sprites[1] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_CROSSED_LINE));

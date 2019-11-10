@@ -57,7 +57,7 @@ int main() {
 
   GameScene* ready_scene =
       create_readystart_scene(create_disk_game_scene(true, (Pos){0, 0}),
-                              coco_turn_sprites, 3, (Pos){70, 100});
+                              coco_turn_sprites, 3, (Pos){330, 240});
   g_current_scene = create_game_help_scene(game_help_sprites[0],
                                            logo_sprites[0], ready_scene);
 

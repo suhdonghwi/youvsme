@@ -324,5 +324,11 @@
     <Image Include="Resource\no_ment.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resource\coco_crying.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dingding_crying.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
