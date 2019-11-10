@@ -47,13 +47,14 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
   if (data->player->sprites == coco_sprites) {
     render_bitmap(dingding_sprites[0], main_dc, (Pos){data->player->pos.x, 440},
                   25);
-  } else {
-    render_bitmap(coco_sprites[0], main_dc, (Pos){data->player->pos.x, 140},
-                  25);
   }
 
   if (!(data->fallen_pos.x == 0 && data->fallen_pos.y == 0)) {
     render_bitmap(coco_disk_sprites[0], main_dc, data->fallen_pos, 10);
+    render_bitmap(coco_sprites[0], main_dc, (Pos){data->fallen_pos.x + 77, 30},
+                  20);
+    render_bitmap(ment_sprites[0], main_dc, (Pos){data->fallen_pos.x + 152, 10},
+                  1);
     if (data->disk->pos.x >= data->fallen_pos.x) {
       render_bitmap(disk_line_sprites[1], main_dc,
                     (Pos){data->fallen_pos.x + 110, 185}, 25);

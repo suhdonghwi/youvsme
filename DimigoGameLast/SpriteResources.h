@@ -19,6 +19,7 @@ HBITMAP* score_board_sprites;
 HBITMAP* string_sprites;
 HBITMAP* flag_sprites;
 HBITMAP* logo_sprites;
+HBITMAP* ment_sprites;
 
 void init_sprite_resources(HINSTANCE inst);
 void deinit_sprite_resources();

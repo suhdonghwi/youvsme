@@ -101,6 +101,7 @@
     <Image Include="Resource\disk_shadow.bmp" />
     <Image Include="Resource\finish_flag.bmp" />
     <Image Include="Resource\now_blow.bmp" />
+    <Image Include="Resource\no_ment.bmp" />
     <Image Include="Resource\plane_background.bmp" />
     <Image Include="Resource\player1_cheering.bmp" />
     <Image Include="Resource\player1_standing.bmp" />

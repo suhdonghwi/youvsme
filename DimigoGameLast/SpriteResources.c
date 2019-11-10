@@ -107,6 +107,10 @@ void init_sprite_resources(HINSTANCE inst) {
   if (logo_sprites == NULL) return;
   logo_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_LOGO));
   logo_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PULL_LOGO));
+
+  ment_sprites = malloc(sizeof(HBITMAP) * 1);
+  if (ment_sprites == NULL) return;
+  ment_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_NO_MENT));
 }
 
 void deinit_sprite_resources() {
@@ -183,4 +187,7 @@ void deinit_sprite_resources() {
   DeleteObject(logo_sprites[0]);
   DeleteObject(logo_sprites[1]);
   free(logo_sprites);
+
+  DeleteObject(ment_sprites[0]);
+  free(ment_sprites);
 }

@@ -321,5 +321,8 @@
     <Image Include="Resource\disk_line.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resource\no_ment.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
