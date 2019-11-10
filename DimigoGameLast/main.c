@@ -67,7 +67,7 @@ int main() {
                                            logo_sprites[1], ready_scene);*/
   GameScene* ready_scene =
       create_readystart_scene(create_disk_game_scene(true, (Pos){0, 0}),
-                              coco_disk_ready_sprites, 3, (Pos){250, 170});
+                              coco_disk_ready_sprites, 3, (Pos){560, 300});
   g_current_scene = create_game_help_scene(game_help_sprites[0],
                                            logo_sprites[0], ready_scene);
   // g_current_scene = create_pull_game_scene();

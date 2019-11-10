@@ -7,14 +7,14 @@ extern GameScene* g_new_scene;
 void on_render_readystart_scene(GameScene* scene, HDC main_dc) {
   ReadyStartData* data = (ReadyStartData*)scene->data;
 
-  render_bitmap(background_sprites[1], main_dc, (Pos){0, 0}, 25);
+  render_bitmap(background_sprites[1], main_dc, (Pos){0, 0}, 20.25);
   HBITMAP current_bitmap = data->slide_bitmaps[data->index];
   BITMAP bitmap_data;
   GetObject(current_bitmap, sizeof(BITMAP), &bitmap_data);
   render_bitmap(current_bitmap, main_dc,
-                (Pos){data->render_pos.x - bitmap_data.bmWidth / 2,
-                      data->render_pos.y - bitmap_data.bmHeight / 2},
-                25);
+                (Pos){data->render_pos.x - (bitmap_data.bmWidth * 4.5) / 2,
+                      data->render_pos.y - (bitmap_data.bmHeight * 4.5) / 2},
+                20);
 
   data->index++;
 
