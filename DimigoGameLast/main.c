@@ -22,7 +22,10 @@
 
 GameScene* g_current_scene;
 GameScene* g_new_scene;
-bool g_pressed_map[0xFE] = {
+SHORT g_pressed_map[256] = {
+    false,
+};
+SHORT g_prev_pressed_map[256] = {
     false,
 };
 int g_coco_score = 0;
@@ -47,18 +50,19 @@ int main() {
   RECT window_rect;
   GetClientRect(window, &window_rect);
 
-  HANDLE std_input = GetStdHandle(STD_INPUT_HANDLE);
-  DWORD num_read, num_input;
-  INPUT_RECORD input_buf[32];
+  // HANDLE std_input = GetStdHandle(STD_INPUT_HANDLE);
+  // DWORD num_read, num_input;
+  // INPUT_RECORD input_buf[32];
 
   HBRUSH background_brush = GetStockObject(BLACK_BRUSH);
 
   AddFontResource("DungGeunMo.ttf");
 
-  GameScene* ready_scene = create_readystart_scene(
+  /*GameScene* ready_scene = create_readystart_scene(
       create_pull_game_scene(), coco_turn_sprites, 3, (Pos){330, 240});
   g_current_scene = create_game_help_scene(game_help_sprites[1],
-                                           logo_sprites[1], ready_scene);
+                                           logo_sprites[1], ready_scene);*/
+  g_current_scene = create_pull_game_scene();
 
   // g_current_scene = create_disk_game_scene(true, (Pos){0, 0});
   // g_current_scene = create_game_result_scene(false);
@@ -66,7 +70,7 @@ int main() {
   g_new_scene = NULL;
 
   while (1) {
-    GetNumberOfConsoleInputEvents(std_input, &num_input);
+    /*GetNumberOfConsoleInputEvents(std_input, &num_input);
 
     if (num_input > 0) {
       ReadConsoleInput(std_input, input_buf, 32, &num_read);
@@ -79,6 +83,10 @@ int main() {
           }
         }
       }
+    }*/
+    memcpy(g_prev_pressed_map, g_pressed_map, sizeof(g_prev_pressed_map));
+    for (int i = 0; i < 256; i++) {
+      g_pressed_map[i] = GetAsyncKeyState(i);
     }
 
     render_game_scene(g_current_scene, window_dc, window_width, window_height);

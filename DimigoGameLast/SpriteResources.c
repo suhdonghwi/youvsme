@@ -208,5 +208,5 @@ void deinit_sprite_resources() {
   DeleteObject(key_sprites[3]);
   DeleteObject(key_sprites[4]);
   DeleteObject(key_sprites[5]);
-  free(key_sprites)
+  free(key_sprites);
 }

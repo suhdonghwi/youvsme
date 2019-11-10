@@ -2,7 +2,7 @@
 #include "GameObject.h"
 
 typedef struct tagStringData {
-  bool coco_pressed, dingding_pressed;
+  int coco_combo[3], dingding_combo[3];
 } StringData;
 
 GameObject* create_string();

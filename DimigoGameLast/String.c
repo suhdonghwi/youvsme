@@ -3,24 +3,32 @@
 #include "GameScene.h"
 #include "SpriteResources.h"
 
-extern bool g_pressed_map[0xFE];
+extern SHORT g_pressed_map[256];
+extern SHORT g_prev_pressed_map[256];
 extern GameScene* g_new_scene;
+
+bool is_pressed(int index) {
+  return g_pressed_map[index] && !g_prev_pressed_map[index];
+}
+
+void add_to_combo(int i, int* buf) {
+  for (int j = 0; j < 3; j++) {
+    if (buf[j] == 0) {
+      buf[j] = i;
+      break;
+    }
+  }
+}
 
 void on_render_string(GameObject* string, HDC main_dc) {
   StringData* data = (StringData*)string->data;
 
-  if ((GetAsyncKeyState(0x41) & 0x8001) && !data->coco_pressed) {
-    string->pos.x -= 10;
-    data->coco_pressed = true;
-  } else if (GetAsyncKeyState(0x41) == 0) {
-    data->coco_pressed = false;
-  }
-
-  if ((GetAsyncKeyState(0x4C) & 0x8001) && !data->dingding_pressed) {
-    string->pos.x += 10;
-    data->dingding_pressed = true;
-  } else if (GetAsyncKeyState(0x4C) == 0) {
-    data->dingding_pressed = false;
+  if (is_pressed(0x31)) {
+    add_to_combo(1, data->coco_combo);
+  } else if (is_pressed(0x32)) {
+    add_to_combo(2, data->coco_combo);
+  } else if (is_pressed(0x33)) {
+    add_to_combo(3, data->coco_combo);
   }
 }
 
@@ -45,8 +53,8 @@ GameObject* create_string() {
 
   StringData* data = malloc(sizeof(StringData));
   if (data == NULL) return NULL;
-  data->coco_pressed = false;
-  data->dingding_pressed = false;
+  memset(data->coco_combo, 0, sizeof(data->coco_combo));
+  memset(data->dingding_combo, 0, sizeof(data->dingding_combo));
 
   string->data = data;
 
