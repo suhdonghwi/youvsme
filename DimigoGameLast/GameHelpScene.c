@@ -2,7 +2,7 @@
 
 #include "SpriteResources.h"
 
-extern bool g_pressed_map[0xFE];
+extern SHORT g_pressed_map[256];
 extern GameScene* g_new_scene;
 
 void on_render_game_help_scene(GameScene* scene, HDC main_dc) {
@@ -25,7 +25,7 @@ void on_render_game_help_scene(GameScene* scene, HDC main_dc) {
   SetTextColor(main_dc, RGB(60, 60, 60));
   TextOut(main_dc, 460, 640, press_s, strlen(press_s));
 
-  if (g_pressed_map['s'] || g_pressed_map['S']) {
+  if (g_pressed_map[0x53]) {
     g_new_scene = data->dest_scene;
   }
 }

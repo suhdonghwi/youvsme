@@ -29,7 +29,7 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
           false, (Pos){data->disk->pos.x + data->background_offset,
                        data->disk->pos.y});
       GameScene* new_scene = create_readystart_scene(
-          disk_scene, dingding_turn_sprites, 3, (Pos){330, 240});
+          disk_scene, dingding_disk_ready_sprites, 3, (Pos){330, 240});
 
       g_new_scene = new_scene;
     } else {

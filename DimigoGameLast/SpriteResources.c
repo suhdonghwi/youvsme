@@ -71,19 +71,6 @@ void init_sprite_resources(HINSTANCE inst) {
   disk_line_sprites[1] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_CROSSED_LINE));
 
-  coco_turn_sprites = malloc(sizeof(HBITMAP) * 3);
-  if (coco_turn_sprites == NULL) return;
-  coco_turn_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_TURN));
-  coco_turn_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_READY));
-  coco_turn_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_NOW_BLOW));
-
-  dingding_turn_sprites = malloc(sizeof(HBITMAP) * 3);
-  if (dingding_turn_sprites == NULL) return;
-  dingding_turn_sprites[0] =
-      LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_TURN));
-  dingding_turn_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_READY));
-  dingding_turn_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_NOW_BLOW));
-
   score_board_sprites = malloc(sizeof(HBITMAP) * 1);
   if (score_board_sprites == NULL) return;
   score_board_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_SCORE_BOARD));
@@ -118,6 +105,25 @@ void init_sprite_resources(HINSTANCE inst) {
   sign_sprites = malloc(sizeof(HBITMAP) * 1);
   if (sign_sprites == NULL) return;
   sign_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_OK));
+
+  coco_disk_ready_sprites = malloc(sizeof(HBITMAP) * 3);
+  if (coco_disk_ready_sprites == NULL) return;
+  coco_disk_ready_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_TURN));
+  coco_disk_ready_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_READY));
+  coco_disk_ready_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_NOW_BLOW));
+
+  dingding_disk_ready_sprites = malloc(sizeof(HBITMAP) * 3);
+  if (dingding_disk_ready_sprites == NULL) return;
+  dingding_disk_ready_sprites[0] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_TURN));
+  dingding_disk_ready_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_READY));
+  dingding_disk_ready_sprites[2] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_NOW_BLOW));
+
+  pull_ready_sprites = malloc(sizeof(HBITMAP) * 2);
+  if (pull_ready_sprites == NULL) return;
+  pull_ready_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_READY));
+  pull_ready_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_START));
 }
 
 void deinit_sprite_resources() {
@@ -165,16 +171,6 @@ void deinit_sprite_resources() {
   DeleteObject(disk_line_sprites[1]);
   free(disk_line_sprites);
 
-  DeleteObject(coco_turn_sprites[0]);
-  DeleteObject(coco_turn_sprites[1]);
-  DeleteObject(coco_turn_sprites[2]);
-  free(coco_turn_sprites);
-
-  DeleteObject(dingding_turn_sprites[0]);
-  DeleteObject(dingding_turn_sprites[1]);
-  DeleteObject(dingding_turn_sprites[2]);
-  free(dingding_turn_sprites);
-
   DeleteObject(score_board_sprites[0]);
   free(score_board_sprites);
 
@@ -202,4 +198,18 @@ void deinit_sprite_resources() {
 
   DeleteObject(sign_sprites[0]);
   free(sign_sprites);
+
+  DeleteObject(coco_disk_ready_sprites[0]);
+  DeleteObject(coco_disk_ready_sprites[1]);
+  DeleteObject(coco_disk_ready_sprites[2]);
+  free(coco_disk_ready_sprites);
+
+  DeleteObject(dingding_disk_ready_sprites[0]);
+  DeleteObject(dingding_disk_ready_sprites[1]);
+  DeleteObject(dingding_disk_ready_sprites[2]);
+  free(dingding_disk_ready_sprites);
+
+  DeleteObject(pull_ready_sprites[0]);
+  DeleteObject(pull_ready_sprites[1]);
+  free(pull_ready_sprites);
 }

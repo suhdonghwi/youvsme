@@ -11,8 +11,6 @@ HBITMAP* coco_disk_sprites;
 HBITMAP* dingding_disk_sprites;
 HBITMAP* disk_shadow_sprites;
 HBITMAP* disk_line_sprites;
-HBITMAP* coco_turn_sprites;
-HBITMAP* dingding_turn_sprites;
 HBITMAP* score_board_sprites;
 HBITMAP* string_sprites;
 HBITMAP* flag_sprites;
@@ -20,6 +18,10 @@ HBITMAP* logo_sprites;
 HBITMAP* ment_sprites;
 HBITMAP* key_sprites;
 HBITMAP* sign_sprites;
+
+HBITMAP* coco_disk_ready_sprites;
+HBITMAP* dingding_disk_ready_sprites;
+HBITMAP* pull_ready_sprites;
 
 void init_sprite_resources(HINSTANCE inst);
 void deinit_sprite_resources();
