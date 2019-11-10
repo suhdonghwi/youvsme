@@ -11,8 +11,8 @@ void on_render_game_help_scene(GameScene* scene, HDC main_dc) {
   SelectObject(main_dc, data->font);
 
   render_bitmap(background_sprites[1], main_dc, (Pos){0, 0}, 20.25);
-  render_bitmap(data->logo, main_dc, (Pos){360, 40}, 13);
-  render_bitmap(data->help_message, main_dc, (Pos){250, 240}, 3.5);
+  render_bitmap(data->help_message, main_dc, (Pos){250, 250}, 3.5);
+  render_bitmap(data->logo, main_dc, (Pos){360, 30}, 13);
 
   char* press_s = TEXT("[S]키를 눌러서 시작하세요!");
 

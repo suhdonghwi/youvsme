@@ -45,20 +45,22 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
                 (Pos){-data->background_offset, 0}, 20.25);
 
   if (data->player->sprites == coco_sprites) {
-    render_bitmap(dingding_sprites[0], main_dc, (Pos){data->player->pos.x, 440},
+    render_bitmap(dingding_sprites[0], main_dc, (Pos){data->player->pos.x, 410},
                   20.25);
   }
 
   if (!(data->fallen_pos.x == 0 && data->fallen_pos.y == 0)) {
     render_bitmap(coco_disk_sprites[0], main_dc, data->fallen_pos, 6);
+    render_bitmap(
+        disk_line_sprites[data->disk->pos.x >= data->fallen_pos.x ? 1 : 0],
+        main_dc, (Pos){data->fallen_pos.x + 80, 166}, 20.25);
+
     if (data->disk->pos.x >= data->fallen_pos.x) {
       render_bitmap(disk_line_sprites[1], main_dc,
-                    (Pos){data->fallen_pos.x + 110, 185}, 20.25);
+                    (Pos){data->fallen_pos.x + 80, 166}, 20.25);
       render_bitmap(coco_sprites[3], main_dc,
                     (Pos){data->fallen_pos.x + 77, 30}, 16);
     } else {
-      render_bitmap(disk_line_sprites[0], main_dc,
-                    (Pos){data->fallen_pos.x + 110, 185}, 20.25);
       render_bitmap(coco_sprites[0], main_dc,
                     (Pos){data->fallen_pos.x + 77, 30}, 16);
       render_bitmap(ment_sprites[0], main_dc,
@@ -71,7 +73,7 @@ GameScene* create_disk_game_scene(bool coco_turn, Pos fallen_pos) {
   GameScene* scene = init_scene();
 
   GameObject* disk =
-      create_disk(coco_turn, coco_turn ? (Pos){140, 180} : (Pos){140, 480}, 10);
+      create_disk(coco_turn, coco_turn ? (Pos){140, 180} : (Pos){140, 430}, 10);
   insert_game_object(disk, scene);
 
   GameObject* player =
@@ -79,7 +81,7 @@ GameScene* create_disk_game_scene(bool coco_turn, Pos fallen_pos) {
   if (coco_turn) {
     player->pos = (Pos){50, 140};
   } else {
-    player->pos = (Pos){50, 440};
+    player->pos = (Pos){50, 410};
   }
   player->scale = 20.25;
   insert_game_object(player, scene);

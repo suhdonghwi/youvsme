@@ -68,13 +68,13 @@ int main() {
   GameScene* ready_scene =
       create_readystart_scene(create_disk_game_scene(true, (Pos){0, 0}),
                               coco_disk_ready_sprites, 3, (Pos){560, 300});
-  /*g_current_scene = create_game_help_scene(game_help_sprites[0],
-                                           logo_sprites[0], ready_scene);*/
+  g_current_scene = create_game_help_scene(game_help_sprites[0],
+                                           logo_sprites[0], ready_scene);
   // g_current_scene = create_pull_game_scene();
 
   // g_current_scene = create_disk_game_scene(true, (Pos){0, 0});
   // g_current_scene = create_game_result_scene(false);
-  g_current_scene = create_pull_game_scene();
+  // g_current_scene = create_pull_game_scene();
   g_new_scene = NULL;
 
   while (1) {
