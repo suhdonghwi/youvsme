@@ -291,5 +291,29 @@
     <Image Include="Resource\pull_logo.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resource\coco_disk2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\coco_disk3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\coco_disk4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\coco_disk1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dingding_disk1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dingding_disk2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dingding_disk3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dingding_disk4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

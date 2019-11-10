@@ -24,7 +24,7 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
   if (disk_data->state == DISK_LANDED) {
     Sleep(1500);
 
-    if (data->disk->sprite_index == 0) {
+    if (data->disk->sprites == coco_disk_sprites) {
       GameScene* disk_scene = create_disk_game_scene(
           false, (Pos){data->disk->pos.x + data->background_offset,
                        data->disk->pos.y});
@@ -33,12 +33,12 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
 
       g_new_scene = new_scene;
     } else {
-      if (data->fallen_pos.x == 0 && data->fallen_pos.y == 0) return;
+      // if (data->fallen_pos.x == 0 && data->fallen_pos.y == 0) return;
 
       if (data->fallen_pos.x >= data->disk->pos.x) {
-        g_new_scene = create_game_result_scene(false);
-      } else {
         g_new_scene = create_game_result_scene(true);
+      } else {
+        g_new_scene = create_game_result_scene(false);
       }
     }
   }
@@ -55,7 +55,7 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
   }
 
   if (!(data->fallen_pos.x == 0 && data->fallen_pos.y == 0)) {
-    render_bitmap(disk_sprites[0], main_dc, data->fallen_pos, 25);
+    render_bitmap(coco_disk_sprites[0], main_dc, data->fallen_pos, 10);
   }
 }
 

@@ -33,13 +33,21 @@ void on_render_disk(GameObject* disk, HDC main_dc) {
           disk_data->state = DISK_FLYING;
         }
         break;
-      case DISK_FLYING:
+      case DISK_FLYING: {
+        clock_t current_clock = clock();
+        if (((double)current_clock - disk_data->last_turn_clock) /
+                CLOCKS_PER_SEC >
+            0.2) {
+          disk->sprite_index = (disk->sprite_index + 1) % 4;
+          disk_data->last_turn_clock = clock();
+        }
         if (volume > 0.1) {
           disk->pos.x += disk_data->speed;
         } else {
           disk_data->state = DISK_DESCENDING;
         }
         break;
+      }
       case DISK_DESCENDING:
         disk->pos.x += disk_data->speed;
         disk->pos.y += disk_data->speed;
@@ -57,8 +65,8 @@ void on_render_disk(GameObject* disk, HDC main_dc) {
     disk_data->state = DISK_DESCENDING;
   }
 
-  render_bitmap(disk_sprites[2], main_dc,
-                (Pos){disk->pos.x, disk_data->shadow_y_pos}, 25);
+  render_bitmap(disk_shadow_sprites[0], main_dc,
+                (Pos){disk->pos.x, disk_data->shadow_y_pos}, 30);
 }
 
 void on_destroy_disk(GameObject* disk) {
@@ -67,10 +75,10 @@ void on_destroy_disk(GameObject* disk) {
 }
 
 GameObject* create_disk(bool coco_disk, Pos pos, int speed) {
-  GameObject* disk = init_game_object(disk_sprites);
-  if (!coco_disk) disk->sprite_index = 1;
+  GameObject* disk =
+      init_game_object(coco_disk ? coco_disk_sprites : dingding_disk_sprites);
 
-  disk->scale = 25;
+  disk->scale = 10;
   disk->pos = pos;
   disk->on_render = on_render_disk;
   disk->on_destroy = on_destroy_disk;
@@ -83,6 +91,7 @@ GameObject* create_disk(bool coco_disk, Pos pos, int speed) {
   disk_data->descend_count = 0;
   disk_data->shadow_y_pos = pos.y + 65;
   disk_data->speed = speed;
+  disk_data->last_turn_clock = clock();
 
   disk->data = disk_data;
   return disk;

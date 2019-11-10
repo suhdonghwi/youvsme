@@ -49,11 +49,26 @@ void init_sprite_resources(HINSTANCE inst) {
   ready_start_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_READY));
   ready_start_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_START));
 
-  disk_sprites = malloc(sizeof(HBITMAP) * 3);
-  if (disk_sprites == NULL) return;
-  disk_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_DISK));
-  disk_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_DISK));
-  disk_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_SHADOW));
+  coco_disk_sprites = malloc(sizeof(HBITMAP) * 4);
+  if (coco_disk_sprites == NULL) return;
+  coco_disk_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_DISK1));
+  coco_disk_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_DISK2));
+  coco_disk_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_DISK3));
+  coco_disk_sprites[3] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_DISK4));
+
+  dingding_disk_sprites = malloc(sizeof(HBITMAP) * 4);
+  if (dingding_disk_sprites == NULL) return NULL;
+  dingding_disk_sprites[0] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_DISK1));
+  dingding_disk_sprites[1] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_DISK2));
+  dingding_disk_sprites[2] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_DISK3));
+  dingding_disk_sprites[3] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_DISK4));
+
+  disk_shadow_sprites = malloc(sizeof(HBITMAP) * 1);
+  disk_shadow_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_SHADOW));
 
   coco_turn_sprites = malloc(sizeof(HBITMAP) * 3);
   if (coco_turn_sprites == NULL) return;
@@ -119,9 +134,20 @@ void deinit_sprite_resources() {
   DeleteObject(ready_start_sprites[1]);
   free(ready_start_sprites);
 
-  DeleteObject(disk_sprites[0]);
-  DeleteObject(disk_sprites[1]);
-  free(disk_sprites);
+  DeleteObject(coco_disk_sprites[0]);
+  DeleteObject(coco_disk_sprites[1]);
+  DeleteObject(coco_disk_sprites[2]);
+  DeleteObject(coco_disk_sprites[3]);
+  free(coco_disk_sprites);
+
+  DeleteObject(dingding_disk_sprites[0]);
+  DeleteObject(dingding_disk_sprites[1]);
+  DeleteObject(dingding_disk_sprites[2]);
+  DeleteObject(dingding_disk_sprites[3]);
+  free(dingding_disk_sprites);
+
+  DeleteObject(disk_shadow_sprites[0]);
+  free(disk_shadow_sprites);
 
   DeleteObject(coco_turn_sprites[0]);
   DeleteObject(coco_turn_sprites[1]);
