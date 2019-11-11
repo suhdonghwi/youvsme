@@ -22,37 +22,20 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
   render_bitmap(background_sprites[data->is_coco_turn ? 5 : 4], main_dc,
                 (Pos){0, 0}, 20.25);
 
-  if (!data->is_coco_turn) {
-    DancerData* dingding_data = (DancerData*)data->dingding->data;
+  DancerData* dancer_data =
+      data->is_coco_turn ? data->coco->data : data->dingding->data;
 
-    if (dingding_data->dance_queue == NULL) {
-      init_dance_queue(&dingding_data->dance_queue, 4);
-      dingding_data->dance_max = 4;
-      dingding_data->is_dancing = true;
-    }
+  if (dancer_data->dance_queue == NULL) {
+    init_dance_queue(&dancer_data->dance_queue, 4);
+    dancer_data->dance_max = 4;
+    dancer_data->is_dancing = true;
+  }
 
-    if (is_dance_queue_full(dingding_data->dance_queue,
-                            dingding_data->dance_max)) {
-      deinit_dance_queue(&dingding_data->dance_queue);
-      dingding_data->is_dancing = false;
-      dingding_data->dance_max = 0;
-      data->is_coco_turn = !data->is_coco_turn;
-    }
-  } else {
-    DancerData* coco_data = (DancerData*)data->coco->data;
-
-    if (coco_data->dance_queue == NULL) {
-      init_dance_queue(&coco_data->dance_queue, 4);
-      coco_data->dance_max = 4;
-      coco_data->is_dancing = true;
-    }
-
-    if (is_dance_queue_full(coco_data->dance_queue, coco_data->dance_max)) {
-      deinit_dance_queue(&coco_data->dance_queue);
-      coco_data->is_dancing = false;
-      coco_data->dance_max = 0;
-      data->is_coco_turn = !data->is_coco_turn;
-    }
+  if (is_dance_queue_full(dancer_data->dance_queue, dancer_data->dance_max)) {
+    deinit_dance_queue(&dancer_data->dance_queue);
+    dancer_data->is_dancing = false;
+    dancer_data->dance_max = 0;
+    data->is_coco_turn = !data->is_coco_turn;
   }
 }
 
@@ -74,11 +57,11 @@ GameScene* create_dance_game_scene() {
   dingding_keys[3] = VK_LEFT;
 
   GameObject* coco = create_dancer(true, coco_keys);
-  coco->pos = (Pos){290, 280};
+  coco->pos = (Pos){290, 355};
   insert_game_object(coco, scene);
 
   GameObject* dingding = create_dancer(false, dingding_keys);
-  dingding->pos = (Pos){650, 280};
+  dingding->pos = (Pos){710, 355};
   insert_game_object(dingding, scene);
 
   DanceGameSceneData* data = malloc(sizeof(DanceGameSceneData));
@@ -88,6 +71,7 @@ GameScene* create_dance_game_scene() {
   data->is_coco_turn = false;
 
   scene->data = data;
+  scene->sleep_duration = 5;
 
   scene->on_render = on_render_dance_game_scene;
   return scene;

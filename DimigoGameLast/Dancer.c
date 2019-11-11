@@ -1,6 +1,10 @@
 #include "Dancer.h"
+#include "DanceNote.h"
+#include "GameScene.h"
 #include "KeyInput.h"
 #include "SpriteResources.h"
+
+extern GameScene* g_current_scene;
 
 int dance_queue_length(DanceDirection* queue, int max) {
   if (queue == NULL) return 0;
@@ -32,6 +36,13 @@ void on_render_dancer(GameObject* dancer, HDC main_dc) {
       for (int i = 0; i < 4; i++) {
         if (is_pressed(data->move_keys[i])) {
           dance_queue_push(data->dance_queue, data->dance_max, directions[i]);
+
+          GameObject* note =
+              create_dance_note(directions[i], dancer->sprites,
+                                dancer->sprites == dingding_sprites ? -2 : 2);
+          note->pos = (Pos){dancer->pos.x, dancer->pos.y + 20};
+          note->scale = 3;
+          insert_game_object(note, g_current_scene);
         }
       }
     }
@@ -49,7 +60,7 @@ void on_render_dancer(GameObject* dancer, HDC main_dc) {
 GameObject* create_dancer(bool coco, SHORT* move_keys) {
   GameObject* dancer = init_game_object(coco ? coco_sprites : dingding_sprites);
 
-  dancer->scale = 25;
+  dancer->scale = 7;
 
   DancerData* data = malloc(sizeof(DancerData));
   if (data == NULL) return NULL;

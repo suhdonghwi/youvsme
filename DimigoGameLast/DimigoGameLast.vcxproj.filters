@@ -114,6 +114,9 @@
     <ClCompile Include="KeyInput.c">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
+    <ClCompile Include="DanceNote.c">
+      <Filter>Source Files\GameObjects\DanceGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">
@@ -178,6 +181,9 @@
     </ClInclude>
     <ClInclude Include="KeyInput.h">
       <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="DanceNote.h">
+      <Filter>Header Files\GameObjects\DanceGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
