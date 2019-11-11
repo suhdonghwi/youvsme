@@ -20,7 +20,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DanceGameScene.c" />
+    <ClCompile Include="Dancer.c" />
     <ClCompile Include="Flag.c" />
+    <ClCompile Include="KeyInput.c" />
     <ClCompile Include="PullGameScene.c" />
     <ClCompile Include="String.c" />
     <ClCompile Include="ThrowingPlayer.c" />
@@ -41,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DanceGameScene.h" />
+    <ClInclude Include="Dancer.h" />
     <ClInclude Include="Flag.h" />
+    <ClInclude Include="KeyInput.h" />
     <ClInclude Include="PullGameScene.h" />
     <ClInclude Include="String.h" />
     <ClInclude Include="ThrowingPlayer.h" />

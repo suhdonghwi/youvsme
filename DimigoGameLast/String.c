@@ -4,16 +4,13 @@
 
 #include "GameResultScene.h"
 #include "GameScene.h"
+#include "KeyInput.h"
 #include "SpriteResources.h"
 #include "String.h"
 
 extern SHORT g_pressed_map[256];
 extern SHORT g_prev_pressed_map[256];
 extern GameScene* g_new_scene;
-
-bool is_pressed(int index) {
-  return g_pressed_map[index] && !g_prev_pressed_map[index];
-}
 
 void randomize_combo(int* combo) {
   for (int i = 0; i < 3; i++) combo[i] = 1 + rand() % 3;

@@ -7,7 +7,7 @@
 #include <shellscalingapi.h>
 #include <vfw.h>
 
-#include "Camera.h"
+#include "KeyInput.h"
 #include "WaveAudio.h"
 
 #include "SpriteResources.h"
@@ -22,14 +22,11 @@
 #include "GameObject.h"
 #include "GameScene.h"
 
+extern SHORT g_pressed_map[256];
+extern SHORT g_prev_pressed_map[256];
+
 GameScene* g_current_scene;
 GameScene* g_new_scene;
-SHORT g_pressed_map[256] = {
-    false,
-};
-SHORT g_prev_pressed_map[256] = {
-    false,
-};
 int g_coco_score = 0;
 int g_dingding_score = 0;
 
@@ -62,10 +59,10 @@ int main() {
   AddFontResource("DungGeunMo.ttf");
   // RemoveFontResource("DungGeunMo.ttf");
 
-  GameScene* ready_scene = create_readystart_scene(
+  /*GameScene* ready_scene = create_readystart_scene(
       create_pull_game_scene(), pull_ready_sprites, 2, (Pos){560, 300});
   g_current_scene = create_game_help_scene(game_help_sprites[1],
-                                           logo_sprites[1], ready_scene);
+                                           logo_sprites[1], ready_scene);*/
   /*GameScene* ready_scene =
       create_readystart_scene(create_disk_game_scene(true, (Pos){0, 0}),
                               coco_disk_ready_sprites, 3, (Pos){560, 300});
@@ -94,11 +91,8 @@ int main() {
         }
       }
     }*/
-    memcpy(g_prev_pressed_map, g_pressed_map, sizeof(g_prev_pressed_map));
-    for (int i = 0; i < 256; i++) {
-      g_pressed_map[i] = GetAsyncKeyState(i);
-    }
 
+    update_pressed_map();
     render_game_scene(g_current_scene, window_dc, window_width, window_height);
 
     if (g_new_scene != NULL) {
