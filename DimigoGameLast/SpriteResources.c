@@ -3,7 +3,7 @@
 #include "resource.h"
 
 void init_sprite_resources(HINSTANCE inst) {
-  dingding_sprites = malloc(sizeof(HBITMAP) * 4);
+  dingding_sprites = malloc(sizeof(HBITMAP) * 8);
   if (dingding_sprites == NULL) return;
   dingding_sprites[0] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_STANDING));
@@ -12,13 +12,25 @@ void init_sprite_resources(HINSTANCE inst) {
   dingding_sprites[2] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_THROWING));
   dingding_sprites[3] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_CRYING));
+  dingding_sprites[4] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_DANCE_UP));
+  dingding_sprites[5] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_DANCE_RIGHT));
+  dingding_sprites[6] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_DANCE_DOWN));
+  dingding_sprites[7] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_DANCE_LEFT));
 
-  coco_sprites = malloc(sizeof(HBITMAP) * 4);
+  coco_sprites = malloc(sizeof(HBITMAP) * 8);
   if (coco_sprites == NULL) return;
   coco_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_STANDING));
   coco_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_CHEERING));
   coco_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_THROWING));
   coco_sprites[3] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_CRYING));
+  coco_sprites[4] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_DANCE_UP));
+  coco_sprites[5] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_DANCE_RIGHT));
+  coco_sprites[6] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_DANCE_DOWN));
+  coco_sprites[7] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_DANCE_LEFT));
 
   background_sprites = malloc(sizeof(HBITMAP) * 3);
   if (background_sprites == NULL) return;

@@ -70,6 +70,10 @@
     <Image Include="Resource\coco_blowing.bmp" />
     <Image Include="Resource\coco_cheering.bmp" />
     <Image Include="Resource\coco_crying.bmp" />
+    <Image Include="Resource\coco_dance_down.bmp" />
+    <Image Include="Resource\coco_dance_left.bmp" />
+    <Image Include="Resource\coco_dance_right.bmp" />
+    <Image Include="Resource\coco_dance_up.bmp" />
     <Image Include="Resource\coco_disk.bmp" />
     <Image Include="Resource\coco_disk1.bmp" />
     <Image Include="Resource\coco_disk2.bmp" />
@@ -84,6 +88,10 @@
     <Image Include="Resource\dingding_blowing.bmp" />
     <Image Include="Resource\dingding_cheering.bmp" />
     <Image Include="Resource\dingding_crying.bmp" />
+    <Image Include="Resource\dingding_dance_down.bmp" />
+    <Image Include="Resource\dingding_dance_left.bmp" />
+    <Image Include="Resource\dingding_dance_right.bmp" />
+    <Image Include="Resource\dingding_dance_up.bmp" />
     <Image Include="Resource\dingding_disk.bmp" />
     <Image Include="Resource\dingding_disk1.bmp" />
     <Image Include="Resource\dingding_disk2.bmp" />
