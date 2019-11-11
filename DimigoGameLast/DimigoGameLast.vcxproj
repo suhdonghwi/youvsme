@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DanceGameScene.c" />
     <ClCompile Include="Flag.c" />
     <ClCompile Include="PullGameScene.c" />
     <ClCompile Include="String.c" />
@@ -39,6 +40,7 @@
     <ClCompile Include="WaveAudio.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DanceGameScene.h" />
     <ClInclude Include="Flag.h" />
     <ClInclude Include="PullGameScene.h" />
     <ClInclude Include="String.h" />
@@ -82,9 +84,13 @@
     <Image Include="Resource\coco_flag.bmp" />
     <Image Include="Resource\coco_plane.bmp" />
     <Image Include="Resource\coco_standing.bmp" />
+    <Image Include="Resource\coco_standing_dark.bmp" />
     <Image Include="Resource\coco_throwing.bmp" />
     <Image Include="Resource\coco_turn.bmp" />
     <Image Include="Resource\coco_won.bmp" />
+    <Image Include="Resource\dance background basic.bmp" />
+    <Image Include="Resource\dance_background_left.bmp" />
+    <Image Include="Resource\dance_background_right.bmp" />
     <Image Include="Resource\dingding_blowing.bmp" />
     <Image Include="Resource\dingding_cheering.bmp" />
     <Image Include="Resource\dingding_crying.bmp" />
@@ -100,6 +106,7 @@
     <Image Include="Resource\dingding_flag.bmp" />
     <Image Include="Resource\dingding_plane.bmp" />
     <Image Include="Resource\dingding_standing.bmp" />
+    <Image Include="Resource\dingding_standing_dark.bmp" />
     <Image Include="Resource\dingding_throwing.bmp" />
     <Image Include="Resource\dingding_turn.bmp" />
     <Image Include="Resource\dingding_won.bmp" />

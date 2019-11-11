@@ -43,6 +43,9 @@
     <Filter Include="Source Files\GameObjects\PullGame">
       <UniqueIdentifier>{64830f56-b8ee-4726-8a74-f61fd2ea98f4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameObjects\DanceGame">
+      <UniqueIdentifier>{1e9aad93-5f73-4815-bac7-d6d1bf303ce7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -99,6 +102,9 @@
     <ClCompile Include="Flag.c">
       <Filter>Source Files\GameObjects\PullGame</Filter>
     </ClCompile>
+    <ClCompile Include="DanceGameScene.c">
+      <Filter>Source Files\GameScenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">
@@ -154,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="Flag.h">
       <Filter>Header Files\GameObjects\PullGame</Filter>
+    </ClInclude>
+    <ClInclude Include="DanceGameScene.h">
+      <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -373,6 +382,21 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resource\coco_dance_up.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\coco_standing_dark.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dingding_standing_dark.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dance background basic.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dance_background_left.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dance_background_right.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

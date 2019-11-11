@@ -3,7 +3,7 @@
 #include "resource.h"
 
 void init_sprite_resources(HINSTANCE inst) {
-  dingding_sprites = malloc(sizeof(HBITMAP) * 8);
+  dingding_sprites = malloc(sizeof(HBITMAP) * 9);
   if (dingding_sprites == NULL) return;
   dingding_sprites[0] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_STANDING));
@@ -20,8 +20,10 @@ void init_sprite_resources(HINSTANCE inst) {
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_DANCE_DOWN));
   dingding_sprites[7] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_DANCE_LEFT));
+  dingding_sprites[8] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_STANDING_DARK));
 
-  coco_sprites = malloc(sizeof(HBITMAP) * 8);
+  coco_sprites = malloc(sizeof(HBITMAP) * 9);
   if (coco_sprites == NULL) return;
   coco_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_STANDING));
   coco_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_CHEERING));
@@ -31,14 +33,21 @@ void init_sprite_resources(HINSTANCE inst) {
   coco_sprites[5] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_DANCE_RIGHT));
   coco_sprites[6] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_DANCE_DOWN));
   coco_sprites[7] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_DANCE_LEFT));
+  coco_sprites[8] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_STANDING_DARK));
 
-  background_sprites = malloc(sizeof(HBITMAP) * 3);
+  background_sprites = malloc(sizeof(HBITMAP) * 6);
   if (background_sprites == NULL) return;
   background_sprites[0] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_BACKGROUND));
   background_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_SKY_BACKGROUND));
   background_sprites[2] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_PULL_BACKGROUND));
+  background_sprites[3] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_DANCE_BACKGROUND));
+  background_sprites[4] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_DANCE_BACKGROUND_RIGHT));
+  background_sprites[5] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_DANCE_BACKGROUND_LEFT));
 
   won_message_sprites = malloc(sizeof(HBITMAP) * 2);
   if (won_message_sprites == NULL) return;

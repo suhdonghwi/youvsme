@@ -1,3 +1,4 @@
+#pragma warning(disable : 6001 6385)
 #include <stdlib.h>
 #include <time.h>
 

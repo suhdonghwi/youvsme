@@ -12,6 +12,7 @@
 
 #include "SpriteResources.h"
 
+#include "DanceGameScene.h"
 #include "DiskGameScene.h"
 #include "GameHelpScene.h"
 #include "GameResultScene.h"
@@ -75,6 +76,7 @@ int main() {
   // g_current_scene = create_disk_game_scene(true, (Pos){0, 0});
   // g_current_scene = create_game_result_scene(false);
   // g_current_scene = create_pull_game_scene();
+  g_current_scene = create_dance_game_scene();
   g_new_scene = NULL;
 
   while (1) {
