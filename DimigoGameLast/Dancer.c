@@ -3,6 +3,7 @@
 #include "SpriteResources.h"
 
 int dance_queue_length(DanceDirection* queue, int max) {
+  if (queue == NULL) return 0;
   int i = 0;
   for (; queue[i] != DANCE_NONE && i < max; i++)
     ;
