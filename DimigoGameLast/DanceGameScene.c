@@ -11,6 +11,11 @@ void init_dance_queue(DanceDirection** queue, int size) {
   }
 }
 
+void deinit_dance_queue(DanceDirection** queue) {
+  free(*queue);
+  *queue = NULL;
+}
+
 void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
   DanceGameSceneData* data = (DanceGameSceneData*)scene->data;
 
@@ -24,6 +29,29 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
       init_dance_queue(&dingding_data->dance_queue, 4);
       dingding_data->dance_max = 4;
       dingding_data->is_dancing = true;
+    }
+
+    if (is_dance_queue_full(dingding_data->dance_queue,
+                            dingding_data->dance_max)) {
+      deinit_dance_queue(&dingding_data->dance_queue);
+      dingding_data->is_dancing = false;
+      dingding_data->dance_max = 0;
+      data->is_coco_turn = !data->is_coco_turn;
+    }
+  } else {
+    DancerData* coco_data = (DancerData*)data->coco->data;
+
+    if (coco_data->dance_queue == NULL) {
+      init_dance_queue(&coco_data->dance_queue, 4);
+      coco_data->dance_max = 4;
+      coco_data->is_dancing = true;
+    }
+
+    if (is_dance_queue_full(coco_data->dance_queue, coco_data->dance_max)) {
+      deinit_dance_queue(&coco_data->dance_queue);
+      coco_data->is_dancing = false;
+      coco_data->dance_max = 0;
+      data->is_coco_turn = !data->is_coco_turn;
     }
   }
 }

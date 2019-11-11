@@ -17,4 +17,6 @@ typedef struct tagDancerData {
   int dance_max;
 } DancerData;
 
+bool is_dance_queue_full(DanceDirection* queue, int max);
+
 GameObject* create_dancer(bool coco, SHORT* move_keys);
