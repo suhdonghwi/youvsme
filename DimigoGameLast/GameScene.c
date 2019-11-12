@@ -124,3 +124,14 @@ void render_game_scene(GameScene* scene, HDC main_dc, int window_width,
 
   Sleep(scene->sleep_duration);
 }
+
+int scene_tag_count(GameScene* scene, char* tag) {
+  GameSceneNode* node = scene->head;
+  int count = 0;
+  while (node != NULL) {
+    if (strcmp(node->game_object->tag, tag) == 0) count++;
+    node = node->next;
+  }
+
+  return count;
+}

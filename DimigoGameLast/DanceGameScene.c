@@ -1,6 +1,9 @@
 #include "DanceGameScene.h"
 #include "Dancer.h"
+#include "GameScene.h"
 #include "SpriteResources.h"
+
+extern GameScene* g_current_scene;
 
 void init_dance_queue(DanceDirection** queue, int size) {
   *queue = malloc(sizeof(DanceDirection) * size);
@@ -19,23 +22,52 @@ void deinit_dance_queue(DanceDirection** queue) {
 void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
   DanceGameSceneData* data = (DanceGameSceneData*)scene->data;
 
-  render_bitmap(background_sprites[data->is_coco_turn ? 5 : 4], main_dc,
-                (Pos){0, 0}, 20.25);
+  render_bitmap(background_sprites[3 + data->state], main_dc, (Pos){0, 0},
+                20.25);
 
-  DancerData* dancer_data =
-      data->is_coco_turn ? data->coco->data : data->dingding->data;
+  switch (data->state) {
+    case STATE_COCO_DANCING:
+    case STATE_DINGDING_DANCING: {
+      DancerData* dancer_data = data->state == STATE_COCO_DANCING
+                                    ? data->coco->data
+                                    : data->dingding->data;
+      DancerData* opponent_data = data->state == STATE_COCO_DANCING
+                                      ? data->dingding->data
+                                      : data->coco->data;
 
-  if (dancer_data->dance_queue == NULL) {
-    init_dance_queue(&dancer_data->dance_queue, 4);
-    dancer_data->dance_max = 4;
-    dancer_data->is_dancing = true;
-  }
+      if (dancer_data->dance_queue == NULL) {
+        init_dance_queue(&dancer_data->dance_queue, 4);
+        dancer_data->dance_max = 4;
+        dancer_data->is_dancing = true;
 
-  if (is_dance_queue_full(dancer_data->dance_queue, dancer_data->dance_max)) {
-    deinit_dance_queue(&dancer_data->dance_queue);
-    dancer_data->is_dancing = false;
-    dancer_data->dance_max = 0;
-    data->is_coco_turn = !data->is_coco_turn;
+        dancer_data->is_imitating = false;
+        opponent_data->is_imitating = true;
+      }
+
+      if (is_dance_queue_full(dancer_data->dance_queue,
+                              dancer_data->dance_max)) {
+        deinit_dance_queue(&dancer_data->dance_queue);
+        dancer_data->is_dancing = false;
+        dancer_data->dance_max = 0;
+        data->state = STATE_IMITATING;
+      }
+      break;
+    }
+    case STATE_IMITATING: {
+      int note_count = scene_tag_count(g_current_scene, "dance_up") +
+                       scene_tag_count(g_current_scene, "dance_right") +
+                       scene_tag_count(g_current_scene, "dance_down") +
+                       scene_tag_count(g_current_scene, "dance_left");
+      if (note_count == 0) {
+        DancerData* coco_data = data->coco->data;
+        if (coco_data->is_imitating) {
+          data->state = STATE_COCO_DANCING;
+        } else {
+          data->state = STATE_DINGDING_DANCING;
+        }
+      }
+      break;
+    }
   }
 }
 
@@ -57,21 +89,21 @@ GameScene* create_dance_game_scene() {
   dingding_keys[3] = VK_LEFT;
 
   GameObject* coco = create_dancer(true, coco_keys);
-  coco->pos = (Pos){290, 355};
+  coco->pos = (Pos){230, 335};
   insert_game_object(coco, scene);
 
   GameObject* dingding = create_dancer(false, dingding_keys);
-  dingding->pos = (Pos){710, 355};
+  dingding->pos = (Pos){810, 335};
   insert_game_object(dingding, scene);
 
   DanceGameSceneData* data = malloc(sizeof(DanceGameSceneData));
   if (data == NULL) return NULL;
   data->coco = coco;
   data->dingding = dingding;
-  data->is_coco_turn = false;
+  data->state = STATE_DINGDING_DANCING;
 
   scene->data = data;
-  scene->sleep_duration = 5;
+  scene->sleep_duration = 20;
 
   scene->on_render = on_render_dance_game_scene;
   return scene;

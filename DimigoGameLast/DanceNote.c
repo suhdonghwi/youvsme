@@ -15,6 +15,7 @@ GameObject* create_dance_note(DanceDirection dir, HBITMAP* sprites, int speed) {
   GameObject* dance_note = init_game_object(sprites);
   dance_note->sprite_index = 4 + dir;
   dance_note->on_render = on_render_dance_note;
+  dance_note->collidable = true;
 
   switch (dir) {
     case DANCE_UP:

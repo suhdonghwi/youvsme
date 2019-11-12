@@ -1,4 +1,6 @@
 #pragma once
+#include <time.h>
+
 #include "GameObject.h"
 
 typedef enum tagDanceDirection {
@@ -12,9 +14,14 @@ typedef enum tagDanceDirection {
 typedef struct tagDancerData {
   SHORT* move_keys;
   bool is_dancing;
+  bool is_imitating;
+
+  GameObject* colliding_note;
 
   DanceDirection* dance_queue;
   int dance_max;
+
+  clock_t last_dance_clock;
 } DancerData;
 
 bool is_dance_queue_full(DanceDirection* queue, int max);
