@@ -49,6 +49,12 @@
     <Filter Include="Source Files\GameObjects\DanceGame">
       <UniqueIdentifier>{7e36db4e-7213-453c-a11b-f99ad042d31f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameScenes\StoryMode">
+      <UniqueIdentifier>{617fdf8c-d344-43ae-b862-8b62c4d864eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameScenes\StoryMode">
+      <UniqueIdentifier>{9c83dddd-41e3-4f74-a819-529d391b25ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -114,6 +120,9 @@
     <ClCompile Include="KeyInput.c">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
+    <ClCompile Include="StoryScene.c">
+      <Filter>Source Files\GameScenes\StoryMode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">
@@ -178,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="KeyInput.h">
       <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="StoryScene.h">
+      <Filter>Header Files\GameScenes\StoryMode</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

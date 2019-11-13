@@ -8,7 +8,7 @@
 
 extern GameScene* g_current_scene;
 extern GameScene* g_new_scene;
-extern HDC window_dc;
+extern HDC g_window_dc;
 
 void init_dance_queue(DanceDirection** queue, int size) {
   *queue = malloc(sizeof(DanceDirection) * size);
@@ -115,7 +115,7 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
                data->to_imiate_queue[imitating_length - 1]) ||
           data->imitate_time - elapsed <= 0.00003) {
         render_bitmap(
-            sign_sprites[1], window_dc,
+            sign_sprites[1], g_window_dc,
             coco_data->is_imitating ? data->coco->pos : data->dingding->pos,
             25);
         Sleep(1500);

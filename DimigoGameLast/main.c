@@ -18,6 +18,7 @@
 #include "GameResultScene.h"
 #include "PullGameScene.h"
 #include "ReadyStartScene.h"
+#include "StoryScene.h"
 
 #include "GameObject.h"
 #include "GameScene.h"
@@ -29,14 +30,15 @@ GameScene* g_current_scene;
 GameScene* g_new_scene;
 int g_coco_score = 0;
 int g_dingding_score = 0;
-HDC window_dc;
+HDC g_window_dc;
+bool g_story_mode;
 
 int main() {
   srand((unsigned int)time(NULL));
   SetProcessDpiAwareness(PROCESS_PER_MONITOR_DPI_AWARE);
 
   HWND window = GetConsoleWindow();
-  window_dc = GetDC(window);
+  g_window_dc = GetDC(window);
   HINSTANCE inst = GetModuleHandle(NULL);
 
   init_sprite_resources(inst);
@@ -74,7 +76,11 @@ int main() {
   // g_current_scene = create_disk_game_scene(true, (Pos){0, 0});
   // g_current_scene = create_game_result_scene(false);
   // g_current_scene = create_pull_game_scene();
-  g_current_scene = create_dance_game_scene();
+  g_story_mode = true;
+
+  g_current_scene =
+      create_story_scene(create_dance_game_scene(), game_help_sprites[2],
+                         "hello", (Pos){100, 100});
   g_new_scene = NULL;
 
   while (1) {
@@ -94,18 +100,19 @@ int main() {
     }*/
 
     update_pressed_map();
-    render_game_scene(g_current_scene, window_dc, window_width, window_height);
+    render_game_scene(g_current_scene, g_window_dc, window_width,
+                      window_height);
 
     if (g_new_scene != NULL) {
       deinit_scene(g_current_scene);
       g_current_scene = g_new_scene;
       g_new_scene = NULL;
 
-      FillRect(window_dc, &window_rect, background_brush);
+      FillRect(g_window_dc, &window_rect, background_brush);
     }
   }
 
-  ReleaseDC(window, window_dc);
+  ReleaseDC(window, g_window_dc);
   DeleteObject(background_brush);
   deinit_sprite_resources();
   deinit_scene(g_current_scene);
