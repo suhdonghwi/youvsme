@@ -1,4 +1,5 @@
 #include "Speech.h"
+#include "Delay.h"
 #include "KeyInput.h"
 
 void on_render_speech(GameObject* speech, HDC main_dc) {
@@ -14,17 +15,16 @@ void on_render_speech(GameObject* speech, HDC main_dc) {
   draw_rect.left = data->speech_rect.left + 25;
   draw_rect.right = data->speech_rect.right - 25;
 
-  clock_t current_clock = clock();
-  if (((double)current_clock - data->last_move_clock) / CLOCKS_PER_SEC > 0.05) {
+  static delay_t last_move_delay;
+  if (after_delay(&last_move_delay, 0.05) && !data->text_over) {
     if (data->current_cursor < wcslen(current_text) - 1) {
       do {
         data->current_cursor++;
       } while (current_text[data->current_cursor] == ' ');
     } else {
-      data->text_over = true;
+      static delay_t text_show_delay;
+      if (after_delay(&text_show_delay, 0.5)) data->text_over = true;
     }
-
-    data->last_move_clock = clock();
   }
 
   wchar_t* draw_text = malloc(sizeof(wchar_t) * 100);
