@@ -6,7 +6,7 @@ void on_render_speech(GameObject* speech, HDC main_dc) {
 
   FillRect(main_dc, &data->speech_rect, data->rect_brush);
 
-  char* current_text = data->text[data->current_index];
+  wchar_t* current_text = data->text[data->current_index];
 
   SelectObject(main_dc, data->font);
   RECT draw_rect;
@@ -14,8 +14,8 @@ void on_render_speech(GameObject* speech, HDC main_dc) {
   draw_rect.bottom = data->speech_rect.bottom - 25;
   draw_rect.left = data->speech_rect.left + 25;
   draw_rect.right = data->speech_rect.right - 25;
-  DrawText(main_dc, current_text, strlen(current_text), &draw_rect,
-           DT_EXTERNALLEADING | DT_WORDBREAK);
+  DrawTextW(main_dc, current_text, wcslen(current_text), &draw_rect,
+            DT_EXTERNALLEADING | DT_WORDBREAK);
 
   char enter_text[] = "Enter >";
   TextOut(main_dc, draw_rect.right - 100, draw_rect.bottom - 20, enter_text,
@@ -35,7 +35,7 @@ void on_destroy_speech(GameObject* speech) {
   free(data->text);
 }
 
-GameObject* create_speech(char* text[], int number, RECT rect) {
+GameObject* create_speech(wchar_t** text, int number, RECT rect) {
   GameObject* speech = init_game_object(NULL);
 
   speech->on_render = on_render_speech;

@@ -78,15 +78,20 @@ int main() {
   // g_current_scene = create_pull_game_scene();
   g_story_mode = true;
 
-  char** t = malloc(sizeof(char*) * 2);
+  wchar_t** t = malloc(sizeof(wchar_t*) * 2);
 
-  t[0] = malloc(sizeof(char) * 100);
-  strcpy(t[0], "æ»≥Á«œººø‰!");
-  t[1] = malloc(sizeof(char) * 100);
-  strcpy(t[1], "Goodbye, world!");
+  t[0] = malloc(sizeof(wchar_t) * 100);
+  wcscpy(t[0], L"æ»≥Á«œººø‰!");
+  t[1] = malloc(sizeof(wchar_t) * 100);
+  wcscpy(t[1], L"Goodbye, world!");
 
-  g_current_scene = create_story_scene(
-      create_dance_game_scene(), game_help_sprites[2], t, 2, (Pos){100, 100});
+  RECT rect;
+  rect.top = 50;
+  rect.left = 680;
+  rect.bottom = 300;
+  rect.right = 1050;
+  g_current_scene = create_story_scene(create_dance_game_scene(),
+                                       game_help_sprites[2], t, 2, rect);
   g_new_scene = NULL;
 
   while (1) {

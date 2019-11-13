@@ -8,8 +8,8 @@ typedef struct tagSpeechData {
   int current_index;
   HBRUSH rect_brush;
 
-  char** text;
+  wchar_t** text;
   int text_count;
 } SpeechData;
 
-GameObject* create_speech(char* text[], int number, RECT rect);
+GameObject* create_speech(wchar_t** text, int number, RECT rect);
