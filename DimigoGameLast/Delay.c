@@ -10,3 +10,8 @@ bool after_delay(delay_t* delay, double seconds) {
 
   return false;
 }
+
+double elapsed_time(delay_t delay) {
+  delay_t current = clock();
+  return ((double)current - delay) / CLOCKS_PER_SEC;
+}

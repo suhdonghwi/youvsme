@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "Dancer.h"
+#include "Delay.h"
 #include "GameScene.h"
 #include "KeyInput.h"
 #include "SpriteResources.h"
@@ -46,33 +47,29 @@ void on_render_dancer(GameObject* dancer, HDC main_dc) {
   DancerData* data = (DancerData*)dancer->data;
   static DanceDirection directions[4] = {DANCE_UP, DANCE_RIGHT, DANCE_DOWN,
                                          DANCE_LEFT};
+  static delay_t last_dance_delay;
 
-  clock_t current_clock = clock();
   if (data->is_dancing) {
     HBITMAP dancer_sprite = dancer->sprites[dancer->sprite_index];
     BITMAP dancer_sprite_data;
     GetObject(dancer_sprite, sizeof(BITMAP), &dancer_sprite_data);
 
-    double elapsed =
-        ((double)current_clock - data->last_dance_clock) / CLOCKS_PER_SEC;
+    double elapsed = elapsed_time(last_dance_delay);
     Pos progress_pos = (Pos){
         (LONG)(dancer->pos.x + dancer_sprite_data.bmWidth * 5.0 / 2.0 - 27),
         dancer->pos.y - 70};
-    int current_index = (int)(10 * (elapsed / 0.3));
+    int current_index = (int)(10 * (elapsed / 0.4));
     render_bitmap(progress_sprites[min(current_index, 10)], main_dc,
                   progress_pos, 3);
   }
 
-  if ((((double)current_clock - data->last_dance_clock) / CLOCKS_PER_SEC >
-           0.3 &&
-       data->is_dancing) ||
+  if ((elapsed_time(last_dance_delay) >= 0.4 && data->is_dancing) ||
       data->is_imitating) {
     if (!is_dance_queue_full(data->dance_queue, data->dance_max)) {
       for (int i = 0; i < 4; i++) {
         if (is_pressed(data->move_keys[i])) {
-          if (dance_queue_push(data->dance_queue, data->dance_max,
-                               directions[i]) == 0)
-            data->last_dance_clock = clock();
+          dance_queue_push(data->dance_queue, data->dance_max, directions[i]);
+          last_dance_delay = clock();
         }
       }
     }

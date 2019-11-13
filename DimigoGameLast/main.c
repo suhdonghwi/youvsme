@@ -76,6 +76,7 @@ int main() {
   // g_current_scene = create_disk_game_scene(true, (Pos){0, 0});
   // g_current_scene = create_game_result_scene(false);
   // g_current_scene = create_pull_game_scene();
+  g_current_scene = create_dance_game_scene();
   g_story_mode = true;
 
   wchar_t** t = malloc(sizeof(wchar_t*) * 4);
@@ -94,8 +95,8 @@ int main() {
   rect.left = 680;
   rect.bottom = 300;
   rect.right = 1050;
-  g_current_scene = create_story_scene(create_dance_game_scene(),
-                                       game_help_sprites[2], t, 4, rect);
+  // g_current_scene = create_story_scene(create_dance_game_scene(),
+  //                                     game_help_sprites[2], t, 4, rect);
   g_new_scene = NULL;
 
   while (1) {

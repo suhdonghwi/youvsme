@@ -15,15 +15,17 @@ void on_render_speech(GameObject* speech, HDC main_dc) {
   draw_rect.left = data->speech_rect.left + 25;
   draw_rect.right = data->speech_rect.right - 25;
 
-  static delay_t last_move_delay;
+  static delay_t last_move_delay, text_show_delay;
   if (after_delay(&last_move_delay, 0.05) && !data->text_over) {
     if (data->current_cursor < wcslen(current_text) - 1) {
       do {
         data->current_cursor++;
       } while (current_text[data->current_cursor] == ' ');
+      text_show_delay = clock();
     } else {
-      static delay_t text_show_delay;
-      if (after_delay(&text_show_delay, 0.5)) data->text_over = true;
+      if (after_delay(&text_show_delay, 1)) {
+        data->text_over = true;
+      }
     }
   }
 

@@ -1,13 +1,15 @@
 #include <time.h>
 
 #include "CheeringPlayer.h"
+#include "Delay.h"
 #include "SpriteResources.h"
 
 static clock_t last_change_clock;
 
 void on_render_cheering_player(GameObject* cheering_player, HDC main_dc) {
-  clock_t current_clock = clock();
-  if (((double)current_clock - last_change_clock) / CLOCKS_PER_SEC > 0.5) {
+  static delay_t last_change_clock;
+
+  if (after_delay(&last_change_clock, 0.5)) {
     cheering_player->sprite_index = cheering_player->sprite_index == 0 ? 1 : 0;
     if (cheering_player->sprite_index == 0)
       cheering_player->pos.x += 13;

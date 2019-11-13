@@ -1,5 +1,6 @@
 #include "Disk.h"
 
+#include "Delay.h"
 #include "DiskGameScene.h"
 #include "GameScene.h"
 #include "SpriteResources.h"
@@ -39,10 +40,8 @@ void on_render_disk(GameObject* disk, HDC main_dc) {
         }
         break;
       case DISK_FLYING: {
-        clock_t current_clock = clock();
-        if (((double)current_clock - disk_data->last_turn_clock) /
-                CLOCKS_PER_SEC >
-            0.2) {
+        static delay_t last_turn_delay;
+        if (after_delay(&last_turn_delay, 0.2)) {
           disk->sprite_index = (disk->sprite_index + 1) % 4;
           disk_data->last_turn_clock = clock();
         }
