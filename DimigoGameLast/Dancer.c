@@ -1,5 +1,4 @@
 #include "Dancer.h"
-#include "DanceNote.h"
 #include "GameScene.h"
 #include "KeyInput.h"
 #include "SpriteResources.h"
@@ -44,26 +43,11 @@ void on_render_dancer(GameObject* dancer, HDC main_dc) {
   static DanceDirection directions[4] = {DANCE_UP, DANCE_RIGHT, DANCE_DOWN,
                                          DANCE_LEFT};
 
-  if (data->is_dancing) {
+  if (data->is_dancing || data->is_imitating) {
     if (!is_dance_queue_full(data->dance_queue, data->dance_max)) {
       for (int i = 0; i < 4; i++) {
-        clock_t current_clock = clock();
         if (is_pressed(data->move_keys[i])) {
-          if (!data->is_imitating &&
-              ((double)current_clock - data->last_dance_clock) /
-                      CLOCKS_PER_SEC >
-                  0.3) {
-            dance_queue_push(data->dance_queue, data->dance_max, directions[i]);
-
-            GameObject* note = create_dance_note(
-                directions[i], dancer->sprites,
-                dancer->sprites == dingding_sprites ? -10 : 10);
-            note->pos = (Pos){dancer->pos.x, dancer->pos.y + 20};
-            note->scale = 3;
-            insert_game_object(note, g_current_scene);
-
-            data->last_dance_clock = clock();
-          }
+          dance_queue_push(data->dance_queue, data->dance_max, directions[i]);
         }
       }
     }
@@ -74,32 +58,6 @@ void on_render_dancer(GameObject* dancer, HDC main_dc) {
       if (dir != DANCE_NONE) {
         dancer->sprite_index = 4 + dir;
       }
-    }
-  } else if (data->is_imitating) {
-    for (int i = 0; i < 4; i++) {
-      if (is_pressed(data->move_keys[i])) {
-        if (data->colliding_note != NULL &&
-            compare_tag_and_dir(directions[i], data->colliding_note->tag)) {
-          data->colliding_note->alive = false;
-        } else {
-          dancer->pos.y -= 10;  // dance wrong
-        }
-      }
-    }
-  }
-
-  data->colliding_note = NULL;
-}
-
-void on_collide_dancer(GameObject* dancer, GameObject* object) {
-  static char* note_tags[] = {"dance_up", "dance_right", "dance_down",
-                              "dance_left"};
-
-  for (int i = 0; i < 4; i++) {
-    if (strcmp(object->tag, note_tags[i]) == 0) {
-      DancerData* data = dancer->data;
-      data->colliding_note = object;
-      return;
     }
   }
 }
@@ -122,7 +80,6 @@ GameObject* create_dancer(bool coco, SHORT* move_keys) {
 
   dancer->data = data;
   dancer->on_render = on_render_dancer;
-  dancer->on_collide = on_collide_dancer;
 
   return dancer;
 }

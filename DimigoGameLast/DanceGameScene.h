@@ -11,6 +11,9 @@ typedef struct tagDanceGameSceneData {
   GameObject *coco, *dingding;
 
   DanceGameSceneState state;
+
+  Pos background_pos;
+  double background_scale;
 } DanceGameSceneData;
 
 GameScene* create_dance_game_scene();

@@ -19,11 +19,38 @@ void deinit_dance_queue(DanceDirection** queue) {
   *queue = NULL;
 }
 
+void zoom_coco(DanceGameSceneData* data) {
+  data->background_scale = 50;
+  data->background_pos = (Pos){0, -200};
+  data->coco->scale = 25;
+  data->coco->pos = (Pos){380, 325};
+  data->coco->sprite_index = 0;
+  data->dingding->scale = 0;
+}
+
+void zoom_dingding(DanceGameSceneData* data) {
+  data->background_scale = 50;
+  data->background_pos = (Pos){-645, -200};
+  data->coco->scale = 0;
+  data->dingding->scale = 25;
+  data->dingding->pos = (Pos){630, 325};
+  data->dingding->sprite_index = 0;
+}
+
+void zoom_normal(DanceGameSceneData* data) {
+  data->background_pos = (Pos){0, 0};
+  data->background_scale = 20.25;
+  data->coco->pos = (Pos){230, 335};
+  data->coco->scale = 10;
+  data->dingding->pos = (Pos){810, 335};
+  data->dingding->scale = 10;
+}
+
 void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
   DanceGameSceneData* data = (DanceGameSceneData*)scene->data;
 
-  render_bitmap(background_sprites[3 + data->state], main_dc, (Pos){0, 0},
-                20.25);
+  render_bitmap(background_sprites[3 + data->state], main_dc,
+                data->background_pos, data->background_scale);
 
   switch (data->state) {
     case STATE_COCO_DANCING:
@@ -39,33 +66,48 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
         init_dance_queue(&dancer_data->dance_queue, 4);
         dancer_data->dance_max = 4;
         dancer_data->is_dancing = true;
-
         dancer_data->is_imitating = false;
-        opponent_data->is_imitating = true;
       }
 
       if (is_dance_queue_full(dancer_data->dance_queue,
                               dancer_data->dance_max)) {
         deinit_dance_queue(&dancer_data->dance_queue);
         dancer_data->is_dancing = false;
+        opponent_data->is_imitating = true;
         dancer_data->dance_max = 0;
         data->state = STATE_IMITATING;
+        zoom_normal(data);
       }
       break;
     }
     case STATE_IMITATING: {
-      int note_count = scene_tag_count(g_current_scene, "dance_up") +
-                       scene_tag_count(g_current_scene, "dance_right") +
-                       scene_tag_count(g_current_scene, "dance_down") +
-                       scene_tag_count(g_current_scene, "dance_left");
-      if (note_count == 0) {
-        DancerData* coco_data = data->coco->data;
+      DancerData* coco_data = data->coco->data;
+      DancerData* imitator_data =
+          coco_data->is_imitating ? coco_data : data->dingding->data;
+
+      if (imitator_data->dance_queue == NULL) {
+        init_dance_queue(&imitator_data->dance_queue, 4);
+        imitator_data->dance_max = 4;
+        imitator_data->is_imitating = true;
+      }
+
+      if (is_dance_queue_full(imitator_data->dance_queue,
+                              imitator_data->dance_max)) {
         if (coco_data->is_imitating) {
           data->state = STATE_COCO_DANCING;
+          Sleep(300);
+          zoom_coco(data);
         } else {
           data->state = STATE_DINGDING_DANCING;
+          Sleep(300);
+          zoom_dingding(data);
         }
+
+        deinit_dance_queue(&imitator_data->dance_queue);
+        imitator_data->is_imitating = false;
+        imitator_data->dance_max = 0;
       }
+
       break;
     }
   }
@@ -89,11 +131,9 @@ GameScene* create_dance_game_scene() {
   dingding_keys[3] = VK_LEFT;
 
   GameObject* coco = create_dancer(true, coco_keys);
-  coco->pos = (Pos){230, 335};
   insert_game_object(coco, scene);
 
   GameObject* dingding = create_dancer(false, dingding_keys);
-  dingding->pos = (Pos){810, 335};
   insert_game_object(dingding, scene);
 
   DanceGameSceneData* data = malloc(sizeof(DanceGameSceneData));
@@ -101,6 +141,7 @@ GameScene* create_dance_game_scene() {
   data->coco = coco;
   data->dingding = dingding;
   data->state = STATE_DINGDING_DANCING;
+  zoom_dingding(data);
 
   scene->data = data;
   scene->sleep_duration = 20;
