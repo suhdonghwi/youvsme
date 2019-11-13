@@ -414,5 +414,11 @@
     <Image Include="Resource\dance_background_right.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resource\wrong.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dance_background.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

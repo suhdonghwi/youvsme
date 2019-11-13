@@ -1,9 +1,12 @@
 #include "DanceGameScene.h"
 #include "Dancer.h"
+#include "GameResultScene.h"
 #include "GameScene.h"
 #include "SpriteResources.h"
 
 extern GameScene* g_current_scene;
+extern GameScene* g_new_scene;
+extern HDC window_dc;
 
 void init_dance_queue(DanceDirection** queue, int size) {
   *queue = malloc(sizeof(DanceDirection) * size);
@@ -26,12 +29,14 @@ void zoom_coco(DanceGameSceneData* data) {
   data->coco->pos = (Pos){380, 325};
   data->coco->sprite_index = 0;
   data->dingding->scale = 0;
+  data->dingding->sprite_index = 0;
 }
 
 void zoom_dingding(DanceGameSceneData* data) {
   data->background_scale = 50;
   data->background_pos = (Pos){-645, -200};
   data->coco->scale = 0;
+  data->coco->sprite_index = 0;
   data->dingding->scale = 25;
   data->dingding->pos = (Pos){630, 325};
   data->dingding->sprite_index = 0;
@@ -71,7 +76,9 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
 
       if (is_dance_queue_full(dancer_data->dance_queue,
                               dancer_data->dance_max)) {
-        deinit_dance_queue(&dancer_data->dance_queue);
+        data->to_imiate_queue = dancer_data->dance_queue;
+        dancer_data->dance_queue = NULL;
+
         dancer_data->is_dancing = false;
         opponent_data->is_imitating = true;
         dancer_data->dance_max = 0;
@@ -85,28 +92,44 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
       DancerData* imitator_data =
           coco_data->is_imitating ? coco_data : data->dingding->data;
 
+      int imitating_length = dance_queue_length(imitator_data->dance_queue,
+                                                imitator_data->dance_max);
+
+      if (data->previous_length < imitating_length) {
+        if (imitator_data->dance_queue[imitating_length - 1] !=
+            data->to_imiate_queue[imitating_length - 1]) {
+          render_bitmap(
+              sign_sprites[1], window_dc,
+              coco_data->is_imitating ? data->coco->pos : data->dingding->pos,
+              25);
+          Sleep(1000);
+          g_new_scene = create_game_result_scene(!coco_data->is_imitating);
+          return;
+        }
+      }
+
       if (imitator_data->dance_queue == NULL) {
         init_dance_queue(&imitator_data->dance_queue, 4);
         imitator_data->dance_max = 4;
         imitator_data->is_imitating = true;
-      }
-
-      if (is_dance_queue_full(imitator_data->dance_queue,
-                              imitator_data->dance_max)) {
+      } else if (is_dance_queue_full(imitator_data->dance_queue,
+                                     imitator_data->dance_max)) {
+        Sleep(200);
         if (coco_data->is_imitating) {
           data->state = STATE_COCO_DANCING;
-          Sleep(300);
           zoom_coco(data);
         } else {
           data->state = STATE_DINGDING_DANCING;
-          Sleep(300);
           zoom_dingding(data);
         }
 
         deinit_dance_queue(&imitator_data->dance_queue);
+        deinit_dance_queue(&data->to_imiate_queue);
         imitator_data->is_imitating = false;
         imitator_data->dance_max = 0;
+        data->previous_length = 0;
       }
+      data->previous_length = imitating_length;
 
       break;
     }
@@ -141,6 +164,7 @@ GameScene* create_dance_game_scene() {
   data->coco = coco;
   data->dingding = dingding;
   data->state = STATE_DINGDING_DANCING;
+  data->previous_length = 0;
   zoom_dingding(data);
 
   scene->data = data;

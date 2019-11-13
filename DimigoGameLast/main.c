@@ -29,13 +29,14 @@ GameScene* g_current_scene;
 GameScene* g_new_scene;
 int g_coco_score = 0;
 int g_dingding_score = 0;
+HDC window_dc;
 
 int main() {
   srand((unsigned int)time(NULL));
   SetProcessDpiAwareness(PROCESS_PER_MONITOR_DPI_AWARE);
 
   HWND window = GetConsoleWindow();
-  HDC window_dc = GetDC(window);
+  window_dc = GetDC(window);
   HINSTANCE inst = GetModuleHandle(NULL);
 
   init_sprite_resources(inst);

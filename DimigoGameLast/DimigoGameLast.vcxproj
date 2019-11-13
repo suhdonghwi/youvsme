@@ -93,6 +93,7 @@
     <Image Include="Resource\coco_turn.bmp" />
     <Image Include="Resource\coco_won.bmp" />
     <Image Include="Resource\dance background basic.bmp" />
+    <Image Include="Resource\dance_background.bmp" />
     <Image Include="Resource\dance_background_left.bmp" />
     <Image Include="Resource\dance_background_right.bmp" />
     <Image Include="Resource\dingding_blowing.bmp" />
@@ -144,6 +145,7 @@
     <Image Include="Resource\spit.bmp" />
     <Image Include="Resource\start.bmp" />
     <Image Include="Resource\string.bmp" />
+    <Image Include="Resource\wrong.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

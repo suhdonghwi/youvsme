@@ -14,6 +14,9 @@ typedef struct tagDanceGameSceneData {
 
   Pos background_pos;
   double background_scale;
+
+  int previous_length;
+  enum tagDanceDirection* to_imiate_queue;
 } DanceGameSceneData;
 
 GameScene* create_dance_game_scene();

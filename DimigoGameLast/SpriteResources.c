@@ -123,9 +123,10 @@ void init_sprite_resources(HINSTANCE inst) {
   key_sprites[4] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_KEY_8));
   key_sprites[5] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_KEY_9));
 
-  sign_sprites = malloc(sizeof(HBITMAP) * 1);
+  sign_sprites = malloc(sizeof(HBITMAP) * 2);
   if (sign_sprites == NULL) return;
   sign_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_OK));
+  sign_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_WRONG));
 
   coco_disk_ready_sprites = malloc(sizeof(HBITMAP) * 3);
   if (coco_disk_ready_sprites == NULL) return;
