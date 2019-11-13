@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "DanceGameScene.h"
 #include "Dancer.h"
 #include "GameResultScene.h"
@@ -85,6 +87,7 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
 
         data->state = STATE_IMITATING;
         data->imitate_clock = clock();
+        data->imitate_time = 3.0;
         zoom_normal(data);
       }
       break;
@@ -97,17 +100,27 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
       int imitating_length = dance_queue_length(imitator_data->dance_queue,
                                                 imitator_data->dance_max);
 
-      if (data->previous_length < imitating_length) {
-        if (imitator_data->dance_queue[imitating_length - 1] !=
-            data->to_imiate_queue[imitating_length - 1]) {
-          render_bitmap(
-              sign_sprites[1], window_dc,
-              coco_data->is_imitating ? data->coco->pos : data->dingding->pos,
-              25);
-          Sleep(1000);
-          g_new_scene = create_game_result_scene(!coco_data->is_imitating);
-          return;
-        }
+      char remain_str[100];
+      clock_t current_clock = clock();
+      double elapsed =
+          ((double)current_clock - data->imitate_clock) / CLOCKS_PER_SEC;
+      sprintf(remain_str, "%.1lf초 남음", data->imitate_time - elapsed);
+
+      SelectObject(main_dc, data->font);
+      SetTextColor(main_dc, RGB(200, 200, 200));
+      TextOut(main_dc, 420, 150, remain_str, strlen(remain_str));
+
+      if ((data->previous_length < imitating_length &&
+           imitator_data->dance_queue[imitating_length - 1] !=
+               data->to_imiate_queue[imitating_length - 1]) ||
+          data->imitate_time - elapsed <= 0.00003) {
+        render_bitmap(
+            sign_sprites[1], window_dc,
+            coco_data->is_imitating ? data->coco->pos : data->dingding->pos,
+            25);
+        Sleep(1500);
+        g_new_scene = create_game_result_scene(!coco_data->is_imitating);
+        return;
       }
 
       if (imitator_data->dance_queue == NULL) {
@@ -167,6 +180,8 @@ GameScene* create_dance_game_scene() {
   data->dingding = dingding;
   data->state = STATE_DINGDING_DANCING;
   data->previous_length = 0;
+  data->font = CreateFont(50, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
+                          VARIABLE_PITCH | FF_ROMAN, TEXT("둥근모꼴"));
   zoom_dingding(data);
 
   scene->data = data;

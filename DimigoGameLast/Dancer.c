@@ -22,7 +22,6 @@ bool is_dance_queue_full(DanceDirection* queue, int max) {
 int dance_queue_push(DanceDirection* queue, int max, DanceDirection v) {
   int length = dance_queue_length(queue, max);
   if (length == max) return 1;
-  if (length > 0 && queue[length - 1] == v) return 1;
 
   queue[length] = v;
   return 0;
