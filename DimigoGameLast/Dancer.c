@@ -47,20 +47,23 @@ void on_render_dancer(GameObject* dancer, HDC main_dc) {
 
   clock_t current_clock = clock();
   if (data->is_dancing) {
-    char remain_str[100];
-
-    SelectObject(main_dc, data->font);
-    SetTextColor(main_dc, RGB(200, 200, 200));
-    sprintf(remain_str, "%d",
-            data->dance_max -
-                dance_queue_length(data->dance_queue, data->dance_max));
-
     HBITMAP dancer_sprite = dancer->sprites[dancer->sprite_index];
     BITMAP dancer_sprite_data;
     GetObject(dancer_sprite, sizeof(BITMAP), &dancer_sprite_data);
 
-    TextOut(main_dc, dancer->pos.x + dancer_sprite_data.bmWidth * 1.7,
-            dancer->pos.y - 60, remain_str, strlen(remain_str));
+    RECT bar_rect;
+    bar_rect.top = dancer->pos.y - 30;
+    bar_rect.left = dancer->pos.x + dancer_sprite_data.bmWidth * 5.0 / 2.0 - 50;
+    bar_rect.bottom = bar_rect.top + 15;
+    bar_rect.right = bar_rect.left + 100;
+    HBRUSH bar_brush = CreateSolidBrush(RGB(50, 50, 50));
+    FillRect(main_dc, &bar_rect, bar_brush);
+
+    double elapsed =
+        ((double)current_clock - data->last_dance_clock) / CLOCKS_PER_SEC;
+    bar_rect.right = bar_rect.left + 100 * min(elapsed / 0.3, 1);
+    HBRUSH fill_brush = CreateSolidBrush(RGB(0, 150, 0));
+    FillRect(main_dc, &bar_rect, fill_brush);
   }
 
   if ((((double)current_clock - data->last_dance_clock) / CLOCKS_PER_SEC >
@@ -100,8 +103,6 @@ GameObject* create_dancer(bool coco, SHORT* move_keys) {
   data->is_dancing = false;
   data->is_imitating = false;
   data->last_dance_clock = clock();
-  data->font = CreateFont(50, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
-                          VARIABLE_PITCH | FF_ROMAN, TEXT("µÕ±Ù¸ğ²Ã"));
 
   dancer->data = data;
   dancer->on_render = on_render_dancer;
