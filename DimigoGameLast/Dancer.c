@@ -43,11 +43,16 @@ void on_render_dancer(GameObject* dancer, HDC main_dc) {
   static DanceDirection directions[4] = {DANCE_UP, DANCE_RIGHT, DANCE_DOWN,
                                          DANCE_LEFT};
 
-  if (data->is_dancing || data->is_imitating) {
+  clock_t current_clock = clock();
+  if ((((double)current_clock - data->last_dance_clock) / CLOCKS_PER_SEC >
+           0.3 &&
+       data->is_dancing) ||
+      data->is_imitating) {
     if (!is_dance_queue_full(data->dance_queue, data->dance_max)) {
       for (int i = 0; i < 4; i++) {
         if (is_pressed(data->move_keys[i])) {
           dance_queue_push(data->dance_queue, data->dance_max, directions[i]);
+          data->last_dance_clock = clock();
         }
       }
     }
