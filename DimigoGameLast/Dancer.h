@@ -20,8 +20,6 @@ typedef struct tagDancerData {
   int dance_max;
 
   clock_t last_dance_clock;
-
-  HBRUSH bar_brush, fill_brush;
 } DancerData;
 
 bool is_dance_queue_full(DanceDirection* queue, int max);

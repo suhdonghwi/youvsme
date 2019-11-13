@@ -86,12 +86,6 @@ void on_render_dancer(GameObject* dancer, HDC main_dc) {
   }
 }
 
-void on_destroy_dancer(GameObject* dancer) {
-  DancerData* data = dancer->data;
-  DeleteObject(data->bar_brush);
-  DeleteObject(data->fill_brush);
-}
-
 GameObject* create_dancer(bool coco, SHORT* move_keys) {
   GameObject* dancer = init_game_object(coco ? coco_sprites : dingding_sprites);
 
@@ -106,9 +100,6 @@ GameObject* create_dancer(bool coco, SHORT* move_keys) {
   data->is_dancing = false;
   data->is_imitating = false;
   data->last_dance_clock = clock();
-
-  data->bar_brush = CreateSolidBrush(RGB(50, 50, 50));
-  data->fill_brush = CreateSolidBrush(RGB(0, 150, 0));
 
   dancer->data = data;
   dancer->on_render = on_render_dancer;
