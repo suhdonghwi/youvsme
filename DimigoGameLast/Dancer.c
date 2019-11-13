@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "Dancer.h"
 #include "GameScene.h"
 #include "KeyInput.h"
@@ -44,8 +46,25 @@ void on_render_dancer(GameObject* dancer, HDC main_dc) {
                                          DANCE_LEFT};
 
   clock_t current_clock = clock();
+  if (data->is_dancing) {
+    char remain_str[100];
+
+    SelectObject(main_dc, data->font);
+    SetTextColor(main_dc, RGB(200, 200, 200));
+    sprintf(remain_str, "%d",
+            data->dance_max -
+                dance_queue_length(data->dance_queue, data->dance_max));
+
+    HBITMAP dancer_sprite = dancer->sprites[dancer->sprite_index];
+    BITMAP dancer_sprite_data;
+    GetObject(dancer_sprite, sizeof(BITMAP), &dancer_sprite_data);
+
+    TextOut(main_dc, dancer->pos.x + dancer_sprite_data.bmWidth * 1.7,
+            dancer->pos.y - 60, remain_str, strlen(remain_str));
+  }
+
   if ((((double)current_clock - data->last_dance_clock) / CLOCKS_PER_SEC >
-           0.3 &&
+           0.2 &&
        data->is_dancing) ||
       data->is_imitating) {
     if (!is_dance_queue_full(data->dance_queue, data->dance_max)) {
@@ -81,7 +100,8 @@ GameObject* create_dancer(bool coco, SHORT* move_keys) {
   data->is_dancing = false;
   data->is_imitating = false;
   data->last_dance_clock = clock();
-  data->colliding_note = NULL;
+  data->font = CreateFont(50, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
+                          VARIABLE_PITCH | FF_ROMAN, TEXT("µÕ±Ù¸ğ²Ã"));
 
   dancer->data = data;
   dancer->on_render = on_render_dancer;

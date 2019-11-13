@@ -16,12 +16,12 @@ typedef struct tagDancerData {
   bool is_dancing;
   bool is_imitating;
 
-  GameObject* colliding_note;
-
   DanceDirection* dance_queue;
   int dance_max;
 
   clock_t last_dance_clock;
+
+  HFONT font;
 } DancerData;
 
 bool is_dance_queue_full(DanceDirection* queue, int max);
