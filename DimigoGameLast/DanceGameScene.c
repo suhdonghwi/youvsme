@@ -78,11 +78,13 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
                               dancer_data->dance_max)) {
         data->to_imiate_queue = dancer_data->dance_queue;
         dancer_data->dance_queue = NULL;
-
         dancer_data->is_dancing = false;
-        opponent_data->is_imitating = true;
         dancer_data->dance_max = 0;
+
+        opponent_data->is_imitating = true;
+
         data->state = STATE_IMITATING;
+        data->imitate_clock = clock();
         zoom_normal(data);
       }
       break;

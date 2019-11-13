@@ -56,14 +56,12 @@ void on_render_dancer(GameObject* dancer, HDC main_dc) {
     bar_rect.left = dancer->pos.x + dancer_sprite_data.bmWidth * 5.0 / 2.0 - 50;
     bar_rect.bottom = bar_rect.top + 15;
     bar_rect.right = bar_rect.left + 100;
-    HBRUSH bar_brush = CreateSolidBrush(RGB(50, 50, 50));
-    FillRect(main_dc, &bar_rect, bar_brush);
+    FillRect(main_dc, &bar_rect, data->bar_brush);
 
     double elapsed =
         ((double)current_clock - data->last_dance_clock) / CLOCKS_PER_SEC;
     bar_rect.right = bar_rect.left + 100 * min(elapsed / 0.3, 1);
-    HBRUSH fill_brush = CreateSolidBrush(RGB(0, 150, 0));
-    FillRect(main_dc, &bar_rect, fill_brush);
+    FillRect(main_dc, &bar_rect, data->fill_brush);
   }
 
   if ((((double)current_clock - data->last_dance_clock) / CLOCKS_PER_SEC >
@@ -89,6 +87,12 @@ void on_render_dancer(GameObject* dancer, HDC main_dc) {
   }
 }
 
+void on_destroy_dancer(GameObject* dancer) {
+  DancerData* data = dancer->data;
+  DeleteObject(data->bar_brush);
+  DeleteObject(data->fill_brush);
+}
+
 GameObject* create_dancer(bool coco, SHORT* move_keys) {
   GameObject* dancer = init_game_object(coco ? coco_sprites : dingding_sprites);
 
@@ -103,6 +107,9 @@ GameObject* create_dancer(bool coco, SHORT* move_keys) {
   data->is_dancing = false;
   data->is_imitating = false;
   data->last_dance_clock = clock();
+
+  data->bar_brush = CreateSolidBrush(RGB(50, 50, 50));
+  data->fill_brush = CreateSolidBrush(RGB(0, 150, 0));
 
   dancer->data = data;
   dancer->on_render = on_render_dancer;

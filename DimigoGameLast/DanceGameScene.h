@@ -1,4 +1,6 @@
 #pragma once
+#include <time.h>
+
 #include "GameScene.h"
 
 typedef enum tagDanceGameSceneState {
@@ -17,6 +19,10 @@ typedef struct tagDanceGameSceneData {
 
   int previous_length;
   enum tagDanceDirection* to_imiate_queue;
+
+  clock_t imitate_clock;
+  double imitate_time;
+
 } DanceGameSceneData;
 
 GameScene* create_dance_game_scene();
