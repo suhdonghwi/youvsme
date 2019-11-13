@@ -15,6 +15,8 @@ typedef struct tagSpeechData {
 
   size_t current_cursor;
   clock_t last_move_clock;
+
+  bool text_over;
 } SpeechData;
 
 GameObject* create_speech(wchar_t** text, int number, RECT rect);

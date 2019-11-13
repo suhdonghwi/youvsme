@@ -78,12 +78,16 @@ int main() {
   // g_current_scene = create_pull_game_scene();
   g_story_mode = true;
 
-  wchar_t** t = malloc(sizeof(wchar_t*) * 2);
+  wchar_t** t = malloc(sizeof(wchar_t*) * 4);
 
   t[0] = malloc(sizeof(wchar_t) * 100);
-  wcscpy(t[0], L"안녕 여러분 집중을 해봐요\n\n닥쳐 쳐맞기 싫으면");
+  wcscpy(t[0], L"자, 집중!");
   t[1] = malloc(sizeof(wchar_t) * 100);
-  wcscpy(t[1], L"Goodbye, world!");
+  wcscpy(t[1], L"이제 우리는 플라잉 디스크를 배울거다.");
+  t[2] = malloc(sizeof(wchar_t) * 100);
+  wcscpy(t[2], L"플라잉 디스크는 마이크에 바람을 대고 불면 날라가게 되어있다.");
+  t[3] = malloc(sizeof(wchar_t) * 100);
+  wcscpy(t[3], L"멀리 날려야 좋은 점수를 받을테니 숨을 크게 들이쉬어라.");
 
   RECT rect;
   rect.top = 50;
@@ -91,7 +95,7 @@ int main() {
   rect.bottom = 300;
   rect.right = 1050;
   g_current_scene = create_story_scene(create_dance_game_scene(),
-                                       game_help_sprites[2], t, 2, rect);
+                                       game_help_sprites[2], t, 4, rect);
   g_new_scene = NULL;
 
   while (1) {

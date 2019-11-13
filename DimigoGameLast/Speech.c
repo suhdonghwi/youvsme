@@ -15,11 +15,13 @@ void on_render_speech(GameObject* speech, HDC main_dc) {
   draw_rect.right = data->speech_rect.right - 25;
 
   clock_t current_clock = clock();
-  if (((double)current_clock - data->last_move_clock) / CLOCKS_PER_SEC > 0.1) {
+  if (((double)current_clock - data->last_move_clock) / CLOCKS_PER_SEC > 0.05) {
     if (data->current_cursor < wcslen(current_text) - 1) {
       do {
         data->current_cursor++;
       } while (current_text[data->current_cursor] == ' ');
+    } else {
+      data->text_over = true;
     }
 
     data->last_move_clock = clock();
@@ -36,16 +38,19 @@ void on_render_speech(GameObject* speech, HDC main_dc) {
             DT_EXTERNALLEADING | DT_WORDBREAK);
   free(draw_text);
 
-  char enter_text[] = "Enter >";
+  if (data->text_over) {
+    char enter_text[] = "Enter >";
 
-  SetTextColor(main_dc, RGB(100, 100, 100));
-  TextOut(main_dc, draw_rect.right - 100, draw_rect.bottom - 20, enter_text,
-          strlen(enter_text));
+    SetTextColor(main_dc, RGB(100, 100, 100));
+    TextOut(main_dc, draw_rect.right - 100, draw_rect.bottom - 20, enter_text,
+            strlen(enter_text));
 
-  if (is_pressed(VK_RETURN)) {
-    if (data->current_index != data->text_count - 1) {
-      data->current_index++;
-      data->current_cursor = 0;
+    if (is_pressed(VK_RETURN)) {
+      if (data->current_index < data->text_count - 1) {
+        data->current_index++;
+        data->current_cursor = 0;
+        data->text_over = false;
+      }
     }
   }
 }
@@ -72,6 +77,7 @@ GameObject* create_speech(wchar_t** text, int number, RECT rect) {
   data->current_cursor = 0;
   data->text = text;
   data->text_count = number;
+  data->text_over = false;
   data->font = CreateFont(30, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
                           VARIABLE_PITCH | FF_ROMAN, TEXT("µÕ±Ù¸ð²Ã"));
   data->rect_brush = CreateSolidBrush(RGB(200, 200, 200));
