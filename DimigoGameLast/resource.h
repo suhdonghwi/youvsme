@@ -77,12 +77,24 @@
 #define IDB_DANCE_BACKGROUND_RIGHT      166
 #define IDB_BITMAP10                    167
 #define IDB_WRONG                       167
+#define IDB_PROGRESS_0                  168
+#define IDB_PROGRESS_1                  169
+#define IDB_PROGRESS_2                  170
+#define IDB_PROGRESS_3                  171
+#define IDB_PROGRESS_4                  172
+#define IDB_PROGRESS_5                  173
+#define IDB_PROGRESS_6                  174
+#define IDB_PROGRESS_7                  175
+#define IDB_PROGRESS_8                  176
+#define IDB_PROGRESS_9                  177
+#define IDB_BITMAP23                    178
+#define IDB_PROGRESS_10                 178
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        168
+#define _APS_NEXT_RESOURCE_VALUE        179
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101

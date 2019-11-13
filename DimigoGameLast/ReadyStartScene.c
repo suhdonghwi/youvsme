@@ -11,10 +11,11 @@ void on_render_readystart_scene(GameScene* scene, HDC main_dc) {
   HBITMAP current_bitmap = data->slide_bitmaps[data->index];
   BITMAP bitmap_data;
   GetObject(current_bitmap, sizeof(BITMAP), &bitmap_data);
-  render_bitmap(current_bitmap, main_dc,
-                (Pos){data->render_pos.x - (bitmap_data.bmWidth * 4.5) / 2,
-                      data->render_pos.y - (bitmap_data.bmHeight * 4.5) / 2},
-                20.25);
+  render_bitmap(
+      current_bitmap, main_dc,
+      (Pos){(int)(data->render_pos.x - (bitmap_data.bmWidth * 4.5) / 2),
+            (int)(data->render_pos.y - (bitmap_data.bmHeight * 4.5) / 2)},
+      20.25);
 
   data->index++;
 

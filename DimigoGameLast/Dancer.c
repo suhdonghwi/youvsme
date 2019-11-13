@@ -52,21 +52,18 @@ void on_render_dancer(GameObject* dancer, HDC main_dc) {
     BITMAP dancer_sprite_data;
     GetObject(dancer_sprite, sizeof(BITMAP), &dancer_sprite_data);
 
-    RECT bar_rect;
-    bar_rect.top = dancer->pos.y - 30;
-    bar_rect.left = dancer->pos.x + dancer_sprite_data.bmWidth * 5.0 / 2.0 - 50;
-    bar_rect.bottom = bar_rect.top + 15;
-    bar_rect.right = bar_rect.left + 100;
-    FillRect(main_dc, &bar_rect, data->bar_brush);
-
     double elapsed =
         ((double)current_clock - data->last_dance_clock) / CLOCKS_PER_SEC;
-    bar_rect.right = bar_rect.left + 100 * min(elapsed / 0.3, 1);
-    FillRect(main_dc, &bar_rect, data->fill_brush);
+    Pos progress_pos = (Pos){
+        (LONG)(dancer->pos.x + dancer_sprite_data.bmWidth * 5.0 / 2.0 - 27),
+        dancer->pos.y - 70};
+    int current_index = (int)(10 * (elapsed / 0.3));
+    render_bitmap(progress_sprites[min(current_index, 10)], main_dc,
+                  progress_pos, 3);
   }
 
   if ((((double)current_clock - data->last_dance_clock) / CLOCKS_PER_SEC >
-           0.2 &&
+           0.3 &&
        data->is_dancing) ||
       data->is_imitating) {
     if (!is_dance_queue_full(data->dance_queue, data->dance_max)) {

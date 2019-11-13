@@ -128,6 +128,20 @@ void init_sprite_resources(HINSTANCE inst) {
   sign_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_OK));
   sign_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_WRONG));
 
+  progress_sprites = malloc(sizeof(HBITMAP) * 11);
+  if (progress_sprites == NULL) return;
+  progress_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PROGRESS_0));
+  progress_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PROGRESS_1));
+  progress_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PROGRESS_2));
+  progress_sprites[3] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PROGRESS_3));
+  progress_sprites[4] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PROGRESS_4));
+  progress_sprites[5] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PROGRESS_5));
+  progress_sprites[6] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PROGRESS_6));
+  progress_sprites[7] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PROGRESS_7));
+  progress_sprites[8] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PROGRESS_8));
+  progress_sprites[9] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PROGRESS_9));
+  progress_sprites[10] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PROGRESS_10));
+
   coco_disk_ready_sprites = malloc(sizeof(HBITMAP) * 3);
   if (coco_disk_ready_sprites == NULL) return;
   coco_disk_ready_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_TURN));

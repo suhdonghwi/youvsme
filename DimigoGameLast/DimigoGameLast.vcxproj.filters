@@ -420,5 +420,38 @@
     <Image Include="Resource\dance_background.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resource\progress_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\progress_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\progress_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\progress_3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\progress_4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\progress_5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\progress_6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\progress_7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\progress_8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\progress_9.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\progress_10.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
