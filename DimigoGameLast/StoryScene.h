@@ -5,4 +5,4 @@ typedef struct tagStorySceneData {
 } StorySceneData;
 
 GameScene* create_story_scene(GameScene* next_scene, HBITMAP background,
-                              char* text, Pos text_pos);
+                              char** text, int text_count, Pos text_pos);

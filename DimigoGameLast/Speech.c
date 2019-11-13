@@ -6,8 +6,15 @@ void on_render_speech(GameObject* speech, HDC main_dc) {
   FillRect(main_dc, &data->speech_rect, data->rect_brush);
 
   char* current_text = data->text[data->current_index];
-  TextOut(main_dc, data->speech_rect.left + 50, data->speech_rect.top + 50,
-          current_text, strlen(current_text));
+
+  SelectObject(main_dc, data->font);
+  RECT draw_rect;
+  draw_rect.top = data->speech_rect.top + 25;
+  draw_rect.bottom = data->speech_rect.bottom - 25;
+  draw_rect.left = data->speech_rect.left + 25;
+  draw_rect.right = data->speech_rect.right - 25;
+  DrawText(main_dc, current_text, strlen(current_text), &draw_rect,
+           DT_EXTERNALLEADING | DT_WORDBREAK);
 }
 
 void on_destroy_speech(GameObject* speech) {
@@ -31,7 +38,7 @@ GameObject* create_speech(char* text[], int number, RECT rect) {
   data->current_index = 0;
   data->text = text;
   data->text_count = number;
-  data->font = CreateFont(50, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
+  data->font = CreateFont(30, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
                           VARIABLE_PITCH | FF_ROMAN, TEXT("µÕ±Ù¸ð²Ã"));
   data->rect_brush = CreateSolidBrush(RGB(200, 200, 200));
 

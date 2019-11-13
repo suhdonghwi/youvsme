@@ -78,9 +78,15 @@ int main() {
   // g_current_scene = create_pull_game_scene();
   g_story_mode = true;
 
-  g_current_scene =
-      create_story_scene(create_dance_game_scene(), game_help_sprites[2],
-                         "hello", (Pos){100, 100});
+  char** t = malloc(sizeof(char*) * 2);
+
+  t[0] = malloc(sizeof(char) * 100);
+  strcpy(t[0], "æ»≥Á«œººø‰!");
+  t[1] = malloc(sizeof(char) * 100);
+  strcpy(t[1], "Goodbye, world!");
+
+  g_current_scene = create_story_scene(
+      create_dance_game_scene(), game_help_sprites[2], t, 2, (Pos){100, 100});
   g_new_scene = NULL;
 
   while (1) {
