@@ -58,12 +58,13 @@ void on_render_dancer(GameObject* dancer, HDC main_dc) {
     Pos progress_pos = (Pos){
         (LONG)(dancer->pos.x + dancer_sprite_data.bmWidth * 5.0 / 2.0 - 27),
         dancer->pos.y - 70};
-    int current_index = (int)(10 * (elapsed / 0.4));
+    int current_index = (int)(10 * (elapsed / data->dance_cooldown));
     render_bitmap(progress_sprites[min(current_index, 10)], main_dc,
                   progress_pos, 3);
   }
 
-  if ((elapsed_time(last_dance_delay) >= 0.4 && data->is_dancing) ||
+  if ((elapsed_time(last_dance_delay) >= data->dance_cooldown &&
+       data->is_dancing) ||
       data->is_imitating) {
     if (!is_dance_queue_full(data->dance_queue, data->dance_max)) {
       for (int i = 0; i < 4; i++) {
@@ -98,6 +99,7 @@ GameObject* create_dancer(bool coco, SHORT* move_keys) {
   data->is_dancing = false;
   data->is_imitating = false;
   data->last_dance_clock = clock();
+  data->dance_cooldown = 0.4;
 
   dancer->data = data;
   dancer->on_render = on_render_dancer;
