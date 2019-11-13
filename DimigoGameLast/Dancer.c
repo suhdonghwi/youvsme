@@ -19,11 +19,13 @@ bool is_dance_queue_full(DanceDirection* queue, int max) {
   return dance_queue_length(queue, max) == max;
 }
 
-void dance_queue_push(DanceDirection* queue, int max, DanceDirection v) {
+int dance_queue_push(DanceDirection* queue, int max, DanceDirection v) {
   int length = dance_queue_length(queue, max);
-  if (length == max) return;
+  if (length == max) return 1;
+  if (length > 0 && queue[length - 1] == v) return 1;
 
   queue[length] = v;
+  return 0;
 }
 
 bool compare_tag_and_dir(DanceDirection dir, char* tag) {
@@ -71,8 +73,9 @@ void on_render_dancer(GameObject* dancer, HDC main_dc) {
     if (!is_dance_queue_full(data->dance_queue, data->dance_max)) {
       for (int i = 0; i < 4; i++) {
         if (is_pressed(data->move_keys[i])) {
-          dance_queue_push(data->dance_queue, data->dance_max, directions[i]);
-          data->last_dance_clock = clock();
+          if (dance_queue_push(data->dance_queue, data->dance_max,
+                               directions[i]) == 0)
+            data->last_dance_clock = clock();
         }
       }
     }
