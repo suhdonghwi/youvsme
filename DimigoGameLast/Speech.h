@@ -1,4 +1,6 @@
 #pragma once
+#include <time.h>
+
 #include "GameObject.h"
 
 typedef struct tagSpeechData {
@@ -10,6 +12,9 @@ typedef struct tagSpeechData {
 
   wchar_t** text;
   int text_count;
+
+  size_t current_cursor;
+  clock_t last_move_clock;
 } SpeechData;
 
 GameObject* create_speech(wchar_t** text, int number, RECT rect);

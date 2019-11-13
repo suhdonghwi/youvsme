@@ -81,7 +81,7 @@ int main() {
   wchar_t** t = malloc(sizeof(wchar_t*) * 2);
 
   t[0] = malloc(sizeof(wchar_t) * 100);
-  wcscpy(t[0], L"안녕하세요!");
+  wcscpy(t[0], L"안녕 여러분 집중을 해봐요\n\n닥쳐 쳐맞기 싫으면");
   t[1] = malloc(sizeof(wchar_t) * 100);
   wcscpy(t[1], L"Goodbye, world!");
 

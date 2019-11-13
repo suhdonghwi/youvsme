@@ -8,7 +8,7 @@ void on_render_story_scene(GameScene* scene, HDC main_dc) {
 }
 
 GameScene* create_story_scene(GameScene* next_scene, HBITMAP background,
-                              char** text, int text_count, RECT text_rect) {
+                              wchar_t** text, int text_count, RECT text_rect) {
   GameScene* scene = init_scene();
   scene->on_render = on_render_story_scene;
 
