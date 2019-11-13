@@ -54,10 +54,11 @@ void init_sprite_resources(HINSTANCE inst) {
   won_message_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_WON));
   won_message_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_WON));
 
-  game_help_sprites = malloc(sizeof(HBITMAP) * 2);
+  game_help_sprites = malloc(sizeof(HBITMAP) * 3);
   if (game_help_sprites == NULL) return;
   game_help_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_HELP));
   game_help_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PULL_HELP));
+  game_help_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_TEACHER_HELP));
 
   ready_start_sprites = malloc(sizeof(HBITMAP) * 2);
   if (ready_start_sprites == NULL) return;
@@ -163,89 +164,25 @@ void init_sprite_resources(HINSTANCE inst) {
 }
 
 void deinit_sprite_resources() {
-  DeleteObject(dingding_sprites[0]);
-  DeleteObject(dingding_sprites[1]);
-  DeleteObject(dingding_sprites[2]);
   free(dingding_sprites);
-
-  DeleteObject(coco_sprites[0]);
-  DeleteObject(coco_sprites[1]);
-  DeleteObject(coco_sprites[2]);
   free(coco_sprites);
-
-  DeleteObject(background_sprites[0]);
   free(background_sprites);
-
-  DeleteObject(won_message_sprites[0]);
-  DeleteObject(won_message_sprites[1]);
   free(won_message_sprites);
-
-  DeleteObject(game_help_sprites[0]);
-  DeleteObject(game_help_sprites[1]);
   free(game_help_sprites);
-
-  DeleteObject(ready_start_sprites[0]);
-  DeleteObject(ready_start_sprites[1]);
   free(ready_start_sprites);
-
-  DeleteObject(coco_disk_sprites[0]);
-  DeleteObject(coco_disk_sprites[1]);
-  DeleteObject(coco_disk_sprites[2]);
-  DeleteObject(coco_disk_sprites[3]);
   free(coco_disk_sprites);
-
-  DeleteObject(dingding_disk_sprites[0]);
-  DeleteObject(dingding_disk_sprites[1]);
-  DeleteObject(dingding_disk_sprites[2]);
-  DeleteObject(dingding_disk_sprites[3]);
   free(dingding_disk_sprites);
-
-  DeleteObject(disk_shadow_sprites[0]);
   free(disk_shadow_sprites);
-
-  DeleteObject(disk_line_sprites[0]);
-  DeleteObject(disk_line_sprites[1]);
   free(disk_line_sprites);
-
-  DeleteObject(score_board_sprites[0]);
   free(score_board_sprites);
-
-  DeleteObject(string_sprites[0]);
   free(string_sprites);
-
-  DeleteObject(flag_sprites[0]);
-  DeleteObject(flag_sprites[1]);
   free(flag_sprites);
-
-  DeleteObject(logo_sprites[0]);
-  DeleteObject(logo_sprites[1]);
   free(logo_sprites);
-
-  DeleteObject(ment_sprites[0]);
   free(ment_sprites);
-
-  DeleteObject(key_sprites[0]);
-  DeleteObject(key_sprites[1]);
-  DeleteObject(key_sprites[2]);
-  DeleteObject(key_sprites[3]);
-  DeleteObject(key_sprites[4]);
-  DeleteObject(key_sprites[5]);
   free(key_sprites);
-
-  DeleteObject(sign_sprites[0]);
   free(sign_sprites);
-
-  DeleteObject(coco_disk_ready_sprites[0]);
-  DeleteObject(coco_disk_ready_sprites[1]);
-  DeleteObject(coco_disk_ready_sprites[2]);
+  free(progress_sprites);
   free(coco_disk_ready_sprites);
-
-  DeleteObject(dingding_disk_ready_sprites[0]);
-  DeleteObject(dingding_disk_ready_sprites[1]);
-  DeleteObject(dingding_disk_ready_sprites[2]);
   free(dingding_disk_ready_sprites);
-
-  DeleteObject(pull_ready_sprites[0]);
-  DeleteObject(pull_ready_sprites[1]);
   free(pull_ready_sprites);
 }

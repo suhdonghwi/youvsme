@@ -156,6 +156,7 @@
     <Image Include="Resource\spit.bmp" />
     <Image Include="Resource\start.bmp" />
     <Image Include="Resource\string.bmp" />
+    <Image Include="Resource\teacher_help.bmp" />
     <Image Include="Resource\wrong.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

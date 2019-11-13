@@ -453,5 +453,8 @@
     <Image Include="Resource\progress_10.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resource\teacher_help.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
