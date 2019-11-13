@@ -41,6 +41,7 @@ bool compare_tag_and_dir(DanceDirection dir, char* tag) {
 
   return false;
 }
+
 void on_render_dancer(GameObject* dancer, HDC main_dc) {
   DancerData* data = (DancerData*)dancer->data;
   static DanceDirection directions[4] = {DANCE_UP, DANCE_RIGHT, DANCE_DOWN,

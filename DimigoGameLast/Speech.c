@@ -1,4 +1,5 @@
 #include "Speech.h"
+#include "KeyInput.h"
 
 void on_render_speech(GameObject* speech, HDC main_dc) {
   SpeechData* data = speech->data;
@@ -15,6 +16,14 @@ void on_render_speech(GameObject* speech, HDC main_dc) {
   draw_rect.right = data->speech_rect.right - 25;
   DrawText(main_dc, current_text, strlen(current_text), &draw_rect,
            DT_EXTERNALLEADING | DT_WORDBREAK);
+
+  char enter_text[] = "Enter >";
+  TextOut(main_dc, draw_rect.right - 100, draw_rect.bottom - 20, enter_text,
+          strlen(enter_text));
+
+  if (is_pressed(VK_RETURN)) {
+    if (data->current_index != data->text_count - 1) data->current_index++;
+  }
 }
 
 void on_destroy_speech(GameObject* speech) {
