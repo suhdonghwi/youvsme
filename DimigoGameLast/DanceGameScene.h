@@ -23,6 +23,8 @@ typedef struct tagDanceGameSceneData {
   clock_t imitate_clock;
   double imitate_time;
   HFONT font;
+
+  size_t dance_count;
 } DanceGameSceneData;
 
 GameScene* create_dance_game_scene();
