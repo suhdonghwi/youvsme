@@ -18,6 +18,7 @@
 #include "FinalResultScene.h"
 #include "GameHelpScene.h"
 #include "GameResultScene.h"
+#include "HomeScene.h"
 #include "PullGameScene.h"
 #include "ReadyStartScene.h"
 #include "StoryScene.h"
@@ -82,7 +83,7 @@ int main() {
   // g_current_scene = create_disk_game_scene(true, (Pos){0, 0});
   // g_current_scene = create_game_result_scene(false);
   // g_current_scene = create_pull_game_scene();
-  g_current_scene = create_dance_game_scene();
+  g_current_scene = create_final_result_scene();
   // g_current_scene = create_after_main_story();
   g_story_mode = true;
 

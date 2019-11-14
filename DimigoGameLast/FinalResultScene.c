@@ -1,8 +1,13 @@
 #include <stdio.h>
 
 #include "FinalResultScene.h"
+#include "HomeScene.h"
+#include "KeyInput.h"
 #include "SetScore.h"
 #include "SpriteResources.h"
+#include "StoryScene.h"
+
+extern GameScene* g_new_scene;
 
 void on_render_final_result_scene(GameScene* scene, HDC main_dc) {
   FinalResultSceneData* data = scene->data;
@@ -15,6 +20,12 @@ void on_render_final_result_scene(GameScene* scene, HDC main_dc) {
   char score_str[100] = {'\0'};
   sprintf(score_str, "%d    %d", g_dingding_set_score, g_coco_set_score);
   TextOut(main_dc, 430, 270, score_str, strlen(score_str));
+
+  if (is_pressed(VK_RETURN)) {
+    g_new_scene = create_home_scene();
+  } else if (is_pressed(0x52)) {
+    g_new_scene = create_after_main_story();
+  }
 }
 GameScene* create_final_result_scene() {
   GameScene* scene = init_scene();
