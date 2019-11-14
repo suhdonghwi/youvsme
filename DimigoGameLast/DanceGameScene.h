@@ -1,6 +1,7 @@
 #pragma once
 #include <time.h>
 
+#include "Delay.h"
 #include "GameScene.h"
 
 typedef enum tagDanceGameSceneState {
@@ -25,6 +26,9 @@ typedef struct tagDanceGameSceneData {
   HFONT font;
 
   size_t dance_count;
+
+  delay_t speedup_show_delay, speedup_blink_delay;
+  bool show_speed_up;
 } DanceGameSceneData;
 
 GameScene* create_dance_game_scene();

@@ -56,28 +56,19 @@ void zoom_normal(DanceGameSceneData* data) {
 
 void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
   DanceGameSceneData* data = (DanceGameSceneData*)scene->data;
-  static delay_t speedup_show_delay, speedup_blink_delay;
-  static bool show_speed_up;
+  DancerData* coco_data = data->coco->data;
+  DancerData* dingding_data = data->dingding->data;
 
   render_bitmap(background_sprites[3 + data->state], main_dc,
                 data->background_pos, data->background_scale);
 
-  if (data->dance_count == 3) {
-    DancerData* coco_data = data->coco->data;
-    DancerData* dingding_data = data->dingding->data;
-
-    if (coco_data->dance_cooldown > 0.35) {
-      coco_data->dance_cooldown -= 0.1;
-      dingding_data->dance_cooldown -= 0.1;
-      data->imitate_time -= 1;
+  if (data->dance_count == 4 || data->dance_count == 12) {
+    if (data->speedup_show_delay == 0) data->speedup_show_delay = clock();
+    if (after_delay(&data->speedup_blink_delay, 0.5)) {
+      data->show_speed_up = !data->show_speed_up;
     }
 
-    if (speedup_show_delay == 0) speedup_show_delay = clock();
-    if (after_delay(&speedup_blink_delay, 0.5)) {
-      show_speed_up = !show_speed_up;
-    }
-
-    if (show_speed_up && elapsed_time(speedup_show_delay) < 3.0) {
+    if (data->show_speed_up && elapsed_time(data->speedup_show_delay) < 3.0) {
       SelectObject(main_dc, data->font);
       SetTextColor(main_dc, RGB(255, 212, 59));
       TextOut(main_dc, 450, 100, "Speed Up!", strlen("Speed Up!"));
@@ -112,15 +103,13 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
 
         data->state = STATE_IMITATING;
         data->imitate_clock = clock();
-        data->imitate_time = 3.0;
         zoom_normal(data);
       }
       break;
     }
     case STATE_IMITATING: {
-      DancerData* coco_data = data->coco->data;
       DancerData* imitator_data =
-          coco_data->is_imitating ? coco_data : data->dingding->data;
+          coco_data->is_imitating ? coco_data : dingding_data;
 
       int imitating_length = dance_queue_length(imitator_data->dance_queue,
                                                 imitator_data->dance_max);
@@ -155,6 +144,18 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
       } else if (is_dance_queue_full(imitator_data->dance_queue,
                                      imitator_data->dance_max)) {
         data->dance_count++;
+
+        if (data->dance_count == 4) {
+          coco_data->dance_cooldown -= 0.1;
+          dingding_data->dance_cooldown -= 0.1;
+          data->imitate_time -= 1;
+        } else if (data->dance_count == 12) {
+          coco_data->dance_cooldown -= 0.05;
+          dingding_data->dance_cooldown -= 0.05;
+          data->imitate_time -= 0.5;
+        }
+
+        data->speedup_show_delay = clock();
 
         if (coco_data->is_imitating) {
           data->state = STATE_COCO_DANCING;
@@ -208,7 +209,11 @@ GameScene* create_dance_game_scene() {
   data->previous_length = 0;
   data->font = CreateFont(50, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
                           VARIABLE_PITCH | FF_ROMAN, TEXT("µÕ±Ù¸ð²Ã"));
+  data->imitate_time = 3;
   data->dance_count = 0;
+  data->speedup_show_delay = 0;
+  data->speedup_blink_delay = 0;
+  data->show_speed_up = false;
   zoom_dingding(data);
 
   scene->data = data;
