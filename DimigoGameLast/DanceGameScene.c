@@ -5,6 +5,7 @@
 #include "Delay.h"
 #include "GameResultScene.h"
 #include "GameScene.h"
+#include "HomeScene.h"
 #include "PullGameScene.h"
 #include "SpriteResources.h"
 #include "StoryScene.h"
@@ -12,6 +13,7 @@
 extern GameScene* g_current_scene;
 extern GameScene* g_new_scene;
 extern HDC g_window_dc;
+extern bool g_story_mode;
 
 void init_dance_queue(DanceDirection** queue, int size) {
   *queue = malloc(sizeof(DanceDirection) * size);
@@ -136,7 +138,12 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
             coco_data->is_imitating ? data->coco->pos : data->dingding->pos,
             25);
         Sleep(1500);
-        g_new_scene = create_after_dance_story(!coco_data->is_imitating);
+
+        bool coco_win = !coco_data->is_imitating;
+        if (g_story_mode)
+          g_new_scene = create_after_dance_story(coco_win);
+        else
+          g_new_scene = create_game_result_scene(coco_win, create_home_scene());
         return;
       }
 

@@ -5,15 +5,14 @@
 #include "DanceGameScene.h"
 #include "GameResultScene.h"
 #include "GameScene.h"
+#include "HomeScene.h"
 #include "KeyInput.h"
 #include "SpriteResources.h"
 #include "StoryScene.h"
 #include "String.h"
 
-extern SHORT g_pressed_map[256];
-extern SHORT g_prev_pressed_map[256];
 extern GameScene* g_new_scene;
-extern int g_coco_score;
+extern bool g_story_mode;
 
 void randomize_combo(int* combo) {
   for (int i = 0; i < 3; i++) combo[i] = 1 + rand() % 3;
@@ -109,7 +108,12 @@ void on_collide_string(GameObject* string, GameObject* object) {
   if (strcmp(object->tag, "flag") == 0 && !data->coco_pulling &&
       !data->dingding_pulling) {
     Sleep(1000);
-    g_new_scene = create_after_pull_story(object->sprite_index == 0);
+
+    bool coco_win = object->sprite_index == 0;
+    if (g_story_mode)
+      g_new_scene = create_after_pull_story(coco_win);
+    else
+      g_new_scene = create_game_result_scene(coco_win, create_home_scene());
   }
 }
 
