@@ -23,7 +23,7 @@ void on_render_speech(GameObject* speech, HDC main_dc) {
       } while (current_text[data->current_cursor] == ' ');
       text_show_delay = clock();
     } else {
-      if (after_delay(&text_show_delay, 1)) {
+      if (after_delay(&text_show_delay, 0.25)) {
         data->text_over = true;
       }
     }
@@ -52,6 +52,8 @@ void on_render_speech(GameObject* speech, HDC main_dc) {
         data->current_index++;
         data->current_cursor = 0;
         data->text_over = false;
+      } else {
+        strcpy(speech->tag, "speech_end");
       }
     }
   }
@@ -71,6 +73,7 @@ GameObject* create_speech(wchar_t** text, int number, RECT rect) {
 
   speech->on_render = on_render_speech;
   speech->on_destroy = on_destroy_speech;
+  strcpy(speech->tag, "speech_normal");
 
   SpeechData* data = malloc(sizeof(SpeechData));
   if (data == NULL) return NULL;

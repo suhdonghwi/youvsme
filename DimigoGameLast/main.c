@@ -76,27 +76,45 @@ int main() {
   // g_current_scene = create_disk_game_scene(true, (Pos){0, 0});
   // g_current_scene = create_game_result_scene(false);
   // g_current_scene = create_pull_game_scene();
-  g_current_scene = create_dance_game_scene();
+  // g_current_scene = create_dance_game_scene();
   g_story_mode = true;
 
-  wchar_t** t = malloc(sizeof(wchar_t*) * 4);
-
-  t[0] = malloc(sizeof(wchar_t) * 100);
-  wcscpy(t[0], L"자, 집중!");
-  t[1] = malloc(sizeof(wchar_t) * 100);
-  wcscpy(t[1], L"이제 우리는 플라잉 디스크를 배울거다.");
-  t[2] = malloc(sizeof(wchar_t) * 100);
-  wcscpy(t[2], L"플라잉 디스크는 마이크에 바람을 대고 불면 날라가게 되어있다.");
-  t[3] = malloc(sizeof(wchar_t) * 100);
-  wcscpy(t[3], L"멀리 날려야 좋은 점수를 받을테니 숨을 크게 들이쉬어라.");
+  GameScene* disk_ready =
+      create_readystart_scene(create_disk_game_scene(true, (Pos){0, 0}),
+                              coco_disk_ready_sprites, 3, (Pos){560, 300});
 
   RECT rect;
   rect.top = 50;
   rect.left = 680;
   rect.bottom = 300;
   rect.right = 1050;
-  // g_current_scene = create_story_scene(create_dance_game_scene(),
-  //                                     game_help_sprites[2], t, 4, rect);
+
+  wchar_t** teacher_ment = malloc(sizeof(wchar_t*) * 4);
+
+  teacher_ment[0] = malloc(sizeof(wchar_t) * 100);
+  wcscpy(teacher_ment[0], L"자, 집중!");
+  teacher_ment[1] = malloc(sizeof(wchar_t) * 100);
+  wcscpy(teacher_ment[1], L"이제 우리는 플라잉 디스크를 배울거다.");
+  teacher_ment[2] = malloc(sizeof(wchar_t) * 100);
+  wcscpy(teacher_ment[2],
+         L"플라잉 디스크는 마이크에 바람을 대고 불면 날라가게 되어있다.");
+  teacher_ment[3] = malloc(sizeof(wchar_t) * 100);
+  wcscpy(teacher_ment[3],
+         L"멀리 날려야 좋은 점수를 받을테니 숨을 크게 들이쉬어라.");
+
+  GameScene* teacher_help = create_story_scene(disk_ready, game_help_sprites[2],
+                                               teacher_ment, 4, rect);
+
+  wchar_t** timetable_ment = malloc(sizeof(wchar_t*) * 2);
+
+  timetable_ment[0] = malloc(sizeof(wchar_t) * 100);
+  wcscpy(timetable_ment[0], L"아이들 : (웅성웅성)");
+  timetable_ment[1] = malloc(sizeof(wchar_t) * 100);
+  wcscpy(timetable_ment[1], L"아이들 : 와 오늘 체육 3시간이다! 빨리 가자!");
+
+  GameScene* timetable_story = create_story_scene(
+      teacher_help, story_sprites[0], timetable_ment, 2, rect);
+  g_current_scene = timetable_story;
   g_new_scene = NULL;
 
   while (1) {

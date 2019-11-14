@@ -480,5 +480,8 @@
     <Image Include="Resource\teacher_help.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resource\story_timetable.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

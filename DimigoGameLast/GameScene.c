@@ -67,6 +67,7 @@ void render_game_scene(GameScene* scene, HDC main_dc, int window_width,
   DeleteObject(back_bitmap);
 
   if (scene->on_render != NULL) scene->on_render(scene, back_dc);
+  if (g_new_scene != NULL) return;
 
   GameSceneNode* node = scene->head;
   GameSceneNode* prev = node;

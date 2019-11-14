@@ -19,6 +19,7 @@ HBITMAP* ment_sprites;
 HBITMAP* key_sprites;
 HBITMAP* sign_sprites;
 HBITMAP* progress_sprites;
+HBITMAP* story_sprites;
 
 HBITMAP* coco_disk_ready_sprites;
 HBITMAP* dingding_disk_ready_sprites;
