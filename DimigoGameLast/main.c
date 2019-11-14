@@ -28,8 +28,10 @@ extern SHORT g_prev_pressed_map[256];
 
 GameScene* g_current_scene;
 GameScene* g_new_scene;
+
 int g_coco_score = 0;
 int g_dingding_score = 0;
+
 HDC g_window_dc;
 bool g_story_mode;
 

@@ -25,6 +25,7 @@
     <ClCompile Include="Flag.c" />
     <ClCompile Include="KeyInput.c" />
     <ClCompile Include="PullGameScene.c" />
+    <ClCompile Include="SetScore.c" />
     <ClCompile Include="Speech.c" />
     <ClCompile Include="StoryScene.c" />
     <ClCompile Include="String.c" />
@@ -51,6 +52,7 @@
     <ClInclude Include="Flag.h" />
     <ClInclude Include="KeyInput.h" />
     <ClInclude Include="PullGameScene.h" />
+    <ClInclude Include="SetScore.h" />
     <ClInclude Include="Speech.h" />
     <ClInclude Include="StoryScene.h" />
     <ClInclude Include="String.h" />

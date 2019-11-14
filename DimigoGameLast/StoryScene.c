@@ -5,12 +5,14 @@
 #include "GameResultScene.h"
 #include "PullGameScene.h"
 #include "ReadyStartScene.h"
+#include "SetScore.h"
 #include "Speech.h"
 #include "SpriteResources.h"
 #include "StoryScene.h"
 
 extern GameScene* g_new_scene;
 extern int g_coco_score;
+extern int g_dingding_score;
 
 void on_render_story_scene(GameScene* scene, HDC main_dc) {
   StorySceneData* data = scene->data;
@@ -164,6 +166,9 @@ GameScene* create_after_pull_story(bool coco_win) {
 
 GameScene* create_after_dance_story(bool coco_win) {
   CREATE_MENT(ment, 4, NULL);
+
+  coco_win = coco_win && g_coco_score + 1 > g_dingding_score;
+  update_set_score(coco_win);
 
   wcscpy(ment[0], !coco_win ? L"코코 : 이게 진짜일리 없어.. 내가 지다니 ㅠㅠ"
                             : L"딩딩 : 이게 진짜일리 없어.. 내가 지다니 ㅠㅠ");

@@ -129,6 +129,9 @@
     <ClCompile Include="Delay.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SetScore.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">
@@ -202,6 +205,9 @@
     </ClInclude>
     <ClInclude Include="HomeScene.h">
       <Filter>Header Files\GameScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SetScore.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
