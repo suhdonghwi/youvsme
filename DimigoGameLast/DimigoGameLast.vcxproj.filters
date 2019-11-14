@@ -492,5 +492,11 @@
     <Image Include="Resource\story_first.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resource\story_coco_win.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\story_dingding_win.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

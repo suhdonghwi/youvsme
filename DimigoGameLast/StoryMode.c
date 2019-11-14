@@ -6,14 +6,6 @@
 #include "SpriteResources.h"
 #include "StoryScene.h"
 
-#define CREATE_MENT(var, size)                     \
-  wchar_t** var = malloc(sizeof(wchar_t*) * size); \
-  if (var == NULL) return NULL;                    \
-  for (int i = 0; i < size; i++) {                 \
-    var[i] = malloc(sizeof(wchar_t) * 100);        \
-    if (var[i] == NULL) return NULL;               \
-  }
-
 GameScene* create_story_mode() {
   GameScene* disk_ready =
       create_readystart_scene(create_disk_game_scene(true, (Pos){0, 0}),
@@ -28,7 +20,7 @@ GameScene* create_story_mode() {
   rect.bottom = 300;
   rect.right = 1050;
 
-  CREATE_MENT(teacher_ment, 4);
+  CREATE_MENT(teacher_ment, 4, NULL);
 
   wcscpy(teacher_ment[0], L"자, 집중!");
   wcscpy(teacher_ment[1], L"이제 우리는 플라잉 디스크를 배울거다.");
@@ -45,7 +37,7 @@ GameScene* create_story_mode() {
   rect.bottom = rect.top + 140;
   rect.right = rect.left + 500;
 
-  CREATE_MENT(timetable_ment, 2);
+  CREATE_MENT(timetable_ment, 2, NULL);
   wcscpy(timetable_ment[0], L"아이들 : (웅성웅성)");
   wcscpy(timetable_ment[1], L"아이들 : 와 오늘 체육 3시간이다! 빨리 가자!");
 
@@ -57,7 +49,7 @@ GameScene* create_story_mode() {
   rect.bottom = rect.top + 200;
   rect.right = rect.left + 750;
 
-  CREATE_MENT(first_ment, 4);
+  CREATE_MENT(first_ment, 4, NULL);
   wcscpy(first_ment[0],
          L"코코와 딩딩이는 이번주에 반에서 잡다한 일을 처리하는 주번이 "
          L"되었습니다. ");

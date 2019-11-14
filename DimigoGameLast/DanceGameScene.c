@@ -5,6 +5,7 @@
 #include "Delay.h"
 #include "GameResultScene.h"
 #include "GameScene.h"
+#include "PullGameScene.h"
 #include "SpriteResources.h"
 
 extern GameScene* g_current_scene;
@@ -133,7 +134,8 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
             coco_data->is_imitating ? data->coco->pos : data->dingding->pos,
             25);
         Sleep(1500);
-        g_new_scene = create_game_result_scene(!coco_data->is_imitating);
+        g_new_scene = create_game_result_scene(!coco_data->is_imitating,
+                                               create_pull_game_scene());
         return;
       }
 

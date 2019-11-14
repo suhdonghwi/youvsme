@@ -1,8 +1,8 @@
 #include "GameHelpScene.h"
 
+#include "KeyInput.h"
 #include "SpriteResources.h"
 
-extern SHORT g_pressed_map[256];
 extern GameScene* g_new_scene;
 
 void on_render_game_help_scene(GameScene* scene, HDC main_dc) {
@@ -22,7 +22,7 @@ void on_render_game_help_scene(GameScene* scene, HDC main_dc) {
   SetTextColor(main_dc, RGB(60, 60, 60));
   TextOut(main_dc, 380, 590, press_s, strlen(press_s));
 
-  if (g_pressed_map[0x53]) {
+  if (is_pressed(0x53)) {
     g_new_scene = data->dest_scene;
   }
 }

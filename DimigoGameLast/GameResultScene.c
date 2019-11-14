@@ -2,17 +2,31 @@
 
 #include "CheeringPlayer.h"
 #include "GameScene.h"
+#include "KeyInput.h"
 #include "ScoreDisplay.h"
 #include "SpriteResources.h"
 
 extern int g_coco_score;
 extern int g_dingding_score;
+extern GameScene* g_new_scene;
 
 void on_render_game_result_scene(GameScene* scene, HDC main_dc) {
+  GameResultSceneData* data = scene->data;
+
   render_bitmap(background_sprites[1], main_dc, (Pos){0, 0}, 20.25);
+
+  char* press_enter = TEXT("[Enter]키를 눌러서 넘어가세요");
+
+  SelectObject(main_dc, data->font);
+  SetTextColor(main_dc, RGB(150, 150, 150));
+  TextOut(main_dc, 362, 642, press_enter, strlen(press_enter));
+
+  if (is_pressed(VK_RETURN)) {
+    g_new_scene = data->next_scene;
+  }
 }
 
-GameScene* create_game_result_scene(bool coco_won) {
+GameScene* create_game_result_scene(bool coco_won, GameScene* next_scene) {
   if (coco_won)
     g_coco_score++;
   else
@@ -30,6 +44,14 @@ GameScene* create_game_result_scene(bool coco_won) {
 
   scene->on_render = on_render_game_result_scene;
   scene->sleep_duration = 100;
+
+  GameResultSceneData* data = malloc(sizeof(GameResultSceneData));
+  if (data == NULL) return NULL;
+  data->font = CreateFont(25, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
+                          VARIABLE_PITCH | FF_ROMAN, TEXT("둥근모꼴"));
+  data->next_scene = next_scene;
+
+  scene->data = data;
 
   return scene;
 }

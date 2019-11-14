@@ -143,10 +143,12 @@ void init_sprite_resources(HINSTANCE inst) {
   progress_sprites[9] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PROGRESS_9));
   progress_sprites[10] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PROGRESS_10));
 
-  story_sprites = malloc(sizeof(HBITMAP) * 2);
+  story_sprites = malloc(sizeof(HBITMAP) * 4);
   if (story_sprites == NULL) return;
   story_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_STORY_TIMETABLE));
   story_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_STORY_FIRST));
+  story_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_STORY_COCO_WIN));
+  story_sprites[3] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_STORY_DINGDING_WIN));
 
   coco_disk_ready_sprites = malloc(sizeof(HBITMAP) * 3);
   if (coco_disk_ready_sprites == NULL) return;
