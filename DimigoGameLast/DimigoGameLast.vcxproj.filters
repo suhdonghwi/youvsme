@@ -522,5 +522,11 @@
     <Image Include="Resource\final_result_background.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resource\home_left.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\home_right.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

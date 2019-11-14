@@ -157,6 +157,11 @@ void init_sprite_resources(HINSTANCE inst) {
   story_sprites[5] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_STORY_DINGDING_CLEAN));
 
+  home_sprites = malloc(sizeof(HBITMAP) * 2);
+  if (home_sprites == NULL) return;
+  home_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_HOME_LEFT));
+  home_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_HOME_RIGHT));
+
   coco_disk_ready_sprites = malloc(sizeof(HBITMAP) * 3);
   if (coco_disk_ready_sprites == NULL) return;
   coco_disk_ready_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_TURN));

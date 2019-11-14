@@ -136,6 +136,8 @@
     <Image Include="Resource\disk_shadow.bmp" />
     <Image Include="Resource\final_result_background.bmp" />
     <Image Include="Resource\finish_flag.bmp" />
+    <Image Include="Resource\home_left.bmp" />
+    <Image Include="Resource\home_right.bmp" />
     <Image Include="Resource\key_1.bmp" />
     <Image Include="Resource\key_2.bmp" />
     <Image Include="Resource\key_3.bmp" />
