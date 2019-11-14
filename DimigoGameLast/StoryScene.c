@@ -1,6 +1,9 @@
 #include "StoryScene.h"
+#include "DanceGameScene.h"
 #include "DiskGameScene.h"
 #include "GameHelpScene.h"
+#include "GameResultScene.h"
+#include "PullGameScene.h"
 #include "ReadyStartScene.h"
 #include "Speech.h"
 #include "SpriteResources.h"
@@ -98,7 +101,7 @@ GameScene* create_after_main_story() {
 }
 
 GameScene* create_after_disk_story(bool coco_win) {
-  CREATE_MENT(ment, 2);
+  CREATE_MENT(ment, 2, NULL);
   wcscpy(ment[0],
          coco_win ? L"코코 : 풋, 내가 이겼네?" : L"딩딩 : 풋, 내가 이겼네?");
   wcscpy(ment[1], coco_win ? L"딩딩 : 다음 판에는 내가 이길테니까 두고봐..!"
@@ -110,14 +113,20 @@ GameScene* create_after_disk_story(bool coco_win) {
   rect.bottom = rect.top + 200;
   rect.right = rect.left + 750;
 
+  GameScene* pull_ready = create_readystart_scene(
+      create_pull_game_scene(), ready_start_sprites, 2, (Pos){560, 300});
+
+  GameScene* pull_help =
+      create_game_help_scene(game_help_sprites[1], logo_sprites[1], pull_ready);
+
   GameScene* next_scene = create_story_scene(
-      create_pull_game_scene(), story_sprites[coco_win ? 2 : 3], ment, 2, rect);
+      pull_help, story_sprites[coco_win ? 2 : 3], ment, 2, rect);
 
   return create_game_result_scene(coco_win, next_scene);
 }
 
 GameScene* create_after_pull_story(bool coco_win) {
-  CREATE_MENT(ment, 3);
+  CREATE_MENT(ment, 3, NULL);
 
   if (g_coco_score == 0) {
     wcscpy(ment[0], coco_win ? L"코코 : 내가 분명히 말했지? 이번엔 내가 이겼네?"
