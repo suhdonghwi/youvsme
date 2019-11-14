@@ -24,6 +24,7 @@
     <ClCompile Include="Delay.c" />
     <ClCompile Include="FinalResultScene.c" />
     <ClCompile Include="Flag.c" />
+    <ClCompile Include="InfiniteScene.c" />
     <ClCompile Include="KeyInput.c" />
     <ClCompile Include="PullGameScene.c" />
     <ClCompile Include="SetScore.c" />
@@ -52,6 +53,7 @@
     <ClInclude Include="Delay.h" />
     <ClInclude Include="FinalResultScene.h" />
     <ClInclude Include="Flag.h" />
+    <ClInclude Include="InfiniteScene.h" />
     <ClInclude Include="KeyInput.h" />
     <ClInclude Include="PullGameScene.h" />
     <ClInclude Include="SetScore.h" />
@@ -138,6 +140,9 @@
     <Image Include="Resource\finish_flag.bmp" />
     <Image Include="Resource\home_left.bmp" />
     <Image Include="Resource\home_right.bmp" />
+    <Image Include="Resource\infinite_1.bmp" />
+    <Image Include="Resource\infinite_2.bmp" />
+    <Image Include="Resource\infinite_3.bmp" />
     <Image Include="Resource\key_1.bmp" />
     <Image Include="Resource\key_2.bmp" />
     <Image Include="Resource\key_3.bmp" />

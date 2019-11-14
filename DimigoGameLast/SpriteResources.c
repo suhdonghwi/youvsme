@@ -162,6 +162,12 @@ void init_sprite_resources(HINSTANCE inst) {
   home_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_HOME_LEFT));
   home_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_HOME_RIGHT));
 
+  infinite_sprites = malloc(sizeof(HBITMAP) * 3);
+  if (infinite_sprites == NULL) return;
+  infinite_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_INFINITE_1));
+  infinite_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_INFINITE_2));
+  infinite_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_INFINITE_3));
+
   coco_disk_ready_sprites = malloc(sizeof(HBITMAP) * 3);
   if (coco_disk_ready_sprites == NULL) return;
   coco_disk_ready_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_TURN));
@@ -202,6 +208,8 @@ void deinit_sprite_resources() {
   free(sign_sprites);
   free(progress_sprites);
   free(story_sprites);
+  free(home_sprites);
+  free(infinite_sprites);
   free(coco_disk_ready_sprites);
   free(dingding_disk_ready_sprites);
   free(pull_ready_sprites);

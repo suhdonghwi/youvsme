@@ -135,6 +135,9 @@
     <ClCompile Include="FinalResultScene.c">
       <Filter>Source Files\GameScenes\StoryMode</Filter>
     </ClCompile>
+    <ClCompile Include="InfiniteScene.c">
+      <Filter>Source Files\GameScenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">
@@ -214,6 +217,9 @@
     </ClInclude>
     <ClInclude Include="FinalResultScene.h">
       <Filter>Header Files\GameScenes\StoryMode</Filter>
+    </ClInclude>
+    <ClInclude Include="InfiniteScene.h">
+      <Filter>Header Files\GameScenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -526,6 +532,15 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resource\home_right.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\infinite_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\infinite_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\infinite_3.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
