@@ -109,39 +109,7 @@ void on_collide_string(GameObject* string, GameObject* object) {
   if (strcmp(object->tag, "flag") == 0 && !data->coco_pulling &&
       !data->dingding_pulling) {
     Sleep(1000);
-    bool coco_win = object->sprite_index == 0;
-
-    CREATE_MENT(ment, 3);
-
-    if (g_coco_score == 0) {
-      wcscpy(ment[0], coco_win
-                          ? L"코코 : 내가 분명히 말했지? 이번엔 내가 이겼네?"
-                          : L"딩딩 : 이번에도 내가 이겼네? 이번엔 너가 "
-                            L"이긴다고 하지 않았니?");
-      wcscpy(ment[1],
-             coco_win ? L"딩딩 : 이제 마지막 게임이다.. 마지막엔 내가 이기겠어!"
-                      : L"코코 : 이미 진 판이지만.. 끝까지 최선을 다하겠어!");
-    } else {
-      wcscpy(ment[0], !coco_win
-                          ? L"딩딩 : 내가 분명히 말했지? 이번엔 내가 이겼네?"
-                          : L"코코 : 이번에도 내가 이겼네? 이번엔 너가 "
-                            L"이긴다고 하지 않았니?");
-      wcscpy(ment[1],
-             !coco_win
-                 ? L"코코 : 이제 마지막 게임이다.. 마지막엔 내가 이기겠어!"
-                 : L"딩딩 : 이미 진 판이지만.. 끝까지 최선을 다하겠어!");
-    }
-
-    RECT rect;
-    rect.top = 450;
-    rect.left = 200;
-    rect.bottom = rect.top + 200;
-    rect.right = rect.left + 750;
-
-    GameScene* next_scene =
-        create_story_scene(create_dance_game_scene(),
-                           story_sprites[coco_win ? 2 : 3], ment, 2, rect);
-    g_new_scene = create_game_result_scene(coco_win, next_scene);
+    g_new_scene = create_after_pull_story(object->sprite_index == 0);
   }
 }
 

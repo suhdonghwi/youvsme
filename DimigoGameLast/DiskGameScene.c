@@ -35,26 +35,8 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
 
       g_new_scene = new_scene;
     } else {
-      bool coco_win = data->fallen_pos.x >= data->disk->pos.x;
-
-      CREATE_MENT(ment, 2);
-      wcscpy(ment[0], coco_win ? L"코코 : 풋, 내가 이겼네?"
-                               : L"딩딩 : 풋, 내가 이겼네?");
-      wcscpy(ment[1], coco_win
-                          ? L"딩딩 : 다음 판에는 내가 이길테니까 두고봐..!"
-                          : L"코코 : 다음 판에는 내가 꼭 이긴다.. 긴장해라!");
-
-      RECT rect;
-      rect.top = 450;
-      rect.left = 200;
-      rect.bottom = rect.top + 200;
-      rect.right = rect.left + 750;
-
-      GameScene* next_scene =
-          create_story_scene(create_pull_game_scene(),
-                             story_sprites[coco_win ? 2 : 3], ment, 2, rect);
-
-      g_new_scene = create_game_result_scene(coco_win, next_scene);
+      g_new_scene =
+          create_after_disk_story(data->fallen_pos.x >= data->disk->pos.x);
     }
   }
 

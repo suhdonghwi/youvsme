@@ -18,7 +18,6 @@
 #include "GameResultScene.h"
 #include "PullGameScene.h"
 #include "ReadyStartScene.h"
-#include "StoryMode.h"
 #include "StoryScene.h"
 
 #include "GameObject.h"
@@ -80,7 +79,7 @@ int main() {
   // g_current_scene = create_dance_game_scene();
   g_story_mode = true;
 
-  g_current_scene = create_story_mode();
+  g_current_scene = create_after_main_story();
   g_new_scene = NULL;
 
   while (1) {

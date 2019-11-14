@@ -26,7 +26,6 @@
     <ClCompile Include="KeyInput.c" />
     <ClCompile Include="PullGameScene.c" />
     <ClCompile Include="Speech.c" />
-    <ClCompile Include="StoryMode.c" />
     <ClCompile Include="StoryScene.c" />
     <ClCompile Include="String.c" />
     <ClCompile Include="ThrowingPlayer.c" />
@@ -53,7 +52,6 @@
     <ClInclude Include="KeyInput.h" />
     <ClInclude Include="PullGameScene.h" />
     <ClInclude Include="Speech.h" />
-    <ClInclude Include="StoryMode.h" />
     <ClInclude Include="StoryScene.h" />
     <ClInclude Include="String.h" />
     <ClInclude Include="ThrowingPlayer.h" />

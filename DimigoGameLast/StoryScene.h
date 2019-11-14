@@ -1,3 +1,4 @@
+#pragma once
 #include "GameScene.h"
 
 #define CREATE_MENT(var, size, err)                \
@@ -16,3 +17,7 @@ typedef struct tagStorySceneData {
 
 GameScene* create_story_scene(GameScene* next_scene, HBITMAP background,
                               wchar_t** text, int text_count, RECT text_rect);
+
+GameScene* create_after_main_story();
+GameScene* create_after_disk_story(bool coco_win);
+GameScene* create_after_pull_story(bool coco_win);
