@@ -73,7 +73,7 @@ GameScene* create_disk_game_scene(bool coco_turn, Pos fallen_pos) {
   GameScene* scene = init_scene();
 
   GameObject* disk =
-      create_disk(coco_turn, coco_turn ? (Pos){140, 180} : (Pos){140, 430}, 10);
+      create_disk(coco_turn, coco_turn ? (Pos){140, 180} : (Pos){140, 430}, 7);
   insert_game_object(disk, scene);
 
   GameObject* player =

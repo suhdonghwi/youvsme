@@ -93,12 +93,14 @@
 #define IDB_TEACHER_HELP                179
 #define IDB_BITMAP14                    180
 #define IDB_STORY_TIMETABLE             180
+#define IDB_BITMAP15                    181
+#define IDB_STORY_FIRST                 181
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        181
+#define _APS_NEXT_RESOURCE_VALUE        182
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101

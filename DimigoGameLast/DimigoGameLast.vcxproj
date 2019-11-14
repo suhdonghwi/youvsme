@@ -26,6 +26,7 @@
     <ClCompile Include="KeyInput.c" />
     <ClCompile Include="PullGameScene.c" />
     <ClCompile Include="Speech.c" />
+    <ClCompile Include="StoryMode.c" />
     <ClCompile Include="StoryScene.c" />
     <ClCompile Include="String.c" />
     <ClCompile Include="ThrowingPlayer.c" />
@@ -52,6 +53,7 @@
     <ClInclude Include="KeyInput.h" />
     <ClInclude Include="PullGameScene.h" />
     <ClInclude Include="Speech.h" />
+    <ClInclude Include="StoryMode.h" />
     <ClInclude Include="StoryScene.h" />
     <ClInclude Include="String.h" />
     <ClInclude Include="ThrowingPlayer.h" />
@@ -161,6 +163,7 @@
     <Image Include="Resource\sky_background.bmp" />
     <Image Include="Resource\spit.bmp" />
     <Image Include="Resource\start.bmp" />
+    <Image Include="Resource\story_first.bmp" />
     <Image Include="Resource\story_timetable.bmp" />
     <Image Include="Resource\string.bmp" />
     <Image Include="Resource\teacher_help.bmp" />

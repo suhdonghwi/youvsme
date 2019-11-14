@@ -129,6 +129,9 @@
     <ClCompile Include="Delay.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StoryMode.c">
+      <Filter>Source Files\GameScenes\StoryMode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">
@@ -202,6 +205,9 @@
     </ClInclude>
     <ClInclude Include="Delay.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StoryMode.h">
+      <Filter>Header Files\GameScenes\StoryMode</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -481,6 +487,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resource\story_timetable.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\story_first.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
