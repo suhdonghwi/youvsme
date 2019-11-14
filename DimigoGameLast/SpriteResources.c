@@ -54,11 +54,12 @@ void init_sprite_resources(HINSTANCE inst) {
   won_message_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_WON));
   won_message_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_WON));
 
-  game_help_sprites = malloc(sizeof(HBITMAP) * 3);
+  game_help_sprites = malloc(sizeof(HBITMAP) * 4);
   if (game_help_sprites == NULL) return;
   game_help_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_HELP));
   game_help_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PULL_HELP));
   game_help_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_TEACHER_HELP));
+  game_help_sprites[3] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DANCE_HELP));
 
   ready_start_sprites = malloc(sizeof(HBITMAP) * 2);
   if (ready_start_sprites == NULL) return;
@@ -106,10 +107,11 @@ void init_sprite_resources(HINSTANCE inst) {
   flag_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_FLAG));
   flag_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_FLAG));
 
-  logo_sprites = malloc(sizeof(HBITMAP) * 2);
+  logo_sprites = malloc(sizeof(HBITMAP) * 3);
   if (logo_sprites == NULL) return;
   logo_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_LOGO));
   logo_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PULL_LOGO));
+  logo_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DANCE_LOGO));
 
   ment_sprites = malloc(sizeof(HBITMAP) * 1);
   if (ment_sprites == NULL) return;

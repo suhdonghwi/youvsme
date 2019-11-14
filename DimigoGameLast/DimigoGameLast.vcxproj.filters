@@ -492,5 +492,14 @@
     <Image Include="Resource\story_dingding_win.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resource\dance_help.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dance_loo.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\dance_logo.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

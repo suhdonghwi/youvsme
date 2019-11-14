@@ -102,6 +102,9 @@
     <Image Include="Resource\dance_background.bmp" />
     <Image Include="Resource\dance_background_left.bmp" />
     <Image Include="Resource\dance_background_right.bmp" />
+    <Image Include="Resource\dance_help.bmp" />
+    <Image Include="Resource\dance_logo.bmp" />
+    <Image Include="Resource\dance_loo.bmp" />
     <Image Include="Resource\dingding_blowing.bmp" />
     <Image Include="Resource\dingding_cheering.bmp" />
     <Image Include="Resource\dingding_crying.bmp" />
