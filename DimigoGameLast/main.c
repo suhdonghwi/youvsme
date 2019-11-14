@@ -8,6 +8,7 @@
 #include <vfw.h>
 
 #include "KeyInput.h"
+#include "SetScore.h"
 #include "WaveAudio.h"
 
 #include "SpriteResources.h"
@@ -36,6 +37,8 @@ HDC g_window_dc;
 bool g_story_mode;
 
 int main() {
+  load_set_score();
+
   srand((unsigned int)time(NULL));
   SetProcessDpiAwareness(PROCESS_PER_MONITOR_DPI_AWARE);
 

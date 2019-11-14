@@ -167,18 +167,21 @@ GameScene* create_after_pull_story(bool coco_win) {
 GameScene* create_after_dance_story(bool coco_win) {
   CREATE_MENT(ment, 4, NULL);
 
-  coco_win = coco_win && g_coco_score + 1 > g_dingding_score;
-  update_set_score(coco_win);
+  bool final_result;
+  final_result = coco_win && g_coco_score + 1 > g_dingding_score;
+  update_set_score(final_result);
 
-  wcscpy(ment[0], !coco_win ? L"코코 : 이게 진짜일리 없어.. 내가 지다니 ㅠㅠ"
-                            : L"딩딩 : 이게 진짜일리 없어.. 내가 지다니 ㅠㅠ");
-  wcscpy(ment[1], !coco_win ? L"코코 : 청소 진짜 힘들다 .. 집 가고 싶다 ㅠㅠ"
-                            : L"딩딩 : 청소 진짜 힘들다.. 집 가고 싶어 ㅠㅠ");
-  wcscpy(ment[2], !coco_win
+  wcscpy(ment[0], !final_result
+                      ? L"코코 : 이게 진짜일리 없어.. 내가 지다니 ㅠㅠ"
+                      : L"딩딩 : 이게 진짜일리 없어.. 내가 지다니 ㅠㅠ");
+  wcscpy(ment[1], !final_result
+                      ? L"코코 : 청소 진짜 힘들다 .. 집 가고 싶다 ㅠㅠ"
+                      : L"딩딩 : 청소 진짜 힘들다.. 집 가고 싶어 ㅠㅠ");
+  wcscpy(ment[2], !final_result
                       ? L"코코 : 그래도.. 열심히 해야지!"
                       : L"딩딩 : 그래도.. 내게 주어진 임무는 열심히 해야지.. ");
-  wcscpy(ment[3], !coco_win ? L"코코 : 내 자신아 ... 졌지만... 잘 싸웠다!"
-                            : L"딩딩 : 내 자신아 ... 졌지만... 잘 싸웠다!");
+  wcscpy(ment[3], !final_result ? L"코코 : 내 자신아 ... 졌지만... 잘 싸웠다!"
+                                : L"딩딩 : 내 자신아 ... 졌지만... 잘 싸웠다!");
 
   RECT rect;
   rect.top = 450;
