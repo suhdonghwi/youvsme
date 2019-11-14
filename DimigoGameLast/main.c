@@ -83,6 +83,9 @@ int main() {
       create_readystart_scene(create_disk_game_scene(true, (Pos){0, 0}),
                               coco_disk_ready_sprites, 3, (Pos){560, 300});
 
+  GameScene* disk_help =
+      create_game_help_scene(game_help_sprites[0], logo_sprites[0], disk_ready);
+
   RECT rect;
   rect.top = 50;
   rect.left = 680;
@@ -102,8 +105,13 @@ int main() {
   wcscpy(teacher_ment[3],
          L"멀리 날려야 좋은 점수를 받을테니 숨을 크게 들이쉬어라.");
 
-  GameScene* teacher_help = create_story_scene(disk_ready, game_help_sprites[2],
+  GameScene* teacher_help = create_story_scene(disk_help, game_help_sprites[2],
                                                teacher_ment, 4, rect);
+
+  rect.top = 500;
+  rect.left = 300;
+  rect.bottom = rect.top + 140;
+  rect.right = rect.left + 500;
 
   wchar_t** timetable_ment = malloc(sizeof(wchar_t*) * 2);
 
@@ -141,8 +149,6 @@ int main() {
       deinit_scene(g_current_scene);
       g_current_scene = g_new_scene;
       g_new_scene = NULL;
-
-      FillRect(g_window_dc, &window_rect, background_brush);
     }
   }
 

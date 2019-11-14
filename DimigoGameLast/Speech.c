@@ -1,9 +1,12 @@
 #include "Speech.h"
-#include "Delay.h"
 #include "KeyInput.h"
 
 void on_render_speech(GameObject* speech, HDC main_dc) {
   SpeechData* data = speech->data;
+
+  if (elapsed_time(data->show_delay) < 1) {
+    return;
+  }
 
   FillRect(main_dc, &data->speech_rect, data->rect_brush);
 
@@ -59,6 +62,11 @@ void on_render_speech(GameObject* speech, HDC main_dc) {
   }
 }
 
+void on_first_render(GameObject* speech, HDC main_dc) {
+  SpeechData* data = speech->data;
+  data->show_delay = clock();
+}
+
 void on_destroy_speech(GameObject* speech) {
   SpeechData* data = speech->data;
   for (int i = 0; i < data->text_count; i++) {
@@ -72,6 +80,7 @@ GameObject* create_speech(wchar_t** text, int number, RECT rect) {
   GameObject* speech = init_game_object(NULL);
 
   speech->on_render = on_render_speech;
+  speech->on_first_render = on_first_render;
   speech->on_destroy = on_destroy_speech;
   strcpy(speech->tag, "speech_normal");
 
@@ -86,6 +95,7 @@ GameObject* create_speech(wchar_t** text, int number, RECT rect) {
   data->font = CreateFont(30, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
                           VARIABLE_PITCH | FF_ROMAN, TEXT("µÕ±Ù¸ð²Ã"));
   data->rect_brush = CreateSolidBrush(RGB(200, 200, 200));
+  data->show_delay = 0;
 
   speech->data = data;
 

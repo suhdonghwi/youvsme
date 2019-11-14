@@ -19,7 +19,7 @@ void on_render_readystart_scene(GameScene* scene, HDC main_dc) {
 
   data->index++;
 
-  if (data->index >= data->slide_size) {
+  if (data->index > data->slide_size) {
     g_new_scene = data->dest_scene;
     return;
   }

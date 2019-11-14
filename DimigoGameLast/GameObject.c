@@ -6,6 +6,7 @@ GameObject* init_game_object(HBITMAP* sprites) {
   if (object == NULL) return NULL;
 
   strncpy(object->tag, "(default)", 100);
+  object->rendered = false;
   object->alive = true;
   object->collidable = false;
 
@@ -20,6 +21,7 @@ GameObject* init_game_object(HBITMAP* sprites) {
   object->on_destroy = NULL;
   object->on_collide = NULL;
   object->on_render = NULL;
+  object->on_first_render = NULL;
   object->after_render = NULL;
 
   return object;
@@ -56,6 +58,12 @@ void render_bitmap(HBITMAP bitmap, HDC main_dc, Pos pos, double scale) {
 }
 
 void render_game_object(GameObject* object, HDC main_dc) {
+  if (!object->rendered) {
+    if (object->on_first_render != NULL)
+      object->on_first_render(object, main_dc);
+    object->rendered = true;
+  }
+
   if (object->sprites == NULL) return;
   render_bitmap(object->sprites[object->sprite_index], main_dc, object->pos,
                 object->scale);

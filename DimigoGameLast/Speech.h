@@ -1,9 +1,12 @@
 #pragma once
 #include <time.h>
 
+#include "Delay.h"
 #include "GameObject.h"
 
 typedef struct tagSpeechData {
+  delay_t show_delay;
+
   HFONT font;
   RECT speech_rect;
 
