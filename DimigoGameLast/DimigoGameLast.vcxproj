@@ -164,7 +164,9 @@
     <Image Include="Resource\sky_background.bmp" />
     <Image Include="Resource\spit.bmp" />
     <Image Include="Resource\start.bmp" />
+    <Image Include="Resource\story_coco_clean.bmp" />
     <Image Include="Resource\story_coco_win.bmp" />
+    <Image Include="Resource\story_dingding_clean.bmp" />
     <Image Include="Resource\story_dingding_win.bmp" />
     <Image Include="Resource\story_first.bmp" />
     <Image Include="Resource\story_timetable.bmp" />

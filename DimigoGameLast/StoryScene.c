@@ -151,8 +151,38 @@ GameScene* create_after_pull_story(bool coco_win) {
   rect.bottom = rect.top + 200;
   rect.right = rect.left + 750;
 
+  GameScene* dance_ready = create_readystart_scene(
+      create_dance_game_scene(), ready_start_sprites, 2, (Pos){560, 300});
+
+  GameScene* dance_help = create_game_help_scene(game_help_sprites[3],
+                                                 logo_sprites[2], dance_ready);
+
+  GameScene* next_scene = create_story_scene(
+      dance_help, story_sprites[coco_win ? 2 : 3], ment, 2, rect);
+  return create_game_result_scene(coco_win, next_scene);
+}
+
+GameScene* create_after_dance_story(bool coco_win) {
+  CREATE_MENT(ment, 4, NULL);
+
+  wcscpy(ment[0], !coco_win ? L"코코 : 이게 진짜일리 없어.. 내가 지다니 ㅠㅠ"
+                            : L"딩딩 : 이게 진짜일리 없어.. 내가 지다니 ㅠㅠ");
+  wcscpy(ment[1], !coco_win ? L"코코 : 청소 진짜 힘들다 .. 집 가고 싶다 ㅠㅠ"
+                            : L"딩딩 : 청소 진짜 힘들다.. 집 가고 싶어 ㅠㅠ");
+  wcscpy(ment[2], !coco_win
+                      ? L"코코 : 그래도.. 열심히 해야지!"
+                      : L"딩딩 : 그래도.. 내게 주어진 임무는 열심히 해야지.. ");
+  wcscpy(ment[3], !coco_win ? L"코코 : 내 자신아 ... 졌지만... 잘 싸웠다!"
+                            : L"딩딩 : 내 자신아 ... 졌지만... 잘 싸웠다!");
+
+  RECT rect;
+  rect.top = 450;
+  rect.left = 200;
+  rect.bottom = rect.top + 200;
+  rect.right = rect.left + 750;
+
   GameScene* next_scene =
-      create_story_scene(create_dance_game_scene(),
-                         story_sprites[coco_win ? 2 : 3], ment, 2, rect);
+      create_story_scene(create_after_main_story(),
+                         story_sprites[coco_win ? 5 : 4], ment, 4, rect);
   return create_game_result_scene(coco_win, next_scene);
 }

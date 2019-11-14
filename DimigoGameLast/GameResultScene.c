@@ -18,8 +18,8 @@ void on_render_game_result_scene(GameScene* scene, HDC main_dc) {
   char* press_enter = TEXT("[Enter]키를 눌러서 넘어가세요");
 
   SelectObject(main_dc, data->font);
-  SetTextColor(main_dc, RGB(150, 150, 150));
-  TextOut(main_dc, 362, 642, press_enter, strlen(press_enter));
+  SetTextColor(main_dc, RGB(100, 100, 100));
+  TextOut(main_dc, 362, 632, press_enter, strlen(press_enter));
 
   if (is_pressed(VK_RETURN)) {
     g_new_scene = data->next_scene;

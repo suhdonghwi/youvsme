@@ -101,12 +101,15 @@
 #define IDB_DANCE_HELP                  184
 #define IDB_BITMAP18                    185
 #define IDB_DANCE_LOGO                  185
+#define IDB_STORY_COCO_CLEAN            186
+#define IDB_BITMAP19                    187
+#define IDB_STORY_DINGDING_CLEAN        187
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        186
+#define _APS_NEXT_RESOURCE_VALUE        188
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101

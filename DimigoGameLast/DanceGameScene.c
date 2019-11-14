@@ -7,6 +7,7 @@
 #include "GameScene.h"
 #include "PullGameScene.h"
 #include "SpriteResources.h"
+#include "StoryScene.h"
 
 extern GameScene* g_current_scene;
 extern GameScene* g_new_scene;
@@ -63,7 +64,7 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
   render_bitmap(background_sprites[3 + data->state], main_dc,
                 data->background_pos, data->background_scale);
 
-  if (data->dance_count == 4 || data->dance_count == 12) {
+  if (data->dance_count == 3 || data->dance_count == 6) {
     if (data->speedup_show_delay == 0) data->speedup_show_delay = clock();
     if (after_delay(&data->speedup_blink_delay, 0.5)) {
       data->show_speed_up = !data->show_speed_up;
@@ -103,6 +104,7 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
         opponent_data->is_imitating = true;
 
         data->state = STATE_IMITATING;
+        Sleep(700);
         data->imitate_clock = clock();
         zoom_normal(data);
       }
@@ -134,8 +136,7 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
             coco_data->is_imitating ? data->coco->pos : data->dingding->pos,
             25);
         Sleep(1500);
-        g_new_scene = create_game_result_scene(!coco_data->is_imitating,
-                                               create_pull_game_scene());
+        g_new_scene = create_after_dance_story(!coco_data->is_imitating);
         return;
       }
 
@@ -147,14 +148,14 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
                                      imitator_data->dance_max)) {
         data->dance_count++;
 
-        if (data->dance_count == 4) {
+        if (data->dance_count == 3) {
           coco_data->dance_cooldown -= 0.1;
           dingding_data->dance_cooldown -= 0.1;
-          data->imitate_time -= 1;
-        } else if (data->dance_count == 12) {
+          data->imitate_time -= 2;
+        } else if (data->dance_count == 6) {
           coco_data->dance_cooldown -= 0.05;
           dingding_data->dance_cooldown -= 0.05;
-          data->imitate_time -= 0.5;
+          data->imitate_time -= 1.5;
         }
 
         data->speedup_show_delay = clock();
@@ -211,7 +212,7 @@ GameScene* create_dance_game_scene() {
   data->previous_length = 0;
   data->font = CreateFont(50, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
                           VARIABLE_PITCH | FF_ROMAN, TEXT("µÕ±Ù¸ğ²Ã"));
-  data->imitate_time = 3;
+  data->imitate_time = 5;
   data->dance_count = 0;
   data->speedup_show_delay = 0;
   data->speedup_blink_delay = 0;

@@ -21,3 +21,4 @@ GameScene* create_story_scene(GameScene* next_scene, HBITMAP background,
 GameScene* create_after_main_story();
 GameScene* create_after_disk_story(bool coco_win);
 GameScene* create_after_pull_story(bool coco_win);
+GameScene* create_after_dance_story(bool coco_win);
