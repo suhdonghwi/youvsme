@@ -22,6 +22,7 @@
     <ClCompile Include="DanceGameScene.c" />
     <ClCompile Include="Dancer.c" />
     <ClCompile Include="Delay.c" />
+    <ClCompile Include="FinalResultScene.c" />
     <ClCompile Include="Flag.c" />
     <ClCompile Include="KeyInput.c" />
     <ClCompile Include="PullGameScene.c" />
@@ -49,6 +50,7 @@
     <ClInclude Include="DanceGameScene.h" />
     <ClInclude Include="Dancer.h" />
     <ClInclude Include="Delay.h" />
+    <ClInclude Include="FinalResultScene.h" />
     <ClInclude Include="Flag.h" />
     <ClInclude Include="KeyInput.h" />
     <ClInclude Include="PullGameScene.h" />
@@ -132,6 +134,7 @@
     <Image Include="Resource\disk_line.bmp" />
     <Image Include="Resource\disk_logo.bmp" />
     <Image Include="Resource\disk_shadow.bmp" />
+    <Image Include="Resource\final_result_background.bmp" />
     <Image Include="Resource\finish_flag.bmp" />
     <Image Include="Resource\key_1.bmp" />
     <Image Include="Resource\key_2.bmp" />

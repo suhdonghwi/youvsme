@@ -104,12 +104,14 @@
 #define IDB_STORY_COCO_CLEAN            186
 #define IDB_BITMAP19                    187
 #define IDB_STORY_DINGDING_CLEAN        187
+#define IDB_BITMAP16                    188
+#define IDB_FINAL_RESULT_BACKGROUND     188
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        188
+#define _APS_NEXT_RESOURCE_VALUE        189
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101

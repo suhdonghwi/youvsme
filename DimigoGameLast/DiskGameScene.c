@@ -68,6 +68,16 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
   }
 }
 
+void on_first_render_disk_game_scene(GameScene* scene, HDC main_dc) {
+  DiskGameData* data = scene->data;
+
+  if (data->fallen_pos.x == 0 && data->fallen_pos.y == 0) {
+    PlaySound(NULL, 0, 0);
+    PlaySound(TEXT("Sound/disk_bgm.wav"), NULL,
+              SND_FILENAME | SND_ASYNC | SND_LOOP);
+  }
+}
+
 GameScene* create_disk_game_scene(bool coco_turn, Pos fallen_pos) {
   GameScene* scene = init_scene();
 
@@ -87,6 +97,7 @@ GameScene* create_disk_game_scene(bool coco_turn, Pos fallen_pos) {
 
   scene->sleep_duration = 20;
   scene->on_render = on_render_disk_game_scene;
+  scene->on_first_render = on_first_render_disk_game_scene;
 
   DiskGameData* data = malloc(sizeof(DiskGameData));
   if (data == NULL) return NULL;

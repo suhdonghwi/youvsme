@@ -132,6 +132,9 @@
     <ClCompile Include="SetScore.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FinalResultScene.c">
+      <Filter>Source Files\GameScenes\StoryMode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaveAudio.h">
@@ -208,6 +211,9 @@
     </ClInclude>
     <ClInclude Include="SetScore.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FinalResultScene.h">
+      <Filter>Header Files\GameScenes\StoryMode</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -511,6 +517,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resource\story_dingding_clean.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\final_result_background.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

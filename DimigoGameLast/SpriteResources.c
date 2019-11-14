@@ -35,7 +35,7 @@ void init_sprite_resources(HINSTANCE inst) {
   coco_sprites[7] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_DANCE_LEFT));
   coco_sprites[8] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_STANDING_DARK));
 
-  background_sprites = malloc(sizeof(HBITMAP) * 6);
+  background_sprites = malloc(sizeof(HBITMAP) * 7);
   if (background_sprites == NULL) return;
   background_sprites[0] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_BACKGROUND));
@@ -48,6 +48,8 @@ void init_sprite_resources(HINSTANCE inst) {
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DANCE_BACKGROUND_RIGHT));
   background_sprites[5] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_DANCE_BACKGROUND_LEFT));
+  background_sprites[6] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_FINAL_RESULT_BACKGROUND));
 
   won_message_sprites = malloc(sizeof(HBITMAP) * 2);
   if (won_message_sprites == NULL) return;

@@ -1,6 +1,7 @@
 #include "StoryScene.h"
 #include "DanceGameScene.h"
 #include "DiskGameScene.h"
+#include "FinalResultScene.h"
 #include "GameHelpScene.h"
 #include "GameResultScene.h"
 #include "PullGameScene.h"
@@ -24,10 +25,21 @@ void on_render_story_scene(GameScene* scene, HDC main_dc) {
   }
 }
 
+void on_first_render_story_scene(GameScene* scene, HDC main_dc) {
+  StorySceneData* data = scene->data;
+
+  if (data->sound_filename != NULL) {
+    PlaySound(TEXT(data->sound_filename), NULL,
+              SND_FILENAME | SND_ASYNC | SND_LOOP);
+  }
+}
+
 GameScene* create_story_scene(GameScene* next_scene, HBITMAP background,
-                              wchar_t** text, int text_count, RECT text_rect) {
+                              wchar_t** text, int text_count, RECT text_rect,
+                              char* sound) {
   GameScene* scene = init_scene();
   scene->on_render = on_render_story_scene;
+  scene->on_first_render = on_first_render_story_scene;
 
   GameObject* speech = create_speech(text, text_count, text_rect);
   insert_game_object(speech, scene);
@@ -37,6 +49,7 @@ GameScene* create_story_scene(GameScene* next_scene, HBITMAP background,
   data->background = background;
   data->speech = speech;
   data->next_scene = next_scene;
+  data->sound_filename = sound;
 
   scene->data = data;
 
@@ -67,7 +80,7 @@ GameScene* create_after_main_story() {
          L"멀리 날려야 좋은 점수를 받을테니 숨을 크게 들이쉬어라.");
 
   GameScene* teacher_help = create_story_scene(disk_help, game_help_sprites[2],
-                                               teacher_ment, 4, rect);
+                                               teacher_ment, 4, rect, NULL);
 
   rect.top = 500;
   rect.left = 300;
@@ -79,7 +92,7 @@ GameScene* create_after_main_story() {
   wcscpy(timetable_ment[1], L"아이들 : 와 오늘 체육 3시간이다! 빨리 가자!");
 
   GameScene* timetable_story = create_story_scene(
-      teacher_help, story_sprites[0], timetable_ment, 2, rect);
+      teacher_help, story_sprites[0], timetable_ment, 2, rect, NULL);
 
   rect.top = 450;
   rect.left = 200;
@@ -96,8 +109,9 @@ GameScene* create_after_main_story() {
          L"가기로 했습니다.");
   wcscpy(first_ment[3], L"과연 누가 이기게 될까요?");
 
-  GameScene* first_help = create_story_scene(timetable_story, story_sprites[1],
-                                             first_ment, 4, rect);
+  GameScene* first_help =
+      create_story_scene(timetable_story, story_sprites[1], first_ment, 4, rect,
+                         "Sound/story_begin.wav");
 
   return first_help;
 }
@@ -121,8 +135,9 @@ GameScene* create_after_disk_story(bool coco_win) {
   GameScene* pull_help =
       create_game_help_scene(game_help_sprites[1], logo_sprites[1], pull_ready);
 
-  GameScene* next_scene = create_story_scene(
-      pull_help, story_sprites[coco_win ? 2 : 3], ment, 2, rect);
+  GameScene* next_scene =
+      create_story_scene(pull_help, story_sprites[coco_win ? 2 : 3], ment, 2,
+                         rect, "Sound/avengers.wav");
 
   return create_game_result_scene(coco_win, next_scene);
 }
@@ -159,8 +174,9 @@ GameScene* create_after_pull_story(bool coco_win) {
   GameScene* dance_help = create_game_help_scene(game_help_sprites[3],
                                                  logo_sprites[2], dance_ready);
 
-  GameScene* next_scene = create_story_scene(
-      dance_help, story_sprites[coco_win ? 2 : 3], ment, 2, rect);
+  GameScene* next_scene =
+      create_story_scene(dance_help, story_sprites[coco_win ? 2 : 3], ment, 2,
+                         rect, "Sound/avengers.wav");
   return create_game_result_scene(coco_win, next_scene);
 }
 
@@ -190,7 +206,7 @@ GameScene* create_after_dance_story(bool coco_win) {
   rect.right = rect.left + 750;
 
   GameScene* next_scene =
-      create_story_scene(create_after_main_story(),
-                         story_sprites[coco_win ? 5 : 4], ment, 4, rect);
+      create_story_scene(create_final_result_scene(),
+                         story_sprites[coco_win ? 5 : 4], ment, 4, rect, NULL);
   return create_game_result_scene(coco_win, next_scene);
 }

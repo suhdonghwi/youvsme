@@ -26,6 +26,10 @@ void on_render_game_result_scene(GameScene* scene, HDC main_dc) {
   }
 }
 
+void on_first_render_game_result_scene(GameScene* scene, HDC main_dc) {
+  PlaySound(TEXT("Sound/victory.wav"), NULL, SND_FILENAME | SND_ASYNC);
+}
+
 GameScene* create_game_result_scene(bool coco_won, GameScene* next_scene) {
   if (coco_won)
     g_coco_score++;
@@ -43,6 +47,7 @@ GameScene* create_game_result_scene(bool coco_won, GameScene* next_scene) {
   insert_game_object(score, scene);
 
   scene->on_render = on_render_game_result_scene;
+  scene->on_first_render = on_first_render_game_result_scene;
   scene->sleep_duration = 100;
 
   GameResultSceneData* data = malloc(sizeof(GameResultSceneData));

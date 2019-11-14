@@ -2,6 +2,7 @@
 #include "GameObject.h"
 
 typedef void (*OnRenderScene)(struct tagGameScene*, HDC);
+typedef void (*OnFirstRenderScene)(struct tagGameScene*, HDC);
 
 typedef struct tagGameSceneNode {
   GameObject* game_object;
@@ -15,6 +16,8 @@ typedef struct tagGameScene {
   void* data;
 
   OnRenderScene on_render;
+  OnFirstRenderScene on_first_render;
+  bool rendered;
 } GameScene;
 
 GameSceneNode* create_node(GameObject* object);

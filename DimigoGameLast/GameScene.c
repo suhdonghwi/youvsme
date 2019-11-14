@@ -20,6 +20,8 @@ GameScene* init_scene() {
   scene->head = NULL;
   scene->sleep_duration = 0;
   scene->on_render = NULL;
+  scene->on_first_render = NULL;
+  scene->rendered = false;
   return scene;
 }
 
@@ -58,6 +60,11 @@ bool rect_intersect_check(RECT r1, RECT r2) {
 
 void render_game_scene(GameScene* scene, HDC main_dc, int window_width,
                        int window_height) {
+  if (!scene->rendered) {
+    if (scene->on_first_render != NULL) scene->on_first_render(scene, main_dc);
+    scene->rendered = true;
+  }
+
   HDC back_dc = CreateCompatibleDC(main_dc);
   SetBkMode(back_dc, TRANSPARENT);
 

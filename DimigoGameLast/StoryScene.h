@@ -13,10 +13,13 @@ typedef struct tagStorySceneData {
   HBITMAP background;
   GameObject* speech;
   GameScene* next_scene;
+
+  char* sound_filename;
 } StorySceneData;
 
 GameScene* create_story_scene(GameScene* next_scene, HBITMAP background,
-                              wchar_t** text, int text_count, RECT text_rect);
+                              wchar_t** text, int text_count, RECT text_rect,
+                              char* sound);
 
 GameScene* create_after_main_story();
 GameScene* create_after_disk_story(bool coco_win);

@@ -8,8 +8,16 @@ void on_render_pull_game_scene(GameScene* scene, HDC main_dc) {
   render_bitmap(background_sprites[2], main_dc, (Pos){0, 0}, 20.25);
 }
 
+void on_first_render_pull_game_scene(GameScene* scene, HDC main_dc) {
+  PlaySound(NULL, 0, 0);
+  PlaySound(TEXT("Sound/pull_bgm.wav"), NULL,
+            SND_FILENAME | SND_ASYNC | SND_LOOP);
+}
+
 GameScene* create_pull_game_scene() {
   GameScene* scene = init_scene();
+
+  scene->on_first_render = on_first_render_pull_game_scene;
 
   GameObject* string = create_string();
   insert_game_object(string, scene);
