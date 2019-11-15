@@ -60,10 +60,6 @@ int main() {
   RECT window_rect;
   GetClientRect(window, &window_rect);
 
-  // HANDLE std_input = GetStdHandle(STD_INPUT_HANDLE);
-  // DWORD num_read, num_input;
-  // INPUT_RECORD input_buf[32];
-
   HBRUSH background_brush = GetStockObject(BLACK_BRUSH);
 
   AddFontResource("DungGeunMo.ttf");
@@ -84,28 +80,13 @@ int main() {
   // g_current_scene = create_game_result_scene(false);
   // g_current_scene = create_pull_game_scene();
   // g_current_scene = create_after_dance_story(true);
-  g_current_scene = create_dance_help_scene();
   // g_current_scene = create_home_scene();
+  g_current_scene = create_home_scene();
   g_story_mode = true;
 
   g_new_scene = NULL;
 
   while (1) {
-    /*GetNumberOfConsoleInputEvents(std_input, &num_input);
-
-    if (num_input > 0) {
-      ReadConsoleInput(std_input, input_buf, 32, &num_read);
-
-      for (WORD i = 0; i < num_read; i++) {
-        switch (input_buf[i].EventType) {
-          case KEY_EVENT: {
-            KEY_EVENT_RECORD event = input_buf[i].Event.KeyEvent;
-            g_pressed_map[event.wVirtualKeyCode] = event.bKeyDown;
-          }
-        }
-      }
-    }*/
-
     update_pressed_map();
     render_game_scene(g_current_scene, g_window_dc, window_width,
                       window_height);

@@ -60,9 +60,6 @@
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.c">
-      <Filter>Source Files\Input</Filter>
-    </ClCompile>
     <ClCompile Include="WaveAudio.c">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
@@ -145,9 +142,6 @@
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Header Files\Input</Filter>
     </ClInclude>
     <ClInclude Include="SpriteResources.h">
       <Filter>Header Files</Filter>

@@ -35,7 +35,6 @@
     <ClCompile Include="CheeringPlayer.c" />
     <ClCompile Include="GameHelpScene.c" />
     <ClCompile Include="GameResultScene.c" />
-    <ClCompile Include="Camera.c" />
     <ClCompile Include="GameObject.c" />
     <ClCompile Include="GameScene.c" />
     <ClCompile Include="HomeScene.c" />
@@ -65,7 +64,6 @@
     <ClInclude Include="CheeringPlayer.h" />
     <ClInclude Include="GameHelpScene.h" />
     <ClInclude Include="GameResultScene.h" />
-    <ClInclude Include="Camera.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="HomeScene.h" />
