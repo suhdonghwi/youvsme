@@ -57,12 +57,7 @@ GameScene* create_story_scene(GameScene* next_scene, HBITMAP background,
 }
 
 GameScene* create_after_main_story() {
-  GameScene* disk_ready =
-      create_readystart_scene(create_disk_game_scene(true, (Pos){0, 0}),
-                              coco_disk_ready_sprites, 3, (Pos){560, 300});
-
-  GameScene* disk_help = create_game_help_scene(
-      game_help_sprites[0], logo_sprites[0], (Pos){360, 30}, disk_ready);
+  GameScene* disk_help = create_disk_help_scene();
 
   RECT rect;
   rect.top = 50;
@@ -129,11 +124,7 @@ GameScene* create_after_disk_story(bool coco_win) {
   rect.bottom = rect.top + 200;
   rect.right = rect.left + 750;
 
-  GameScene* pull_ready = create_readystart_scene(
-      create_pull_game_scene(), ready_start_sprites, 2, (Pos){560, 300});
-
-  GameScene* pull_help = create_game_help_scene(
-      game_help_sprites[1], logo_sprites[1], (Pos){360, 30}, pull_ready);
+  GameScene* pull_help = create_pull_help_scene();
 
   GameScene* next_scene =
       create_story_scene(pull_help, story_sprites[coco_win ? 2 : 3], ment, 2,
@@ -168,11 +159,7 @@ GameScene* create_after_pull_story(bool coco_win) {
   rect.bottom = rect.top + 200;
   rect.right = rect.left + 750;
 
-  GameScene* dance_ready = create_readystart_scene(
-      create_dance_game_scene(), ready_start_sprites, 2, (Pos){560, 300});
-
-  GameScene* dance_help = create_game_help_scene(
-      game_help_sprites[3], logo_sprites[2], (Pos){360, 30}, dance_ready);
+  GameScene* dance_help = create_dance_help_scene();
 
   GameScene* next_scene =
       create_story_scene(dance_help, story_sprites[coco_win ? 2 : 3], ment, 2,

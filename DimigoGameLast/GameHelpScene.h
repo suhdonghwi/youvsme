@@ -10,3 +10,7 @@ typedef struct tagGameHelpData {
 
 GameScene* create_game_help_scene(HBITMAP help_message, HBITMAP logo,
                                   Pos logo_pos, GameScene* game_scene);
+
+GameScene* create_disk_help_scene();
+GameScene* create_pull_help_scene();
+GameScene* create_dance_help_scene();

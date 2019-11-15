@@ -28,27 +28,11 @@ void on_render_infinite_scene(GameScene* scene, HDC main_dc) {
     g_story_mode = false;
 
     if (data->index == 0) {
-      GameScene* disk_scene = create_disk_game_scene(true, (Pos){0, 0});
-      GameScene* ready_scene = create_readystart_scene(
-          disk_scene, coco_disk_ready_sprites, 3, (Pos){560, 300});
-      GameScene* help_scene = create_game_help_scene(
-          game_help_sprites[0], logo_sprites[0], (Pos){410, 50}, ready_scene);
-      g_new_scene = help_scene;
-
+      g_new_scene = create_disk_help_scene();
     } else if (data->index == 1) {
-      GameScene* pull_scene = create_pull_game_scene();
-      GameScene* ready_scene = create_readystart_scene(
-          pull_scene, ready_start_sprites, 2, (Pos){560, 300});
-      GameScene* help_scene = create_game_help_scene(
-          game_help_sprites[1], logo_sprites[1], (Pos){410, 10}, ready_scene);
-      g_new_scene = help_scene;
+      g_new_scene = create_pull_help_scene();
     } else if (data->index == 2) {
-      GameScene* dance_scene = create_dance_game_scene();
-      GameScene* ready_scene = create_readystart_scene(
-          dance_scene, ready_start_sprites, 2, (Pos){560, 300});
-      GameScene* help_scene = create_game_help_scene(
-          game_help_sprites[3], logo_sprites[2], (Pos){420, 60}, ready_scene);
-      g_new_scene = help_scene;
+      g_new_scene = create_dance_help_scene();
     }
   }
 }
