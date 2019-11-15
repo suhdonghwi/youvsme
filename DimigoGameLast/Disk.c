@@ -9,6 +9,8 @@
 extern GameScene* g_current_scene;
 extern GameScene* g_new_scene;
 
+// 디스크의 on_render 콜백입니다. 마이크에서 입력을 받고 그에 따라 자신의 상태를
+// 변경합니다.
 void on_render_disk(GameObject* disk, HDC main_dc) {
   DiskData* disk_data = (DiskData*)(disk->data);
 
@@ -73,11 +75,14 @@ void on_render_disk(GameObject* disk, HDC main_dc) {
                 (Pos){disk->pos.x, disk_data->shadow_y_pos}, 20.25);
 }
 
+// 디스크의 on_destroy 콜백입니다. 자신이 해제될 때 음성 데이터 자원 또한
+// 해제시킵니다.
 void on_destroy_disk(GameObject* disk) {
   DiskData* disk_data = (DiskData*)(disk->data);
   deinit_wave_data(&disk_data->wave_data);
 }
 
+// 캐릭터, 위치, 속도를 받고 디스크 생성하여 반환합니다.
 GameObject* create_disk(bool coco_disk, Pos pos, int speed) {
   GameObject* disk =
       init_game_object(coco_disk ? coco_disk_sprites : dingding_disk_sprites);

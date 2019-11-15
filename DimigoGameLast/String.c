@@ -14,10 +14,12 @@
 extern GameScene* g_new_scene;
 extern bool g_story_mode;
 
+// 키 콤보의 원소들을 랜덤하게 설정합니다.
 void randomize_combo(int* combo) {
   for (int i = 0; i < 3; i++) combo[i] = 1 + rand() % 3;
 }
 
+// 코코가 줄을 잡아당기는 쓰레드 콜백입니다. 코코 방향으로 줄을 잡아당깁니다.
 DWORD WINAPI coco_pull(LPVOID param) {
   srand((unsigned int)time(NULL));
   GameObject* string = (GameObject*)param;
@@ -35,6 +37,7 @@ DWORD WINAPI coco_pull(LPVOID param) {
   return 0;
 }
 
+// 딩딩이 줄을 잡아당기는 쓰레드 콜백입니다. 딩딩 방향으로 줄을 잡아당깁니다.
 DWORD WINAPI dingding_pull(LPVOID param) {
   srand((unsigned int)time(NULL));
   GameObject* string = (GameObject*)param;
@@ -52,6 +55,8 @@ DWORD WINAPI dingding_pull(LPVOID param) {
   return 0;
 }
 
+// 줄의 on_render 콜백입니다. 입력을 받고 이에 따라 줄을 잡아당긴 플레이어
+// 쪽으로 움직이는 쓰레드를 생성합니다.
 void on_render_string(GameObject* string, HDC main_dc) {
   StringData* data = (StringData*)string->data;
 
@@ -103,6 +108,8 @@ void on_render_string(GameObject* string, HDC main_dc) {
   }
 }
 
+// 줄의 on_collide 콜백입니다. 줄이 플레이어의 깃발에 충돌하면 게임 최종 판결을
+// 냅니다.
 void on_collide_string(GameObject* string, GameObject* object) {
   StringData* data = (StringData*)string->data;
   if (strcmp(object->tag, "flag") == 0 && !data->coco_pulling &&
@@ -117,6 +124,7 @@ void on_collide_string(GameObject* string, GameObject* object) {
   }
 }
 
+// 줄을 생성하여 반환합니다.
 GameObject* create_string() {
   GameObject* string = init_game_object(string_sprites);
   string->scale = 6;

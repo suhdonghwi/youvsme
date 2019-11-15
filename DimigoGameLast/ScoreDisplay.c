@@ -6,6 +6,7 @@
 extern int g_coco_score;
 extern int g_dingding_score;
 
+// 점수 디스플레이의 after_render 콜백입니다. 점수판 위에 점수를 렌더링합니다.
 void after_render_score_display(GameObject* score_display, HDC main_dc) {
   ScoreDisplayData* data = (ScoreDisplayData*)score_display->data;
 
@@ -18,6 +19,7 @@ void after_render_score_display(GameObject* score_display, HDC main_dc) {
           score_str, strlen(score_str));
 }
 
+// 점수판을 생성하여 반환합니다.
 GameObject* create_score_display() {
   GameObject* score_display = init_game_object(score_board_sprites);
   score_display->scale = 0.1;

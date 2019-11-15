@@ -8,6 +8,7 @@
 
 extern GameScene* g_current_scene;
 
+// 댄스 큐의 길이를 구하여 반환합니다.
 int dance_queue_length(DanceDirection* queue, int max) {
   if (queue == NULL) return 0;
   int i = 0;
@@ -16,10 +17,12 @@ int dance_queue_length(DanceDirection* queue, int max) {
   return i;
 }
 
+// 댄스 큐가 꽉 찼는지 아닌지 bool 형식으로 반환합니다.
 bool is_dance_queue_full(DanceDirection* queue, int max) {
   return dance_queue_length(queue, max) == max;
 }
 
+// 댄스 큐에 댄스 데이터를 추가합니다.
 int dance_queue_push(DanceDirection* queue, int max, DanceDirection v) {
   int length = dance_queue_length(queue, max);
   if (length == max) return 1;
@@ -28,21 +31,8 @@ int dance_queue_push(DanceDirection* queue, int max, DanceDirection v) {
   return 0;
 }
 
-bool compare_tag_and_dir(DanceDirection dir, char* tag) {
-  switch (dir) {
-    case DANCE_UP:
-      return strcmp(tag, "dance_up") == 0;
-    case DANCE_RIGHT:
-      return strcmp(tag, "dance_right") == 0;
-    case DANCE_DOWN:
-      return strcmp(tag, "dance_down") == 0;
-    case DANCE_LEFT:
-      return strcmp(tag, "dance_left") == 0;
-  }
-
-  return false;
-}
-
+// 댄서의 on_render 콜백입니다. 키 입력을 받고 그에 따라 스프라이트를
+// 변경합니다.
 void on_render_dancer(GameObject* dancer, HDC main_dc) {
   DancerData* data = (DancerData*)dancer->data;
   static DanceDirection directions[4] = {DANCE_UP, DANCE_RIGHT, DANCE_DOWN,
@@ -85,6 +75,7 @@ void on_render_dancer(GameObject* dancer, HDC main_dc) {
   }
 }
 
+// 캐릭터와 조작키를 받고 댄서를 생성하여 반환합니다.
 GameObject* create_dancer(bool coco, SHORT* move_keys) {
   GameObject* dancer = init_game_object(coco ? coco_sprites : dingding_sprites);
 

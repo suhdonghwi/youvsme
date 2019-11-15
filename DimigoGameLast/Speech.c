@@ -1,6 +1,8 @@
 #include "Speech.h"
 #include "KeyInput.h"
 
+// 말풍선의 on_render 콜백입니다. 대사를 한 자씩 출력하고, 모두 출력이 완료되면
+// Enter키를 누를 수 있도록 한뒤, Enter 키가 눌리는 다음 대사로 넘어갑니다.
 void on_render_speech(GameObject* speech, HDC main_dc) {
   SpeechData* data = speech->data;
 
@@ -62,11 +64,14 @@ void on_render_speech(GameObject* speech, HDC main_dc) {
   }
 }
 
+// 말풍선의 on_first_render 콜백입니다. 말풍선 최초 생성 타이머의 기준 값을
+// 현재로 설정합니다.
 void on_first_render(GameObject* speech, HDC main_dc) {
   SpeechData* data = speech->data;
   data->show_delay = clock();
 }
 
+// 말풍선의 on_destroy 콜백입니다. 할당되어있는 대사를 해제합니다.
 void on_destroy_speech(GameObject* speech) {
   SpeechData* data = speech->data;
   for (int i = 0; i < data->text_count; i++) {
@@ -76,6 +81,8 @@ void on_destroy_speech(GameObject* speech) {
   free(data->text);
 }
 
+// 대사와 대사의 개수, 말풍선의 위치와 크기를 담은 RECT 데이터를 받고 말풍선을
+// 생성하여 반환합니다.
 GameObject* create_speech(wchar_t** text, int number, RECT rect) {
   GameObject* speech = init_game_object(NULL);
 

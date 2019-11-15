@@ -6,6 +6,8 @@
 
 static clock_t last_change_clock;
 
+// 신나하는 플레이어의 on_render 콜백입니다. 0.5초마다 팔을 흔들도록
+// 스프라이트를 변경합니다.
 void on_render_cheering_player(GameObject* cheering_player, HDC main_dc) {
   static delay_t last_change_clock;
 
@@ -25,6 +27,7 @@ void on_render_cheering_player(GameObject* cheering_player, HDC main_dc) {
   }
 }
 
+// 캐릭터를 받고 신나하는 플레이어를 생성하여 반환합니다.
 GameObject* create_cheering_player(bool coco_won) {
   GameObject* cheering_player =
       init_game_object(coco_won ? coco_sprites : dingding_sprites);
