@@ -2,6 +2,7 @@
 
 #include "resource.h"
 
+// 게임 스프라이트 자원들을 초기화합니다.
 void init_sprite_resources(HINSTANCE inst) {
   dingding_sprites = malloc(sizeof(HBITMAP) * 9);
   if (dingding_sprites == NULL) return;
@@ -202,6 +203,7 @@ void init_sprite_resources(HINSTANCE inst) {
   pull_ready_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_START));
 }
 
+// 게임 스프라이트 자원들의 메모리를 모두 해제합니다.
 void deinit_sprite_resources() {
   free(dingding_sprites);
   free(coco_sprites);

@@ -4,6 +4,7 @@
 
 extern GameScene* g_new_scene;
 
+// 게임 오브젝트를 받고 게임 화면 노드를 생성하여 반환합니다.
 GameSceneNode* create_node(GameObject* object) {
   GameSceneNode* node = malloc(sizeof(GameSceneNode));
   if (node == NULL) return NULL;
@@ -13,6 +14,7 @@ GameSceneNode* create_node(GameObject* object) {
   return node;
 }
 
+// 게임 화면을 할당하고 초기 상태로 둔 뒤 반환합니다.
 GameScene* init_scene() {
   GameScene* scene = malloc(sizeof(GameScene));
   if (scene == NULL) return NULL;
@@ -25,6 +27,7 @@ GameScene* init_scene() {
   return scene;
 }
 
+// 사용을 완료한 게임 화면을 해제시킵니다.
 void deinit_scene(GameScene* scene) {
   GameSceneNode* node = scene->head;
 
@@ -38,6 +41,7 @@ void deinit_scene(GameScene* scene) {
   }
 }
 
+// 게임 화면에 게임 오브젝트를 추가시킵니다.
 void insert_game_object(GameObject* object, GameScene* scene) {
   if (object == NULL) return;
 
@@ -53,11 +57,14 @@ void insert_game_object(GameObject* object, GameScene* scene) {
   }
 }
 
+// RECT 데이터 두 개를 받고 두 RECT가 충돌하는지 (교집합이 존재하는지) 확인하여
+// bool 형식으로 반환합니다.
 bool rect_intersect_check(RECT r1, RECT r2) {
   return !(r2.left > r1.right || r2.right < r1.left || r2.top > r1.bottom ||
            r2.bottom < r1.top);
 }
 
+// 게임 화면, DC, 윈도우 크기를 받고 게임 화면을 주어진 DC에 그립니다.
 void render_game_scene(GameScene* scene, HDC main_dc, int window_width,
                        int window_height) {
   if (!scene->rendered) {
@@ -131,15 +138,4 @@ void render_game_scene(GameScene* scene, HDC main_dc, int window_width,
   DeleteDC(back_dc);
 
   Sleep(scene->sleep_duration);
-}
-
-int scene_tag_count(GameScene* scene, char* tag) {
-  GameSceneNode* node = scene->head;
-  int count = 0;
-  while (node != NULL) {
-    if (strcmp(node->game_object->tag, tag) == 0) count++;
-    node = node->next;
-  }
-
-  return count;
 }

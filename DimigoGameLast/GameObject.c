@@ -1,6 +1,7 @@
 #include "GameObject.h"
 #include <math.h>
 
+// 게임 오브젝트를 할당하고 초기 상태로 둔 뒤 반환합니다.
 GameObject* init_game_object(HBITMAP* sprites) {
   GameObject* object = malloc(sizeof(GameObject));
   if (object == NULL) return NULL;
@@ -27,6 +28,7 @@ GameObject* init_game_object(HBITMAP* sprites) {
   return object;
 }
 
+// 사용을 완료한 게임 오브젝트를 해제시킵니다.
 void deinit_game_object(GameObject* object) {
   if (object->on_destroy != NULL) {
     object->on_destroy(object);
@@ -36,6 +38,8 @@ void deinit_game_object(GameObject* object) {
   free(object);
 }
 
+// 비트맵, DC, 위치, 확대 비율을 받고 DC에 주어진 비트맵을 위치와 크기를
+// 조정해서 그립니다.
 void render_bitmap(HBITMAP bitmap, HDC main_dc, Pos pos, double scale) {
   HDC bitmap_dc = CreateCompatibleDC(main_dc);
   SelectObject(bitmap_dc, bitmap);
@@ -57,6 +61,7 @@ void render_bitmap(HBITMAP bitmap, HDC main_dc, Pos pos, double scale) {
   DeleteDC(bitmap_dc);
 }
 
+// 게임 오브젝트를 받고 데이터를 기반으로 주어진 DC에 그립니다.
 void render_game_object(GameObject* object, HDC main_dc) {
   if (!object->rendered) {
     if (object->on_first_render != NULL)
@@ -69,6 +74,8 @@ void render_game_object(GameObject* object, HDC main_dc) {
                 object->scale);
 }
 
+// 게임 오브젝트를 받고 위치, 크기 데이터를 기반으로 해당하는 RECT 데이터를
+// 반환합니다.
 RECT get_game_object_rect(GameObject* object) {
   if (object->sprites == NULL) {
     RECT result;
