@@ -141,11 +141,14 @@ GameScene* create_after_disk_story(bool coco_win) {
   GameScene* teacher_help = create_story_scene(pull_help, teacher_sprites[1],
                                                teacher_ment, 4, rect, NULL);
 
-  CREATE_MENT(ment, 2, NULL);
-  wcscpy(ment[0],
-         coco_win ? L"코코 : 풋, 내가 이겼네?" : L"딩딩 : 풋, 내가 이겼네?");
-  wcscpy(ment[1], coco_win ? L"딩딩 : 다음 판에는 내가 이길테니까 두고봐..!"
-                           : L"코코 : 다음 판에는 내가 꼭 이긴다.. 긴장해라!");
+  CREATE_MENT(ment, 3, NULL);
+  wcscpy(ment[0], coco_win ? L"코코 : 풋, 내가 이겼네? ㅋ"
+                           : L"딩딩 : 풋, 내가 이겼네? ㅋ");
+  wcscpy(ment[1],
+         coco_win ? L"코코 : 잘 좀 해봐~ 그렇게 해서 나 이길 수 있겠어? ㅋ"
+                  : L"딩딩 : 잘 좀 해봐~ 그렇게 해서 나 이길 수 있겠어? ㅋ");
+  wcscpy(ment[2], coco_win ? L"딩딩 : 다음 판에는 내가 이길테니까 두고봐..!"
+                           : L"코코 : ㅠㅠ 다음 번에는 내가 꼭 이긴다..");
 
   rect.top = 450;
   rect.left = 200;
@@ -153,7 +156,7 @@ GameScene* create_after_disk_story(bool coco_win) {
   rect.right = rect.left + 750;
 
   GameScene* next_scene =
-      create_story_scene(teacher_help, story_sprites[coco_win ? 6 : 7], ment, 2,
+      create_story_scene(teacher_help, story_sprites[coco_win ? 6 : 7], ment, 3,
                          rect, "Sound/avengers.wav");
 
   return create_game_result_scene(coco_win, next_scene);
@@ -185,20 +188,35 @@ GameScene* create_after_pull_story(bool coco_win) {
   CREATE_MENT(ment, 3, NULL);
 
   if (g_coco_score == 0) {
-    wcscpy(ment[0], coco_win ? L"코코 : 내가 분명히 말했지? 이번엔 내가 이겼네?"
-                             : L"딩딩 : 이번에도 내가 이겼네? 이번엔 너가 "
-                               L"이긴다고 하지 않았니?");
-    wcscpy(ment[1],
-           coco_win ? L"딩딩 : 이제 마지막 게임이다.. 마지막엔 내가 이기겠어!"
-                    : L"코코 : 이미 진 판이지만.. 끝까지 최선을 다하겠어!");
+    wcscpy(ment[0],
+           coco_win
+               ? L"코코 : 내가 분명히 말했지? 내가 이.긴.다.고 ㅋ"
+               : L"딩딩 : 이번에도 내가 이겼네? ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ");
+    wcscpy(
+        ment[1],
+        coco_win
+            ? L"딩딩 : 고작 한 번 이겼다고 자만하다니.. 억울해 ㅠㅠ!!"
+            : L"딩딩 : 너가 이긴다고 하지 않았니? 하여간 입만 살아가지고 ㅋ");
+    wcscpy(ment[2],
+           coco_win
+               ? L"딩딩 : 하지만 마지막 게임의 승리는.. 나의 것이다.. 두고봐!!"
+               : L"코코 : 이미 진 판이지만..끝까지 최선을 다하겠어... 내 "
+                 L"자신아 ! 조금만 더 힘을 내줘!!");
   } else {
-    wcscpy(ment[0], !coco_win
-                        ? L"딩딩 : 내가 분명히 말했지? 이번엔 내가 이겼네?"
-                        : L"코코 : 이번에도 내가 이겼네? 이번엔 너가 "
-                          L"이긴다고 하지 않았니?");
-    wcscpy(ment[1],
-           !coco_win ? L"코코 : 이제 마지막 게임이다.. 마지막엔 내가 이기겠어!"
-                     : L"딩딩 : 이미 진 판이지만.. 끝까지 최선을 다하겠어!");
+    wcscpy(ment[0],
+           !coco_win
+               ? L"딩딩 : 내가 분명히 말했지? 내가 이.긴.다.고 ㅋ"
+               : L"코코 : 이번에도 내가 이겼네? ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ");
+    wcscpy(
+        ment[1],
+        !coco_win
+            ? L"코코 : 고작 한 번 이겼다고 자만하다니.. 억울해 ㅠㅠ!!"
+            : L"코코 : 너가 이긴다고 하지 않았니? 하여간 입만 살아가지고 ㅋ");
+    wcscpy(ment[2],
+           !coco_win
+               ? L"코코 : 하지만 마지막 게임의 승리는.. 나의 것이다.. 두고봐!!"
+               : L"딩딩 : 이미 진 판이지만..끝까지 최선을 다하겠어... 내 "
+                 L"자신아 ! 조금만 더 힘을 내줘!!");
   }
 
   rect.top = 450;
@@ -207,7 +225,7 @@ GameScene* create_after_pull_story(bool coco_win) {
   rect.right = rect.left + 750;
 
   GameScene* next_scene =
-      create_story_scene(teacher_help, story_sprites[coco_win ? 2 : 3], ment, 2,
+      create_story_scene(teacher_help, story_sprites[coco_win ? 2 : 3], ment, 3,
                          rect, "Sound/avengers.wav");
   return create_game_result_scene(coco_win, next_scene);
 }
@@ -219,21 +237,18 @@ GameScene* create_after_dance_story(bool coco_win) {
   bool final_result = coco_score > g_dingding_score;
 
   update_set_score(final_result);
-  CREATE_MENT(final_ment, 4, NULL);
+  CREATE_MENT(final_ment, 3, NULL);
 
-  wcscpy(final_ment[0], !final_result
-                            ? L"코코 : 이게 진짜일리 없어.. 내가 지다니 ㅠㅠ"
-                            : L"딩딩 : 이게 진짜일리 없어.. 내가 지다니 ㅠㅠ");
-  wcscpy(final_ment[1], !final_result
-                            ? L"코코 : 청소 진짜 힘들다 .. 집 가고 싶다 ㅠㅠ"
-                            : L"딩딩 : 청소 진짜 힘들다.. 집 가고 싶어 ㅠㅠ");
-  wcscpy(final_ment[2],
+  wcscpy(final_ment[0],
+         !final_result ? L"코코 : 이게.. 진짜 일리 없어.. 내가.. 지다니..."
+                       : L"딩딩 : 이게.. 진짜 일리 없어.. 내가.. 지다니...");
+  wcscpy(final_ment[1],
          !final_result
-             ? L"코코 : 그래도.. 열심히 해야지!"
-             : L"딩딩 : 그래도.. 내게 주어진 임무는 열심히 해야지.. ");
-  wcscpy(final_ment[3], !final_result
-                            ? L"코코 : 내 자신아 ... 졌지만... 잘 싸웠다!"
-                            : L"딩딩 : 내 자신아 ... 졌지만... 잘 싸웠다!");
+             ? L"코코 : 청소 진짜 힘들다.. 그래도 열심히 해야지 아자아자!"
+             : L"딩딩 : 청소 진짜 힘들다.. 그래도 열심히 해야지 아자아자!");
+  wcscpy(final_ment[2], !final_result
+                            ? L"코코 : 내 자신아...졌지만..잘 싸웠다!"
+                            : L"딩딩 : 내 자신아...졌지만..잘 싸웠다!");
 
   RECT rect;
   rect.top = 120;
@@ -243,7 +258,7 @@ GameScene* create_after_dance_story(bool coco_win) {
 
   GameScene* clean_scene = create_story_scene(
       create_final_result_scene(), story_sprites[coco_win ? 5 : 4], final_ment,
-      4, rect, "Sound/game_over.wav");
+      3, rect, "Sound/game_over.wav");
 
   CREATE_MENT(ment, 3, NULL);
 
@@ -254,8 +269,8 @@ GameScene* create_after_dance_story(bool coco_win) {
                       : L"딩딩 : 이긴다고 막 그러더니.. 내가 까불지 말랬지?");
   wcscpy(ment[2], final_result ? L"딩딩 : 안돼 ㅠㅠ" : L"코코 : 안돼 ㅠㅠ");
 
-  rect.top = 150;
-  rect.left = 370;
+  rect.top = 170;
+  rect.left = final_result ? 350 : 450;
   rect.bottom = rect.top + 200;
   rect.right = rect.left + 350;
   GameScene* next_scene = create_story_scene(

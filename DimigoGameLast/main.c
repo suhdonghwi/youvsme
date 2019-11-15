@@ -121,7 +121,7 @@ int main() {
   // g_current_scene = create_disk_game_scene(true, (Pos){0, 0});
   // g_current_scene = create_game_result_scene(false);
   // g_current_scene = create_pull_game_scene();
-  // g_current_scene = create_after_dance_story(true);
+  // g_current_scene = create_after_dance_story(false);
   // g_current_scene = create_home_scene();
 
   // 현재 화면을 홈 화면으로 설정하고, 다음 화면을 NULL로 설정합니다.
