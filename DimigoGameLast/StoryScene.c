@@ -187,7 +187,7 @@ GameScene* create_after_dance_story(bool coco_win) {
                                 : L"딩딩 : 내 자신아 ... 졌지만... 잘 싸웠다!");
 
   RECT rect;
-  rect.top = 450;
+  rect.top = 150;
   rect.left = 200;
   rect.bottom = rect.top + 200;
   rect.right = rect.left + 750;
