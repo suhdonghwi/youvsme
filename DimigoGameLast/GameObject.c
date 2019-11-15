@@ -69,9 +69,13 @@ void render_game_object(GameObject* object, HDC main_dc) {
     object->rendered = true;
   }
 
+  if (object->on_render != NULL) object->on_render(object, main_dc);
+
   if (object->sprites == NULL) return;
   render_bitmap(object->sprites[object->sprite_index], main_dc, object->pos,
                 object->scale);
+
+  if (object->after_render != NULL) object->after_render(object, main_dc);
 }
 
 // 게임 오브젝트를 받고 위치, 크기 데이터를 기반으로 해당하는 RECT 데이터를

@@ -107,23 +107,6 @@ int main() {
   // AddFontResource("DungGeunMo.ttf");
   // RemoveFontResource("DungGeunMo.ttf");
 
-  /*GameScene* ready_scene = create_readystart_scene(
-      create_pull_game_scene(), pull_ready_sprites, 2, (Pos){560, 300});
-  g_current_scene = create_game_help_scene(game_help_sprites[1],
-                                           logo_sprites[1], ready_scene);*/
-  /*GameScene* ready_scene =
-      create_readystart_scene(create_disk_game_scene(true, (Pos){0, 0}),
-                              coco_disk_ready_sprites, 3, (Pos){560, 300});
-  g_current_scene = create_game_help_scene(game_help_sprites[0],
-                                           logo_sprites[0], ready_scene);*/
-  // g_current_scene = create_pull_game_scene();
-
-  // g_current_scene = create_disk_game_scene(true, (Pos){0, 0});
-  // g_current_scene = create_game_result_scene(false);
-  // g_current_scene = create_pull_game_scene();
-  // g_current_scene = create_after_dance_story(false);
-  // g_current_scene = create_home_scene();
-
   // 현재 화면을 홈 화면으로 설정하고, 다음 화면을 NULL로 설정합니다.
   g_current_scene = create_home_scene();
   g_new_scene = NULL;

@@ -122,13 +122,7 @@ void render_game_scene(GameScene* scene, HDC main_dc, int window_width,
     if (g_new_scene != NULL) return;
     if (node == NULL) return;
 
-    if (node->game_object->on_render != NULL)
-      node->game_object->on_render(node->game_object, back_dc);
-
     render_game_object(node->game_object, back_dc);
-
-    if (node->game_object->after_render != NULL)
-      node->game_object->after_render(node->game_object, back_dc);
 
     prev = node;
     node = node->next;
