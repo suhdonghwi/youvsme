@@ -12,7 +12,7 @@ void on_render_game_help_scene(GameScene* scene, HDC main_dc) {
 
   render_bitmap(background_sprites[1], main_dc, (Pos){0, 0}, 20.25);
   render_bitmap(data->help_message, main_dc, (Pos){250, 250}, 3.5);
-  render_bitmap(data->logo, main_dc, (Pos){360, 30}, 13);
+  render_bitmap(data->logo, main_dc, data->logo_pos, 5);
 
   char* press_s = TEXT("[S]키를 눌러서 시작하세요!");
 
@@ -28,7 +28,7 @@ void on_render_game_help_scene(GameScene* scene, HDC main_dc) {
 }
 
 GameScene* create_game_help_scene(HBITMAP help_message, HBITMAP logo,
-                                  GameScene* game_scene) {
+                                  Pos logo_pos, GameScene* game_scene) {
   GameScene* scene = init_scene();
   scene->on_render = on_render_game_help_scene;
   scene->sleep_duration = 100;
@@ -37,6 +37,7 @@ GameScene* create_game_help_scene(HBITMAP help_message, HBITMAP logo,
   if (data == NULL) return NULL;
   data->help_message = help_message;
   data->logo = logo;
+  data->logo_pos = logo_pos;
   data->dest_scene = game_scene;
   data->font = CreateFont(25, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
                           VARIABLE_PITCH | FF_ROMAN, TEXT("둥근모꼴"));
