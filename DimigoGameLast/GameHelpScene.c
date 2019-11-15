@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "GameHelpScene.h"
 
 #include "KeyInput.h"
@@ -19,6 +21,11 @@ void on_render_game_help_scene(GameScene* scene, HDC main_dc) {
   render_bitmap(data->help_message, main_dc, (Pos){250, 250}, 3.5);
   render_bitmap(data->logo, main_dc, data->logo_pos, 5);
 
+  char stage_text[100];
+  sprintf(stage_text, "- STAGE %d -", data->stage);
+  SetTextColor(main_dc, RGB(30, 30, 30));
+  TextOut(main_dc, 472, 22, stage_text, strlen(stage_text));
+
   char* press_s = TEXT("[S]키를 눌러서 시작하세요!");
 
   SetTextColor(main_dc, RGB(150, 150, 150));
@@ -33,7 +40,8 @@ void on_render_game_help_scene(GameScene* scene, HDC main_dc) {
 }
 
 GameScene* create_game_help_scene(HBITMAP help_message, HBITMAP logo,
-                                  Pos logo_pos, GameScene* game_scene) {
+                                  Pos logo_pos, GameScene* game_scene,
+                                  int stage) {
   GameScene* scene = init_scene();
   scene->on_render = on_render_game_help_scene;
   scene->sleep_duration = 100;
@@ -46,6 +54,7 @@ GameScene* create_game_help_scene(HBITMAP help_message, HBITMAP logo,
   data->dest_scene = game_scene;
   data->font = CreateFont(25, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
                           VARIABLE_PITCH | FF_ROMAN, TEXT("둥근모꼴"));
+  data->stage = stage;
 
   scene->data = data;
 
@@ -57,7 +66,7 @@ GameScene* create_disk_help_scene() {
   GameScene* ready_scene = create_readystart_scene(
       disk_scene, coco_disk_ready_sprites, 3, (Pos){560, 300});
   GameScene* help_scene = create_game_help_scene(
-      game_help_sprites[0], logo_sprites[0], (Pos){410, 50}, ready_scene);
+      game_help_sprites[0], logo_sprites[0], (Pos){410, 50}, ready_scene, 1);
   return help_scene;
 }
 
@@ -66,7 +75,7 @@ GameScene* create_pull_help_scene() {
   GameScene* ready_scene = create_readystart_scene(
       pull_scene, ready_start_sprites, 2, (Pos){560, 300});
   GameScene* help_scene = create_game_help_scene(
-      game_help_sprites[1], logo_sprites[1], (Pos){410, 10}, ready_scene);
+      game_help_sprites[1], logo_sprites[1], (Pos){410, 10}, ready_scene, 2);
   return help_scene;
 }
 
@@ -75,6 +84,6 @@ GameScene* create_dance_help_scene() {
   GameScene* ready_scene = create_readystart_scene(
       dance_scene, ready_start_sprites, 2, (Pos){560, 300});
   GameScene* help_scene = create_game_help_scene(
-      game_help_sprites[2], logo_sprites[2], (Pos){420, 60}, ready_scene);
+      game_help_sprites[2], logo_sprites[2], (Pos){420, 60}, ready_scene, 3);
   return help_scene;
 }
