@@ -4,16 +4,20 @@
 #include "SpriteResources.h"
 #include "String.h"
 
+// 줄다리기 게임 화면의 on_render 콜백입니다. 배경화면을 렌더링합니다.
 void on_render_pull_game_scene(GameScene* scene, HDC main_dc) {
   render_bitmap(background_sprites[2], main_dc, (Pos){0, 0}, 20.25);
 }
 
+// 줄다리기 게임 화면의 on_first_render 콜백입니다. 줄다리기 배경 음악을
+// 재생합니다.
 void on_first_render_pull_game_scene(GameScene* scene, HDC main_dc) {
   PlaySound(NULL, 0, 0);
   PlaySound(TEXT("Sound/pull_bgm.wav"), NULL,
             SND_FILENAME | SND_ASYNC | SND_LOOP);
 }
 
+// 줄다리기 게임 화면을 생성한 뒤 반환합니다.
 GameScene* create_pull_game_scene() {
   GameScene* scene = init_scene();
 

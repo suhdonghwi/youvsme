@@ -12,6 +12,8 @@
 extern bool g_story_mode;
 extern GameScene* g_new_scene;
 
+// 무한 모드 선택 화면의 on_render 콜백입니다. 방향키와 Enter 키를 통해서 메뉴를
+// 탐색하고 진입할 수 있도록 합니다.
 void on_render_infinite_scene(GameScene* scene, HDC main_dc) {
   InfiniteSceneData* data = scene->data;
 
@@ -45,6 +47,8 @@ void on_render_infinite_scene(GameScene* scene, HDC main_dc) {
   char back_str[] = "[Backspace]키를 눌러 뒤로가기";
   TextOut(main_dc, 380, 610, back_str, strlen(back_str));
 }
+
+// 무한 모드 선택 화면을 생성한 뒤 반환합니다.
 GameScene* create_infinite_scene() {
   GameScene* scene = init_scene();
 

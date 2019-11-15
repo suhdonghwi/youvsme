@@ -15,6 +15,7 @@ extern GameScene* g_new_scene;
 extern HDC g_window_dc;
 extern bool g_story_mode;
 
+// 댄스 큐와 사이즈를 받고 새로 초기화합니다.
 void init_dance_queue(DanceDirection** queue, int size) {
   *queue = malloc(sizeof(DanceDirection) * size);
   if (*queue == NULL) return;
@@ -24,11 +25,13 @@ void init_dance_queue(DanceDirection** queue, int size) {
   }
 }
 
+// 사용이 완료된 댄스 큐의 메모리를 해제합니다.
 void deinit_dance_queue(DanceDirection** queue) {
   free(*queue);
   *queue = NULL;
 }
 
+// 코코 쪽으로 화면을 확대합니다.
 void zoom_coco(DanceGameSceneData* data) {
   data->background_scale = 50;
   data->background_pos = (Pos){0, -200};
@@ -39,6 +42,7 @@ void zoom_coco(DanceGameSceneData* data) {
   data->dingding->sprite_index = 0;
 }
 
+// 딩딩 쪽으로 화면을 확대합니다.
 void zoom_dingding(DanceGameSceneData* data) {
   data->background_scale = 50;
   data->background_pos = (Pos){-645, -200};
@@ -49,6 +53,7 @@ void zoom_dingding(DanceGameSceneData* data) {
   data->dingding->sprite_index = 0;
 }
 
+// 확대된 화면을 초기화합니다.
 void zoom_normal(DanceGameSceneData* data) {
   data->background_pos = (Pos){0, 0};
   data->background_scale = 20.25;
@@ -58,6 +63,8 @@ void zoom_normal(DanceGameSceneData* data) {
   data->dingding->scale = 10;
 }
 
+// 댄스 게임의 on_render 콜백입니다. 춤을 추고 있는 상태있지, 따라하고 있는
+// 상태인지 조절하고 턴 횟수에 따라서 스피드업을 해줍니다.
 void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
   DanceGameSceneData* data = (DanceGameSceneData*)scene->data;
   DancerData* coco_data = data->coco->data;
@@ -188,11 +195,13 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
   }
 }
 
+// 댄스 화면의 on_first_render 콜백입니다. 배경 음악을 재생합니다.
 void on_first_render_dance_game_scene(GameScene* scene, HDC main_dc) {
   PlaySound(TEXT("Sound/radioactive.wav"), NULL,
             SND_FILENAME | SND_ASYNC | SND_LOOP);
 }
 
+// 댄스 화면을 생성하고 반환합니다.
 GameScene* create_dance_game_scene() {
   GameScene* scene = init_scene();
 

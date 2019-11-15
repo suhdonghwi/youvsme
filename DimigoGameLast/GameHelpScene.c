@@ -11,7 +11,10 @@
 #include "ReadyStartScene.h"
 
 extern GameScene* g_new_scene;
+extern bool g_story_mode;
 
+// 게임 도움말 화면의 on_render 콜백입니다. S키가 입력되면 설정된 다음 화면으로
+// 넘어갑니다.
 void on_render_game_help_scene(GameScene* scene, HDC main_dc) {
   GameHelpData* data = (GameHelpData*)scene->data;
 
@@ -21,10 +24,12 @@ void on_render_game_help_scene(GameScene* scene, HDC main_dc) {
   render_bitmap(data->help_message, main_dc, (Pos){250, 250}, 3.5);
   render_bitmap(data->logo, main_dc, data->logo_pos, 5);
 
-  char stage_text[100];
-  sprintf(stage_text, "- STAGE %d -", data->stage);
-  SetTextColor(main_dc, RGB(30, 30, 30));
-  TextOut(main_dc, 472, 22, stage_text, strlen(stage_text));
+  if (g_story_mode) {
+    char stage_text[100];
+    sprintf(stage_text, "- STAGE %d -", data->stage);
+    SetTextColor(main_dc, RGB(30, 30, 30));
+    TextOut(main_dc, 472, 22, stage_text, strlen(stage_text));
+  }
 
   char* press_s = TEXT("[S]키를 눌러서 시작하세요!");
 
@@ -39,6 +44,8 @@ void on_render_game_help_scene(GameScene* scene, HDC main_dc) {
   }
 }
 
+// 도움 메시지 비트맵, 게임 로고, 로고 위치, 게임 화면, 스테이지 수를 받고 게임
+// 도움말 화면을 생성한 뒤 반환합니다.
 GameScene* create_game_help_scene(HBITMAP help_message, HBITMAP logo,
                                   Pos logo_pos, GameScene* game_scene,
                                   int stage) {
@@ -61,6 +68,7 @@ GameScene* create_game_help_scene(HBITMAP help_message, HBITMAP logo,
   return scene;
 }
 
+// 플라잉 디스크 게임의 도움말 화면을 생성합니다.
 GameScene* create_disk_help_scene() {
   GameScene* disk_scene = create_disk_game_scene(true, (Pos){0, 0});
   GameScene* ready_scene = create_readystart_scene(
@@ -70,6 +78,7 @@ GameScene* create_disk_help_scene() {
   return help_scene;
 }
 
+// 줄다리기 게임의 도움말 화면을 생성합니다.
 GameScene* create_pull_help_scene() {
   GameScene* pull_scene = create_pull_game_scene();
   GameScene* ready_scene = create_readystart_scene(
@@ -79,6 +88,7 @@ GameScene* create_pull_help_scene() {
   return help_scene;
 }
 
+// 댄스 게임의 도움말 화면을 생성합니다.
 GameScene* create_dance_help_scene() {
   GameScene* dance_scene = create_dance_game_scene();
   GameScene* ready_scene = create_readystart_scene(

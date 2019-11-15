@@ -11,6 +11,8 @@ extern int g_dingding_score;
 extern GameScene* g_new_scene;
 extern bool g_story_mode;
 
+// 게임 결과 화면의 on_render 콜백입니다. Enter 키를 입력 받으면 스토리 모드인
+// 경우 다음 화면으로, 무한 모드인 경우 메인 화면으로 넘어갑니다.
 void on_render_game_result_scene(GameScene* scene, HDC main_dc) {
   GameResultSceneData* data = scene->data;
 
@@ -35,10 +37,12 @@ void on_render_game_result_scene(GameScene* scene, HDC main_dc) {
   }
 }
 
+// 게임 결과 화면의 on_first_render 콜백입니다. 승리의 효과음을 재생합니다.
 void on_first_render_game_result_scene(GameScene* scene, HDC main_dc) {
   PlaySound(TEXT("Sound/victory.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }
 
+// 승리한 캐릭터, 다음 화면을 받고 게임 결과 화면을 생성한 뒤 반환합니다.
 GameScene* create_game_result_scene(bool coco_won, GameScene* next_scene) {
   if (coco_won)
     g_coco_score++;

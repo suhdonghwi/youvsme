@@ -15,6 +15,8 @@ extern GameScene* g_new_scene;
 extern int g_coco_score;
 extern int g_dingding_score;
 
+// 스토리 화면의 on_render 콜백입니다. 말풍선의 대사가 끝나면 설정된 다음
+// 화면으로 넘어갑니다.
 void on_render_story_scene(GameScene* scene, HDC main_dc) {
   StorySceneData* data = scene->data;
 
@@ -25,6 +27,8 @@ void on_render_story_scene(GameScene* scene, HDC main_dc) {
   }
 }
 
+// 스토리 화면의 on_first_render 콜백입니다. 배경 음악이 설정되어있으면 이를
+// 재생합니다.
 void on_first_render_story_scene(GameScene* scene, HDC main_dc) {
   StorySceneData* data = scene->data;
 
@@ -34,6 +38,8 @@ void on_first_render_story_scene(GameScene* scene, HDC main_dc) {
   }
 }
 
+// 다음 화면, 배경 사진, 대사, 대사의 개수, 말풍선의 위치와 크기를 담은 RECT
+// 데이터, 배경 음악의 경로를 받고 스토리 화면을 생성하여 반환합니다.
 GameScene* create_story_scene(GameScene* next_scene, HBITMAP background,
                               wchar_t** text, int text_count, RECT text_rect,
                               char* sound) {
@@ -56,6 +62,7 @@ GameScene* create_story_scene(GameScene* next_scene, HBITMAP background,
   return scene;
 }
 
+// 홈 화면 뒤의 스토리를 생성하여 반환합니다.
 GameScene* create_after_main_story() {
   GameScene* disk_help = create_disk_help_scene();
 
@@ -111,6 +118,7 @@ GameScene* create_after_main_story() {
   return first_help;
 }
 
+// 플라잉 디스크 게임 뒤의 스토리를 생성하여 반환합니다.
 GameScene* create_after_disk_story(bool coco_win) {
   RECT rect;
   GameScene* pull_help = create_pull_help_scene();
@@ -151,6 +159,7 @@ GameScene* create_after_disk_story(bool coco_win) {
   return create_game_result_scene(coco_win, next_scene);
 }
 
+// 줄다리기 게임 뒤의 스토리를 생성하여 반환합니다.
 GameScene* create_after_pull_story(bool coco_win) {
   RECT rect;
   GameScene* dance_help = create_dance_help_scene();
@@ -203,6 +212,7 @@ GameScene* create_after_pull_story(bool coco_win) {
   return create_game_result_scene(coco_win, next_scene);
 }
 
+// 댄스 게임 뒤의 스토리를 생성하여 반환합니다.
 GameScene* create_after_dance_story(bool coco_win) {
   int coco_score = g_coco_score;
   if (coco_win) coco_score++;

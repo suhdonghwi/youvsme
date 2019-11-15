@@ -4,6 +4,8 @@
 
 extern GameScene* g_new_scene;
 
+// 준비 시작 화면의 on_render 콜백입니다. 현재 인덱스에 해당하는 스프라이트를
+// 렌더링합니다.
 void on_render_readystart_scene(GameScene* scene, HDC main_dc) {
   ReadyStartData* data = (ReadyStartData*)scene->data;
 
@@ -25,6 +27,8 @@ void on_render_readystart_scene(GameScene* scene, HDC main_dc) {
   }
 }
 
+// 다음 화면, 슬라이드 비트맵들, 비트맵 개수, 렌더링 위치를 받고 준비 시작
+// 화면을 생성한 뒤 반환합니다.
 GameScene* create_readystart_scene(GameScene* dest_scene,
                                    HBITMAP* slide_bitmaps, int size, Pos pos) {
   GameScene* scene = init_scene();

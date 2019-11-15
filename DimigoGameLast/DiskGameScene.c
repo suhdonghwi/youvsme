@@ -11,6 +11,8 @@
 extern GameScene* g_new_scene;
 extern bool g_story_mode;
 
+// 플라잉 디스크 화면의 on_render 콜백입니다. 날아가고 있는 디스크의 상태를
+// 조절합니다.
 void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
   DiskGameData* data = (DiskGameData*)scene->data;
   DiskData* disk_data = (DiskData*)data->disk->data;
@@ -73,6 +75,8 @@ void on_render_disk_game_scene(GameScene* scene, HDC main_dc) {
   }
 }
 
+// 플라잉 디스크 화면의 on_first_render 콜백입니다. 코코의 차례 (첫번째 턴) 이면
+// 배경 음악을 재생합니다.
 void on_first_render_disk_game_scene(GameScene* scene, HDC main_dc) {
   DiskGameData* data = scene->data;
 
@@ -83,6 +87,7 @@ void on_first_render_disk_game_scene(GameScene* scene, HDC main_dc) {
   }
 }
 
+// 캐릭터와 떨어진 디스크의 위치를 받고 디스크 화면을 생성하여 반환합니다.
 GameScene* create_disk_game_scene(bool coco_turn, Pos fallen_pos) {
   GameScene* scene = init_scene();
 
