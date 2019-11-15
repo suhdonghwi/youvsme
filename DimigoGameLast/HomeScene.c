@@ -21,7 +21,7 @@ void on_render_home_scene(GameScene* scene, HDC main_dc) {
       g_story_mode = true;
       g_new_scene = create_after_main_story();
     } else {
-      Sleep(500);
+      // Sleep(500);
       g_new_scene = create_infinite_scene();
     }
   }

@@ -4,6 +4,7 @@
 #include "DanceGameScene.h"
 #include "DiskGameScene.h"
 #include "GameHelpScene.h"
+#include "HomeScene.h"
 #include "KeyInput.h"
 #include "PullGameScene.h"
 #include "ReadyStartScene.h"
@@ -34,7 +35,15 @@ void on_render_infinite_scene(GameScene* scene, HDC main_dc) {
     } else if (data->index == 2) {
       g_new_scene = create_dance_help_scene();
     }
+  } else if (is_pressed(VK_BACK)) {
+    g_new_scene = create_home_scene();
   }
+
+  SelectObject(main_dc, data->font);
+  SetTextColor(main_dc, RGB(50, 50, 50));
+
+  char back_str[] = "[Backspace]키를 눌러 뒤로가기";
+  TextOut(main_dc, 380, 610, back_str, strlen(back_str));
 }
 GameScene* create_infinite_scene() {
   GameScene* scene = init_scene();
@@ -45,6 +54,8 @@ GameScene* create_infinite_scene() {
   InfiniteSceneData* data = malloc(sizeof(InfiniteSceneData));
   if (data == NULL) return NULL;
   data->index = 0;
+  data->font = CreateFont(25, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
+                          VARIABLE_PITCH | FF_ROMAN, TEXT("둥근모꼴"));
 
   scene->data = data;
   return scene;
