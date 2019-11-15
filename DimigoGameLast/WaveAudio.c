@@ -3,12 +3,12 @@
 
 #include "WaveAudio.h"
 
+// 마이크 데이터를 초기화합니다.
 int init_wave_data(WaveData* result, int record_seconds) {
   result->num_pts = 8100 * record_seconds;
   result->sample_rate = 8100;
   result->sample_data = malloc(sizeof(short int) * result->num_pts);
 
-  // Set up and prepare header for input
   result->wave_hdr.lpData = (LPSTR)result->sample_data;
   result->wave_hdr.dwBufferLength = result->num_pts;
   result->wave_hdr.dwBytesRecorded = 0;
@@ -49,6 +49,7 @@ int init_wave_data(WaveData* result, int record_seconds) {
   return 0;
 }
 
+// 마이크 입력 데이터를 해제합니다.
 void deinit_wave_data(WaveData* wave_data) {
   waveInUnprepareHeader(wave_data->wave_in, &wave_data->wave_hdr,
                         sizeof(WAVEHDR));
