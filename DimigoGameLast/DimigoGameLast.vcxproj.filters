@@ -149,9 +149,6 @@
     <ClInclude Include="Camera.h">
       <Filter>Header Files\Input</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SpriteResources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -220,6 +217,9 @@
     </ClInclude>
     <ClInclude Include="InfiniteScene.h">
       <Filter>Header Files\GameScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -541,6 +541,33 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resource\infinite_3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\teacher_help_disk.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\teacher_help_dance.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\teacher_help_pull.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\story_pull_coco_win.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\story_pull_dingding_win.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\story_dance_coco_win.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\story_dance_dingding_win.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\story_disk_coco_win.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resource\story_disk_dingding_win.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -113,12 +113,21 @@
 #define IDB_INFINITE_2                  192
 #define IDB_BITMAP24                    193
 #define IDB_INFINITE_3                  193
+#define IDB_STORY_DANCE_COCO_WIN        194
+#define IDB_STORY_DANCE_DINGDING_WIN    195
+#define IDB_STORY_DISK_COCO_WIN         196
+#define IDB_STORY_DISK_DINGDING_WIN     197
+#define IDB_STORY_PULL_COCO_WIN         198
+#define IDB_STORY_PULL_DINGDING_WIN     199
+#define IDB_TEACHER_HELP_DANCE          200
+#define IDB_TEACHER_HELP_DISK           201
+#define IDB_TEACHER_HELP_PULL           202
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        194
+#define _APS_NEXT_RESOURCE_VALUE        203
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101

@@ -83,7 +83,7 @@ int main() {
   // g_current_scene = create_disk_game_scene(true, (Pos){0, 0});
   // g_current_scene = create_game_result_scene(false);
   // g_current_scene = create_pull_game_scene();
-  g_current_scene = create_final_result_scene();
+  g_current_scene = create_after_dance_story(true);
   // g_current_scene = create_after_main_story();
   g_story_mode = true;
 

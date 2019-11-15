@@ -56,12 +56,11 @@ void init_sprite_resources(HINSTANCE inst) {
   won_message_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_COCO_WON));
   won_message_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DINGDING_WON));
 
-  game_help_sprites = malloc(sizeof(HBITMAP) * 4);
+  game_help_sprites = malloc(sizeof(HBITMAP) * 3);
   if (game_help_sprites == NULL) return;
   game_help_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DISK_HELP));
   game_help_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PULL_HELP));
-  game_help_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_TEACHER_HELP));
-  game_help_sprites[3] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DANCE_HELP));
+  game_help_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_DANCE_HELP));
 
   ready_start_sprites = malloc(sizeof(HBITMAP) * 2);
   if (ready_start_sprites == NULL) return;
@@ -147,15 +146,23 @@ void init_sprite_resources(HINSTANCE inst) {
   progress_sprites[9] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PROGRESS_9));
   progress_sprites[10] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_PROGRESS_10));
 
-  story_sprites = malloc(sizeof(HBITMAP) * 6);
+  story_sprites = malloc(sizeof(HBITMAP) * 10);
   if (story_sprites == NULL) return;
   story_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_STORY_TIMETABLE));
   story_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_STORY_FIRST));
-  story_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_STORY_COCO_WIN));
-  story_sprites[3] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_STORY_DINGDING_WIN));
+  story_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_STORY_PULL_COCO_WIN));
+  story_sprites[3] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_STORY_PULL_DINGDING_WIN));
   story_sprites[4] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_STORY_COCO_CLEAN));
   story_sprites[5] =
       LoadBitmap(inst, MAKEINTRESOURCE(IDB_STORY_DINGDING_CLEAN));
+  story_sprites[6] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_STORY_DISK_COCO_WIN));
+  story_sprites[7] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_STORY_DISK_DINGDING_WIN));
+  story_sprites[8] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_STORY_DANCE_COCO_WIN));
+  story_sprites[9] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_STORY_DANCE_DINGDING_WIN));
 
   home_sprites = malloc(sizeof(HBITMAP) * 2);
   if (home_sprites == NULL) return;
@@ -167,6 +174,13 @@ void init_sprite_resources(HINSTANCE inst) {
   infinite_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_INFINITE_1));
   infinite_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_INFINITE_2));
   infinite_sprites[2] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_INFINITE_3));
+
+  teacher_sprites = malloc(sizeof(HBITMAP) * 3);
+  if (teacher_sprites == NULL) return;
+  teacher_sprites[0] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_TEACHER_HELP_DISK));
+  teacher_sprites[1] = LoadBitmap(inst, MAKEINTRESOURCE(IDB_TEACHER_HELP_PULL));
+  teacher_sprites[2] =
+      LoadBitmap(inst, MAKEINTRESOURCE(IDB_TEACHER_HELP_DANCE));
 
   coco_disk_ready_sprites = malloc(sizeof(HBITMAP) * 3);
   if (coco_disk_ready_sprites == NULL) return;
@@ -210,6 +224,7 @@ void deinit_sprite_resources() {
   free(story_sprites);
   free(home_sprites);
   free(infinite_sprites);
+  free(teacher_sprites);
   free(coco_disk_ready_sprites);
   free(dingding_disk_ready_sprites);
   free(pull_ready_sprites);

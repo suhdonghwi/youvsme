@@ -75,6 +75,6 @@ GameScene* create_dance_help_scene() {
   GameScene* ready_scene = create_readystart_scene(
       dance_scene, ready_start_sprites, 2, (Pos){560, 300});
   GameScene* help_scene = create_game_help_scene(
-      game_help_sprites[3], logo_sprites[2], (Pos){420, 60}, ready_scene);
+      game_help_sprites[2], logo_sprites[2], (Pos){420, 60}, ready_scene);
   return help_scene;
 }
