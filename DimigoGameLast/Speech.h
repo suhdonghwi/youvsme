@@ -12,6 +12,7 @@ typedef struct tagSpeechData {
 
   int current_index;
   HBRUSH rect_brush;
+  HBRUSH border_brush;
 
   wchar_t** text;
   int text_count;

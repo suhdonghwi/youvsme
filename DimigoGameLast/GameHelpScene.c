@@ -21,23 +21,23 @@ void on_render_game_help_scene(GameScene* scene, HDC main_dc) {
   SelectObject(main_dc, data->font);
 
   render_bitmap(background_sprites[1], main_dc, (Pos){0, 0}, 20.25);
-  render_bitmap(data->help_message, main_dc, (Pos){250, 250}, 3.5);
-  render_bitmap(data->logo, main_dc, data->logo_pos, 5);
+  render_bitmap(data->help_message, main_dc, (Pos){250, 280}, 3.5);
+  render_bitmap(data->logo, main_dc, data->logo_pos, 13);
 
   if (g_story_mode) {
     char stage_text[100];
     sprintf(stage_text, "- STAGE %d -", data->stage);
     SetTextColor(main_dc, RGB(30, 30, 30));
-    TextOut(main_dc, 472, 22, stage_text, strlen(stage_text));
+    TextOut(main_dc, 472, 30, stage_text, strlen(stage_text));
   }
 
   char* press_s = TEXT("[S]키를 눌러서 시작하세요!");
 
   SetTextColor(main_dc, RGB(150, 150, 150));
-  TextOut(main_dc, 382, 592, press_s, strlen(press_s));
+  TextOut(main_dc, 382, 622, press_s, strlen(press_s));
 
   SetTextColor(main_dc, RGB(60, 60, 60));
-  TextOut(main_dc, 380, 590, press_s, strlen(press_s));
+  TextOut(main_dc, 380, 620, press_s, strlen(press_s));
 
   if (is_pressed(0x53)) {
     g_new_scene = data->dest_scene;
@@ -74,7 +74,8 @@ GameScene* create_disk_help_scene() {
   GameScene* ready_scene = create_readystart_scene(
       disk_scene, coco_disk_ready_sprites, 3, (Pos){560, 300});
   GameScene* help_scene = create_game_help_scene(
-      game_help_sprites[0], logo_sprites[0], (Pos){410, 50}, ready_scene, 1);
+      game_help_sprites[0], logo_sprites[0], (Pos){360, 50}, ready_scene, 1);
+
   return help_scene;
 }
 
@@ -84,7 +85,7 @@ GameScene* create_pull_help_scene() {
   GameScene* ready_scene = create_readystart_scene(
       pull_scene, ready_start_sprites, 2, (Pos){560, 300});
   GameScene* help_scene = create_game_help_scene(
-      game_help_sprites[1], logo_sprites[1], (Pos){410, 10}, ready_scene, 2);
+      game_help_sprites[1], logo_sprites[1], (Pos){350, 80}, ready_scene, 2);
   return help_scene;
 }
 
@@ -94,6 +95,6 @@ GameScene* create_dance_help_scene() {
   GameScene* ready_scene = create_readystart_scene(
       dance_scene, ready_start_sprites, 2, (Pos){560, 300});
   GameScene* help_scene = create_game_help_scene(
-      game_help_sprites[2], logo_sprites[2], (Pos){420, 60}, ready_scene, 3);
+      game_help_sprites[2], logo_sprites[2], (Pos){340, 80}, ready_scene, 3);
   return help_scene;
 }

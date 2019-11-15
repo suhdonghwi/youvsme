@@ -12,6 +12,15 @@ void on_render_speech(GameObject* speech, HDC main_dc) {
 
   FillRect(main_dc, &data->speech_rect, data->rect_brush);
 
+  RECT border_rect = data->speech_rect;
+  for (int i = 0; i < 3; i++) {
+    FrameRect(main_dc, &border_rect, data->border_brush);
+    border_rect.left -= 1;
+    border_rect.right += 1;
+    border_rect.top -= 1;
+    border_rect.bottom += 1;
+  }
+
   wchar_t* current_text = data->text[data->current_index];
 
   RECT draw_rect;
@@ -101,7 +110,8 @@ GameObject* create_speech(wchar_t** text, int number, RECT rect) {
   data->text_over = false;
   data->font = CreateFont(30, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
                           VARIABLE_PITCH | FF_ROMAN, TEXT("µÕ±Ù¸ð²Ã"));
-  data->rect_brush = CreateSolidBrush(RGB(200, 200, 200));
+  data->rect_brush = CreateSolidBrush(RGB(220, 220, 220));
+  data->border_brush = CreateSolidBrush(RGB(20, 20, 20));
   data->show_delay = 0;
 
   speech->data = data;
