@@ -257,8 +257,8 @@ GameScene* create_after_dance_story(bool coco_win) {
   rect.right = rect.left + 750;
 
   GameScene* clean_scene = create_story_scene(
-      create_final_result_scene(), story_sprites[coco_win ? 5 : 4], final_ment,
-      3, rect, "Sound/game_over.wav");
+      create_final_result_scene(), story_sprites[final_result ? 5 : 4],
+      final_ment, 3, rect, "Sound/game_over.wav");
 
   CREATE_MENT(ment, 3, NULL);
 
@@ -274,7 +274,7 @@ GameScene* create_after_dance_story(bool coco_win) {
   rect.bottom = rect.top + 200;
   rect.right = rect.left + 350;
   GameScene* next_scene = create_story_scene(
-      clean_scene, story_sprites[coco_win ? 8 : 9], ment, 3, rect, NULL);
+      clean_scene, story_sprites[final_result ? 8 : 9], ment, 3, rect, NULL);
 
   return create_game_result_scene(coco_win, next_scene);
 }
