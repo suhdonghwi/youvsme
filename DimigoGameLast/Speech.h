@@ -7,7 +7,6 @@
 typedef struct tagSpeechData {
   delay_t show_delay;
 
-  HFONT font;
   RECT speech_rect;
 
   int current_index;

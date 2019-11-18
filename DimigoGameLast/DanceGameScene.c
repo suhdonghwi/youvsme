@@ -14,6 +14,7 @@ extern GameScene* g_current_scene;
 extern GameScene* g_new_scene;
 extern HDC g_window_dc;
 extern bool g_story_mode;
+extern HFONT g_font_big;
 
 // 댄스 큐와 사이즈를 받고 새로 초기화합니다.
 void init_dance_queue(DanceDirection** queue, int size) {
@@ -80,7 +81,7 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
     }
 
     if (data->show_speed_up && elapsed_time(data->speedup_show_delay) < 3.0) {
-      SelectObject(main_dc, data->font);
+      SelectObject(main_dc, g_font_big);
       SetTextColor(main_dc, RGB(255, 212, 59));
       TextOut(main_dc, 450, 100, "Speed Up!", strlen("Speed Up!"));
     }
@@ -132,7 +133,7 @@ void on_render_dance_game_scene(GameScene* scene, HDC main_dc) {
           ((double)current_clock - data->imitate_clock) / CLOCKS_PER_SEC;
       sprintf(remain_str, "%.1lf초 남음", data->imitate_time - elapsed);
 
-      SelectObject(main_dc, data->font);
+      SelectObject(main_dc, g_font_big);
       SetTextColor(main_dc, RGB(200, 200, 200));
       TextOut(main_dc, 420, 150, remain_str, strlen(remain_str));
 
@@ -231,8 +232,6 @@ GameScene* create_dance_game_scene() {
   data->dingding = dingding;
   data->state = STATE_DINGDING_DANCING;
   data->previous_length = 0;
-  data->font = CreateFont(50, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
-                          VARIABLE_PITCH | FF_ROMAN, TEXT("둥근모꼴"));
   data->imitate_time = 5;
   data->dance_count = 0;
   data->speedup_show_delay = 0;

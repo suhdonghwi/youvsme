@@ -13,12 +13,14 @@
 extern GameScene* g_new_scene;
 extern bool g_story_mode;
 
+extern HFONT g_font_small;
+
 // 게임 도움말 화면의 on_render 콜백입니다. S키가 입력되면 설정된 다음 화면으로
 // 넘어갑니다.
 void on_render_game_help_scene(GameScene* scene, HDC main_dc) {
   GameHelpData* data = (GameHelpData*)scene->data;
 
-  SelectObject(main_dc, data->font);
+  SelectObject(main_dc, g_font_small);
 
   render_bitmap(background_sprites[1], main_dc, (Pos){0, 0}, 20.25);
   render_bitmap(data->help_message, main_dc, (Pos){250, 280}, 3.5);
@@ -59,8 +61,6 @@ GameScene* create_game_help_scene(HBITMAP help_message, HBITMAP logo,
   data->logo = logo;
   data->logo_pos = logo_pos;
   data->dest_scene = game_scene;
-  data->font = CreateFont(25, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
-                          VARIABLE_PITCH | FF_ROMAN, TEXT("둥근모꼴"));
   data->stage = stage;
 
   scene->data = data;

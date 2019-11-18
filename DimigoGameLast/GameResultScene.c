@@ -11,6 +11,8 @@ extern int g_dingding_score;
 extern GameScene* g_new_scene;
 extern bool g_story_mode;
 
+extern HFONT g_font_small;
+
 // 게임 결과 화면의 on_render 콜백입니다. Enter 키를 입력 받으면 스토리 모드인
 // 경우 다음 화면으로, 무한 모드인 경우 메인 화면으로 넘어갑니다.
 void on_render_game_result_scene(GameScene* scene, HDC main_dc) {
@@ -21,13 +23,13 @@ void on_render_game_result_scene(GameScene* scene, HDC main_dc) {
   if (g_story_mode) {
     char* press_enter = TEXT("[Enter]키를 눌러서 넘어가세요");
 
-    SelectObject(main_dc, data->font);
+    SelectObject(main_dc, g_font_small);
     SetTextColor(main_dc, RGB(100, 100, 100));
     TextOut(main_dc, 362, 632, press_enter, strlen(press_enter));
   } else {
     char* press_enter = TEXT("[Enter]키를 눌러서 메인 화면으로");
 
-    SelectObject(main_dc, data->font);
+    SelectObject(main_dc, g_font_small);
     SetTextColor(main_dc, RGB(100, 100, 100));
     TextOut(main_dc, 362, 552, press_enter, strlen(press_enter));
   }
@@ -67,8 +69,6 @@ GameScene* create_game_result_scene(bool coco_won, GameScene* next_scene) {
 
   GameResultSceneData* data = malloc(sizeof(GameResultSceneData));
   if (data == NULL) return NULL;
-  data->font = CreateFont(25, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
-                          VARIABLE_PITCH | FF_ROMAN, TEXT("둥근모꼴"));
   data->next_scene = next_scene;
 
   scene->data = data;

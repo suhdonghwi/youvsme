@@ -12,6 +12,8 @@
 extern bool g_story_mode;
 extern GameScene* g_new_scene;
 
+extern HFONT g_font_small;
+
 // 무한 모드 선택 화면의 on_render 콜백입니다. 방향키와 Enter 키를 통해서 메뉴를
 // 탐색하고 진입할 수 있도록 합니다.
 void on_render_infinite_scene(GameScene* scene, HDC main_dc) {
@@ -41,7 +43,7 @@ void on_render_infinite_scene(GameScene* scene, HDC main_dc) {
     g_new_scene = create_home_scene();
   }
 
-  SelectObject(main_dc, data->font);
+  SelectObject(main_dc, g_font_small);
   SetTextColor(main_dc, RGB(50, 50, 50));
 
   char back_str[] = "[Backspace]키를 눌러 뒤로가기";
@@ -58,8 +60,6 @@ GameScene* create_infinite_scene() {
   InfiniteSceneData* data = malloc(sizeof(InfiniteSceneData));
   if (data == NULL) return NULL;
   data->index = 0;
-  data->font = CreateFont(25, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
-                          VARIABLE_PITCH | FF_ROMAN, TEXT("둥근모꼴"));
 
   scene->data = data;
   return scene;

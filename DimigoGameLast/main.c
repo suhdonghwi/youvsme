@@ -67,6 +67,11 @@ int g_dingding_score = 0;
 HDC g_window_dc;
 bool g_story_mode;
 
+HFONT g_font_bigger;
+HFONT g_font_big;
+HFONT g_font_medium;
+HFONT g_font_small;
+
 // 윈도우를 생성한 뒤 현재 화면을 렌더링하고, 렌더링이 완료된 뒤 g_new_scene에
 // 변화가 있으면 화면을 갱신합니다. 그리고 KeyInput.h에서 사용하는 키 누름
 // 정보를 담고 있는 배열 또한 main에서 함수를 호출하여 갱신합니다.
@@ -80,6 +85,17 @@ int main() {
   SetProcessDpiAwareness(
       PROCESS_PER_MONITOR_DPI_AWARE);  // 해상도, 확대 비율에 관계없이 윈도우가
                                        // 같은 사이즈로 나오게 합니다.
+
+  AddFontResource("DungGeunMo.ttf");
+  g_font_bigger = CreateFont(80, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
+                             VARIABLE_PITCH | FF_ROMAN, TEXT("둥근모꼴"));
+  g_font_big = CreateFont(50, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
+                          VARIABLE_PITCH | FF_ROMAN, TEXT("둥근모꼴"));
+  g_font_medium = CreateFont(30, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
+                             VARIABLE_PITCH | FF_ROMAN, TEXT("둥근모꼴"));
+  g_font_small = CreateFont(25, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
+                            VARIABLE_PITCH | FF_ROMAN, TEXT("둥근모꼴"));
+  RemoveFontResource("DungGeunMo.ttf");
 
   // 콘솔 윈도우, DC, 핸들을 가져옵니다.
   HWND window = GetConsoleWindow();

@@ -2,7 +2,6 @@
 #include "GameScene.h"
 
 typedef struct tagGameResultSceneData {
-  HFONT font;
   GameScene* next_scene;
 } GameResultSceneData;
 

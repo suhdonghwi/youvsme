@@ -1,6 +1,8 @@
 #include "Speech.h"
 #include "KeyInput.h"
 
+extern HFONT g_font_medium;
+
 // 말풍선의 on_render 콜백입니다. 대사를 한 자씩 출력하고, 모두 출력이 완료되면
 // Enter키를 누를 수 있도록 한뒤, Enter 키가 눌리는 다음 대사로 넘어갑니다.
 void on_render_speech(GameObject* speech, HDC main_dc) {
@@ -48,7 +50,7 @@ void on_render_speech(GameObject* speech, HDC main_dc) {
   wcscpy(draw_text, current_text);
   draw_text[data->current_cursor + 1] = '\0';
 
-  SelectObject(main_dc, data->font);
+  SelectObject(main_dc, g_font_medium);
   SetTextColor(main_dc, RGB(0, 0, 0));
   DrawTextW(main_dc, draw_text, wcslen(draw_text), &draw_rect,
             DT_EXTERNALLEADING | DT_WORDBREAK);
@@ -108,8 +110,6 @@ GameObject* create_speech(wchar_t** text, int number, RECT rect) {
   data->text = text;
   data->text_count = number;
   data->text_over = false;
-  data->font = CreateFont(30, 0, 0, 0, 0, 0, 0, 0, DEFAULT_CHARSET, 0, 0, 0,
-                          VARIABLE_PITCH | FF_ROMAN, TEXT("둥근모꼴"));
   data->rect_brush = CreateSolidBrush(RGB(220, 220, 220));
   data->border_brush = CreateSolidBrush(RGB(20, 20, 20));
   data->show_delay = 0;
