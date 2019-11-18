@@ -79,7 +79,7 @@ GameScene* create_after_main_story() {
   wcscpy(teacher_ment[2],
          L"플라잉 디스크는 마이크에 바람을 대고 불면 날라가게 되어있다.");
   wcscpy(teacher_ment[3],
-         L"멀리 날려야 좋은 점수를 받을테니 숨을 크게 들이쉬어라.");
+         L"멀리 날려야 좋은 점수를 받을테니 폐활량을 키워오는게 좋을거다.");
 
   GameScene* teacher_help = create_story_scene(disk_help, teacher_sprites[0],
                                                teacher_ment, 4, rect, NULL);
@@ -130,8 +130,7 @@ GameScene* create_after_disk_story(bool coco_win) {
   wcscpy(
       teacher_ment[2],
       L"자신의 머리 위에 떠있는 키를 차례대로 누르면 줄을 당길 수 있게된다.");
-  wcscpy(teacher_ment[3],
-         L"먼저 깃발을 잡으면 이기니까 신속할 수 있도록 연습해라!");
+  wcscpy(teacher_ment[3], L"먼저 깃발을 잡으면 이기니까 최대한 빠르게 당겨라!");
 
   rect.top = 50;
   rect.left = 680;
@@ -175,7 +174,7 @@ GameScene* create_after_pull_story(bool coco_win) {
          L"자신에게 스포트라이트가 오면 춤을 추고, 상대편은 그걸 따라서 추면 "
          L"된다.");
   wcscpy(teacher_ment[3],
-         L"잘못 따라추면 바로 탈락이고, 갈수록 진행이 빨라지니까 집중!");
+         L"잘못 따라추면 바로 탈락이고, 갈수록 진행이 빨라지니까 집중해라!");
 
   rect.top = 50;
   rect.left = 680;
@@ -260,21 +259,20 @@ GameScene* create_after_dance_story(bool coco_win) {
       create_final_result_scene(), story_sprites[final_result ? 5 : 4],
       final_ment, 3, rect, "Sound/game_over.wav");
 
-  CREATE_MENT(ment, 3, NULL);
+  CREATE_MENT(ment, 2, NULL);
 
   wcscpy(ment[0], final_result ? L"코코 : 결국 마지막엔 내가 이겼네?"
                                : L"딩딩 : 결국 마지막엔 내가 이겼네?");
   wcscpy(ment[1], final_result
                       ? L"코코 : 이긴다고 막 그러더니.. 내가 까불지 말랬지?"
                       : L"딩딩 : 이긴다고 막 그러더니.. 내가 까불지 말랬지?");
-  wcscpy(ment[2], final_result ? L"딩딩 : 안돼 ㅠㅠ" : L"코코 : 안돼 ㅠㅠ");
 
   rect.top = 170;
   rect.left = final_result ? 350 : 450;
   rect.bottom = rect.top + 200;
   rect.right = rect.left + 350;
   GameScene* next_scene = create_story_scene(
-      clean_scene, story_sprites[final_result ? 8 : 9], ment, 3, rect, NULL);
+      clean_scene, story_sprites[final_result ? 8 : 9], ment, 2, rect, NULL);
 
   return create_game_result_scene(coco_win, next_scene);
 }
