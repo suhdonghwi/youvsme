@@ -102,6 +102,11 @@ int main() {
   g_window_dc = GetDC(window);
   HINSTANCE inst = GetModuleHandle(NULL);
 
+  // 윈도우를 사이즈 조절하지 못하게 합니다.
+  SetWindowLong(
+      window, GWL_STYLE,
+      GetWindowLong(window, GWL_STYLE) & ~WS_MAXIMIZEBOX & ~WS_SIZEBOX);
+
   // 스프라이트 자원을 초기화합니다.
   init_sprite_resources(inst);
 
