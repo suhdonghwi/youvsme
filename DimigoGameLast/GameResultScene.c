@@ -46,10 +46,12 @@ void on_first_render_game_result_scene(GameScene* scene, HDC main_dc) {
 
 // 승리한 캐릭터, 다음 화면을 받고 게임 결과 화면을 생성한 뒤 반환합니다.
 GameScene* create_game_result_scene(bool coco_won, GameScene* next_scene) {
-  if (coco_won)
-    g_coco_score++;
-  else
-    g_dingding_score++;
+  if (g_story_mode) {
+    if (coco_won)
+      g_coco_score++;
+    else
+      g_dingding_score++;
+  }
 
   GameScene* scene = init_scene();
 
