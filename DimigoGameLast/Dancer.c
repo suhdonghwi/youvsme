@@ -59,6 +59,10 @@ void on_render_dancer(GameObject* dancer, HDC main_dc) {
     if (!is_dance_queue_full(data->dance_queue, data->dance_max)) {
       for (int i = 0; i < 4; i++) {
         if (is_pressed(data->move_keys[i])) {
+          int length = dance_queue_length(data->dance_queue, data->dance_max);
+          if (length > 0 && directions[i] == data->dance_queue[length - 1]) {
+            continue;
+          }
           dance_queue_push(data->dance_queue, data->dance_max, directions[i]);
           last_dance_delay = clock();
         }
